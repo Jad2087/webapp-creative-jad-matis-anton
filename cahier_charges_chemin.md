@@ -73,6 +73,11 @@ Dessinez ou décrivez l'arbre de décisions de votre histoire:
   
 - *Acte 3:* Échappée (final). Plusieurs terminaux doivent être ouverts en réutilisant les infos/objets acquis. Point de non-retour menant à 3 fins. Les fins reflètent les décisions-clés faites en chemin.
 
+### 2.2 Arbre narratif
+
+![Arbre narratif — schéma global](./Images/narative.png)
+
+
 *Exemple de structure:*
 
 ```
