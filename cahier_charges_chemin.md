@@ -98,20 +98,23 @@ Fin 1    Fin 2        Fin 3    Fin 4
 
 ### 2.3 Liste des chapitres/scènes
 
-| #  | Nom du chapitre                    | Type                 | Description courte                                                                 |
-|----|------------------------------------|----------------------|------------------------------------------------------------------------------------|
-| 1  | Réveil                             | Linéaire / Texte     | Le jeu commence. Court texte d’explication et prise en main.                       |
-| 2  | Premier carrefour                  | Choix                | Première page de choix : plusieurs directions possibles.                           |
-| 3  | Couloirs – A                       | Texte / Indice       | Page d’exploration : ambiance + un petit indice sur la station.                    |
-| 4  | Couloirs – B                       | Texte / Indice       | Autre page d’exploration : ambiance + un autre indice.                             |
-| 5  | Premier terminal                    | Mini-jeu (hack)      | Premier mini-jeu de hacking pour ouvrir une porte.                                 |
-| 6  | Carrefour Acte 2                   | Choix                | Deuxième page de choix : début de l’Acte 2, nouvelles zones à explorer.            |
-| 7  | Section(s) supplémentaires         | À décider            | Longueur/ordre non décidés pour l’instant (exploration continue).                  |
-| 8  | Clé d’accès optionnelle            | Objet / Indice       | Pendant l’exploration, on peut trouver une **clé** qui débloque une **fin bonus**. |
-| 9  | Accès à l’Acte 3                   | Choix                | Entrée dans l’Acte 3 : choix entre **3** zones finales.                            |
-| 10 | Capsule de sauvetage               | Mini-jeu (hack)      | Chemin 1 : terminal verrouillé avant la capsule (2 fins possibles sur cette voie). |
-| 11 | Leurre pour la créature            | Objet / Texte        | Avant la capsule, on peut trouver un **leurre** pour distraire le monstre.         |
-| 12 | Cabine du capitaine                | Objet / Fin cachée   | Chemin 3 : si on a l’objet nécessaire, on peut débloquer une **troisième fin**.    |
+<small>(noms provisoires, 3 actes, modèle branch-and-bottleneck)</small>
+
+| #  | Nom du chapitre                | Type                 | Description courte                                                                 | Choix proposés                                   | Conséquences |
+|----|--------------------------------|----------------------|------------------------------------------------------------------------------------|--------------------------------------------------|--------------|
+| 1  | Réveil — Cryo-B                | Linéaire / Texte     | Le jeu commence : court texte d’explication, prise en main.                        | Continuer / Examiner la pièce                    | Débloque le premier carrefour |
+| 2  | Premier carrefour              | Choix                | Première page de choix : plusieurs directions possibles.                           | Route A / Route B                                | A → Scène 3 · B → Scène 4 |
+| 3  | Couloirs — A                   | Texte / Indice       | Exploration d’une zone : ambiance + petit indice sur la station.                   | Inspecter / Passer                               | Gagne **indice A** |
+| 4  | Couloirs — B                   | Texte / Indice       | Deuxième zone d’explo : ambiance + autre indice.                                   | Fouiller / Passer                                | Gagne **indice B** |
+| 5  | Premier terminal               | Mini-jeu (hack)      | Premier hacking pour ouvrir une porte.                                             | Hacker / Chercher un indice                      | Ouvre l’accès vers l’Acte 2 |
+| 6  | Carrefour — Acte 2             | Choix                | Début de l’Acte 2 : nouvelles sections à parcourir.                                | Aller vers Énergie / Maintenance / Comms         | Lance l’exploration centrale |
+| 7  | Sections supplémentaires       | À décider            | Longueur/ordre non fixés (exploration de chambres/sections, lore, indices).        | Explorer / Revenir                               | Progression variable (à préciser) |
+| 8  | Clé d’accès optionnelle        | Objet / Indice       | On peut trouver une **clé** qui débloque une **fin bonus**.                        | Prendre / Ignorer                                | Débloque une **seconde fin** (plus tard) |
+| 9  | Accès — Acte 3                 | Choix                | Entrée dans l’Acte 3 : carrefour final, 3 zones au choix.                          | Zone 1 Capsule / Zone 2 Leurre / Zone 3 Cabine   | 10 / 11 / 12 selon la zone choisie |
+| 10 | Capsule de sauvetage           | Mini-jeu (hack)      | Terminal verrouillé avant la capsule; issue possible par 2 variantes.             | Hacker / Revenir plus tard                       | **2 fins** selon flags/état (avec ou sans preuves) |
+| 11 | Générateur de leurre           | Objet / Texte        | Dispositif pour **attirer** la créature et gagner du temps pour fuir.              | Activer / Conserver                               | Réduit le risque; ouvre fenêtre d’évasion |
+| 12 | Cabine du capitaine            | Objet / Fin cachée   | Si l’objet requis est trouvé, on peut déverrouiller une **troisième fin** cachée.  | Chercher l’objet / Utiliser l’objet              | Débloque la **fin cachée** |
+
 
 
 
