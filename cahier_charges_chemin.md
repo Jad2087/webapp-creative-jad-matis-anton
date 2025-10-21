@@ -75,8 +75,10 @@ Dessinez ou décrivez l'arbre de décisions de votre histoire:
 
 ### 2.2 Arbre narratif
 
-![Arbre narratif — schéma global](./Images/narative.png)
-
+<h3>2.2 Arbre narratif</h3>
+<p align="center">
+  <img src="./Images/narative.png" alt="Arbre narratif — schéma global" width="900">
+</p>
 
 *Exemple de structure:*
 
