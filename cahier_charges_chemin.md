@@ -57,9 +57,9 @@ Décrivez en 2-3 paragraphes le concept de votre histoire interactive:
 
 ### 2.1 Synopsis détaillé
 
-Racontez votre histoire en 1-2 paragraphes (sans spoiler les fins):
+Le Interloper se réveille d’un long sommeil en cryostase. La station spaciale est vieille, ses systèmes clignotent, des couloirs sont condamnés. Il n’a aucun souvenir de qui il est ni de ce qui s’est passé. Une seule chose est claire : trouver une issue.
 
-[Écrivez votre synopsis ici]
+Pour s’échapper avant que la station tombe dans l’atmosphère terrestre, le joueur doit traverser ces diférants modules, récupérer des indices et déverrouiller des accès pour trouver une sortie... tout en évitant un monstre qui rôde.
 
 ### 2.2 Arbre narratif
 
@@ -67,9 +67,11 @@ Dessinez ou décrivez l'arbre de décisions de votre histoire:
 
 *Structure globale:*
 
-- *Acte 1:* Introduction (1-2 chapitres linéaires)
-- *Acte 2:* Développement avec choix (4-6 chapitres avec branches)
-- *Acte 3:* Climax et résolution (2-3 fins différentes)
+- *Acte 1:* Initiation (court). Réveil en cryostase, premiers couloirs, 1–2 choix simples pour apprendre: lire un texte d’ambiance, récupérer un indice, réussir 1 mini-jeu (hacking) pour ouvrir la première porte. Objectif: poser l’urgence et montrer la boucle “lire → chercher indice → ouvrir → avancer”. (Trois actes = cadre clair pour début/milieu/fin.
+  
+- *Acte 2:* Exploration (le plus long). Le joueur traverse plusieurs sections (Énergie, Comms, Maintenance, Hydroponie…), alterne choix de directions, mini-jeux de hacking et indices/objets qui déverrouillent d’autres portes. Des rencontres aléatoires avec la créature forcent parfois un mini-jeu “se cacher”. Les branches reconvergent à des “goulets” (bottlenecks) pour garder la portée sous contrôle.
+  
+- *Acte 3:* Échappée (final). Plusieurs terminaux doivent être ouverts en réutilisant les infos/objets acquis. Point de non-retour menant à 3 fins. Les fins reflètent les décisions-clés faites en chemin.
 
 *Exemple de structure:*
 
