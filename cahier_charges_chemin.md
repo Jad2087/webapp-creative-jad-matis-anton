@@ -24,16 +24,18 @@
     (Ce paragraphe "Conseil" devra être retiré du Cahier de charge final)
     Pour développer votre concept général, vous devez faire une session de remue-méninges (*brainstorm*) en équipe via *Figjam* avec une carte conceptuelle (*mindmap*) ou encore par la création collaborative et spontanée via des *post-it* individuels et groupés. Il est possible d'utiliser d'autres procédés de création. Vous devrez partager votre processus de création (*brainstorm*) avec votre enseignante. Si c'est virtuel, partagez le lien. Si c'est papier ou sur tableau blanc, veuillez partager une ou des photographie(s) de votre processus.
 
-
 Décrivez en 2-3 paragraphes le concept de votre histoire interactive:
 
-- Quel est le genre narratif? (fantastique, sci-fi, mystère, aventure, etc.)
-- Quelle est l'histoire principale?
-- Qui est le personnage principal?
-- Quel est le mécanisme de choix? (décisions morales, énigmes, actions, etc.)
+- **Quel est le genre narratif ?** Horror sci‑fi.  
+- **Quelle est l’histoire principale ?** À bord d’une vieille **station spatiale en orbite terrestre** et en perdition, le joueur s’éveille d’une **cuve cryogénique** sans souvenir (personnage provisoire : **Interloper**). La station dérive lentement vers l’atmosphère : modules isolés, systèmes défaillants, journaux qui se contredisent. L’objectif : **explorer**, récupérer des **indices/codes**, **hacker** des portes/terminaux et **survivre** à une **créature inconnue** qui rôde.  
+- **Qui est le personnage principal ?** Le joueur incarne **Interloper**, un·e technicien·ne réveillé·e par erreur.  
+- **Quel est le mécanisme de choix ?** Navigation par **boutons/choix contextuels** entre modules (couloirs, cryo, énergie, comms…). Les portes/sections sont **verrouillées** soit par **mots de passe** trouvés en explorant, soit via un **mini‑jeu de hacking** (mots de même longueur, indice de similarité, suppression de « duds », réinitialisation des essais).  
 
-*Exemple (interdit de prendre l'exemple comme histoire pour votre projet):*
-> "Les Échos du Temps" est une histoire interactive de science-fiction où le joueur incarne un scientifique qui découvre une machine à voyager dans le temps. Chaque décision modifie le cours de l'histoire et peut créer des paradoxes temporels. L'utilisateur doit faire des choix difficiles qui influencent non seulement sa propre destinée, mais aussi celle de l'humanité. Le système de branches permet 6 fins différentes selon les décisions prises.
+*Style & interface.* Présentation en **interface “terminal rétro”** (texte vert sur noir, scanlines, curseur clignotant), avec textes d’ambiance et images stylisées type code.  
+
+*Boucle de jeu.* **Explorer → lire indices → hacker/ouvrir → backtracking → gérer la menace → progresser**. La **créature** peut apparaître de façon **probabiliste** à l’ouverture de certaines scènes : un **mini‑jeu de cachette** (maintenir un pointeur tremblant dans une zone pendant *N* secondes) s’enclenche ; échec = capture/mort (retour au dernier point clé), réussite = poursuite de l’exploration.
+
+> Implémentation prévue : **Vue 3 + Pinia + GSAP + LocalStorage (3 slots)** pour les sauvegardes et transitions d’interface.
 
 
 ### 1.2 Public cible
