@@ -98,24 +98,21 @@ Fin 1    Fin 2        Fin 3    Fin 4
 
 ### 2.3 Liste des chapitres/scènes
 
-<small>(noms provisoires, 3 actes, modèle branch-and-bottleneck)</small>
+| #  | Nom du chapitre                    | Type                 | Description courte                                                                 |
+|----|------------------------------------|----------------------|------------------------------------------------------------------------------------|
+| 1  | Réveil                             | Linéaire / Texte     | Le jeu commence. Court texte d’explication et prise en main.                       |
+| 2  | Premier carrefour                  | Choix                | Première page de choix : plusieurs directions possibles.                           |
+| 3  | Couloirs – A                       | Texte / Indice       | Page d’exploration : ambiance + un petit indice sur la station.                    |
+| 4  | Couloirs – B                       | Texte / Indice       | Autre page d’exploration : ambiance + un autre indice.                             |
+| 5  | Premier terminal                    | Mini-jeu (hack)      | Premier mini-jeu de hacking pour ouvrir une porte.                                 |
+| 6  | Carrefour Acte 2                   | Choix                | Deuxième page de choix : début de l’Acte 2, nouvelles zones à explorer.            |
+| 7  | Section(s) supplémentaires         | À décider            | Longueur/ordre non décidés pour l’instant (exploration continue).                  |
+| 8  | Clé d’accès optionnelle            | Objet / Indice       | Pendant l’exploration, on peut trouver une **clé** qui débloque une **fin bonus**. |
+| 9  | Accès à l’Acte 3                   | Choix                | Entrée dans l’Acte 3 : choix entre **3** zones finales.                            |
+| 10 | Capsule de sauvetage               | Mini-jeu (hack)      | Chemin 1 : terminal verrouillé avant la capsule (2 fins possibles sur cette voie). |
+| 11 | Leurre pour la créature            | Objet / Texte        | Avant la capsule, on peut trouver un **leurre** pour distraire le monstre.         |
+| 12 | Cabine du capitaine                | Objet / Fin cachée   | Chemin 3 : si on a l’objet nécessaire, on peut débloquer une **troisième fin**.    |
 
-| # | Nom du chapitre | Type | Description courte | Choix proposés | Conséquences |
-|---|-----------------|------|-------------------|----------------|--------------|
-| 1 | Réveil — Cryo-B | Linéaire | Sortie de cryo, prise en main, premiers logs | Examiner / Forcer la trappe | Débloque l’accès à Distribution Énergie |
-| 2 | Distribution Énergie | Choix / Mini-jeu | Rétablir un sous-réseau via un terminal (hacking simple) | Suivre protocole / Forcer le hack | Ouvre soit **Comms** (A) soit **Maintenance** (B) |
-| 3A | Communications (A) | Choix | Scanner un « signal » et lire des messages contradictoires | Analyser / Couper / Diffuser | Gagne **indice: code-COMMS** ou hausse l’alerte |
-| 3B | Maintenance (B) | Choix / Mini-jeu | Court-circuit d’une serrure + détour d’alimentation | Bypass / Changer de fusible / Reculer | Obtiens **carte-maint** ou augmente la menace |
-| 4A | Hydroponie | Choix | Indices biologiques; zones contaminées | Prélever échantillon / Stériliser | Définit **flag_bio** (impact sur la fin) |
-| 4B | Dossiers Cryo-A | Linéaire | Dossiers sur d’éventuels survivants en stase | — | Débloque un futur choix moral (secourir/abandonner) |
-| 5 | Contrôle Trajectoire | Choix | Corriger l’orbite ou préparer l’évacuation | Stabiliser / Prioriser l’extraction | Oriente vers fins techniques vs humaines |
-| 6 | Section Noire (événement) | Événement / Mini-jeu | **Rencontre créature** (cachette) ; tirage probabiliste | Se cacher (mini-jeu) | Échec = retour au dernier point clé; succès = poursuite :contentReference[oaicite:1]{index=1} |
-| 7 | Nœud de vérité | Choix | Confronter l’IA / falsifier des logs / décider du sort des cryos | Révéler / Mentir / Secourir | **Goulet** : rassemble les branches avec des **flags** différents :contentReference[oaicite:2]{index=2} |
-| 8 | Dénouement — Capsule | Fin | Ouverture des terminaux finaux avec les codes/objets réunis | Lancer extraction / Purge / Diffuser le signal | **3–6 fins** selon flags: preuves, bio, alarme, survivants |
-
-> Notes de design  
-> • Branches qui **se rejoignent** régulièrement (bottlenecks) pour limiter l’explosion de contenu tout en gardant des choix ayant des effets différés via **flags**. :contentReference[oaicite:3]{index=3}  
-> • Gating « doux »: portes/terminaux s’ouvrent par **indice/objet** ou **mini-jeu** (hacking), ce qui maintient l’exploration claire sans immobiliser le récit. :contentReference[oaicite:4]{index=4}
 
 
 ### 2.4 Fins possibles
