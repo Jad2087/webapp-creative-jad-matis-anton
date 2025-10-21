@@ -120,28 +120,25 @@ Fin 1    Fin 2        Fin 3    Fin 4
 
 ### 2.4 Fins possibles
 
-Listez toutes les fins de votre histoire (minimum 3, idéal 4-6):
+Listez toutes les fins de votre histoire (minimum 3, idéal 4–6):
 
-<small>(les noms des fins énoncées ici ne sont que des exemples)</small>
+<small>(noms provisoires — basées sur vos conditions)</small>
 
-| # | Nom de la fin | Condition pour l'atteindre | Type (bonne/mauvaise/neutre) |
-|---|--------------|---------------------------|------------------------------|
-| 1 | [Fin Héroïque] | Avoir fait 3+ choix altruistes | Bonne |
-| 2 | [Fin Sombre] | Avoir fait 3+ choix égoïstes | Mauvaise |
-| 3 | [Fin Paradoxale] | Avoir créé un paradoxe temporel | Neutre/Spéciale |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
+| # | Nom de la fin                | Condition pour l'atteindre                                                | Type (bonne/mauvaise/neutre) |
+|---|------------------------------|---------------------------------------------------------------------------|------------------------------|
+| 1 | **Purge orbitale**           | Déclencher la destruction de la station (vous périssez avec le monstre)  | Neutre / Sombre              |
+| 2 | **Retour sur Terre**         | Atteindre la capsule et s’échapper (preuves/états suffisants)            | Bonne                        |
+| 3 | **Rattrapé par la créature** | Lancer l’évasion, mais la créature vous rejoint et vous tue en fuite     | Mauvaise                     |
+
 
 ### 2.5 Personnages principaux
+### 2.5 Personnages principaux
 
-| Nom | Rôle | Description | Apparaît dans |
-|-----|------|-------------|---------------|
-| [Ex: Dr. Sarah Chen] | Protagoniste | Scientifique brillante mais impulsive | Tous les chapitres |
-| [Ex: Marcus] | Mentor | Professeur sage et prudent | Chapitres 1, 2, 5 |
-| [Ex: L'IA CHRONOS] | Antagoniste | Intelligence artificielle de la machine | Chapitres 3+, certaines fins |
-| | | | |
-| | | | |
+| Nom          | Rôle        | Description courte                           | Apparaît dans          |
+|--------------|-------------|----------------------------------------------|------------------------|
+| **Interloper** | Protagoniste | Avatar du joueur, amnésique, seul à bord     | Tous les chapitres     |
+| **La Créature** | Antagoniste | Présence traquante, apparitions aléatoires    | Événements clés / fins |
+
 
 ### 2.6 Système de conséquences
 
@@ -151,7 +148,7 @@ Comment les choix influencent l'histoire?
 
 - [ ] *Système de karma/moralité* (points bons/mauvais)
 - [ ] *Stats du personnage* (courage, intelligence, empathie)
-- [ ] *Inventaire d'objets* (collecte d'items)
+- [X] *Inventaire d'objets* (collecte d'items)
 - [ ] *Relations avec personnages* (affinités)
 - [ ] *Flags de choix* (choix X débloque scène Y)
 - [ ] *Combinaison de plusieurs systèmes*
