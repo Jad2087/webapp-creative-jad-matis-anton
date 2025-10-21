@@ -27,9 +27,9 @@
 Décrivez en 2-3 paragraphes le concept de votre histoire interactive:
 
 - **Quel est le genre narratif ?** Horror sci‑fi.  
-- **Quelle est l’histoire principale ?** À bord d’une vieille **station spatiale en orbite terrestre** et en perdition, le joueur s’éveille d’une **cuve cryogénique** sans souvenir (personnage provisoire : **Interloper**). La station dérive lentement vers l’atmosphère : modules isolés, systèmes défaillants, journaux qui se contredisent. L’objectif : **explorer**, récupérer des **indices/codes**, **hacker** des portes/terminaux et **survivre** à une **créature inconnue** qui rôde.  
-- **Qui est le personnage principal ?** Le joueur incarne **Interloper**, un·e technicien·ne réveillé·e par erreur.  
-- **Quel est le mécanisme de choix ?** Navigation par **boutons/choix contextuels** entre modules (couloirs, cryo, énergie, comms…). Les portes/sections sont **verrouillées** soit par **mots de passe** trouvés en explorant, soit via un **mini‑jeu de hacking** (mots de même longueur, indice de similarité, suppression de « duds », réinitialisation des essais).  
+- **Quelle est l’histoire principale ?** Le jouer se réveille d’une cuve cryogénique sans aucun souvenir. Son but : quitter la station avant la rentrée atmosphérique. Il est seul — pas de PNJ — et doit explorer les modules (couloirs, énergie, communications, cryo…), collecter des indices, et déverrouiller portes/terminaux pour progresser. L’interface simule un terminal rétro (texte vert sur noir, style code) pour renforcer l’immersion.
+- **Qui est le personnage principal ?** Le joueur incarne Interloper (nom provisoire), avatar neutre pour favoriser la projection du joueur.
+- **Quel est le mécanisme de choix ?** es choix servent d’interface d’exploration : boutons contextuels pour se déplacer entre zones, examiner, fouiller, et hacker. Les passages bloqués s’ouvrent via mots de passe trouvés en environnement ou un mini-jeu de hacking (inspiré des mécaniques Fallout : mots de même longueur, indice de similarité, suppression de « duds », réinit des essais), adapté à notre format web.
 
 *Style & interface.* Présentation en **interface “terminal rétro”** (texte vert sur noir, scanlines, curseur clignotant), avec textes d’ambiance et images stylisées type code.  
 
