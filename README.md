@@ -2,9 +2,9 @@
 
 ## 📌 Informations du Projet
 
-*Nom du projet:* [Nom de votre musée]  
-*Nom de l'équipe:* [Nom de votre équipe]  
-*Membres:*
+*Nom du projet:* [Codex]  
+*Nom de l'équipe:* [Code³]  
+*Membres:* Jad Saloumi, Matis Ghariani et Anton Nikulin
 
 - [Nom] - Chef de projet / [Rôle principal]
 - [Nom] - [Rôle principal]
