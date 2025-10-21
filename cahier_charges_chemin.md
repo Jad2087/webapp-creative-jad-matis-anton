@@ -26,32 +26,29 @@
 
 Décrivez en 2-3 paragraphes le concept de votre histoire interactive:
 
-- **Quel est le genre narratif ?** Horror sci‑fi.  
+- **Quel est le genre narratif ?** Horror sci‑fi.
+  
 - **Quelle est l’histoire principale ?** Le jouer se réveille d’une cuve cryogénique sans aucun souvenir. Son but : quitter la station avant la rentrée atmosphérique. Il est seul — pas de PNJ — et doit explorer les modules (couloirs, énergie, communications, cryo…), collecter des indices, et déverrouiller portes/terminaux pour progresser. L’interface simule un terminal rétro (texte vert sur noir, style code) pour renforcer l’immersion.
+  
 - **Qui est le personnage principal ?** Le joueur incarne Interloper (nom provisoire), avatar neutre pour favoriser la projection du joueur.
+  
 - **Quel est le mécanisme de choix ?** es choix servent d’interface d’exploration : boutons contextuels pour se déplacer entre zones, examiner, fouiller, et hacker. Les passages bloqués s’ouvrent via mots de passe trouvés en environnement ou un mini-jeu de hacking (inspiré des mécaniques Fallout : mots de même longueur, indice de similarité, suppression de « duds », réinit des essais), adapté à notre format web.
-
-*Style & interface.* Présentation en **interface “terminal rétro”** (texte vert sur noir, scanlines, curseur clignotant), avec textes d’ambiance et images stylisées type code.  
-
-*Boucle de jeu.* **Explorer → lire indices → hacker/ouvrir → backtracking → gérer la menace → progresser**. La **créature** peut apparaître de façon **probabiliste** à l’ouverture de certaines scènes : un **mini‑jeu de cachette** (maintenir un pointeur tremblant dans une zone pendant *N* secondes) s’enclenche ; échec = capture/mort (retour au dernier point clé), réussite = poursuite de l’exploration.
-
-> Implémentation prévue : **Vue 3 + Pinia + GSAP + LocalStorage (3 slots)** pour les sauvegardes et transitions d’interface.
 
 
 ### 1.2 Public cible
 
-- *Âge:* [ex: 16-35 ans]
-- *Profil:* [ex: Amateurs de récits interactifs, fans de sci-fi]
-- *Niveau technique:* [ex: Utilisateurs grand public]
-- *Temps de lecture estimé:* [ex: 20-45 minutes pour une partie complète]
+- *Âge:* 18–30 ans (cœur de cible ~24 ans)
+- *Profil:* Amateurs de sci-fi/horror, de récits interactifs et d’esthétique rétro/terminal
+- *Niveau technique:* Grand public (navigation par clic)
+- *Temps de lecture estimé:* 20 minutes pour une partie complète
 
 ### 1.3 Objectifs du projet
 
 - [ ] Créer une expérience narrative immersive et émotionnelle
 - [ ] Développer un système de choix avec conséquences réelles
 - [ ] Implémenter un système de sauvegarde de progression
-- [ ] Démontrer la maîtrise de Vue.js, GSAP et Pinia
-- [ ] Créer une interface accessible et responsive
+- [X] Démontrer la maîtrise de Vue.js, GSAP et Pinia
+- [X] Créer une interface accessible et responsive
 - [ ] [Autre objectif spécifique]
 
 
