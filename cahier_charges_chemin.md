@@ -98,21 +98,25 @@ Fin 1    Fin 2        Fin 3    Fin 4
 
 ### 2.3 Liste des chapitres/scènes
 
-Minimum 8 niveaux (chapitres/scènes). Listez-les avec leurs informations:
-
-<small>(les noms des chapitres énoncés ici ne sont que des exemples)</small>
+<small>(noms provisoires, 3 actes, modèle branch-and-bottleneck)</small>
 
 | # | Nom du chapitre | Type | Description courte | Choix proposés | Conséquences |
-|---|----------------|------|-------------------|----------------|--------------|
-| 1 | [Le Réveil] | Linéaire | Introduction du personnage et du contexte | Aucun (intro) | N/A |
-| 2 | [La Découverte] | Choix | Découverte de la machine temporelle | 2 choix: "Activer" ou "Rapporter" | Branche A ou B |
-| 3A | [Premier Voyage] | Choix | Voyage dans le passé | 3 choix d'époque | Impact sur suite |
-| 3B | [L' Enquête] | Linéaire | Investigation scientifique | Aucun | Progression histoire |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
-| 7 | | | | | |
-| 8 | | | | | |
+|---|-----------------|------|-------------------|----------------|--------------|
+| 1 | Réveil — Cryo-B | Linéaire | Sortie de cryo, prise en main, premiers logs | Examiner / Forcer la trappe | Débloque l’accès à Distribution Énergie |
+| 2 | Distribution Énergie | Choix / Mini-jeu | Rétablir un sous-réseau via un terminal (hacking simple) | Suivre protocole / Forcer le hack | Ouvre soit **Comms** (A) soit **Maintenance** (B) |
+| 3A | Communications (A) | Choix | Scanner un « signal » et lire des messages contradictoires | Analyser / Couper / Diffuser | Gagne **indice: code-COMMS** ou hausse l’alerte |
+| 3B | Maintenance (B) | Choix / Mini-jeu | Court-circuit d’une serrure + détour d’alimentation | Bypass / Changer de fusible / Reculer | Obtiens **carte-maint** ou augmente la menace |
+| 4A | Hydroponie | Choix | Indices biologiques; zones contaminées | Prélever échantillon / Stériliser | Définit **flag_bio** (impact sur la fin) |
+| 4B | Dossiers Cryo-A | Linéaire | Dossiers sur d’éventuels survivants en stase | — | Débloque un futur choix moral (secourir/abandonner) |
+| 5 | Contrôle Trajectoire | Choix | Corriger l’orbite ou préparer l’évacuation | Stabiliser / Prioriser l’extraction | Oriente vers fins techniques vs humaines |
+| 6 | Section Noire (événement) | Événement / Mini-jeu | **Rencontre créature** (cachette) ; tirage probabiliste | Se cacher (mini-jeu) | Échec = retour au dernier point clé; succès = poursuite :contentReference[oaicite:1]{index=1} |
+| 7 | Nœud de vérité | Choix | Confronter l’IA / falsifier des logs / décider du sort des cryos | Révéler / Mentir / Secourir | **Goulet** : rassemble les branches avec des **flags** différents :contentReference[oaicite:2]{index=2} |
+| 8 | Dénouement — Capsule | Fin | Ouverture des terminaux finaux avec les codes/objets réunis | Lancer extraction / Purge / Diffuser le signal | **3–6 fins** selon flags: preuves, bio, alarme, survivants |
+
+> Notes de design  
+> • Branches qui **se rejoignent** régulièrement (bottlenecks) pour limiter l’explosion de contenu tout en gardant des choix ayant des effets différés via **flags**. :contentReference[oaicite:3]{index=3}  
+> • Gating « doux »: portes/terminaux s’ouvrent par **indice/objet** ou **mini-jeu** (hacking), ce qui maintient l’exploration claire sans immobiliser le récit. :contentReference[oaicite:4]{index=4}
+
 
 ### 2.4 Fins possibles
 
