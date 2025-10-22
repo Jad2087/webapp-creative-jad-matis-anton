@@ -187,18 +187,18 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 
 *Couleurs par ambiance/chapitre:*
 
-- *Chapitres introduction:* [#XXXXXX] - Tons neutres
-- *Chapitres tension:* [#XXXXXX] - Tons sombres/dramatiques
-- *Chapitres espoir:* [#XXXXXX] - Tons clairs/lumineux
-- *Chapitres danger:* [#XXXXXX] - Rouge/orange
+- *Chapitres introduction:* [#03AB5E] - Tons neutres
+- *Chapitres tension:* [#1F1F1F] - Tons sombres/dramatiques
+- *Chapitres espoir:* [#FFFFFF et #03AB5E] - Tons clairs/lumineux
+- *Chapitres danger:* [#E35E5E] - Rouge/orange
 
 *Couleurs système:*
 
-- Primaire (actions principales): [#XXXXXX]
-- Secondaire (choix): [#XXXXXX]
-- Succès: [#10B981]
-- Danger: [#EF4444]
-- Neutre: [#6B7280]
+- Primaire (actions principales): [#03AB5E]
+- Secondaire (choix): [#FFFFFF]
+- Succès: [#03AB5E]
+- Danger: [#E35E5E]
+- Neutre: [#FFFFFF]
 
 ### 3.3 Typographie
 
