@@ -177,11 +177,9 @@ playerState: {
 
 Insérez ici 3-5 images d'inspiration (ou liens):
 
-- [Image 1: Ambiance générale]
-- [Image 2: Style visuel des personnages]
-- [Image 3: Palette de couleurs]
-- [Image 4: Typographie inspirante]
-- [Image 5: Animations de référence]
+- [Image 1: Ambiance générale](https://www.bing.com/images/search?view=detailV2&ccid=Cada1IDV&id=B6365AD34B9A6507D250AC0CDE3369970464874A&thid=OIP.Cada1IDVA-uSx-gYfhqNCgHaEK&mediaurl=https%3a%2f%2fdavescomputertips.com%2fwp-content%2fuploads%2f2015%2f03%2faliensign-in.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.09a75ad480d503eb92c7e8187e1a8d0a%3frik%3dSodkBJdpM94MrA%26pid%3dImgRaw%26r%3d0&exph=675&expw=1200&q=alien+isolation+computer&FORM=IRPRST&ck=F8D622281E50FABA58B0FC3BB0E0B4FA&selectedIndex=1&itb=0&ajaxhist=0&ajaxserp=0)
+- [Image 2](https://www.bing.com/images/search?view=detailV2&ccid=YOUaIvSz&id=A4D4430C180D67BB6DF5E12689485901B35C5F43&thid=OIP.YOUaIvSzj4QkvrxuuVMXjgHaEK&mediaurl=https%3A%2F%2F4.bp.blogspot.com%2F-sOZgIW-Lwrw%2FVQsnohowThI%2FAAAAAAAA0f0%2FryjMilnf5S8%2Fs1920%2FAlien_Isolation_(PC)_14.jpg&cdnurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.60e51a22f4b38f8424bebc6eb953178e%3Frik%3DQ19cswFZSIkm4Q%26pid%3DImgRaw%26r%3D0&exph=1080&expw=1920&q=alien+isolation+computer&form=IRPRST&ck=EEDFA5AF4E64AF499F38EDE2EB6ECBB3&selectedindex=7&itb=0&ajaxhist=0&ajaxserp=0&pivotparams=insightsToken%3Dccid_jtw5ILC1*cp_24FC41BEE274E124CDFF31986F24DBC5*mid_E23553DE2A472D889A2CDCB39DBD3C75CDE34725*thid_OIP.jtw5ILC1jDLxrLDz7JQrEwHaEK&vt=0&sim=11&iss=VSI&ajaxhist=0&ajaxserp=0)
+- [Image 3](https://www.bing.com/images/search?view=detailV2&ccid=ktP65tHB&id=DB481A2ADAF83DB40CA909E32C90985EEF3D09E8&thid=OIP.ktP65tHB_MxUU7TzEEH2uAHaEL&mediaurl=https%3a%2f%2fwww.nerdean.com%2fwp-content%2fuploads%2f2024%2f02%2fhacking.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.92d3fae6d1c1fccc5453b4f31041f6b8%3frik%3d6Ak9716YkCzjCQ%26pid%3dImgRaw%26r%3d0&exph=360&expw=639&q=hacking&FORM=IRPRST&ck=4FA7DAB14911824EE704FC1B8669E25D&selectedIndex=42&itb=0&ajaxhist=0&ajaxserp=0)
 
 ### 3.2 Palette de couleurs
 
