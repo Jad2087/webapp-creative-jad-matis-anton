@@ -216,10 +216,10 @@ Choisissez un ou plusieurs styles:
 
 | Chapitre | Image de fond | Effets visuels | Sons/musique |
 |----------|---------------|----------------|--------------|
-| 1 | [Description ou lien] | Fade in progressif | Musique douce, intro |
-| 2 | | | |
-| 3 | | | |
-| ... | | | |
+| acceuil | Ecran d'ordinateur | Leger bug | Musique douce mais intensse |
+| page principale |Ecran d'ordinateur |bug de haut en bas | son boutons |
+| echec |Ecran d'ordinateur | bug clignotement |son alerte |
+| victoire |Ecran d'ordinateur |bug clignotement | son vitoire |
 
 
 ## 💻 4. Spécifications Techniques
