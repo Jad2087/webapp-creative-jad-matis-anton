@@ -200,10 +200,7 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 
 ### 3.3 Typographie
 
-- *Titres narratifs:* [Nom de la police] - [Lien Google Fonts]
-- *Texte de narration:* [Nom de la police] - Lisible, serif ou sans-serif
-- *Dialogues:* [Nom de la police] - Différencié du texte narratif
-- *Boutons de choix:* [Nom de la police] - Bold, impactant
+- [Fira Code] - SemiBold
 
 ### 3.4 Style visuel
 
