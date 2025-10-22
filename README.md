@@ -1,13 +1,12 @@
 # Codex
 
-## Options
-L'option choisi est B qui est le Trace ton chemin. 
+## Option
+L’option choisie est B, « Trace ton chemin ».
 
-## Membre de l'équipe et notre rôle
-Les Membres de l'équipe sont Jad Saloumi, Matis Ghariani et Anton Nikulin. 
-- [Jad] - Chef de projet / [Rôle principal]
-- Matis - Création et conception
-- Anton [Développement et technique (Front-end)
+## Membres de l’équipe et nos rôles
+- Jad Saloumi – Chef de projet / Rôle principal
+- Matis Ghariani – Création et conception
+- Anton Nikulin – Développement et technique (Front-end)
 - 
 ## Lien de Figma
 Lien vers Figma (n'oubliez pas de me donner l'accès d'édition) < Faites un vrai lien en markdown, pas juste une url textuelle.
