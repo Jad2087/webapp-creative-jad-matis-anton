@@ -213,7 +213,7 @@ Choisissez un ou plusieurs styles:
 
 - [ ] Cinématique (film noir, thriller)
 - [ ] Illustratif (dessins, concept art)
-- [ ] Minimaliste (focus sur le texte)
+- [X] Minimaliste (focus sur le texte)
 - [ ] Immersif (photos, ambiances réalistes)
 - [ ] Stylisé (flat design, géométrique)
 
@@ -243,8 +243,8 @@ Choisissez un ou plusieurs styles:
 *Librairies additionnelles envisagées:*
 
 - [ ] VueUse (composables utilitaires)
-- [ ] Typed.js (effet de machine à écrire)
-- [ ] Howler.js (gestion audio avancée)
+- [X] Typed.js (effet de machine à écrire)
+- [X] Howler.js (gestion audio avancée)
 - [ ] [Autre]
 
 ### 4.2 Architecture des composants
@@ -804,10 +804,9 @@ Comment stockez-vous les chapitres et choix?
 
 *Signatures:*
 
-- Chef de projet: _______________
-- Membre 2: _______________
-- Membre 3: _______________
-- Membre 4: _______________ (si applicable)
+- Chef de projet: Jad Saloumi
+- Membre 2: Matis Ghariani
+- Membre 3: Anton Nikulin
 
 *Validation enseignant:* _______________  
 *Date:* _______________  
