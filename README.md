@@ -9,7 +9,7 @@ L’option choisie est B, « Trace ton chemin ».
 - Anton Nikulin – Développement et technique (Front-end)
   
 ## Lien de Figma
-https://www.figma.com/design/NYORCfer7iDWWjMfVaiR2e/webapp-creative-jad-matis-anton?node-id=0-1&p=f&t=xRa0dvTbMNhjV2NU-0
+[Dossier Figma](https://www.figma.com/design/NYORCfer7iDWWjMfVaiR2e/webapp-creative-jad-matis-anton?node-id=0-1&p=f&t=xRa0dvTbMNhjV2NU-0)
 
 ## Lien de Brainstorm
 Lien vers votre brainstorm (ou si ce sont des fichiers, les ajouter au git dans un dossier bien identifié)
