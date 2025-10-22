@@ -2,19 +2,17 @@
 
 ## 📌 Informations du Projet
 
-*Nom du projet:* [Nom de votre musée]  
-*Nom de l'équipe:* [Nom de votre équipe]  
+*Nom du projet:* CODEX
+*Nom de l'équipe:* jad-matis-anton
 *Membres:*
 
-- [Nom] - Chef de projet / [Rôle principal]
-- [Nom] - [Rôle principal]
-- [Nom] - [Rôle principal]
-- [Nom] - [Rôle principal] (si équipe de 4)
+Jad Saloumi – Chef de projet / Gestion et coordination
+Matis Ghariani – Création et conception
+Anton Nikulin – Développement et technique (Front-end)
 
-*Date de début:* [Date]  
+*Date de début:* 15 OCT 2025  
 *Date de livraison finale:* [Date]  
 *Version du document:* 1.0
-
 
 ## 🎯 1. Présentation du Projet
 
