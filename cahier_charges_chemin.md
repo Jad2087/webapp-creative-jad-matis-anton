@@ -3,11 +3,14 @@
 ## 📌 Informations du Projet
 
 *Nom du projet:* Code³ 
+
 *Nom de l'équipe:* jad-matis-anton
 
 *Membres:* 
 Jad Saloumi – Chef de projet / Gestion et coordination
+
 Matis Ghariani – Création et conception
+
 Anton Nikulin – Développement et technique (Front-end)
 
 *Date de début:* 15 OCT 2025  
