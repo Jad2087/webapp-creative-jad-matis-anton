@@ -2,8 +2,10 @@
 
 ## 📌 Informations du Projet
 
-*Nom du projet:* CODEX
+*Nom du projet:* Code³
+
 *Nom de l'équipe:* jad-matis-anton
+
 *Membres:*
 
 Jad Saloumi – Chef de projet / Gestion et coordination
