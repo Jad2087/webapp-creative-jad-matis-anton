@@ -419,18 +419,18 @@ Comment stockez-vous les chapitres et choix?
 
 *Obligatoires pour la livraison:*
 
-- [ ] *F1 - Lecture de l'histoire*
+- [X] *F1 - Lecture de l'histoire*
   - Affichage du texte narratif chapitre par chapitre
   - Navigation linéaire dans l'intro
   - Transitions fluides entre chapitres
 
-- [ ] *F2 - Système de choix*
+- [X] *F2 - Système de choix*
   - Affichage de 2-4 choix par chapitre décisionnel
   - Sélection d'un choix
   - Redirection vers le chapitre suivant approprié
   - Minimum 8 chapitres avec au moins 3 fins
 
-- [ ] *F3 - Tracking des conséquences*
+- [X] *F3 - Tracking des conséquences*
   - État du joueur (karma/stats/flags)
   - Mise à jour après chaque choix
   - Conditions pour débloquer fins
@@ -445,7 +445,7 @@ Comment stockez-vous les chapitres et choix?
   - Garder trace des décisions prises
   - Affichage dans un menu (optionnel mais recommandé)
 
-- [ ] *F6 - Écrans de fin*
+- [X] *F6 - Écrans de fin*
   - Affichage de la fin atteinte
   - Récapitulatif des choix faits
   - Option de recommencer ou charger
@@ -455,7 +455,7 @@ Comment stockez-vous les chapitres et choix?
   - Tablette (768px+)
   - Desktop (1024px+)
 
-- [ ] *F8 - Animations de texte*
+- [X] *F8 - Animations de texte*
   - Apparition progressive du texte (optionnel: effet typewriter)
   - Transitions entre chapitres avec GSAP
 
@@ -465,7 +465,7 @@ Comment stockez-vous les chapitres et choix?
   - Contraste WCAG AA
   - Option skip animations
 
-- [ ] *F10 - Médias intégrés*
+- [X] *F10 - Médias intégrés*
   - Images de fond par chapitre
   - Musique d'ambiance (avec contrôle volume)
 
@@ -479,7 +479,7 @@ Comment stockez-vous les chapitres et choix?
   - Affichage graphique des items
   - Description des objets au survol
 
-- [ ] *B3 - Stats visuelles*
+- [X] *B3 - Stats visuelles*
   - Barres de progression pour stats
   - Graphique radar des caractéristiques
 
@@ -495,7 +495,7 @@ Comment stockez-vous les chapitres et choix?
   - Fast-forward pour texte déjà lu
   - Skip to choice (sauter au prochain choix)
 
-- [ ] *B7 - Effets sonores contextuels*
+- [X] *B7 - Effets sonores contextuels*
   - Sons lors de choix importants
   - Ambiances sonores par scène
 
