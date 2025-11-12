@@ -4,7 +4,7 @@
   
   <script>
   export default {
-    name: 'PuzzleGrid'
+    name: 'Lineaire'
   }
   </script>
   
