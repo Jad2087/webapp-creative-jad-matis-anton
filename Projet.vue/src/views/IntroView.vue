@@ -9,7 +9,6 @@
         <h1 class="title">Introduction</h1>
 
         <button class="start-btn" @click="startStory">Continuer</button>
-        <button class="back-btn" @click="goBack">Retour</button>
       </div>
     </div>
   </div>
@@ -59,8 +58,7 @@
   }
   
   /* Boutons */
-  .start-btn,
-  .back-btn {
+  .start-btn {
     background-color: #000; 
     color: #03AB5E; 
     width: 250px;   /* même largeur pour tous les boutons */

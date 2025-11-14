@@ -10,7 +10,6 @@ function choose(option) {
 
 <template>
   <div class="nav-choice">
-    <h2>Choisis ta prochaine aventure :</h2>
     <button class="choice-btn" @click="choose('fight')">Combattre un ennemi</button>
     <button class="choice-btn" @click="choose('explore')">Explorer la forêt</button>
   </div>

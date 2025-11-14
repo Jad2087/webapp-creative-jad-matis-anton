@@ -6,12 +6,10 @@
         <!-- Bouton Continuer -->
         <button v-if="!showText" class="start-btn" @click="continueGame">Continuer</button>
   
-        <!-- Texte narratif -->
-        <p v-if="showText" class="story-text">
-          Tu te réveilles dans une forêt sombre, entouré de mystères et d’ombres. Le vent souffle à travers les arbres, et une aventure incroyable t’attend…
-        </p>
+        <!-- Texte narratif via TextParagraph -->
+        <TextParagraph v-if="showText" />
   
-        <!-- Ensuite, on peut afficher les choix si tu veux -->
+        <!-- Ensuite, on peut afficher les choix -->
         <NavChoice v-if="showText" @playerChoice="onChoiceMade" />
   
         <!-- Retour -->
@@ -24,13 +22,14 @@
   import { ref } from 'vue'
   import { useRouter } from 'vue-router'
   import NavChoice from '../components/common/NavChoice.vue'
+  import TextParagraph from '../components/common/TextParagraph.vue'
   
   const router = useRouter()
   const showText = ref(false)
   const choice = ref('')
   
   function continueGame() {
-    showText.value = true // affiche le texte narratif
+    showText.value = true
   }
   
   function onChoiceMade(selectedChoice) {
