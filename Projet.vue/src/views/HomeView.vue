@@ -9,11 +9,10 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
-
 const router = useRouter()
 
 function startStory() {
-  router.push({ name: 'story' })
+  router.push({ name: 'intro' })
 }
 </script>
 

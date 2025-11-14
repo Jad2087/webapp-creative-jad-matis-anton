@@ -11,7 +11,7 @@ Ici, ton application contient deux vues principales :
 - StoryView : page d’histoire ou de contenu narratif
 */
 import HomeView from '../views/HomeView.vue';
-import StoryView from '../views/StoryView.vue';
+import IntroView from '../views/IntroView.vue';
 
 /*
 Définition des routes dans un tableau d’objets.
@@ -24,9 +24,9 @@ const routes = [
     name: 'home' // (optionnel) Nom interne de la route (utile pour router.push({ name: 'home' }))
   },
   {
-    path: '/story', // Chemin pour accéder à la page Story
-    component: StoryView,
-    name: 'story'
+    path: '/IntroView', // Chemin pour accéder à la page Story
+    component: IntroView,
+    name: 'intro'
   }
 ];
 
