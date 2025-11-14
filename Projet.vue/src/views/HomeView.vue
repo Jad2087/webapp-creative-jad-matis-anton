@@ -23,11 +23,11 @@ function startStory() {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #000; 
+  background-color: #000;
 }
 
 .screen {
-  background-color: #111;
+  background-color: #000;
   padding: 4rem 6rem;
   width: 600px;  
   height: 400px;       
