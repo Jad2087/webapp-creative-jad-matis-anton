@@ -24,42 +24,43 @@ function startStory() {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #000; /* fond noir */
+  background-color: #000; 
 }
 
-/* Cadre central type "ordinateur" */
 .screen {
   background-color: #111;
-  padding: 3rem 5rem;
-  border: 2px solid #0f0; /* contour vert */
-  border-radius: 8px;
+  padding: 4rem 6rem;
+  width: 600px;  
+  height: 400px;       
+  border: 3px solid #03AB5E; 
   text-align: center;
-  box-shadow: 0 0 20px #0f0;
 }
 
 /* Titre */
 .title {
-  color: #0f0; /* vert "terminal" */
+  color: #03AB5E; 
   font-family: 'Courier New', Courier, monospace;
   font-size: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
 }
 
 /* Bouton Commencer */
 .start-btn {
-  background-color: #0f0; /* vert */
-  color: #000; /* texte noir */
+  background-color: #000; 
+  color: #03AB5E; 
   font-weight: bold;
   font-size: 1.2rem;
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 4px;
+  padding: 0.75rem 2.5rem;
+  border: 2px solid #03AB5E; 
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .start-btn:hover {
-  background-color: #0c0;
-  transform: scale(1.05);
+  background-color: #03AB5E; 
+  color: #000; 
+  transform: scale(1.1);
 }
+
 </style>
