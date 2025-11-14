@@ -3,7 +3,7 @@
       <div class="screen">
         <h1 class="title">Introduction</h1>
   
-        <button class="start-btn" @click="startStory">Commencer</button>
+        <button class="start-btn" @click="startStory">Continuer</button>
   
         <!-- Bouton Retour sous Commencer -->
         <button class="back-btn" @click="goBack">Retour</button>
@@ -17,7 +17,7 @@
   const router = useRouter()
   
   function startStory() {
-    console.log("Commencer cliqué")
+    router.push({ name: 'game' }); 
   }
   
   function goBack() {

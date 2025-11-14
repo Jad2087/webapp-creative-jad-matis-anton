@@ -12,6 +12,7 @@ Ici, ton application contient deux vues principales :
 */
 import HomeView from '../views/HomeView.vue';
 import IntroView from '../views/IntroView.vue';
+import GameView from '../views/GameView.vue';
 
 /*
 Définition des routes dans un tableau d’objets.
@@ -24,9 +25,14 @@ const routes = [
     name: 'home' // (optionnel) Nom interne de la route (utile pour router.push({ name: 'home' }))
   },
   {
-    path: '/IntroView', // Chemin pour accéder à la page Story
+    path: '/intro', // Chemin pour accéder à la page Story
     component: IntroView,
     name: 'intro'
+  },
+  {
+    path: '/game',
+    component: GameView,
+    name: 'game'  // <-- nom de la route pour router.push
   }
 ];
 
