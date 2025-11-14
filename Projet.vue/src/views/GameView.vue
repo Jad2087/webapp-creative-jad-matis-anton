@@ -1,18 +1,41 @@
 <template>
     <div class="container">
       <div class="screen">
-        <h1 class="title">Bienvenue dans le jeu !</h1>
-        <p class="game-instruction">Ici commence ton aventure...</p>
-        
-        <!-- Bouton Retour -->
+        <h1 class="title">Bienvenue dans le jeu!</h1>
+  
+        <!-- Bouton Continuer -->
+        <button v-if="!showText" class="start-btn" @click="continueGame">Continuer</button>
+  
+        <!-- Texte narratif -->
+        <p v-if="showText" class="story-text">
+          Tu te réveilles dans une forêt sombre, entouré de mystères et d’ombres. Le vent souffle à travers les arbres, et une aventure incroyable t’attend…
+        </p>
+  
+        <!-- Ensuite, on peut afficher les choix si tu veux -->
+        <NavChoice v-if="showText" @playerChoice="onChoiceMade" />
+  
+        <!-- Retour -->
         <button class="back-btn" @click="goBack">Retour à l'accueil</button>
       </div>
     </div>
   </template>
   
   <script setup>
+  import { ref } from 'vue'
   import { useRouter } from 'vue-router'
+  import NavChoice from '../components/common/NavChoice.vue'
+  
   const router = useRouter()
+  const showText = ref(false)
+  const choice = ref('')
+  
+  function continueGame() {
+    showText.value = true // affiche le texte narratif
+  }
+  
+  function onChoiceMade(selectedChoice) {
+    choice.value = selectedChoice
+  }
   
   function goBack() {
     router.push({ name: 'home' })
@@ -20,7 +43,6 @@
   </script>
   
   <style scoped>
-  /* Réutilisation du CSS déjà présent pour HomeView / IntroView */
   .container {
     display: flex;
     justify-content: center;
@@ -38,29 +60,26 @@
     text-align: center;
   }
   
-  /* Titre */
   .title {
     color: #03AB5E; 
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', monospace;
     font-size: 3rem;
     margin-bottom: 2rem;
-    letter-spacing: 2px;
   }
   
-  /* Texte d'instruction du jeu */
-  .game-instruction {
+  .story-text {
     color: #03AB5E;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', monospace;
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
   }
   
-  /* Boutons */
   .start-btn,
   .back-btn {
     background-color: #000; 
     color: #03AB5E; 
     font-weight: bold;
+    width: 250px;
     font-size: 1.2rem;
     padding: 0.75rem 2.5rem;
     border: 2px solid #03AB5E; 
