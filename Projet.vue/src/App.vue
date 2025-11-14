@@ -1,20 +1,8 @@
-<template>
-  <div id="app">
-    <!-- Header visible on all views -->
-    <AppHeader />
+<script setup></script>
 
-    <!-- Here the active view (IntroView, Chapter1View, etc.) appears -->
-    <RouterView />
-  </div>
+<template>
+  <!-- Affiche la vue active en fonction de l'URL -->
+  <router-view />
 </template>
 
-<script>
-import AppHeader from './components/layout/AppHeader.vue';
-
-export default {
-  name: 'App',
-  components: {
-    AppHeader
-  }
-};
-</script>
+<style scoped></style>

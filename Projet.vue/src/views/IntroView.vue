@@ -1,19 +1,24 @@
 <template>
-    <div class="container">
+  <div class="container">
+    <div class="intro-layout">
+      <!-- Header, même largeur que l’écran -->
+      <AppHeader class="intro-header" />
+
+      <!-- Ton écran vert -->
       <div class="screen">
         <h1 class="title">Introduction</h1>
-  
+
         <button class="start-btn" @click="startStory">Continuer</button>
-  
-        <!-- Bouton Retour sous Commencer -->
         <button class="back-btn" @click="goBack">Retour</button>
       </div>
     </div>
-  </template>
+  </div>
+</template>
+
   
   <script setup>
   import { useRouter } from 'vue-router'
-  
+  import AppHeader from '@/components/layout/AppHeader.vue'
   const router = useRouter()
   
   function startStory() {
