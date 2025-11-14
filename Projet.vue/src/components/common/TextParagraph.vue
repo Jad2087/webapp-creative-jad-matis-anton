@@ -1,14 +1,9 @@
+<script setup>
+import { defineProps } from 'vue'
+const props = defineProps({ choice: String })
+</script>
+
 <template>
-    <!-- Carte d'une room -->
-  </template>
-  
-  <script>
-  export default {
-    name: 'TextParagraph'
-  }
-  </script>
-  
-  <style scoped>
-  /* Styles de la carte */
-  </style>
-  
+  <p v-if="choice === 'fight'">Tu te prépares au combat !</p>
+  <p v-else-if="choice === 'explore'">Tu pars explorer la forêt mystérieuse...</p>
+</template>
