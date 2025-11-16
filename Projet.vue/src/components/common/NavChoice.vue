@@ -1,41 +1,46 @@
 <script setup>
-import { defineEmits } from 'vue'
+import { defineProps, defineEmits } from "vue";
 
-const emit = defineEmits(['playerChoice'])
+const props = defineProps({
+  choices: Array
+});
 
-function choose(option) {
-  emit('playerChoice', option)  // envoie le choix au parent (GameView)
+const emit = defineEmits(["choose"]);
+
+function choose(nextId) {
+  emit("choose", nextId);
 }
 </script>
 
 <template>
-  <div class="nav-choice">
-    <button class="choice-btn" @click="choose('fight')">Combattre un ennemi</button>
-    <button class="choice-btn" @click="choose('explore')">Explorer la forêt</button>
+  <div class="choices">
+    <button
+      v-for="(choice, i) in choices"
+      :key="i"
+      class="choice-btn"
+      @click="choose(choice.next)"
+    >
+      {{ choice.text }}
+    </button>
   </div>
 </template>
 
 <style scoped>
-.nav-choice {
-  margin-top: 2rem;
-  text-align: center;
-}
-
 .choice-btn {
-  background-color: #000;
+  background-color: black;
   color: #03AB5E;
   font-weight: bold;
-  font-size: 1.2rem;
-  padding: 0.75rem 2rem;
   border: 2px solid #03AB5E;
-  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
   margin: 0.5rem;
-  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .choice-btn:hover {
   background-color: #03AB5E;
-  color: #000;
+  color: black;
   transform: scale(1.05);
 }
 </style>

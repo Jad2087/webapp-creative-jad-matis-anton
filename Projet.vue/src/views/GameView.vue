@@ -1,159 +1,103 @@
 <template>
-    <div class="container">
-      <div class="screen">
-        <h1 class="title">Bienvenue dans le jeu!</h1>
-  
-        <!-- Bouton Continuer -->
-        <button v-if="!showText" class="start-btn" @click="continueGame">Continuer</button>
-  
-        <!-- Texte narratif via TextParagraph -->
-        <TextParagraph v-if="showText" />
-  
-        <!-- Ensuite, on peut afficher les choix -->
-        <NavChoice v-if="showText" @playerChoice="onChoiceMade" />
-  
-        <!-- Retour -->
-        <button class="back-btn" @click="goBack">Retour à l'accueil</button>
+  <div class="container">
+    <AppHeader/>
+    <div class="screen">
+      <h1 class="title">{{ activeChapter.title }}</h1>
+      <p class="story-text">{{ activeChapter.text }}</p>
+      <div class="choices">
+        <button
+          v-for="(choice, i) in activeChapter.choices"
+          :key="i"
+          class="choice-btn"
+          @click="changeChapter(choice.next)"
+        >
+          {{ choice.text }}
+        </button>
       </div>
     </div>
-  </template>
-  
-  <script>
-  import { ref } from 'vue'
-  import { useRouter } from 'vue-router'
-  import NavChoice from '../components/common/NavChoice.vue'
-  import TextParagraph from '../components/common/TextParagraph.vue'
-  
+  </div>
+</template>
 
-  export default {
-  name: 'GameView',
-  
+<script>
+import TextParagraph from "@/components/common/TextParagraph.vue";
+import NavChoice from "@/components/common/NavChoice.vue";
+import AppHeader from '@/components/layout/AppHeader.vue';
+
+export default {
+  name: "GameView",
+  components: { TextParagraph, NavChoice, AppHeader },
+
   data() {
     return {
-      chapterId: null,
-      
-      // Données temporaires placées ici pour tester pour l'exercice mais ultimement vos données de chapitre seront dans un json
-      chapters: {
-        '1': {
-          title: 'La forêt mystérieuse',
-          text: 'Tu te trouves à l\'entrée d\'une forêt sombre. Deux chemins s\'offrent à toi.',
+      current: "intro",
+      chapters: [
+        {
+          id: "intro",
+          title: "Chapter 1 — Intro",
+          text: "Bienvenue dans l’aventure… mets ton vrai texte ici.",
           choices: [
-            { id: 1, text: 'Prendre le chemin de gauche 🌲', nextChapter: '2' },
-            { id: 2, text: 'Prendre le chemin de droite 🏔️', nextChapter: '3' }
+            { text: "Continuer", next: "fork01" }
           ]
         },
-        '2': {
-          title: 'Le pont suspendu',
-          text: 'Tu arrives devant un vieux pont suspendu au-dessus d\'une rivière.',
+
+        {
+          id: "fork01",
+          title: "Chapter 1 — Fork 01",
+          text: "Tu arrives à un embranchement...",
           choices: [
-            { id: 1, text: 'Traverser le pont 🌉', nextChapter: '4' },
-            { id: 2, text: 'Longer la rivière 🏞️', nextChapter: '5' }
+            { text: "Aller vers Clue 01", next: "clue01" },
+            { text: "MiniGame 01", next: "minigame01" },
+            { text: "Aller vers Clue 02", next: "clue02" },
+            { text: "Retour", next: "intro" }
           ]
         },
-        '3': {
-          title: 'La montagne',
-          text: 'Le chemin monte vers une montagne enneigée.',
+
+        {
+          id: "clue01",
+          title: "Chapter 1 — Clue 01",
+          text: "Voici l’indice numéro 1...",
           choices: [
-            { id: 1, text: 'Grimper au sommet ⛰️', nextChapter: '6' },
-            { id: 2, text: 'Chercher une grotte 🕳️', nextChapter: '7' }
+            { text: "Retour au fork", next: "fork01" }
           ]
         },
-        '4': {
-          title: 'Village abandonné',
-          text: 'Après le pont, tu découvres un village abandonné...',
+
+        {
+          id: "minigame01",
+          title: "Chapter 1 — Mini-jeu",
+          text: "Voici l'interface du mini-jeu (placeholder).",
           choices: [
-            { id: 1, text: 'Recommencer', nextChapter: '1' }
+            { text: "Retour", next: "fork01" }
           ]
         },
-        '5': {
-          title: 'Cascade cachée',
-          text: 'En longeant la rivière, tu trouves une magnifique cascade !',
+
+        {
+          id: "clue02",
+          title: "Chapter 1 — Clue 02",
+          text: "Voici l’indice numéro 2...",
           choices: [
-            { id: 1, text: 'Recommencer', nextChapter: '1' }
-          ]
-        },
-        '6': {
-          title: 'Le sommet',
-          text: 'Tu arrives au sommet et la vue est à couper le souffle !',
-          choices: [
-            { id: 1, text: 'Recommencer', nextChapter: '1' }
-          ]
-        },
-        '7': {
-          title: 'La grotte du dragon',
-          text: 'Dans la grotte, tu découvres un trésor gardé par un dragon endormi...',
-          choices: [
-            { id: 1, text: 'Recommencer', nextChapter: '1' }
+            { text: "Retour au fork", next: "fork01" }
           ]
         }
-      }
+      ],
     };
   },
-  
+
   computed: {
-    currentChapter() {
-      // Retourne le chapitre actuel ou un chapitre par défaut
-      return this.chapters[this.chapterId] || {
-        title: 'Chapitre introuvable',
-        text: 'Ce chapitre n\'existe pas encore.',
-        choices: []
-      };
+    activeChapter() {
+      return this.chapters.find(current => current.id === this.current);
     }
   },
-  
-  created() {
-    this.chapterId = this.$route.params.id
-    // TODO: Récupérer le paramètre dynamique ID du chapitre depuis l'URL
-    // Note de cours: https://tim-montmorency.com/compendium/582-511-web5/vue/router-and-views.html#41-routes-avec-parametres-dynamiques
-    
-  },
-  
+
   methods: {
-    makeChoice(nextChapterId) {
-      this.$router.push({
-    name: 'chapter',
-    params: { id: nextChapterId }
-  });
- 
-  this.chapterId = nextChapterId
-      // TODO: Naviguer vers le prochain chapitre
-      // Note de cours: https://tim-montmorency.com/compendium/582-511-web5/vue/router-and-views.html#32-navigation-programmatique-dans-les-methodes
-     
-     
-     
-      // TODO: Mettre à jour l'ID local du chapitre
-      // this.chapterId = ...
-     
-    },
-   
-    goBack() {
-      this.$router.push({ name: 'home' });
+    changeChapter(nextId) {
+      this.current = nextId;
     }
   }
 };
+</script>
 
-
-    /*
-  const router = useRouter()
-  const showText = ref(false)
-  const choice = ref('')
-
-
-  function continueGame() {
-    showText.value = true
-  }
-  
-  function onChoiceMade(selectedChoice) {
-    choice.value = selectedChoice
-  }
-  
-  function goBack() {
-    router.push({ name: 'home' })
-  }*/
-  </script>
-  
-  <style scoped>
-  .container {
+<style scoped>
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,40 +114,32 @@
     text-align: center;
   }
   
+  /* Titre */
   .title {
     color: #03AB5E; 
-    font-family: 'Courier New', monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
   }
   
-  .story-text {
-    color: #03AB5E;
-    font-family: 'Courier New', monospace;
-    font-size: 1.2rem;
-    margin: 2rem 0;
-  }
-  
-  .start-btn,
-  .back-btn {
-    background-color: #000; 
+.choice-btn {
+ background-color: #000; 
     color: #03AB5E; 
+    width: 250px;  
     font-weight: bold;
-    width: 250px;
     font-size: 1.2rem;
     padding: 0.75rem 2.5rem;
     border: 2px solid #03AB5E; 
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    display: block;
-    margin: 1rem auto 0;
-  }
-  
-  .start-btn:hover,
-  .back-btn:hover {
-    background-color: #03AB5E; 
-    color: #000; 
-    transform: scale(1.1);
-  }
-  </style>
-  
+    display: block;    
+    margin: 1rem auto 0;    
+}
+
+.choice-btn:hover {
+  background-color: #03AB5E; 
+  color: #000; 
+  transform: scale(1.1);
+}
+</style>

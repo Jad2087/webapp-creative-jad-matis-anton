@@ -4,14 +4,12 @@ export default {
   name: 'AppHeader'
 };
 
-
 </script>
-
 <template>
     <header class="app-header">
       <div class="app-header__logo">
         <!-- Tu peux mettre un petit logo/image ici plus tard -->
-        <h1 class="app-header__title">Trace ton chemin</h1>
+        <h1 class="app-header__title">Codex</h1>
         <p class="app-header__subtitle">Une histoire interactive</p>
       </div>
   
@@ -19,11 +17,9 @@ export default {
         <!-- Adapter les routes selon ton router -->
         <RouterLink to="/" class="app-header__link">Accueil</RouterLink>
       </nav>
-
-
     </header>
   </template>
-  
+
   
   <style scoped>
   .app-header {

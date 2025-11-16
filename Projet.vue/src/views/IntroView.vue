@@ -30,7 +30,6 @@
   </script>
   
   <style scoped>
-  /* Fond de la page */
   .container {
     display: flex;
     justify-content: center;
@@ -61,7 +60,7 @@
   .start-btn {
     background-color: #000; 
     color: #03AB5E; 
-    width: 250px;   /* même largeur pour tous les boutons */
+    width: 250px;  
     font-weight: bold;
     font-size: 1.2rem;
     padding: 0.75rem 2.5rem;
