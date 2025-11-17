@@ -32,6 +32,11 @@ const routes = [
     path: '/game',
     component: GameView,
     name: 'game'  // <-- nom de la route pour router.push
+  },
+  {
+    path: '/story',
+    component: StoryView,
+    name: 'story'  // <-- nom de la route pour router.push
   }
 ];
 

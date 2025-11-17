@@ -38,12 +38,19 @@ function startStory() {
   height: 500px;       
   border: 3px solid #03AB5E; 
   text-align: center;
+
+  /* AJOUT POUR CENTRER LE CONTENU */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centre verticalement */
+  align-items: center;       /* centre horizontalement */
+
+  padding-bottom: 8rem;
 }
 
 /* Titre */
 .title {
   color: #03AB5E; 
-  font-family: 'Courier New', Courier, monospace;
   font-size: 3rem;
   margin-bottom: 3rem;
   letter-spacing: 2px;
