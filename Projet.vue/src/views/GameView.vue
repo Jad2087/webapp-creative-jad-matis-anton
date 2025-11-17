@@ -7,16 +7,7 @@
     <div class="screen">
       <h1 class="title">{{ activeChapter.title }}</h1>
       <p class="story-text">{{ activeChapter.text }}</p>
-      <div class="choices">
-        <button
-          v-for="(choice, i) in activeChapter.choices"
-          :key="i"
-          class="choice-btn"
-          @click="changeChapter(choice.next)"
-        >
-          {{ choice.text }}
-        </button>
-      </div>
+      
     </div>
     </div>
 
@@ -67,9 +58,9 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: center;   /* centers horizontally */
-  align-items: center;       /* centers vertically */
-  height: 100vh;             /* full viewport height */
+  justify-content: center;   
+  align-items: center;       
+  height: 100vh;             
   background-color: #000;
 }
 
@@ -103,9 +94,4 @@ export default {
   color: #03AB5E;
 }
 
-.choices-container {
-  width: 300px;
-  display: flex;
-  align-items: flex-start;
-}
 </style>
