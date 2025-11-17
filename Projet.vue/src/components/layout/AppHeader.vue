@@ -27,19 +27,22 @@ export default {
   font-family: 'Courier New', Courier, monospace;
 }
 
-  .app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-    /* même vibe que la boîte "screen" */
-    background-color: #000;
-    border: 2px solid #03AB5E;
-    box-shadow: 0 0 15px rgba(3, 171, 94, 0.4);
-  
-    padding: 1rem 1.5rem;
-    font-family: "Space Mono", monospace;
-  }
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;          /* ⬅ prend toute la largeur */
+  display: block;       /* ⬅ force le header à s'étendre horizontalement */
+
+  background-color: #000;
+  border: 2px solid #03AB5E;
+  box-shadow: 0 0 15px rgba(3, 171, 94, 0.4);
+
+  padding: 1rem 1.5rem;
+  font-family: "Space Mono", monospace;
+}
+
   
   /* Bloc titre à gauche */
   .app-header__logo {

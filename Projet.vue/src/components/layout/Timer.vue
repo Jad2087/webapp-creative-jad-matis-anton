@@ -58,7 +58,7 @@ export default {
 <style scoped>
 .timer-container {
   background: #111;
-  border: 4px solid white;
+  border: 2px solid white;
   padding: 20px;
   display: inline-block;
   width: 350px;

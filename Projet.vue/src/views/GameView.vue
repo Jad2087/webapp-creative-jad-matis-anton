@@ -1,21 +1,18 @@
 <template>
   <div class="container">
     <div class="window-wrapper">
-
-    <AppHeader/>
-    <Timer />
+    
     <div class="screen">
-      <h1 class="title">{{ activeChapter.title }}</h1>
-      <p class="story-text">{{ activeChapter.text }}</p>
+      <div class="columnleft"><Timer /></div>
       
-    </div>
-    </div>
-
-    <div class="choices-container">
-      <ChoiceButtons
+      <div class="columnright">
+        <AppHeader/>
+        <ChoiceButtons
         :choices="activeChapter.choices"
         @choice-selected="changeChapter"
       />
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -58,23 +55,51 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: center;   
-  align-items: center;       
-  height: 100vh;             
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+  height: 100vh;             /* full viewport height */
   background-color: #000;
 }
 
 .screen {
-  width: 700px;
-  height: 500px;
-  padding: 4rem 6rem;
-  background-color: #000;
-  border: 3px solid #03AB5E;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr;     /* 2 colonnes */
+  grid-template-rows: repeat(6, 1fr); /* 6 rangées */
+  column-gap: 2rem;
+  width: 900px;
+  height: 600px;
+  padding: 2rem 3rem;
+  background-color: #1F1F1F;
+  border: 3px solid white;
+  color: #03AB5E;
+}
+
+/* --- ROW 1 : Timer + Header --- */
+.columnleft {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.columnright {
+  grid-column: 2;
+  grid-row: 1 / 7; /* occupe rows 1 à 6 */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+}
+
+/* Place AppHeader en haut de la colonne */
+.columnright > *:first-child {
+  margin-top: 0;
+  align-self: flex-start;
+}
+
+/* Place ChoiceButtons tout en bas */
+.columnright > *:last-child {
+  margin-top: auto;     /* pousse vers le bas */
+  align-self: center;
 }
 
 .story-block {
@@ -94,4 +119,8 @@ export default {
   color: #03AB5E;
 }
 
+.choices-container {
+  width: 300px;
+  background-color: red;
+}
 </style>
