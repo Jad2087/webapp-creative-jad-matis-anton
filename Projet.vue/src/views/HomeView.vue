@@ -7,13 +7,20 @@
   </div>
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
+<script>
+export default {
+  name: "HomeView",
 
-function startStory() {
-  router.push({ name: 'intro' })
-}
+  data() {
+    return {};
+  },
+
+  methods: {
+    startStory() {
+      this.$router.push({ name: 'intro' });
+    }
+  }
+};
 </script>
 
 <style scoped>
