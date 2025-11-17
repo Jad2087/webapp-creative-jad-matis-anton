@@ -38,28 +38,83 @@ export default {
   name: "GameView",
   components: { AppHeader, Timer, ChoiceButtons, MiniMap },
 
-  data() {
-    return {
-      current: "intro",
-      chapters: [
-        { id:"intro", title:"Chapter 1 — Intro", text:"Bienvenue … mets ton vrai texte ici.", choices:[ { text:"Continuer", next:"fork01" } ] },
-        { id:"fork01", title:"Chapter 1 — Fork 01", text:"Tu arrives à un embranchement...", choices:[ { text:"Aller vers Clue 01", next:"clue01" }, { text:"MiniGame 01", next:"minigame01" }, { text:"Aller vers Clue 02", next:"clue02" }, { text:"Retour", next:"intro" } ] },
-        { id:"clue01", title:"Chapter 1 — Clue 01", text:"Voici l’indice numéro 1...", choices:[ { text:"Retour au fork", next:"fork01" } ] },
-        { id:"minigame01", title:"Chapter 1 — Mini-jeu", text:"Voici l'interface du mini-jeu (placeholder).", choices:[ { text:"Retour", next:"fork01" } ] },
-        { id:"clue02", title:"Chapter 1 — Clue 02", text:"Voici l’indice numéro 2...", choices:[ { text:"Retour au fork", next:"fork01" } ] }
-      ],
-    };
-  },
+ data() {
+  return {
+    current: "intro",
+    chapters: [
+      {
+        id: "intro",
+        title: "Chapter 1 — Intro",
+        text: "Bienvenue dans l’aventure… mets ton vrai texte ici.",
+        choices: [
+          { text: "Continuer", next: { type: "story", id: "fork01" } }
+        ]
+      },
+      {
+        id: "fork01",
+        title: "Chapter 1 — Fork 01",
+        text: "Tu arrives à un embranchement...",
+        choices: [
+          { text: "Aller vers Clue 01", next: { type: "story", id: "clue01" } },
+          { text: "MiniGame 01", next: { type: "game", id: "minigame01" } },
+          { text: "Aller vers Clue 02", next: { type: "story", id: "clue02" } },
+          { text: "Retour", next: { type: "story", id: "intro" } }
+        ]
+      },
+      {
+        id: "clue01",
+        title: "Chapter 1 — Clue 01",
+        text: "Voici l’indice numéro 1...",
+        choices: [
+          { text: "Retour au fork", next: { type: "story", id: "fork01" } }
+        ]
+      },
+      {
+        id: "minigame01",
+        title: "Chapter 1 — Mini-jeu",
+        text: "Voici l'interface du mini-jeu (placeholder).",
+        choices: [
+          { text: "Retour", next: { type: "story", id: "fork01" } }
+        ]
+      },
+      {
+        id: "clue02",
+        title: "Chapter 1 — Clue 02",
+        text: "Voici l’indice numéro 2...",
+        choices: [
+          { text: "Retour au fork", next: { type: "story", id: "fork01" } }
+        ]
+      }
+    ]
+  };
+},
+
+created() {
+   // charge le chapitre actuel selon id passé dans la route
+  this.current = this.$route.params.id;
+},
   computed: {
+    // retourne chapitre lui qui est actif
     activeChapter() {
-      return this.chapters.find(chap => chap.id === this.current) || { choices: [] };
+      return this.chapters.find(chapters => chapters.id === this.current);
     }
   },
+
   methods: {
-    changeChapter(nextId) {
-      this.current = nextId;
+  changeChapter(next) {
+
+    if (next.type === "story") {
+      // Navigue vers la même route "game" avec le nouvel id
+      this.$router.push({ name: "game", params: { id: next.id } });
+      // met à jour le chapitre actuel
+      this.current = next.id;
+    } else if (next.type === "game") {
+      // lance le mini-jeu
+      console.log("Lancer le mini-jeu :", next.id);
+        this.current = next.id; //affiche dans GameView
     }
   }
+}
 }
 </script>
 

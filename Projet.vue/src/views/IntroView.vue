@@ -26,17 +26,17 @@ export default {
   data() {
     return {};
   },
+methods: {
+  startStory() {
+    this.$router.push({ name: 'game', params: { id: 'intro' } });
+  },
 
-  methods: {
-    startStory() {
-      this.$router.push({ name: 'game' });
-    },
-
-    goBack() {
-      this.$router.push({ name: 'home' });
-    }
+  goBack() {
+    this.$router.push({ name: 'home' });
   }
-};
+}
+}
+
 </script>
 
   

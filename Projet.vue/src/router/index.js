@@ -29,10 +29,12 @@ const routes = [
     name: 'intro'
   },
   {
-    path: '/game',
+    path: '/game/:id', // ← ici on ajoute ":id" en optionnel
     component: GameView,
-    name: 'game'  // <-- nom de la route pour router.push
-  }
+    name: 'game',
+    props: true         // pour récupérer id via props si tu veux
+  },
+  
 ];
 
 /*
