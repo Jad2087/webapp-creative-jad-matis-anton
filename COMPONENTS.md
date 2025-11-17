@@ -1,0 +1,1 @@
+# Documentation des composants et views dans un fichier COMPONENTS.md
