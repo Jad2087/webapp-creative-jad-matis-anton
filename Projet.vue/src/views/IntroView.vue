@@ -1,33 +1,44 @@
 <template>
   <div class="container">
     <div class="intro-layout">
-      <!-- Header, même largeur que l’écran -->
+      <!-- Header -->
       <AppHeader class="intro-header" />
 
-      <!-- Ton écran vert -->
       <div class="screen">
         <h1 class="title">Introduction</h1>
 
         <button class="start-btn" @click="startStory">Continuer</button>
+        <!-- Si tu veux afficher un bouton retour -->
+        <!-- <button class="back-btn" @click="goBack">Retour</button> -->
       </div>
     </div>
   </div>
 </template>
 
-  
-  <script setup>
-  import { useRouter } from 'vue-router'
-  import AppHeader from '@/components/layout/AppHeader.vue'
-  const router = useRouter()
-  
-  function startStory() {
-    router.push({ name: 'game' }); 
+<script>
+import AppHeader from '@/components/layout/AppHeader.vue'
+
+export default {
+  name: "IntroView",
+
+  components: { AppHeader },
+
+  data() {
+    return {};
+  },
+
+  methods: {
+    startStory() {
+      this.$router.push({ name: 'game' });
+    },
+
+    goBack() {
+      this.$router.push({ name: 'home' });
+    }
   }
-  
-  function goBack() {
-    router.push({ name: 'home' })
-  }
-  </script>
+};
+</script>
+
   
   <style scoped>
 
