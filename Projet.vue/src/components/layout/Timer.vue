@@ -56,12 +56,18 @@ export default {
 </script>
 
 <style scoped>
+
 .timer-container {
-  background: #111;
-  border: 2px solid white;
-  padding: 20px;
-  display: inline-block;
-  width: 350px;
+  border: 3px solid #ffffff;  
+  border-radius: 8px;        
+  padding: 1rem;               
+  background-color: #111;      
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;                 
+  box-sizing: border-box;
 }
 
 .label {
@@ -69,11 +75,13 @@ export default {
   font-family: monospace;
   font-size: 20px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .bars {
   display: flex;
   gap: 6px;
+  justify-content: center;
 }
 
 .bar {
@@ -81,9 +89,11 @@ export default {
   height: 60px;
   background: #222;
   border: 2px solid #555;
+  border-radius: 3px;
 }
 
 .bar.active {
   background: #d6d6d6;
 }
+
 </style>

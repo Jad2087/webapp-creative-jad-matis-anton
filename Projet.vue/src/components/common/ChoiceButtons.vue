@@ -1,5 +1,5 @@
 <template>
-    <div class="choice-buttons-wrapper">
+    <div class="choice-buttons">
       <NavChoice
         v-for="(choice, idx) in choices"
         :key="idx"
@@ -7,9 +7,9 @@
         @choose="selectChoice"
       />
     </div>
-  </template>
+ </template>
   
-  <script>
+<script>
   import NavChoice from '@/components/common/NavChoice.vue';
   
   export default {
@@ -27,13 +27,17 @@
       }
     }
   }
-  </script>
+</script>
   
-  <style scoped>
-  .choice-buttons-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  </style>
+<style scoped>
+  
+.choice-buttons {
+  display: flex;
+  flex-direction: row;   
+  flex-wrap: wrap;        
+  gap: 0.5rem;          
+  justify-content: center; 
+}
+
+</style>
   
