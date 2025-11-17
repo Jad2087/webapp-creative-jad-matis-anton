@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <AppHeader/>
+    <Timer />
     <div class="screen">
       <h1 class="title">{{ activeChapter.title }}</h1>
       <p class="story-text">{{ activeChapter.text }}</p>
@@ -22,10 +23,11 @@
 import TextParagraph from "@/components/common/TextParagraph.vue";
 import NavChoice from "@/components/common/NavChoice.vue";
 import AppHeader from '@/components/layout/AppHeader.vue';
+import Timer from '@/components/layout/Timer.vue';
 
 export default {
   name: "GameView",
-  components: { TextParagraph, NavChoice, AppHeader },
+  components: { TextParagraph, NavChoice, AppHeader, Timer },
 
   data() {
     return {
