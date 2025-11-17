@@ -46,22 +46,26 @@ export default {
   font-family: 'Courier New', Courier, monospace;
 }
 
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #000;
-  }
+.container {
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+  height: 100vh;             /* full viewport height */
+  background-color: #000;
+}
   
   .screen {
-    background-color: #000;
-    padding: 4rem 6rem;
-    width: 700px;  
-    height: 500px;       
-    border: 3px solid #03AB5E; 
-    text-align: center;
-  }
+  width: 700px;
+  height: 500px;
+  padding: 4rem 6rem;
+  background-color: #000;
+  border: 3px solid #03AB5E;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
   
   /* Titre */
   .title {

@@ -1,155 +1,97 @@
 <template>
   <div class="container">
-    <AppHeader/>
-    <div class="screen">
-      <h1 class="title">{{ activeChapter.title }}</h1>
-      <p class="story-text">{{ activeChapter.text }}</p>
-      <div class="choices">
-        <button
-          v-for="(choice, i) in activeChapter.choices"
-          :key="i"
-          class="choice-btn"
-          @click="changeChapter(choice.next)"
-        >
-          {{ choice.text }}
-        </button>
+    <div class="window-wrapper">
+      <AppHeader />
+
+      <div class="screen">
+        <h1 class="title">{{ activeChapter.title }}</h1>
+        <p class="story-text">{{ activeChapter.text }}</p>
       </div>
+    </div>
+
+    <div class="choices-container">
+      <ChoiceButtons
+        :choices="activeChapter.choices"
+        @choice-selected="changeChapter"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import TextParagraph from "@/components/common/TextParagraph.vue";
-import NavChoice from "@/components/common/NavChoice.vue";
 import AppHeader from '@/components/layout/AppHeader.vue';
+import ChoiceButtons from '@/components/common/ChoiceButtons.vue';
 
 export default {
   name: "GameView",
-  components: { TextParagraph, NavChoice, AppHeader },
-
+  components: { AppHeader, ChoiceButtons },
   data() {
     return {
       current: "intro",
       chapters: [
-        {
-          id: "intro",
-          title: "Chapter 1 — Intro",
-          text: "Bienvenue dans l’aventure… mets ton vrai texte ici.",
-          choices: [
-            { text: "Continuer", next: "fork01" }
-          ]
-        },
-
-        {
-          id: "fork01",
-          title: "Chapter 1 — Fork 01",
-          text: "Tu arrives à un embranchement...",
-          choices: [
-            { text: "Aller vers Clue 01", next: "clue01" },
-            { text: "MiniGame 01", next: "minigame01" },
-            { text: "Aller vers Clue 02", next: "clue02" },
-            { text: "Retour", next: "intro" }
-          ]
-        },
-
-        {
-          id: "clue01",
-          title: "Chapter 1 — Clue 01",
-          text: "Voici l’indice numéro 1...",
-          choices: [
-            { text: "Retour au fork", next: "fork01" }
-          ]
-        },
-
-        {
-          id: "minigame01",
-          title: "Chapter 1 — Mini-jeu",
-          text: "Voici l'interface du mini-jeu (placeholder).",
-          choices: [
-            { text: "Retour", next: "fork01" }
-          ]
-        },
-
-        {
-          id: "clue02",
-          title: "Chapter 1 — Clue 02",
-          text: "Voici l’indice numéro 2...",
-          choices: [
-            { text: "Retour au fork", next: "fork01" }
-          ]
-        }
+        { id:"intro", title:"Chapter 1 — Intro", text:"Bienvenue … mets ton vrai texte ici.", choices:[ { text:"Continuer", next:"fork01" } ] },
+        { id:"fork01", title:"Chapter 1 — Fork 01", text:"Tu arrives à un embranchement...", choices:[ { text:"Aller vers Clue 01", next:"clue01" }, { text:"MiniGame 01", next:"minigame01" }, { text:"Aller vers Clue 02", next:"clue02" }, { text:"Retour", next:"intro" } ] },
+        { id:"clue01", title:"Chapter 1 — Clue 01", text:"Voici l’indice numéro 1...", choices:[ { text:"Retour au fork", next:"fork01" } ] },
+        { id:"minigame01", title:"Chapter 1 — Mini-jeu", text:"Voici l'interface du mini-jeu (placeholder).", choices:[ { text:"Retour", next:"fork01" } ] },
+        { id:"clue02", title:"Chapter 1 — Clue 02", text:"Voici l’indice numéro 2...", choices:[ { text:"Retour au fork", next:"fork01" } ] }
       ],
     };
   },
-
   computed: {
     activeChapter() {
-      return this.chapters.find(current => current.id === this.current);
+      return this.chapters.find(chap => chap.id === this.current) || { choices: [] };
     }
   },
-
   methods: {
     changeChapter(nextId) {
       this.current = nextId;
     }
   }
-};
+}
 </script>
 
 <style scoped>
-
-* {
-  font-family: 'Courier New', Courier, monospace;
-}
-
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #000;
-  }
-  
-  .screen {
-    background-color: #000;
-    padding: 4rem 6rem;
-    width: 700px;  
-    height: 500px;      
-    border: 3px solid #03AB5E; 
-    text-align: center;
-  }
-  
-  /* Titre */
-  .title {
-    color: #03AB5E; 
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    letter-spacing: 2px;
-  }
-  
-.choice-btn {
- background-color: #000; 
-    color: #03AB5E; 
-    width: 250px;  
-    font-weight: bold;
-    font-size: 1.2rem;
-    padding: 0.75rem 2.5rem;
-    border: 2px solid #03AB5E; 
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    display: block;    
-    margin: 1rem auto 0;    
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;       /* centers vertically */
+  height: 100vh;             /* full viewport height */
+  background-color: #000;
 }
 
-.choice-btn:hover {
-  background-color: #03AB5E; 
-  color: #000; 
-  transform: scale(1.1);
+.screen {
+  width: 700px;
+  height: 500px;
+  padding: 4rem 6rem;
+  background-color: #000;
+  border: 3px solid #03AB5E;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.story-text{
+.story-block {
+  flex: 1;
+  color: #03AB5E;
+  text-align: left;
+  padding-right: 2rem;
+}
+
+.title {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.story-text {
   color: #03AB5E;
 }
 
+.choices-container {
+  width: 300px;
+  display: flex;
+  align-items: flex-start;
+}
 </style>

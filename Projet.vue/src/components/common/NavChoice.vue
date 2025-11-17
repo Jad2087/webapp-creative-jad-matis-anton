@@ -2,34 +2,25 @@
 import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
-  choices: Array
+  choice: Object  // pass a single choice object
 });
-
 const emit = defineEmits(["choose"]);
 
-function choose(nextId) {
-  emit("choose", nextId);
+function choose() {
+  emit("choose", props.choice.next);
 }
 </script>
 
 <template>
-  <div class="choices">
-    <button
-      v-for="(choice, i) in choices"
-      :key="i"
-      class="choice-btn"
-      @click="choose(choice.next)"
-    >
-      {{ choice.text }}
-    </button>
-  </div>
+  <button class="choice-btn" @click="choose()">
+    {{ props.choice.text }}
+  </button>
 </template>
 
 <style scoped>
 * {
   font-family: 'Courier New', Courier, monospace;
 }
-
 .choice-btn {
   background-color: black;
   color: #03AB5E;
@@ -41,7 +32,6 @@ function choose(nextId) {
   cursor: pointer;
   transition: 0.3s ease;
 }
-
 .choice-btn:hover {
   background-color: #03AB5E;
   color: black;
