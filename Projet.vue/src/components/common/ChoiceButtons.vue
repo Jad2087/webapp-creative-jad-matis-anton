@@ -31,7 +31,6 @@
   
   <style scoped>
   .choice-buttons-wrapper {
-    width: 250px;  
     display: flex;
     flex-direction: column;
     align-items: flex-start;

@@ -18,9 +18,11 @@ function choose() {
 </template>
 
 <style scoped>
+
 * {
   font-family: 'Courier New', Courier, monospace;
 }
+
 .choice-btn {
   background-color: black;
   color: #03AB5E;
@@ -30,11 +32,14 @@ function choose() {
   font-size: 1.1rem;
   margin: 0.5rem;
   cursor: pointer;
+  width: 250px; 
   transition: 0.3s ease;
 }
+
 .choice-btn:hover {
   background-color: #03AB5E;
   color: black;
   transform: scale(1.05);
 }
+
 </style>
