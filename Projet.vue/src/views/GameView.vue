@@ -1,12 +1,23 @@
 <template>
   <div class="container">
     <div class="window-wrapper">
-      <AppHeader />
 
-      <div class="screen">
-        <h1 class="title">{{ activeChapter.title }}</h1>
-        <p class="story-text">{{ activeChapter.text }}</p>
+    <AppHeader/>
+    <Timer />
+    <div class="screen">
+      <h1 class="title">{{ activeChapter.title }}</h1>
+      <p class="story-text">{{ activeChapter.text }}</p>
+      <div class="choices">
+        <button
+          v-for="(choice, i) in activeChapter.choices"
+          :key="i"
+          class="choice-btn"
+          @click="changeChapter(choice.next)"
+        >
+          {{ choice.text }}
+        </button>
       </div>
+    </div>
     </div>
 
     <div class="choices-container">
@@ -19,12 +30,15 @@
 </template>
 
 <script>
+
 import AppHeader from '@/components/layout/AppHeader.vue';
 import ChoiceButtons from '@/components/common/ChoiceButtons.vue';
+import Timer from '@/components/layout/Timer.vue';
 
 export default {
   name: "GameView",
-  components: { AppHeader, ChoiceButtons },
+  components: { AppHeader, Timer, ChoiceButtons },
+
   data() {
     return {
       current: "intro",
