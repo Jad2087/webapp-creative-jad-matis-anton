@@ -34,69 +34,34 @@ import ChoiceButtons from '@/components/common/ChoiceButtons.vue';
 import Timer from '@/components/layout/Timer.vue';
 import MiniMap from '@/components/layout/MiniMap.vue';
 
+// Import du store Pinia
+import { useStoryStore } from '@/stores/storyStore';
+
 export default {
   name: "GameView",
   components: { AppHeader, Timer, ChoiceButtons, MiniMap },
 
- data() {
-  return {
-    current: "intro",
-    chapters: [
-      {
-        id: "intro",
-        title: "Chapter 1 — Intro",
-        text: "Bienvenue dans l’aventure… mets ton vrai texte ici.",
-        choices: [
-          { text: "Continuer", next: { type: "story", id: "fork01" } }
-        ]
-      },
-      {
-        id: "fork01",
-        title: "Chapter 1 — Fork 01",
-        text: "Tu arrives à un embranchement...",
-        choices: [
-          { text: "Aller vers Clue 01", next: { type: "story", id: "clue01" } },
-          { text: "MiniGame 01", next: { type: "game", id: "minigame01" } },
-          { text: "Aller vers Clue 02", next: { type: "story", id: "clue02" } },
-          { text: "Retour", next: { type: "story", id: "intro" } }
-        ]
-      },
-      {
-        id: "clue01",
-        title: "Chapter 1 — Clue 01",
-        text: "Voici l’indice numéro 1...",
-        choices: [
-          { text: "Retour au fork", next: { type: "story", id: "fork01" } }
-        ]
-      },
-      {
-        id: "minigame01",
-        title: "Chapter 1 — Mini-jeu",
-        text: "Voici l'interface du mini-jeu (placeholder).",
-        choices: [
-          { text: "Retour", next: { type: "story", id: "fork01" } }
-        ]
-      },
-      {
-        id: "clue02",
-        title: "Chapter 1 — Clue 02",
-        text: "Voici l’indice numéro 2...",
-        choices: [
-          { text: "Retour au fork", next: { type: "story", id: "fork01" } }
-        ]
-      }
-    ]
-  };
-},
+data() {
+    return {
+      // Chapitre actuel (id)
+      current: "intro"
+    };
+  },
 
 created() {
-   // charge le chapitre actuel selon id passé dans la route
-  this.current = this.$route.params.id;
-},
+      // charge le chapitre actuel selon id passé dans la route
+      this.current = this.$route.params.id;
+  },
+
   computed: {
-    // retourne chapitre lui qui est actif
+    // Crée une instance du store pour accéder aux chapitres
+    storyStore() {
+      return useStoryStore();
+    },
+
+    // Retourne le chapitre actuellement actif
     activeChapter() {
-      return this.chapters.find(chapters => chapters.id === this.current);
+      return this.storyStore.storyData.find(chap => chap.id === this.current) || { choices: [] };
     }
   },
 
@@ -112,9 +77,9 @@ created() {
       // lance le mini-jeu
       console.log("Lancer le mini-jeu :", next.id);
         this.current = next.id; //affiche dans GameView
-    }
-  }
-}
+     }
+   }
+ }
 }
 </script>
 

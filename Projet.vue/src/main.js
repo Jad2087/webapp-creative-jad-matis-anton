@@ -1,7 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'   // ← c'est ton fichier index.js
+import router from './router'
+
+// Import Pinia
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
-app.use(router)                 // ← très important pour activer le router
+
+const pinia = createPinia()
+
+// Ajoute Pinia et Router à l'app
+app.use(pinia)
+app.use(router)
+
 app.mount('#app')

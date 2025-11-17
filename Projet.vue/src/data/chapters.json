@@ -1,0 +1,45 @@
+[
+  {
+    "id": "intro",
+    "title": "Chapter 1 — Intro",
+    "text": "Bienvenue dans l’aventure… mets ton vrai texte ici.",
+    "choices": [
+      { "text": "Continuer", "next": { "type": "story", "id": "fork01" } }
+    ]
+  },
+  {
+    "id": "fork01",
+    "title": "Chapter 1 — Fork 01",
+    "text": "Tu arrives à un embranchement...",
+    "choices": [
+      { "text": "Aller vers Clue 01", "next": { "type": "story", "id": "clue01" } },
+      { "text": "MiniGame 01", "next": { "type": "game", "id": "minigame01" } },
+      { "text": "Aller vers Clue 02", "next": { "type": "story", "id": "clue02" } },
+      { "text": "Retour", "next": { "type": "story", "id": "intro" } }
+    ]
+  },
+  {
+    "id": "clue01",
+    "title": "Chapter 1 — Clue 01",
+    "text": "Voici l’indice numéro 1...",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+    ]
+  },
+  {
+    "id": "minigame01",
+    "title": "Chapter 1 — Mini-jeu",
+    "text": "Voici l'interface du mini-jeu (placeholder).",
+    "choices": [
+      { "text": "Retour", "next": { "type": "story", "id": "fork01" } }
+    ]
+  },
+  {
+    "id": "clue02",
+    "title": "Chapter 1 — Clue 02",
+    "text": "Voici l’indice numéro 2...",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+    ]
+  }
+]
