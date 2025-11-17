@@ -98,6 +98,10 @@ export default {
 
 <style scoped>
 
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -109,8 +113,8 @@ export default {
   .screen {
     background-color: #000;
     padding: 4rem 6rem;
-    width: 600px;  
-    height: 400px;       
+    width: 700px;  
+    height: 500px;      
     border: 3px solid #03AB5E; 
     text-align: center;
   }

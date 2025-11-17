@@ -17,6 +17,11 @@ function startStory() {
 </script>
 
 <style scoped>
+
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 /* Fond de la page */
 .container {
   display: flex;
@@ -29,8 +34,8 @@ function startStory() {
 .screen {
   background-color: #000;
   padding: 4rem 6rem;
-  width: 600px;  
-  height: 400px;       
+  width: 700px;  
+  height: 500px;       
   border: 3px solid #03AB5E; 
   text-align: center;
 }

@@ -26,6 +26,10 @@ function choose(nextId) {
 </template>
 
 <style scoped>
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .choice-btn {
   background-color: black;
   color: #03AB5E;

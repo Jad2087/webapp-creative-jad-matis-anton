@@ -22,6 +22,11 @@ export default {
 
   
   <style scoped>
+
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
   .app-header {
     display: flex;
     justify-content: space-between;

@@ -13,6 +13,11 @@ const props = defineProps({
 </template>
 
 <style scoped>
+
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .story-text {
   color: #03AB5E;
   font-size: 1.2rem;
