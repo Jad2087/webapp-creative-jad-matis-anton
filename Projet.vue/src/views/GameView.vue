@@ -97,6 +97,7 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
     display: flex;
     justify-content: center;
@@ -142,4 +143,9 @@ export default {
   color: #000; 
   transform: scale(1.1);
 }
+
+.story-text{
+  color: #03AB5E;
+}
+
 </style>
