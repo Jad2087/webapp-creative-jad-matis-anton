@@ -4,6 +4,7 @@
       <!-- TIMER à gauche -->
       <Timer />
       <MiniMap />
+      
 
       <!-- Contenu droit -->
       <div class="columnright">
@@ -57,6 +58,8 @@ export default {
     storyStore() {
       return useStoryStore();
     },
+
+    
 
     // Retourne le chapitre actuellement actif
     activeChapter() {

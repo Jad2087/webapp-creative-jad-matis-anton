@@ -5,7 +5,7 @@
 
       <div class="screen">
         <AppHeader class="appheader" />
-        <h1 class="title">Introduction</h1>
+        <h1 class="title">Acte 1 - Réveil</h1>
         <button class="start-btn" @click="startStory">Continuer</button>
         <!-- Si tu veux afficher un bouton retour -->
         <!-- <button class="back-btn" @click="goBack">Retour</button> -->
