@@ -20,9 +20,9 @@ export default {
 
   data() {
     return {
-      duration: 5 * 60,        // 5 minutes en secondes
+      duration: 5 * 60, // 5 minutes en secondes
       elapsed: 0,
-      totalBars: 8             // nombre de segments affichés comme sur l’image
+      totalBars: 8, // nombre de segments affichés comme sur l’image
     };
   },
 
@@ -30,7 +30,7 @@ export default {
     // nombre de segments activés en fonction du progrès
     activeBars() {
       return Math.floor((this.elapsed / this.duration) * this.totalBars);
-    }
+    },
   },
 
   mounted() {
@@ -46,54 +46,55 @@ export default {
           clearInterval(this.interval);
         }
       }, 1000);
-    }
+    },
   },
 
   beforeUnmount() {
     clearInterval(this.interval);
-  }
+  },
 };
 </script>
 
 <style scoped>
-
 .timer-container {
-  border: 3px solid #ffffff;  
-  border-radius: 8px;        
-  padding: 1rem;               
-  background-color: #111;      
+  border: 2px solid #ffffff;
+  padding: 1rem;
+  background-color: #111;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  width: 100%;                 
+  gap: 20px;
+
+  width: 100%;
   box-sizing: border-box;
+
+  /* >>> AJOUT POUR MATCHER LE HEADER <<< */
+  min-height: 80px;
 }
 
 .label {
-  color: #00ff88;
+  color: #03ab5e;
   font-family: monospace;
   font-size: 20px;
-  margin-bottom: 10px;
-  text-align: center;
+  margin: 0; /* plus de margin-bottom */
+  text-align: left; /* pas centré */
+  min-width: 80px; /* pour éviter que ça bouge */
 }
 
 .bars {
   display: flex;
-  gap: 6px;
-  justify-content: center;
+  gap: 4px;
 }
 
 .bar {
-  width: 20px;
-  height: 60px;
+  width: 12px; /* plus petit */
+  height: 40px; /* plus petit */
   background: #222;
   border: 2px solid #555;
-  border-radius: 3px;
 }
 
 .bar.active {
   background: #d6d6d6;
 }
-
 </style>

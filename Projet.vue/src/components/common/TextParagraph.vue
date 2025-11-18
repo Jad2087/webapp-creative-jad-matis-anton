@@ -2,7 +2,7 @@
 import { defineProps } from "vue";
 
 const props = defineProps({
-  text: String
+  text: String,
 });
 </script>
 
@@ -13,13 +13,12 @@ const props = defineProps({
 </template>
 
 <style scoped>
-
 * {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", monospace;
 }
 
 .story-text {
-  color: #03AB5E;
+  color: #03ab5e;
   font-size: 1.2rem;
   text-align: center;
   margin: 1.5rem 0;

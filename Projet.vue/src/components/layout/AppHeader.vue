@@ -13,16 +13,11 @@
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: "AppHeader",
 };
 </script>
 
 <style scoped>
-
-* {
-  font-family: 'Courier New', monospace;
-}
-
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -30,10 +25,9 @@ export default {
 
   /* Match story-box */
   width: 100%;
-  padding: 1rem;               
-  border: 3px solid #ffffff; 
-  border-radius: 8px;         
-  background-color: #111;      
+  padding: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #111;
   box-sizing: border-box;
 }
 
@@ -44,15 +38,15 @@ export default {
 
 .app-header__title {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   letter-spacing: 0.08em;
-  color: #03AB5E;
+  color: #03ab5e;
 }
 
 .app-header__subtitle {
   margin: 0.2rem 0 0;
   font-size: 0.85rem;
-  color: #03AB5E;
+  color: #03ab5e;
   opacity: 0.8;
 }
 
@@ -64,24 +58,22 @@ export default {
 .app-header__link {
   text-decoration: none;
   font-size: 0.9rem;
-  text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 0.4rem 0.9rem;
-  border: 2px solid #03AB5E;
-  color: #03AB5E;
+  border: 2px solid #03ab5e;
+  color: #03ab5e;
   background-color: transparent;
   transition: all 0.3s ease-in-out;
 }
 
 .app-header__link:hover {
-  background-color: #03AB5E;
+  background-color: #03ab5e;
   color: #000;
   transform: scale(1.05);
 }
 
 .app-header__link.router-link-active {
-  background-color: #03AB5E;
+  background-color: #03ab5e;
   color: #000;
 }
-
 </style>

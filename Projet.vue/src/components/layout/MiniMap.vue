@@ -19,13 +19,12 @@ export default {
 
 <style scoped>
 .minimap-container {
-  border: 3px solid #ffffff;
-  border-radius: 8px;
+  border: 2px solid #ffffff;
   background-color: #111;
   padding: 0.8rem;
-  margin-top: 1rem;     
+  margin-top: 1rem;
   width: 100%;
-  height: 150px;         
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -34,7 +33,7 @@ export default {
 }
 
 .minimap-title {
-  color: #03AB5E;
+  color: #03ab5e;
   margin: 0 0 0.5rem 0;
   font-weight: bold;
   font-size: 1rem;
@@ -49,7 +48,7 @@ export default {
 }
 
 .map-point {
-  color: #03AB5E;
+  color: #03ab5e;
   font-size: 1.2rem;
 }
 </style>
