@@ -16,7 +16,11 @@
         <!-- Bloc texte du chapitre -->
         <div class="story-box">
           <p class="info-title">{{ activeChapter.title }}</p>
-          <p class="info-content">{{ activeChapter.text }}</p>
+
+          <!-- <p class="info-content">{{ activeChapter.text }}</p> -->
+
+          <p class="info-content" ref="infoContent"></p>
+
         </div>
 
         <!-- Choix -->
@@ -26,7 +30,7 @@
           class="choicebuttons"
         />
       </div>
-    </div>
+    #</div>
   </div>
 </template>
 
@@ -38,6 +42,9 @@ import MiniMap from "@/components/layout/MiniMap.vue";
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
+
+// 🎬 Import de GSAP
+import { gsap } from "gsap";
 
 export default {
   name: "GameView",
@@ -72,6 +79,8 @@ export default {
     },
   },
 
+  
+
   methods: {
     changeChapter(next) {
       if (next.type === "story") {
@@ -87,8 +96,62 @@ export default {
     },
      goToAct2() {
     this.$router.push({ name: "millieu" }); // dirige vers MillieuView
-  }
   },
+
+  // TEXT ANIMATION
+  animateText() {
+    const el = this.$refs.infoContent;
+    if (!el) return;
+
+    const rawText = this.activeChapter.text || "";
+
+    // on vide le paragraphe
+    el.innerHTML = "";
+
+    // on recrée le texte caractère par caractère
+    [...rawText].forEach((char) => {
+      if (char === "\n") {
+        // garde les sauts de ligne (paragraphes)
+        el.appendChild(document.createElement("br"));
+      } else {
+        const span = document.createElement("span");
+        span.textContent = char;   // on laisse les espaces normaux pour le retour à la ligne
+        el.appendChild(span);
+      }
+    });
+
+    const letters = el.querySelectorAll("span");
+
+    // au cas où une ancienne anim tourne encore
+    gsap.killTweensOf(letters);
+
+    // animation “vieux PC” : lettres une par une
+    gsap.fromTo(
+      letters,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 0.02,   // vitesse de chaque lettre
+        stagger: 0.03,    // délai entre lettres
+        ease: "none",
+      }
+    );
+  },
+  },
+
+  // TEXT ANIMATION
+  mounted() {
+  this.animateText();          // animation au chargement
+},
+
+watch: {
+  // relance l’animation quand le chapitre change
+  current() {
+    this.$nextTick(() => this.animateText());
+  },
+},
+
+  
 };
 </script>
 
