@@ -37,11 +37,11 @@ export default {
   font-family: "Courier New", monospace;
 }
 
-.choice-buttons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
+.choicebuttons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colonnes */
+  gap: 1rem; /* espace entre les boutons */
 }
+
 </style>
