@@ -22,7 +22,7 @@ export default {
     },
   },
   methods: {
-     // nextI` est l'identifiant du chapitre suivante
+     // nextID` est l'identifiant du chapitre suivante
     selectChoice(nextId) {
       this.$emit("choice-selected", nextId);
     },
@@ -31,6 +31,7 @@ export default {
 </script>
 
 <style scoped>
+
 * {
   font-family: "Courier New", monospace;
 }
