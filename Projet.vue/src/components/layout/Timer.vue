@@ -27,6 +27,7 @@ export default {
   },
 
   computed: {
+     // Calcule le nombre de segments activé d'une barre
     // nombre de segments activés en fonction du progrès
     activeBars() {
       return Math.floor((this.elapsed / this.duration) * this.totalBars);
@@ -34,22 +35,25 @@ export default {
   },
 
   mounted() {
+    // lorsque le composant est monté ca on le timer
     this.startTimer();
   },
 
   methods: {
+      // démarre le timer qui incrémente `elapsed` toutes les secondes
     startTimer() {
       this.interval = setInterval(() => {
         if (this.elapsed < this.duration) {
-          this.elapsed++;
+          this.elapsed++; // ca augmente le temps écoulé d'une seconde
         } else {
-          clearInterval(this.interval);
+          clearInterval(this.interval); // si le temps est écoulé ca arrête le timer
         }
-      }, 1000);
+      }, 1000); // intervalle de 1000 ms = 1 seconde
     },
   },
 
   beforeUnmount() {
+     // avant que le composant soit détruit ca nettoie l'intervalle
     clearInterval(this.interval);
   },
 };

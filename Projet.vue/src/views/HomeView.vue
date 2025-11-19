@@ -16,6 +16,7 @@ export default {
   },
 
   methods: {
+     // dirige l'utilisateur vers la route nommée "intro".
     startStory() {
       this.$router.push({ name: "intro" });
     },

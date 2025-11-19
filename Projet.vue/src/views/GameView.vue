@@ -57,6 +57,7 @@ export default {
 
   computed: {
     // Crée une instance du store pour accéder aux chapitres
+    // permet d'utiliser `storyStore` dans le template
     storyStore() {
       return useStoryStore();
     },
@@ -85,7 +86,7 @@ export default {
       }
     },
      goToAct2() {
-    this.$router.push({ name: "millieu" }); // ← redirige vers MillieuView
+    this.$router.push({ name: "millieu" }); // dirige vers MillieuView
   }
   },
 };

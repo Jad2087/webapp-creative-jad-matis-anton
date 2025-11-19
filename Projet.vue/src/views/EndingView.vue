@@ -26,10 +26,11 @@ export default {
     return {};
   },
   methods: {
+    // dirige l'utilisateur vers la route "game" avec un paramètre "id" égal à "intro".
     startStory() {
       this.$router.push({ name: "game", params: { id: "intro" } });
     },
-
+    // dirige l'utilisateur vers la route nommée "home".
     goBack() {
       this.$router.push({ name: "home" });
     },

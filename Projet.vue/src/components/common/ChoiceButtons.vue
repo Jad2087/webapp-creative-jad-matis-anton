@@ -22,6 +22,7 @@ export default {
     },
   },
   methods: {
+     // nextI` est l'identifiant du chapitre suivante
     selectChoice(nextId) {
       this.$emit("choice-selected", nextId);
     },
