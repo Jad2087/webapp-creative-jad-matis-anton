@@ -44,7 +44,7 @@ import Decoration from "@/components/layout/Decoration.vue";
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
 
-// 🎬 Import de GSAP
+// Import de GSAP
 import { gsap } from "gsap";
 
 export default {
