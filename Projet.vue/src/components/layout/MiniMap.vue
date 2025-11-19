@@ -3,8 +3,6 @@
     <p class="minimap-title">Mini Map</p>
     <div class="minimap-content">
       <div class="map-point">●</div>
-      <div class="map-point">●</div>
-      <div class="map-point">●</div>
     </div>
   </div>
 </template>
@@ -16,13 +14,15 @@ export default {
 </script>
 
 <style scoped>
+
+/* MiniMap flexible */
 .minimap-container {
   border: 2px solid #ffffff;
   background-color: #111;
   padding: 0.8rem;
-  margin-top: 1rem;
+  margin-top: 0;   
   width: 100%;
-  height: 150px;
+  flex: 1 1 auto;  /* prend tout l'espace restant */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -38,10 +38,11 @@ export default {
 }
 
 .minimap-content {
-  flex: 1;
+  flex: 1;  
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;  
+  justify-content: space-around; 
   align-items: center;
 }
 

@@ -60,6 +60,7 @@ export default {
 </script>
 
 <style scoped>
+/* Timer fixe */
 .timer-container {
   border: 2px solid #ffffff;
   padding: 1rem;
@@ -70,7 +71,8 @@ export default {
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
-  min-height: 80px;   /* AJOUT POUR MATCHER LE HEADER */
+  min-height: 85px; /* hauteur fixe */
+  flex: 0 0 auto;  /* ne s'étire pas */
 }
 
 .label {

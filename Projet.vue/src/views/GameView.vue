@@ -2,12 +2,11 @@
   <div class="container">
     <div class="screen">
       <!-- TIMER à gauche -->
+      <div class="columnleft">
       <Timer />
+      <Decoration />
       <MiniMap />
-      
-             <!-- Bouton Acte 2 -->
-        <button class="act2-btn" @click="goToAct2">Acte 2 — Cauchemar</button>
-
+      </div>
       <!-- Contenu droit -->
       <div class="columnright">
         <!-- Header -->
@@ -35,13 +34,15 @@ import AppHeader from "@/components/layout/AppHeader.vue";
 import ChoiceButtons from "@/components/common/ChoiceButtons.vue";
 import Timer from "@/components/layout/Timer.vue";
 import MiniMap from "@/components/layout/MiniMap.vue";
+import Decoration from "@/components/layout/Decoration.vue";
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
 
+
 export default {
   name: "GameView",
-  components: { AppHeader, Timer, ChoiceButtons, MiniMap },
+  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Decoration },
 
   data() {
     return {
@@ -221,6 +222,17 @@ export default {
   background-color: #03ab5e;
   color: black;
   transform: scale(1.05);
+}
+
+/* Colonne gauche */
+.columnleft {
+  grid-column: 1;
+  grid-row: 1 / 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
 }
 
 </style>
