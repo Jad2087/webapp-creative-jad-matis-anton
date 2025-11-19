@@ -295,4 +295,11 @@ export default {
   gap: 1rem;
 }
 
+.choicebuttons {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 colonnes */
+  gap: 1rem; /* espace entre les boutons */
+}
+
 </style>
