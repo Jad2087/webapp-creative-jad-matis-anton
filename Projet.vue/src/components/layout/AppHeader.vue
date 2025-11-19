@@ -22,8 +22,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* Match story-box */
   width: 100%;
   padding: 1rem;
   border: 2px solid #ffffff;

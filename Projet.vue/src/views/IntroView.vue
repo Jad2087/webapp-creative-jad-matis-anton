@@ -53,19 +53,15 @@ export default {
 .screen {
   width: 900px;
   height: 600px;
-
   padding: 2rem 2rem;
   background-color: #111;
   border: 2px solid #03ab5e;
   text-align: center;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* >>> Pour que le header reste en haut <<< */
   justify-content: flex-start;
-  gap: 2rem; /* espace uniforme sous le header */
+  gap: 2rem;
 }
 
 /* EFFET RETRO */
@@ -104,12 +100,8 @@ export default {
   position: relative;
   overflow: hidden;
   animation: crtFlicker 0.15s infinite alternate;
-
-  /* Effet de courbure CRT */
-  transform: perspective(800px) rotateX(2deg) scale(1.02);
+  transform: perspective(800px) rotateX(2deg) scale(1.02);  /* Effet de courbure CRT */
   transform-origin: center top;
-
-  /* Optionnel : légère arrondie pour correspondre à un écran rétro */
   border-radius: 6px;
 }
 
@@ -158,7 +150,7 @@ export default {
 }
 
 .appheader {
-  width: 100%; /* prend la largeur du .screen */
+  width: 100%; 
   align-self: stretch; /* juste au cas où */
 }
 </style>

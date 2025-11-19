@@ -1,7 +1,8 @@
 <template>
   <div class="choice-buttons">
+      <!-- Boucle du tableau choice pour créer un composant NavChoice pour chaque élément -->
     <NavChoice
-      v-for="(choice, idx) in choices"
+      v-for="(choice, idx) in choices"  
       :key="idx"
       :choice="choice"
       @choose="selectChoice"

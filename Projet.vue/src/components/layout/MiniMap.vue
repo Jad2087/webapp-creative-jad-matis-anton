@@ -1,9 +1,7 @@
 <template>
   <div class="minimap-container">
     <p class="minimap-title">Mini Map</p>
-    <!-- Ici tu peux ajouter ton contenu de carte / icônes / points -->
     <div class="minimap-content">
-      <!-- Placeholder -->
       <div class="map-point">●</div>
       <div class="map-point">●</div>
       <div class="map-point">●</div>

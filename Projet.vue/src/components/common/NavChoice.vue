@@ -12,6 +12,7 @@ function choose() {
 </script>
 
 <template>
+   <!-- représente un choix -->
   <button class="choice-btn" @click="choose()">
     {{ props.choice.text }}
   </button>

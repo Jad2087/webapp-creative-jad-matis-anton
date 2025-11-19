@@ -7,6 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
+  <!-- Paragraphe affichant le texte de l'histoire -->
   <p class="story-text">
     {{ text }}
   </p>

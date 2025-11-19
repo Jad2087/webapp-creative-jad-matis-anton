@@ -87,13 +87,9 @@ export default {
   position: relative;
   overflow: hidden;
   animation: crtFlicker 0.15s infinite alternate;
-
-  /* Effet de courbure CRT */
-  transform: perspective(800px) rotateX(2deg) scale(1.02);
+  transform: perspective(800px) rotateX(2deg) scale(1.02); /* Effet de courbure CRT */
   transform-origin: center top;
-
-  /* Optionnel : légère arrondie pour correspondre à un écran rétro */
-  border-radius: 6px;
+  border-radius: 6px; 
 }
 
 .screen::after {

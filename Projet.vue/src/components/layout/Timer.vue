@@ -64,17 +64,13 @@ export default {
   border: 2px solid #ffffff;
   padding: 1rem;
   background-color: #111;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 20px;
-
   width: 100%;
   box-sizing: border-box;
-
-  /* >>> AJOUT POUR MATCHER LE HEADER <<< */
-  min-height: 80px;
+  min-height: 80px;   /* AJOUT POUR MATCHER LE HEADER */
 }
 
 .label {
