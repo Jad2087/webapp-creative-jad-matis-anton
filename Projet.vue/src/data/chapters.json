@@ -25,9 +25,37 @@
     "title": "Act 1 — Effondrement",
     "text": "Vous suivez le couloir rouillé jusqu’à un effondrement qui bloque complètement le passage.\n\nAu pied des décombres, vous découvrez le corps momifié d’une femme, allongé là depuis très longtemps.",
     "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } },
+      { "text": "get the clue", "next": { "type": "story", "id": "clue01-01" } },
+      { "text": "die", "next": { "type": "story", "id": "clue01-02" } }
+    ]
+  },
+  {
+    "id": "clue01-01",
+    "title": "Act 1 — Effondrement — Clue",
+    "text": "tu trouve un clue.",
+    "choices": [
       { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
     ]
   },
+  {
+    "id": "clue01-02",
+    "title": "Act 1 — Effondrement — Mort",
+    "text": "tu meurt.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+    ]
+  },
+
+
+
+
+
+
+
+
+
+
   {
     "id": "minigame01",
     "title": "Act 1 — Mini-jeu",
