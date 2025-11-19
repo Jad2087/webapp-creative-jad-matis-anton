@@ -13,6 +13,7 @@ Ici, ton application contient deux vues principales :
 import HomeView from '../views/HomeView.vue';
 import IntroView from '../views/IntroView.vue';
 import GameView from '../views/GameView.vue';
+import MillieuView from '../views/MillieuView.vue';
 /*
 Définition des routes dans un tableau d’objets.
 Chaque objet correspond à une "page" de l’application.
@@ -34,7 +35,11 @@ const routes = [
     name: 'game',
     props: true         // pour récupérer id via props si tu veux
   },
-  
+   {
+    path: '/millieu', // ← ici on ajoute ":id" en optionnel
+    component: MillieuView,
+    name: 'millieu',
+  },
 ];
 
 /*

@@ -5,6 +5,8 @@
       <Timer />
       <MiniMap />
       
+             <!-- Bouton Acte 2 -->
+        <button class="act2-btn" @click="goToAct2">Acte 2 — Cauchemar</button>
 
       <!-- Contenu droit -->
       <div class="columnright">
@@ -59,8 +61,6 @@ export default {
       return useStoryStore();
     },
 
-    
-
     // Retourne le chapitre actuellement actif
     activeChapter() {
       return (
@@ -84,6 +84,9 @@ export default {
         this.current = next.id; //affiche dans GameView
       }
     },
+     goToAct2() {
+    this.$router.push({ name: "millieu" }); // ← redirige vers MillieuView
+  }
   },
 };
 </script>
@@ -199,4 +202,24 @@ export default {
 .choicebuttons {
   width: 100%;
 }
+
+.act2-btn {
+  background-color: #111;
+  color: #03ab5e;
+  font-weight: bold;
+  border: 2px solid #03ab5e;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  width: 250px;
+  transition: 0.3s ease;
+}
+
+.act2-btn:hover {
+  background-color: #03ab5e;
+  color: black;
+  transform: scale(1.05);
+}
+
 </style>

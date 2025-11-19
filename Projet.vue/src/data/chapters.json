@@ -43,5 +43,13 @@
     "choices": [
       { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
     ]
-  }
+  },
+  {
+  "id": "intro2",
+  "title": "Acte 2 — Cauchemar",
+  "text": "Un grondement sourd résonne derrière vous. Les lumières vacillent. Puis un frisson vous traverse : quelque chose approche.\n\nVotre vision se brouille… vos oreilles bourdonnent… puis des images violentes éclatent dans votre esprit.\n\nVous n’êtes plus dans la station. Vous êtes ailleurs.\nDans un endroit où rien n’obéit aux lois de la réalité.",
+  "choices": [
+    { "text": "Continuer", "next": { "type": "story", "id": "act2_scene01" } }
+  ]
+}
 ]
