@@ -100,7 +100,7 @@ export default {
          // Si mort → afficher l'écran d'échec
      if (next.id === "clue01-02") {
         this.showEchec = true;
-  }
+      }
       }
       else if (next.type === "game") {
         console.log("Lancer le mini-jeu :", next.id);

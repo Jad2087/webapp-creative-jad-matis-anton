@@ -46,16 +46,6 @@
       { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
     ]
   },
-
-
-
-
-
-
-
-
-
-
   {
     "id": "minigame01",
     "title": "Act 1 — Mini-jeu",
