@@ -5,7 +5,7 @@
       <div class="columnleft">
         <Timer />
         <Decoration />
-        <MiniMap />
+        <MiniMap :currentChapterId="current" />
       </div>
       <!-- Contenu droit -->
       <div class="columnright">
@@ -198,6 +198,7 @@ export default {
       // If user navigated away, ensure mini game closed
       this.openMiniGame = false;
     },
+
     "$route.params.id"(newId) {  // watch route change too
       this.current = newId;
       this.openMiniGame = false;
