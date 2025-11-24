@@ -98,7 +98,7 @@ export default {
         // ensure if we exit mini-game we reset the flag
         this.openMiniGame = false;
          // Si mort → afficher l'écran d'échec
-     if (next.id === "clue01-02") {
+         if (next.id === "clue01-02" || next.id === "clue02-02") {
         this.showEchec = true;
       }
       }

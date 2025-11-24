@@ -47,6 +47,16 @@
     ]
   },
   {
+    "id": "clue02",
+    "title": "Act 1 — Placard",
+    "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journal. Vous vous penchez pour lire ce qui y est écrit : {CLUE}.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } },
+      { "text": "get the clue", "next": { "type": "story", "id": "clue02-01" } },
+      { "text": "die", "next": { "type": "story", "id": "clue02-02" } }
+    ]
+  },  
+  {
     "id": "minigame01",
     "title": "Act 1 — Mini-jeu",
     "text": "Vous suivez le couloir jusqu’à apercevoir une vieille console éclairée par une faible lueur verte.\n\nElle est reliée à une porte verrouillée. Le terminal fonctionne encore, mais demande un mot de passe.\n\nVous en concluez que pour avancer… il faudra essayer de le pirater.",
