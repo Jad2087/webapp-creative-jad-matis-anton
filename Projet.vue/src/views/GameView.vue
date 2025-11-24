@@ -68,6 +68,7 @@ export default {
       showEchec: false,
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
+      restartChapterId: "intro", // par défaut : Acte 1 intro
     };
   },
 
@@ -136,13 +137,14 @@ export default {
 
     retryGame() {
       this.showEchec = false;
-      this.$router.push({ name: "game", params: { id: "fork01" } });
-      this.current = "fork01";
+      this.$router.push({ name: "game", params: { id: this.restartChapterId } });
+      this.current = this.restartChapterId;
     },
+
 
     goToMenu() {
       this.showEchec = false;
-      this.$router.push({ name: "game", params: { id: "intro" } });
+      this.$router.push({ name: "home", params: { id: "" } });
       this.current = "intro";
     },
 
