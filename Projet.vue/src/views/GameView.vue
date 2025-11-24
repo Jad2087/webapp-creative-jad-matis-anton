@@ -22,12 +22,13 @@
 
         </div>
 
-
         <!-- Choices show up as buttons from ChoiceButtons component -->
         <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
         <MiniGame v-if="openMiniGame" @close="openMiniGame = false" />
+
+        <Echec v-if="showEchec" @retry="retryGame" @menu="goToMenu" />
 
       </div>
 
@@ -44,6 +45,7 @@ import ChoiceButtons from "@/components/common/ChoiceButtons.vue";
 import Timer from "@/components/layout/Timer.vue";
 import MiniMap from "@/components/layout/MiniMap.vue";
 import Decoration from "@/components/layout/Decoration.vue";
+import Echec from "@/components/specific/Echec.vue";
 
 
 // Import du store Pinia
@@ -54,13 +56,14 @@ import { gsap } from "gsap";
 
 export default {
   name: "GameView",
-  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Decoration, MiniGame },
+  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Decoration, MiniGame, Echec },
 
   data() {
     return {
       current: this.$route.params.id || "intro",
-      openMiniGame: false     // <-- your flag for showing/hiding the overlay
+      openMiniGame: false,     // <-- your flag for showing/hiding the overlay
       // currentChapter is computed below so you can remove it from data
+      showEchec: false
     };
   },
 
@@ -94,16 +97,32 @@ export default {
         this.current = next.id;
         // ensure if we exit mini-game we reset the flag
         this.openMiniGame = false;
+         // Si mort → afficher l'écran d'échec
+     if (next.id === "clue01-02") {
+        this.showEchec = true;
+  }
       }
       else if (next.type === "game") {
         console.log("Lancer le mini-jeu :", next.id);
         console.log("openMiniGame set to true");
-this.openMiniGame = true;
+        this.openMiniGame = true;
       }
     },
 
+    retryGame() {
+       this.showEchec = false;
+       this.$router.push({ name: "game", params: { id: "fork01" } });
+       this.current = "fork01";
+    },
+
+    goToMenu() {
+       this.showEchec = false;
+       this.$router.push({ name: "game", params: { id: "intro" } });
+       this.current = "intro";
+    },
+
     goToAct2() {
-      this.$router.push({ name: "millieu" }); // dirige vers MillieuView
+       this.$router.push({ name: "millieu" }); // dirige vers MillieuView
     },
 
     // TEXT ANIMATION
@@ -308,7 +327,5 @@ this.openMiniGame = true;
   align-items: center;
   gap: 1rem;
 }
-
-
 
 </style>
