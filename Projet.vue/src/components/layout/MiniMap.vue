@@ -1,7 +1,16 @@
 <template>
   <div class="minimap-container">
     <p class="minimap-title">Mini Map</p>
+
     <div class="minimap-content">
+      <!-- Image de la mini-map -->
+      <img 
+        class="minimap-image" 
+        :src="miniMapImage" 
+        alt=""
+      />
+
+      <!-- Exemple : un point -->
       <div class="map-point">●</div>
     </div>
   </div>
@@ -10,19 +19,23 @@
 <script>
 export default {
   name: "MiniMap",
+
+  data() {
+    return {
+      miniMapImage: "/src/Images/minimap.png",
+    };
+  },
 };
 </script>
 
 <style scoped>
-
-/* MiniMap flexible */
 .minimap-container {
   border: 2px solid #ffffff;
   background-color: #111;
   padding: 0.8rem;
-  margin-top: 0;   
+  margin-top: 0;
   width: 100%;
-  flex: 1 1 auto;  /* prend tout l'espace restant */
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -38,12 +51,18 @@ export default {
 }
 
 .minimap-content {
-  flex: 1;  
+  flex: 1;
   width: 100%;
   display: flex;
-  flex-direction: column;  
-  justify-content: space-around; 
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+}
+
+.minimap-image {
+  width: 100%; 
+  height: auto;
+  margin-bottom: 0.5rem;
 }
 
 .map-point {
