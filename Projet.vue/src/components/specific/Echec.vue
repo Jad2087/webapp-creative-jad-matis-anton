@@ -1,8 +1,9 @@
 <template>
     <div class="echec-container">
       <div class="echec-box">
-        <h2 class="titre">Erreur Chronique</h2>
-        <p class="description">Informations …</p>
+        <h2 class="titre">{{ title }}</h2>
+<p class="description">{{ description }}</p>
+
   
         <div class="buttons">
           <button class="btn retry" @click="$emit('retry')">
@@ -20,8 +21,19 @@
   <script>
   export default {
     name: "Echec",
+    props: {
+      title: {
+        type: String,
+        default: "Erreur Chronique",
+      },
+      description: {
+        type: String,
+        default: "Informations …",
+      },
+    },
   };
   </script>
+  
   
   <style scoped>
   * {

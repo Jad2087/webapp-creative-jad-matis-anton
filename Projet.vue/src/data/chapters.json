@@ -63,6 +63,11 @@
       { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
     ]
   },
+
+
+
+
+
   {
   "id": "intro2",
   "title": "Acte 2 — Cauchemar",
@@ -71,4 +76,8 @@
     { "text": "Continuer", "next": { "type": "story", "id": "act2_scene01" } }
   ]
 }
+
+
+
+
 ]

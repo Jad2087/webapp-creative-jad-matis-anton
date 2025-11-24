@@ -79,17 +79,24 @@
           </div>
         </div>
 
-        <!-- END MESSAGE -->
-        <div v-if="gameOver" class="end-message">
-          <p v-if="success">&gt; TERMINAL CONNECTION SUCCESSFUL...</p>
-          <p v-else>
-            &gt; TERMINAL LOCKED<br />
-            &gt; PLEASE CONTACT AN ADMINISTRATOR
-          </p>
-          <button class="continue-btn" @click="handleClose">
-            CONTINUER
-          </button>
-        </div>
+<!-- END MESSAGE -->
+<div v-if="gameOver" class="end-message">
+  <template v-if="success">
+    <p>&gt; TERMINAL CONNECTION SUCCESSFUL...</p>
+    <button class="continue-btn" @click="handleContinue">
+      CONTINUER
+    </button>
+  </template>
+
+  <template v-else>
+    <p>
+      &gt; TERMINAL LOCKED<br />
+      &gt; PLEASE CONTACT AN ADMINISTRATOR
+    </p>
+    <!-- pas de bouton ici : on laisse le parent afficher Échec -->
+  </template>
+</div>
+
       </div>
     </div>
   </div>
@@ -218,59 +225,72 @@ computed: {
       }
     },
 
-placeWords() {
-  // pick 8 random words from the list
-  const pool = [...WORD_LIST];
-  const wordCount = 8;
+    placeWords() {
+  const wordCount = 8;             // how many words in the grid
+  const pool = [...WORD_LIST];     // all possible words
   const words = [];
 
+  // pick some random words from the list
   for (let i = 0; i < wordCount; i++) {
     const idx = Math.floor(Math.random() * pool.length);
     words.push(pool[idx]);
     pool.splice(idx, 1);
   }
 
-  // choose the secret one
-  this.secretWord = words[Math.floor(Math.random() * words.length)];
+  // ✅ fixed secret word
+  const FIXED_SECRET = "START"; // change this if you want another fixed answer
+  this.secretWord = FIXED_SECRET;
+
+  // make sure the fixed secret word is actually in the list of words
+  if (!words.includes(FIXED_SECRET)) {
+    words[0] = FIXED_SECRET;
+  }
 
   const usedPositions = new Set();
 
-  words.forEach((word, wIndex) => {
+  let wordIndex = 0;
+
+  for (const word of words) {
     let placed = false;
+    let safety = 0; // just in case, avoid infinite loop
 
-    // keep trying random positions until we find a free spot in one row
-    while (!placed) {
+    while (!placed && safety < 1000) {
+      safety++;
+
       const row = Math.floor(Math.random() * this.rows);
-      const maxStartCol = this.cols - word.length;
-      if (maxStartCol < 0) break; // word too long (not your case)
 
-      const startCol = Math.floor(Math.random() * (maxStartCol + 1));
+      // horizontal ONLY
+      const maxCol = this.cols - word.length;
+      if (maxCol < 0) break; // word longer than row, bail out
 
-      // check if all slots for this word are free
-      let canPlace = true;
+      const col = Math.floor(Math.random() * (maxCol + 1));
+
+      // check for conflicts
+      let conflict = false;
       for (let i = 0; i < word.length; i++) {
-        const pos = row * this.cols + (startCol + i);
+        const pos = `${row},${col + i}`;
         if (usedPositions.has(pos)) {
-          canPlace = false;
+          conflict = true;
           break;
         }
       }
-      if (!canPlace) continue;
+      if (conflict) continue;
 
-      // place each letter of the word in its own cell
+      // place the word horizontally
       for (let i = 0; i < word.length; i++) {
-        const pos = row * this.cols + (startCol + i);
-        const cell = this.cells[pos];
-        cell.text = word[i];
-        cell.isWord = true;
-        cell.used = false;
-        cell.wordIndex = wIndex;
+        const pos = `${row},${col + i}`;
         usedPositions.add(pos);
+        const index = row * this.cols + (col + i);
+        this.cells[index].text = word[i];
+        this.cells[index].isWord = true;
+        this.cells[index].wordIndex = wordIndex;
       }
 
       placed = true;
     }
-  });
+
+    wordIndex++;
+  }
 },
 
 
@@ -288,18 +308,16 @@ placeWords() {
       }, 35); // speed similar to original
     },
 
-onCellClick(cell) {
+    onCellClick(cell) {
   if (this.gameOver) return;
   if (!cell.isWord) return;
   if (cell.used) return;
 
   const wordIndex = cell.wordIndex;
-
-  // all cells that belong to the same word
   const wordCells = this.cells.filter(c => c.wordIndex === wordIndex);
   const guess = wordCells.map(c => c.text).join("");
 
-  // mark all letters as used
+  // marque les lettres comme utilisées
   wordCells.forEach(c => {
     c.used = true;
   });
@@ -313,7 +331,7 @@ onCellClick(cell) {
     });
     this.success = true;
     this.gameOver = true;
-    this.emitDone();
+    // ❌ NE PAS appeler this.emitDone() ici
   } else {
     const matches = this.countMatchingChars(guess, this.secretWord);
     this.logs.unshift({
@@ -326,10 +344,11 @@ onCellClick(cell) {
     if (this.attemptsRemaining <= 0) {
       this.gameOver = true;
       this.success = false;
-      this.emitDone();
+      this.emitDone();   // ✅ on garde ça pour l’échec
     }
   }
 },
+
 
 
     countMatchingChars(wordA, wordB) {
@@ -344,13 +363,29 @@ onCellClick(cell) {
       return count;
     },
 
-        emitDone() {
-      this.$emit("done", { success: this.success });
-    },
+    emitDone() {
+  this.$emit("done", { success: this.success });
+},
 
-    handleClose() {
-      this.$emit("close");
-    },
+handleClose() {
+  this.$emit("close");
+},
+
+handleContinue() {
+  // si le joueur a réussi le mini-jeu
+  if (this.success) {
+    // 🔽 va au chapitre "intro2" (Acte 2 — Cauchemar)
+    this.$router.push({
+      name: "game",      // mets ici le nom de ta route pour les chapitres
+      params: { id: "intro2" },
+    });
+  } else {
+    // si jamais on montre le bouton sans succès, on ferme juste
+    this.handleClose();
+  }
+},
+
+
 
   hoverWord(cell) {
   this.hoveredWordIndex = cell && cell.isWord ? cell.wordIndex : null;

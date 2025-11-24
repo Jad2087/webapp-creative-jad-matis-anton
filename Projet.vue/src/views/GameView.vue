@@ -26,9 +26,11 @@
         <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame v-if="openMiniGame" @close="openMiniGame = false" />
+        <MiniGame v-if="openMiniGame" @close="openMiniGame = false" @done="onMiniGameDone" />
 
-        <Echec v-if="showEchec" @retry="retryGame" @menu="goToMenu" />
+        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
+          @menu="goToMenu" />
+
 
       </div>
 
@@ -63,7 +65,9 @@ export default {
       current: this.$route.params.id || "intro",
       openMiniGame: false,     // <-- your flag for showing/hiding the overlay
       // currentChapter is computed below so you can remove it from data
-      showEchec: false
+      showEchec: false,
+      echecTitle: "DEATH TITLE",
+      echecDescription: "DEATH TEXT …",
     };
   },
 
@@ -97,10 +101,13 @@ export default {
         this.current = next.id;
         // ensure if we exit mini-game we reset the flag
         this.openMiniGame = false;
-         // Si mort → afficher l'écran d'échec
-     if (next.id === "clue01-02") {
-        this.showEchec = true;
-      }
+        // Si mort → afficher l'écran d'échec
+        if (next.id === "clue01-02") {
+          this.echecTitle = "Erreur Chronique";
+          this.echecDescription =
+            "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
+          this.showEchec = true;
+        }
       }
       else if (next.type === "game") {
         console.log("Lancer le mini-jeu :", next.id);
@@ -109,20 +116,34 @@ export default {
       }
     },
 
+
+    // MINIGAME GAMEOVER
+
+    onMiniGameDone(result) {
+      // on ferme le mini-jeu
+      this.openMiniGame = false;
+
+      // si le joueur a échoué au mini-jeu (4 mauvaises réponses)
+      if (!result || !result.success) {
+        this.echecTitle = "Erreur Chronique";
+        this.echecDescription =
+          "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
+        this.showEchec = true;   // 👉 affiche <Echec /> avec ce texte
+      }
+      // si result.success === true, on ne fait rien :
+      // le joueur a réussi, tu gères déjà la suite (Acte 2)
+    },
+
     retryGame() {
-       this.showEchec = false;
-       this.$router.push({ name: "game", params: { id: "fork01" } });
-       this.current = "fork01";
+      this.showEchec = false;
+      this.$router.push({ name: "game", params: { id: "fork01" } });
+      this.current = "fork01";
     },
 
     goToMenu() {
-       this.showEchec = false;
-       this.$router.push({ name: "game", params: { id: "intro" } });
-       this.current = "intro";
-    },
-
-    goToAct2() {
-       this.$router.push({ name: "millieu" }); // dirige vers MillieuView
+      this.showEchec = false;
+      this.$router.push({ name: "game", params: { id: "intro" } });
+      this.current = "intro";
     },
 
     // TEXT ANIMATION
@@ -327,5 +348,4 @@ export default {
   align-items: center;
   gap: 1rem;
 }
-
 </style>
