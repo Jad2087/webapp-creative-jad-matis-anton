@@ -5,7 +5,7 @@
       <div class="columnleft">
         <Timer />
         <Decoration />
-        <MiniMap />
+        <MiniMap :currentChapterId="current" />
       </div>
       <!-- Contenu droit -->
       <div class="columnright">

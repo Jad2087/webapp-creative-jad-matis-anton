@@ -3,7 +3,7 @@
     <div class="mini-game-content">
 
       <!-- Close button -->
-      <button class="close-btn" @click="handleClose">FERMER</button>
+      <button class="close-btn" @click="handleClose">Fermer</button>
 
       <!-- MAIN TERMINAL AREA -->
       <div class="terminal-frame">
@@ -87,7 +87,7 @@
             &gt; PLEASE CONTACT AN ADMINISTRATOR
           </p>
           <button class="continue-btn" @click="handleClose">
-            CONTINUER
+            Continuer
           </button>
         </div>
       </div>
@@ -411,14 +411,23 @@ isHovered(cell) {
 
 /* Close button */
 .close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: transparent;
+  background-color: #111;
   color: #03ab5e;
-  border: 1px solid #03ab5e;
-  padding: 6px 10px;
+  font-weight: bold;
+  border: 2px solid #03ab5e;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  margin: 0.5rem;
   cursor: pointer;
+  width: 250px;
+  transition: 0.3s ease;
+  font-family: "Courier New", monospace;
+}
+
+.close-btn:hover {
+  background-color: #03ab5e;
+  color: #000;
+  transform: scale(1.05);
 }
 
 /* HEADER + ATTEMPTS */
@@ -530,14 +539,25 @@ isHovered(cell) {
 .end-message p {
   margin: 4px 0;
 }
-
 .continue-btn {
-  margin-top: 10px;
-  background: transparent;
+  background-color: #111;
   color: #03ab5e;
-  border: 1px solid #03ab5e;
-  padding: 6px 10px;
+  font-weight: bold;
+  border: 2px solid #03ab5e;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  margin: 0.5rem;
   cursor: pointer;
+  width: 250px;
+  transition: 0.3s ease;
+  font-family: "Courier New", monospace;
 }
+
+.continue-btn:hover {
+  background-color: #03ab5e;
+  color: #000;
+  transform: scale(1.05);
+}
+
 
 </style>
