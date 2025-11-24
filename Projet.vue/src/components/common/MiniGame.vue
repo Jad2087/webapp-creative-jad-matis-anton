@@ -368,6 +368,10 @@ isHovered(cell) {
 </script>
 
 <style scoped>
+* {
+  font-family: "Courier New", monospace;
+}
+
 .mini-game-overlay {
   position: fixed;
   top: 0;
