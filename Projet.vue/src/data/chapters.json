@@ -15,7 +15,7 @@
     "text": "Vous suivez le couloir faiblement éclairé jusqu’à un embranchement.\n\nLe passage se divise en trois directions, deux couloirs plongés dans l’obscurité complète, et un chemin central d’où émane une faible lueur verte.",
     "choices": [
       { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01" } },
-      { "text": "Suivre la lueur verte", "next": { "type": "game", "id": "minigame01" } },
+      { "text": "Suivre la lueur verte", "next": { "type": "story", "id": "minigame01" } },
       { "text": "Aller à droite", "next": { "type": "story", "id": "clue02" } },
       { "text": "Retour", "next": { "type": "story", "id": "intro" } }
     ]
@@ -61,7 +61,8 @@
     "title": "Act 1 — Mini-jeu",
     "text": "Vous suivez le couloir jusqu’à apercevoir une vieille console éclairée par une faible lueur verte.\n\nElle est reliée à une porte verrouillée. Le terminal fonctionne encore, mais demande un mot de passe.\n\nVous en concluez que pour avancer… il faudra essayer de le pirater.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } },
+    { "text": "launch-mini-game", "next": { "type": "game", "id": "minigame01" } }
     ]
   },
   {

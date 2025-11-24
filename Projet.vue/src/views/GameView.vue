@@ -3,9 +3,9 @@
     <div class="screen">
       <!-- TIMER à gauche -->
       <div class="columnleft">
-      <Timer />
-      <Decoration />
-      <MiniMap />
+        <Timer />
+        <Decoration />
+        <MiniMap />
       </div>
       <!-- Contenu droit -->
       <div class="columnright">
@@ -23,23 +23,28 @@
         </div>
 
 
-        <!-- Choix -->
-        <ChoiceButtons
-          :choices="activeChapter.choices"
-          @choice-selected="changeChapter"
-          class="choicebuttons"
-        />
+        <!-- Choices show up as buttons from ChoiceButtons component -->
+        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
+
+        <!-- MiniGame overlay component, shown only when openMiniGame is true -->
+        <MiniGame v-if="openMiniGame" @close="openMiniGame = false" />
+
       </div>
+
     </div>
   </div>
+
+
 </template>
 
 <script>
+import MiniGame from "@/components/common/MiniGame.vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import ChoiceButtons from "@/components/common/ChoiceButtons.vue";
 import Timer from "@/components/layout/Timer.vue";
 import MiniMap from "@/components/layout/MiniMap.vue";
 import Decoration from "@/components/layout/Decoration.vue";
+
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
@@ -49,12 +54,13 @@ import { gsap } from "gsap";
 
 export default {
   name: "GameView",
-  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Decoration },
+  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Decoration, MiniGame },
 
   data() {
     return {
-      // Chapitre actuel (id)
-      current: "intro",
+      current: this.$route.params.id || "intro",
+      openMiniGame: false     // <-- your flag for showing/hiding the overlay
+      // currentChapter is computed below so you can remove it from data
     };
   },
 
@@ -68,6 +74,7 @@ export default {
     // permet d'utiliser `storyStore` dans le template
     storyStore() {
       return useStoryStore();
+
     },
 
     // Retourne le chapitre actuellement actif
@@ -83,14 +90,15 @@ export default {
   methods: {
     changeChapter(next) {
       if (next.type === "story") {
-        // Navigue vers la même route "game" avec le nouvel id
         this.$router.push({ name: "game", params: { id: next.id } });
-        // met à jour le chapitre actuel
         this.current = next.id;
-      } else if (next.type === "game") {
-        // lance le mini-jeu
+        // ensure if we exit mini-game we reset the flag
+        this.openMiniGame = false;
+      }
+      else if (next.type === "game") {
         console.log("Lancer le mini-jeu :", next.id);
-        this.current = next.id; //affiche dans GameView
+        console.log("openMiniGame set to true");
+this.openMiniGame = true;
       }
     },
 
@@ -145,11 +153,16 @@ export default {
   },
 
   watch: {
-    // relance l’animation quand le chapitre change
     current() {
       this.$nextTick(() => this.animateText());
+      // If user navigated away, ensure mini game closed
+      this.openMiniGame = false;
     },
-  },
+    "$route.params.id"(newId) {  // watch route change too
+      this.current = newId;
+      this.openMiniGame = false;
+    }
+  }
 };
 </script>
 
@@ -157,6 +170,7 @@ export default {
 * {
   font-family: "Courier New", monospace;
 }
+
 /* Container et screen restent inchangés */
 .container {
   display: flex;
@@ -184,9 +198,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -209,12 +225,10 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -228,7 +242,7 @@ export default {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright > *:first-child {
+.columnright>*:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -256,7 +270,7 @@ export default {
 }
 
 /* ChoiceButtons en bas */
-.columnright > *:last-child {
+.columnright>*:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -294,5 +308,7 @@ export default {
   align-items: center;
   gap: 1rem;
 }
+
+
 
 </style>
