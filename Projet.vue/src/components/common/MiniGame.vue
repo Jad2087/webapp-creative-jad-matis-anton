@@ -102,14 +102,7 @@ export default {
   name: "MiniGame",
   emits: ["close", "done"],
 
-  // 🔥 NEW: configuration passed from GameView
-  props: {
-    config: {
-      type: Object,
-      required: false,
-      default: () => ({})
-    }
-  },
+
 
   data() {
     // attempts from config, fallback to 4
@@ -221,32 +214,6 @@ export default {
     },
 
     placeWords() {
-      // 🔥 1) how many words to place
-      const defaultWordCount = 8;
-      const wordCount = this.config.wordCount ?? defaultWordCount;
-
-      // 🔥 2) which pool of words to use
-      // if config.words exists, use it. Otherwise use the old WORD_LIST.
-      const pool = [...(this.config.words ?? WORD_LIST)];
-      const words = [];
-
-      // pick some random words from the list
-      for (let i = 0; i < wordCount; i++) {
-        const idx = Math.floor(Math.random() * pool.length);
-        words.push(pool[idx]);
-        pool.splice(idx, 1);
-      }
-
-      // 🔥 3) which word is the correct password
-      const FIXED_SECRET = this.config.password ?? "START";
-      this.secretWord = FIXED_SECRET;
-
-      // make sure the fixed secret word is actually in the list of words
-      if (!words.includes(FIXED_SECRET)) {
-        words[0] = FIXED_SECRET;
-      }
-
-
       const usedPositions = new Set();
       let wordIndex = 0;
 

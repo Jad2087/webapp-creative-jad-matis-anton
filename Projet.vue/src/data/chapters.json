@@ -206,13 +206,7 @@
     "id": "minigame02",
     "title": "Act 2 — Terminal corrompu",
     "text": "Le terminal clignote de manière instable, comme si quelque chose... attendait.",
-    "minigame": {
-      "password": "PROTOCOL",
-      "attempts": 5,
-      "words": ["PROTEIN", "PROCESS", "PROTECT", "PROTOCOL", "PROJECT"],
-      "goodMessage": "Le système redémarre lentement...",
-      "failMessage": "Le terminal s'éteint brutalement. Une erreur critique s'affiche..."
-    },
+    
     "choices": [
       { "text": "Retour", "next": { "type": "story", "id": "fork02", "good": true } },
       { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame02", "good": true } }
