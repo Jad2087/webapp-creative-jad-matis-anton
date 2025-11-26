@@ -99,23 +99,55 @@ export default {
 
   methods: {
     changeChapter(next) {
-       //  On récupère le store du joueur
-         const player = usePlayerStore();
+      //  On récupère le store du joueur
+      const player = usePlayerStore();
+      const nextId = next.id;
+
+      // ----- MARQUER LES INDICES TROUVÉS -----
+      if (nextId === "clue01-01") {
+        player.addClue("clue01");
+      }
+
+      if (nextId === "clue02-01") {
+        player.addClue("clue02");
+      }
+
+      // ----- REDIRIGER VERS LA VERSION "DÉJÀ EXPLORÉE" -----
+      if (nextId === "clue01" && player.hasClue("clue01")) {
+        this.current = "clue01-03";
+        this.$router.push({ name: "game", params: { id: "clue01-03" } });
+        return;
+      }
+
+      if (nextId === "clue02" && player.hasClue("clue02")) {
+        this.current = "clue02-03";
+        this.$router.push({ name: "game", params: { id: "clue02-03" } });
+        return;
+      }
+
+      // ----- NAVIGATION NORMALE -----
+      if (next.type === "story") {
+        this.current = nextId;
+        this.$router.push({ name: "game", params: { id: nextId } });
+        this.openMiniGame = false;
+      }
 
       // On modifie l'intelligence AVANT de changer de chapitre
       if (next.good === true) {
-         player.bonneDecision(3); // +3 intelligence
-    } 
-     else if (next.good === false) {
-         player.mauvaiseDecision(2); // -2 intelligence
-    }
+        player.bonneDecision(3); // +3 intelligence
+      }
+      else if (next.good === false) {
+        player.mauvaiseDecision(2); // -2 intelligence
+      }
       if (next.type === "story") {
         this.$router.push({ name: "game", params: { id: next.id } });
         this.current = next.id;
         // ensure if we exit mini-game we reset the flag
         this.openMiniGame = false;
         // Si mort → afficher l'écran d'échec
-        if (next.id === "clue01-02") {
+        if (next.id === "clue01-02" || next.id === "clue02-02") {
+          const player = usePlayerStore();
+          player.reset();
           this.echecTitle = "Erreur Chronique";
           this.echecDescription =
             "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
@@ -138,6 +170,8 @@ export default {
 
       // si le joueur a échoué au mini-jeu (4 mauvaises réponses)
       if (!result || !result.success) {
+        const player = usePlayerStore();
+        player.reset();
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
@@ -148,13 +182,20 @@ export default {
     },
 
     retryGame() {
+      const player = usePlayerStore();   // 🔥 add this line
+
+      player.reset();                    // 🔥 reset intelligence + clues
       this.showEchec = false;
       this.$router.push({ name: "game", params: { id: this.restartChapterId } });
       this.current = this.restartChapterId;
     },
 
 
+
     goToMenu() {
+      const player = usePlayerStore();   // 🔥 add this line
+
+      player.reset();                    // 🔥 reset intelligence + clues
       this.showEchec = false;
       this.$router.push({ name: "home", params: { id: "" } });
       this.current = "intro";

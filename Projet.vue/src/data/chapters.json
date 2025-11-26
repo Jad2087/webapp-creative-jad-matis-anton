@@ -18,6 +18,11 @@
       { "text": "Retour", "next": { "type": "story", "id": "intro", "good": false } }
     ]
   },
+
+
+
+
+  
   {
     "id": "clue01",
     "title": "Act 1 — Effondrement",
@@ -45,6 +50,20 @@
     ]
   },
   {
+    "id": "clue01-03",
+    "title": "Act 1 — Effondrement (Déjà exploré)",
+    "text": "Vous êtes déjà venu ici. Le corps est toujours là, immobile. L’indice que vous avez trouvé vous semble encore plus important maintenant.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
+    ]
+  },
+
+
+
+
+
+
+  {
     "id": "clue02",
     "title": "Act 1 — Placard",
     "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journal.",
@@ -71,6 +90,20 @@
     ]
   },
   {
+    "id": "clue02-03",
+    "title": "Act 1 — Placard (Déjà exploré)",
+    "text": "Vous êtes déjà venu fouiller ce placard. Le journal que vous avez trouvé est toujours dans votre poche.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
+    ]
+  },
+
+
+
+
+
+
+  {
     "id": "minigame01",
     "title": "Act 1 — Mini-jeu",
     "text": "Vous suivez le couloir jusqu’à apercevoir une vieille console éclairée par une faible lueur verte.\n\nElle est reliée à une porte verrouillée. Le terminal fonctionne encore, mais demande un mot de passe.\n\nVous en concluez que pour avancer… il faudra essayer de le pirater.",
@@ -79,12 +112,98 @@
       { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame01", "good": true } }
     ]
   },
+
+
+
+
+
+
+  
+
   {
     "id": "intro2",
-    "title": "Acte 2 — Cauchemar",
-    "text": "Un grondement sourd résonne derrière vous. Les lumières vacillent. Puis un frisson vous traverse : quelque chose approche.\n\nVotre vision se brouille… vos oreilles bourdonnent… puis des images violentes éclatent dans votre esprit.\n\nVous n’êtes plus dans la station. Vous êtes ailleurs.\nDans un endroit où rien n’obéit aux lois de la réalité.",
+    "title": "Acte 2 — Intro",
+    "text": "Texte Intro.",
     "choices": [
-      { "text": "Continuer", "next": { "type": "story", "id": "act2_scene01", "good": true } }
+      { "text": "Continuer", "next": { "type": "story", "id": "fork02", "good": true } }
+    ]
+  },
+  {
+    "id": "fork02",
+    "title": "Acte 2 — Embranchement-2",
+    "text": "111",
+    "choices": [
+      { "text": "Retour au Intro", "next": { "type": "story", "id": "intro2", "good": true } },
+      { "text": "Vers le clue03", "next": { "type": "story", "id": "clue03", "good": true } },
+      { "text": "Vers le clue04", "next": { "type": "story", "id": "clue04", "good": true } }
+    ]
+  },
+  {
+    "id": "clue03",
+    "title": "Act 2 — Clue03",
+    "text": "Texte clue03.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } },
+      { "text": "Mort", "next": { "type": "story", "id": "clue03-01", "good": true } },
+      { "text": "Vie", "next": { "type": "story", "id": "clue03-02", "good": false } }
+    ]
+  },
+  {
+    "id": "clue03-01",
+    "title": "Act 2 — Clue03 — Mort",
+    "text": "Mort.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+    ]
+  },
+  {
+    "id": "clue03-02",
+    "title": "Act 2 — Clue03 — Vie",
+    "text": "Vie.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+    ]
+  },
+  {
+    "id": "clue04",
+    "title": "Act 2 — Clue04",
+    "text": "Texte clue04.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } },
+      { "text": "Mort", "next": { "type": "story", "id": "clue04-01", "good": true } },
+      { "text": "Vie", "next": { "type": "story", "id": "clue04-02", "good": false } }
+    ]
+  },
+  {
+    "id": "clue04-01",
+    "title": "Act 2 — Clue04 — Mort",
+    "text": "Mort.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+    ]
+  },
+  {
+    "id": "clue04-02",
+    "title": "Act 2 — Clue04 — Vie",
+    "text": "Vie.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
     ]
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]
