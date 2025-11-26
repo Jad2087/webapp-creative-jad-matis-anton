@@ -26,8 +26,7 @@
         <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
-          @done="onMiniGameDone" />
+        <MiniGame v-if="openMiniGame"  :minigame-id="activeMiniGameId" @close="openMiniGame = false" @done="onMiniGameDone" />
 
         <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
           @menu="goToMenu" />

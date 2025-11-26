@@ -4,11 +4,7 @@
 
     <div class="minimap-content">
       <!-- Image de la mini-map -->
-      <img 
-        class="minimap-image" 
-        :src="miniMapImage" 
-        alt=""
-      />
+      <img class="minimap-image" :src="miniMapImage" alt="" />
 
       <!-- Point -->
       <div class="map-point" :style="pointStyle">●</div>
@@ -29,24 +25,24 @@ export default {
       miniMapImage: "/src/Images/minimap.png",
 
       chapterPositions: {
-        intro:       { top: "19%", left: "52%" },
-        fork01:      { top: "30%", left: "52%" },
-        clue01:      { top: "33%", left: "66%" },
+        intro: { top: "19%", left: "52%" },
+        fork01: { top: "30%", left: "52%" },
+        clue01: { top: "33%", left: "66%" },
         "clue01-01": { top: "35%", left: "8%" },
         "clue01-02": { top: "30%", left: "12%" },
-        clue02:      { top: "45%", left: "42%" },
-        minigame01:  { top: "50%", left: "60%" },
+        clue02: { top: "45%", left: "42%" },
+        minigame01: { top: "50%", left: "60%" },
 
-        intro2:      { top: "10%", left: "85%" },
+        intro2: { top: "10%", left: "85%" },
 
-        default:     { top: "50%", left: "50%" }
+        default: { top: "50%", left: "50%" }
       }
     };
   },
 
   computed: {
     pointStyle() {
-      return this.chapterPositions[this.currentChapterId] 
+      return this.chapterPositions[this.currentChapterId]
         || this.chapterPositions.default;
     }
   }
@@ -88,9 +84,12 @@ export default {
 }
 
 @keyframes blink {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -102,7 +101,7 @@ export default {
   color: #03ab5e;
   font-size: 1.4rem;
   pointer-events: none;
-  animation: blink 1s infinite; /* Clignote toutes les 1 seconde */
+  animation: blink 1s infinite;
+  /* Clignote toutes les 1 seconde */
 }
-
 </style>
