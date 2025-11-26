@@ -99,4 +99,5 @@ export default {
 .bar.active {
   background: #d6d6d6;
 }
+
 </style>

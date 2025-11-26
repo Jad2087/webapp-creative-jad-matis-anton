@@ -130,4 +130,55 @@ export default {
   color: #000;
   transform: scale(1.1);
 }
+
+/* ==== MOBILE ==== */
+@media (max-width: 768px) {
+
+/* IMPORTANT : forces le viewport mobile correct */
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100dvh;
+  overflow: hidden; /* évite que 100% casse */
+}
+
+.container {
+  width: 100%;
+  height: 100dvh;  /* plein écran réel */
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;    /* prend 100% du parent */
+  padding: 1rem;
+
+  /* On retire tout le style “CRT” */
+  border: none;
+  border-radius: 0;
+  transform: none;
+  animation: none;
+
+  /* Layout mobile */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* centré verticalement */
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.start-btn {
+  width: 80%;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+}
+}
+
 </style>

@@ -153,4 +153,61 @@ export default {
   width: 100%; 
   align-self: stretch; /* juste au cas où */
 }
+
+/* ==== MOBILE ==== */
+@media (max-width: 1080px) {
+
+/* FULL MOBILE RESET */
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100dvh;
+  overflow: hidden; /* sinon la hauteur casse */
+}
+
+.container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100dvh;   /* plein écran réel */
+  display: flex;
+}
+
+.intro-layout {
+  width: 100%;
+  height: 100%;     /* IMPORTANT : sinon .screen ne peut pas s'étendre */
+  display: flex;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;     /* FINALLY: prend 100% de l’espace */
+  padding: 1rem;
+
+  /* enlever le style CRT */
+  border: none;
+  border-radius: 0;
+  transform: none;
+  animation: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* ou center si tu veux centré */
+  gap: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.start-btn {
+  width: 80%;
+}
+}
+
+
+
+
 </style>
