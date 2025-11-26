@@ -26,7 +26,8 @@
         <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame v-if="openMiniGame" @close="openMiniGame = false" @done="onMiniGameDone" />
+        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
+          @done="onMiniGameDone" />
 
         <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
           @menu="goToMenu" />
@@ -71,6 +72,7 @@ export default {
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
       restartChapterId: "intro", // par défaut : Acte 1 intro
+      activeMiniGameId: null
     };
   },
 
@@ -99,48 +101,84 @@ export default {
 
   methods: {
     changeChapter(next) {
-  const player = usePlayerStore();
-  const nextId = next.id;
+      const player = usePlayerStore();
+      const nextId = next.id;
 
-  // ----- AJOUT DES INDICES -----  
-  if (nextId === "clue01-01") player.addClue("clue01");
-  if (nextId === "clue02-01") player.addClue("clue02");
+      // ----- AJOUT DES INDICES -----  
+      if (nextId === "clue01-01") player.addClue("clue01");
+      if (nextId === "clue02-01") player.addClue("clue02");
 
-  // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----  
-  if (nextId === "clue01" && player.hasClue("clue01")) {
-    this.current = "clue01-03";
-    this.$router.push({ name: "game", params: { id: "clue01-03" } });
-    return;
-  }
-  if (nextId === "clue02" && player.hasClue("clue02")) {
-    this.current = "clue02-03";
-    this.$router.push({ name: "game", params: { id: "clue02-03" } });
-    return;
-  }
+      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----  
+      if (nextId === "clue01" && player.hasClue("clue01")) {
+        this.current = "clue01-03";
+        this.$router.push({ name: "game", params: { id: "clue01-03" } });
+        return;
+      }
+      if (nextId === "clue02" && player.hasClue("clue02")) {
+        this.current = "clue02-03";
+        this.$router.push({ name: "game", params: { id: "clue02-03" } });
+        return;
+      }
 
-  // ----- MAUVAIS CHOIX → MORT -----  
-  if (next.good === false) {
-    player.incrementDeaths(1);
-  }
+      // ----- MAUVAIS CHOIX → MORT -----  
+      if (next.good === false) {
+        player.incrementDeaths(1);
+      }
 
-  // ----- NAVIGATION NORMALE -----  
-  if (next.type === "story") {
-    this.current = nextId;
-    this.$router.push({ name: "game", params: { id: nextId } });
-    this.openMiniGame = false;
+      // ----- NAVIGATION NORMALE -----  
+      if (next.type === "story") {
+        this.current = nextId;
+        this.$router.push({ name: "game", params: { id: nextId } });
+        this.openMiniGame = false;
 
-    // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----  
-    if (next.id === "clue01-02" || next.id === "clue02-02") {
-      // on ne reset plus les morts ici, juste afficher l'écran
-      this.echecTitle = "Erreur Chronique";
-      this.echecDescription =
-        "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
-      this.showEchec = true;
-    }
-  } else if (next.type === "game") {
-    this.openMiniGame = true;
-  }
-},
+      }
+      if (nextId === "clue02" && player.hasClue("clue02")) {
+        this.current = "clue02-03";
+        this.$router.push({ name: "game", params: { id: "clue02-03" } });
+        return;
+      }
+
+      // ----- NAVIGATION NORMALE -----
+      if (next.type === "story") {
+        this.current = nextId;
+        this.$router.push({ name: "game", params: { id: nextId } });
+        this.openMiniGame = false;
+      }
+      if (next.type === "story") {
+        this.$router.push({ name: "game", params: { id: next.id } });
+        this.current = next.id;
+        // ensure if we exit mini-game we reset the flag
+        this.openMiniGame = false;
+        // Si mort → afficher l'écran d'échec
+        if (next.id === "clue01-02" || next.id === "clue02-02") {
+          const player = usePlayerStore();
+          player.reset();
+          this.echecTitle = "Erreur Chronique";
+          this.echecDescription =
+            "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
+          this.showEchec = true;
+        }
+      }
+      else if (next.type === "game") {
+        console.log("Lancer le mini-jeu :", next.id);
+        console.log("openMiniGame set to true");
+        this.activeMiniGameId = next.id;    // 🔥 store which minigame is being launched
+        this.openMiniGame = true;
+      }
+
+
+      // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----  
+      if (next.id === "clue01-02" || next.id === "clue02-02") {
+        // on ne reset plus les morts ici, juste afficher l'écran
+        this.echecTitle = "Erreur Chronique";
+        this.echecDescription =
+          "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
+        this.showEchec = true;
+      }
+      else if (next.type === "game") {
+        this.openMiniGame = true;
+      }
+    },
 
     // MINIGAME GAMEOVER
 
@@ -384,5 +422,4 @@ export default {
   align-items: center;
   gap: 1rem;
 }
-
 </style>

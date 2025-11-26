@@ -17,12 +17,15 @@
 </template>
 
 <script>
+
+
 export default {
   name: "MiniMap",
   props: ["currentChapterId"],
 
   data() {
     return {
+      
       miniMapImage: "/src/Images/minimap.png",
 
       chapterPositions: {

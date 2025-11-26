@@ -15,12 +15,7 @@
         <!-- Attempts line + blocks -->
         <div class="term-attempts">
           <span>{{ attemptsRemaining }} ATTEMPTS REMAINING:</span>
-          <span
-            v-for="n in maxAttempts"
-            :key="n"
-            class="attempt-block"
-            :class="{ used: n > attemptsRemaining }"
-          ></span>
+          <span v-for="n in maxAttempts" :key="n" class="attempt-block" :class="{ used: n > attemptsRemaining }"></span>
         </div>
 
         <!-- GRID + LOG AREA -->
@@ -32,30 +27,18 @@
             </ul>
           </div>
 
-<!-- Character lines -->
-<div class="char-lines">
-  <div
-    class="char-line"
-    v-for="(row, rIndex) in visibleGridRows"
-    :key="rIndex"
-  >
-    <span
-      v-for="(cell, cIndex) in row"
-      :key="cIndex"
-      class="char-span"
-      :class="{
-        word: cell.isWord,
-        used: cell.used,
-        hovered: isHovered(cell)
-      }"
-      @click="onCellClick(cell)"
-      @mouseover="hoverWord(cell)"
-      @mouseleave="hoverWord(null)"
-    >
-      {{ cell.text }}
-    </span>
-  </div>
-</div>
+          <!-- Character lines -->
+          <div class="char-lines">
+            <div class="char-line" v-for="(row, rIndex) in visibleGridRows" :key="rIndex">
+              <span v-for="(cell, cIndex) in row" :key="cIndex" class="char-span" :class="{
+                word: cell.isWord,
+                used: cell.used,
+                hovered: isHovered(cell)
+              }" @click="onCellClick(cell)" @mouseover="hoverWord(cell)" @mouseleave="hoverWord(null)">
+                {{ cell.text }}
+              </span>
+            </div>
+          </div>
 
 
 
@@ -79,23 +62,23 @@
           </div>
         </div>
 
-<!-- END MESSAGE -->
-<div v-if="gameOver" class="end-message">
-  <template v-if="success">
-    <p>&gt; TERMINAL CONNECTION SUCCESSFUL...</p>
-    <button class="continue-btn" @click="handleContinue">
-      CONTINUER
-    </button>
-  </template>
+        <!-- END MESSAGE -->
+        <div v-if="gameOver" class="end-message">
+          <template v-if="success">
+            <p>&gt; TERMINAL CONNECTION SUCCESSFUL...</p>
+            <button class="continue-btn" @click="handleContinue">
+              CONTINUER
+            </button>
+          </template>
 
-  <template v-else>
-    <p>
-      &gt; TERMINAL LOCKED<br />
-      &gt; PLEASE CONTACT AN ADMINISTRATOR
-    </p>
-    <!-- pas de bouton ici : on laisse le parent afficher Échec -->
-  </template>
-</div>
+          <template v-else>
+            <p>
+              &gt; TERMINAL LOCKED<br />
+              &gt; PLEASE CONTACT AN ADMINISTRATOR
+            </p>
+            <!-- pas de bouton ici : on laisse le parent afficher Échec -->
+          </template>
+        </div>
 
       </div>
     </div>
@@ -119,13 +102,25 @@ export default {
   name: "MiniGame",
   emits: ["close", "done"],
 
+  // 🔥 NEW: configuration passed from GameView
+  props: {
+    config: {
+      type: Object,
+      required: false,
+      default: () => ({})
+    }
+  },
+
   data() {
+    // attempts from config, fallback to 4
+    const attempts = this.config.attempts ?? 4;
+
     return {
-hoveredWordIndex: null,
+      hoveredWordIndex: null,
 
-
-      maxAttempts: 4,
-      attemptsRemaining: 4,
+      // 🔥 use config value instead of hard-coded
+      maxAttempts: attempts,
+      attemptsRemaining: attempts,
 
       rows: 15,
       cols: 36,
@@ -139,7 +134,6 @@ hoveredWordIndex: null,
       gameOver: false,
       success: false,
 
-      // typing header
       headerText:
         "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nENTER PASSWORD NOW",
       headerIndex: 0,
@@ -147,25 +141,26 @@ hoveredWordIndex: null,
     };
   },
 
-computed: {
-  typedHeader() {
-    return this.headerText.slice(0, this.headerIndex);
-  },
 
-  gridRows() {
-    const rows = [];
-    for (let r = 0; r < this.rows; r++) {
-      const start = r * this.cols;
-      rows.push(this.cells.slice(start, start + this.cols));
-    }
-    return rows;
-  },
+  computed: {
+    typedHeader() {
+      return this.headerText.slice(0, this.headerIndex);
+    },
 
-  // show all rows except the last one → removes the “stray” bottom line
-  visibleGridRows() {
-    return this.gridRows.slice(0, this.gridRows.length - 1);
+    gridRows() {
+      const rows = [];
+      for (let r = 0; r < this.rows; r++) {
+        const start = r * this.cols;
+        rows.push(this.cells.slice(start, start + this.cols));
+      }
+      return rows;
+    },
+
+    // show all rows except the last one → removes the “stray” bottom line
+    visibleGridRows() {
+      return this.gridRows.slice(0, this.gridRows.length - 1);
+    },
   },
-},
 
 
   created() {
@@ -226,72 +221,77 @@ computed: {
     },
 
     placeWords() {
-  const wordCount = 8;             // how many words in the grid
-  const pool = [...WORD_LIST];     // all possible words
-  const words = [];
+      // 🔥 1) how many words to place
+      const defaultWordCount = 8;
+      const wordCount = this.config.wordCount ?? defaultWordCount;
 
-  // pick some random words from the list
-  for (let i = 0; i < wordCount; i++) {
-    const idx = Math.floor(Math.random() * pool.length);
-    words.push(pool[idx]);
-    pool.splice(idx, 1);
-  }
+      // 🔥 2) which pool of words to use
+      // if config.words exists, use it. Otherwise use the old WORD_LIST.
+      const pool = [...(this.config.words ?? WORD_LIST)];
+      const words = [];
 
-  // ✅ fixed secret word
-  const FIXED_SECRET = "START"; // change this if you want another fixed answer
-  this.secretWord = FIXED_SECRET;
+      // pick some random words from the list
+      for (let i = 0; i < wordCount; i++) {
+        const idx = Math.floor(Math.random() * pool.length);
+        words.push(pool[idx]);
+        pool.splice(idx, 1);
+      }
 
-  // make sure the fixed secret word is actually in the list of words
-  if (!words.includes(FIXED_SECRET)) {
-    words[0] = FIXED_SECRET;
-  }
+      // 🔥 3) which word is the correct password
+      const FIXED_SECRET = this.config.password ?? "START";
+      this.secretWord = FIXED_SECRET;
 
-  const usedPositions = new Set();
+      // make sure the fixed secret word is actually in the list of words
+      if (!words.includes(FIXED_SECRET)) {
+        words[0] = FIXED_SECRET;
+      }
 
-  let wordIndex = 0;
 
-  for (const word of words) {
-    let placed = false;
-    let safety = 0; // just in case, avoid infinite loop
+      const usedPositions = new Set();
+      let wordIndex = 0;
 
-    while (!placed && safety < 1000) {
-      safety++;
+      for (const word of words) {
+        let placed = false;
+        let safety = 0; // just in case, avoid infinite loop
 
-      const row = Math.floor(Math.random() * this.rows);
+        while (!placed && safety < 1000) {
+          safety++;
 
-      // horizontal ONLY
-      const maxCol = this.cols - word.length;
-      if (maxCol < 0) break; // word longer than row, bail out
+          const row = Math.floor(Math.random() * this.rows);
 
-      const col = Math.floor(Math.random() * (maxCol + 1));
+          // horizontal ONLY
+          const maxCol = this.cols - word.length;
+          if (maxCol < 0) break; // word longer than row, bail out
 
-      // check for conflicts
-      let conflict = false;
-      for (let i = 0; i < word.length; i++) {
-        const pos = `${row},${col + i}`;
-        if (usedPositions.has(pos)) {
-          conflict = true;
-          break;
+          const col = Math.floor(Math.random() * (maxCol + 1));
+
+          // check for conflicts
+          let conflict = false;
+          for (let i = 0; i < word.length; i++) {
+            const pos = `${row},${col + i}`;
+            if (usedPositions.has(pos)) {
+              conflict = true;
+              break;
+            }
+          }
+          if (conflict) continue;
+
+          // place the word horizontally
+          for (let i = 0; i < word.length; i++) {
+            const pos = `${row},${col + i}`;
+            usedPositions.add(pos);
+            const index = row * this.cols + (col + i);
+            this.cells[index].text = word[i];
+            this.cells[index].isWord = true;
+            this.cells[index].wordIndex = wordIndex;
+          }
+
+          placed = true;
         }
+
+        wordIndex++;
       }
-      if (conflict) continue;
-
-      // place the word horizontally
-      for (let i = 0; i < word.length; i++) {
-        const pos = `${row},${col + i}`;
-        usedPositions.add(pos);
-        const index = row * this.cols + (col + i);
-        this.cells[index].text = word[i];
-        this.cells[index].isWord = true;
-        this.cells[index].wordIndex = wordIndex;
-      }
-
-      placed = true;
-    }
-
-    wordIndex++;
-  }
-},
+    },
 
 
     startHeaderTyping() {
@@ -309,45 +309,45 @@ computed: {
     },
 
     onCellClick(cell) {
-  if (this.gameOver) return;
-  if (!cell.isWord) return;
-  if (cell.used) return;
+      if (this.gameOver) return;
+      if (!cell.isWord) return;
+      if (cell.used) return;
 
-  const wordIndex = cell.wordIndex;
-  const wordCells = this.cells.filter(c => c.wordIndex === wordIndex);
-  const guess = wordCells.map(c => c.text).join("");
+      const wordIndex = cell.wordIndex;
+      const wordCells = this.cells.filter(c => c.wordIndex === wordIndex);
+      const guess = wordCells.map(c => c.text).join("");
 
-  // marque les lettres comme utilisées
-  wordCells.forEach(c => {
-    c.used = true;
-  });
+      // marque les lettres comme utilisées
+      wordCells.forEach(c => {
+        c.used = true;
+      });
 
-  if (guess === this.secretWord) {
-    const matches = this.secretWord.length;
-    this.logs.unshift({
-      guess,
-      matches,
-      success: true,
-    });
-    this.success = true;
-    this.gameOver = true;
-    // ❌ NE PAS appeler this.emitDone() ici
-  } else {
-    const matches = this.countMatchingChars(guess, this.secretWord);
-    this.logs.unshift({
-      guess,
-      matches,
-      success: false,
-    });
+      if (guess === this.secretWord) {
+        const matches = this.secretWord.length;
+        this.logs.unshift({
+          guess,
+          matches,
+          success: true,
+        });
+        this.success = true;
+        this.gameOver = true;
+        // ❌ NE PAS appeler this.emitDone() ici
+      } else {
+        const matches = this.countMatchingChars(guess, this.secretWord);
+        this.logs.unshift({
+          guess,
+          matches,
+          success: false,
+        });
 
-    this.attemptsRemaining--;
-    if (this.attemptsRemaining <= 0) {
-      this.gameOver = true;
-      this.success = false;
-      this.emitDone();   // ✅ on garde ça pour l’échec
-    }
-  }
-},
+        this.attemptsRemaining--;
+        if (this.attemptsRemaining <= 0) {
+          this.gameOver = true;
+          this.success = false;
+          this.emitDone();   // ✅ on garde ça pour l’échec
+        }
+      }
+    },
 
 
 
@@ -364,36 +364,36 @@ computed: {
     },
 
     emitDone() {
-  this.$emit("done", { success: this.success });
-},
+      this.$emit("done", { success: this.success });
+    },
 
-handleClose() {
-  this.$emit("close");
-},
+    handleClose() {
+      this.$emit("close");
+    },
 
-handleContinue() {
-  // si le joueur a réussi le mini-jeu
-  if (this.success) {
-    // 🔽 va au chapitre "intro2" (Acte 2 — Cauchemar)
-    this.$router.push({
-      name: "game",      // mets ici le nom de ta route pour les chapitres
-      params: { id: "intro2" },
-    });
-  } else {
-    // si jamais on montre le bouton sans succès, on ferme juste
-    this.handleClose();
-  }
-},
+    handleContinue() {
+      // si le joueur a réussi le mini-jeu
+      if (this.success) {
+        // 🔽 va au chapitre "intro2" (Acte 2 — Cauchemar)
+        this.$router.push({
+          name: "game",      // mets ici le nom de ta route pour les chapitres
+          params: { id: "intro2" },
+        });
+      } else {
+        // si jamais on montre le bouton sans succès, on ferme juste
+        this.handleClose();
+      }
+    },
 
 
 
-  hoverWord(cell) {
-  this.hoveredWordIndex = cell && cell.isWord ? cell.wordIndex : null;
-},
+    hoverWord(cell) {
+      this.hoveredWordIndex = cell && cell.isWord ? cell.wordIndex : null;
+    },
 
-isHovered(cell) {
-  return cell.isWord && cell.wordIndex === this.hoveredWordIndex;
-},
+    isHovered(cell) {
+      return cell.isWord && cell.wordIndex === this.hoveredWordIndex;
+    },
 
   },
 
@@ -414,23 +414,28 @@ isHovered(cell) {
   background: rgba(0, 0, 0, 0.95);
   z-index: 9999;
   display: flex;
-  align-items: center;      /* center vertically */
-  justify-content: center;  /* center horizontally */
+  align-items: center;
+  /* center vertically */
+  justify-content: center;
+  /* center horizontally */
 }
 
 /* MAIN BOX */
 .mini-game-content {
   width: 90%;
   max-width: 1100px;
-  max-height: 85vh;          /* do NOT grow higher than the screen */
+  max-height: 85vh;
+  /* do NOT grow higher than the screen */
   background: #111;
   border: 2px solid #03ab5e;
   color: #03ab5e;
   font-family: "Courier New", monospace;
-  padding: 40px;             /* a bit smaller than 80px */
+  padding: 40px;
+  /* a bit smaller than 80px */
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;          /* stop horizontal/vertical bleed */
+  overflow: hidden;
+  /* stop horizontal/vertical bleed */
 }
 
 /* inner scroll area: only this part can scroll */
@@ -556,9 +561,11 @@ isHovered(cell) {
   font-size: 0.9rem;
   border-left: 1px solid #03ab5e;
   padding-left: 8px;
-  max-height: 260px;       /* own scroll, does not push layout */
+  max-height: 260px;
+  /* own scroll, does not push layout */
   overflow-y: auto;
-  word-break: break-word;  /* long text wraps instead of pushing width */
+  word-break: break-word;
+  /* long text wraps instead of pushing width */
 }
 
 .log-line {
@@ -574,6 +581,7 @@ isHovered(cell) {
 .end-message p {
   margin: 4px 0;
 }
+
 .continue-btn {
   background-color: #111;
   color: #03ab5e;
@@ -593,6 +601,4 @@ isHovered(cell) {
   color: #000;
   transform: scale(1.05);
 }
-
-
 </style>

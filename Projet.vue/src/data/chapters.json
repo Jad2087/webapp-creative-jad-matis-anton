@@ -22,7 +22,7 @@
 
 
 
-  
+
   {
     "id": "clue01",
     "title": "Act 1 — Effondrement",
@@ -118,6 +118,14 @@
 
 
 
+
+
+
+
+
+
+
+
   
 
   {
@@ -135,7 +143,8 @@
     "choices": [
       { "text": "Retour au Intro", "next": { "type": "story", "id": "intro2", "good": true } },
       { "text": "Vers le clue03", "next": { "type": "story", "id": "clue03", "good": true } },
-      { "text": "Vers le clue04", "next": { "type": "story", "id": "clue04", "good": true } }
+      { "text": "Vers le clue04", "next": { "type": "story", "id": "clue04", "good": true } },
+      { "text": "Vers le minigame2", "next": { "type": "story", "id": "minigame02", "good": true } }
     ]
   },
   {
@@ -189,7 +198,28 @@
     "choices": [
       { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
     ]
+  },
+
+
+
+  {
+    "id": "minigame02",
+    "title": "Act 2 — Terminal corrompu",
+    "text": "Le terminal clignote de manière instable, comme si quelque chose... attendait.",
+    "minigame": {
+      "password": "PROTOCOL",
+      "attempts": 5,
+      "words": ["PROTEIN", "PROCESS", "PROTECT", "PROTOCOL", "PROJECT"],
+      "goodMessage": "Le système redémarre lentement...",
+      "failMessage": "Le terminal s'éteint brutalement. Une erreur critique s'affiche..."
+    },
+    "choices": [
+      { "text": "Retour", "next": { "type": "story", "id": "fork02", "good": true } },
+      { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame02", "good": true } }
+    ]
   }
+  
+
 
 
 
