@@ -12,9 +12,9 @@
     "title": "Act 1 — Embranchement",
     "text": "Vous suivez le couloir faiblement éclairé jusqu’à un embranchement.\n\nLe passage se divise en trois directions, deux couloirs plongés dans l’obscurité complète, et un chemin central d’où émane une faible lueur verte.",
     "choices": [
-      { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01", "good": false } },
+      { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01"} },
       { "text": "Suivre la lueur verte", "next": { "type": "game", "id": "minigame01", "good": true } },
-      { "text": "Aller à droite", "next": { "type": "story", "id": "clue02", "good": false } },
+      { "text": "Aller à droite", "next": { "type": "story", "id": "clue02" } },
       { "text": "Retour", "next": { "type": "story", "id": "intro", "good": false } }
     ]
   },

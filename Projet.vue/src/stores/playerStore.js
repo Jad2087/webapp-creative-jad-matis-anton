@@ -1,38 +1,39 @@
-import {
-  defineStore
-} from 'pinia';
+import { defineStore } from 'pinia';
 
 export const usePlayerStore = defineStore('player', {
   state: () => ({
-    intelligence: 50,
-
-    // 🔥 Clue already found
-    cluesFound: []
+    deaths: 0,
+    flags: {},       // compteur pour chaque indice
+    cluesFound: [],  // liste des indices déjà trouvés
   }),
   actions: {
-    bonneDecision(points = 1) {
-      this.intelligence += points;
-    },
-    mauvaiseDecision(points = 1) {
-      this.intelligence -= points;
-    },
-
-    // 🔥 Clue already found
+    // Ajouter un indice
     addClue(id) {
+      // incrémente le compteur
+      if (!this.flags[id]) this.flags[id] = 0;
+      this.flags[id] += 1;
+
+      // ajoute à la liste des indices uniques
       if (!this.cluesFound.includes(id)) {
         this.cluesFound.push(id);
       }
     },
 
-    // 🔥 Clue already found
+    // Vérifie si l’indice a déjà été trouvé
     hasClue(id) {
       return this.cluesFound.includes(id);
     },
 
-    // 🔥 Reset complet quand on recommence la partie
+    // Ajouter une mort
+    incrementDeaths(count = 1) {
+      this.deaths += count;
+    },
+
+    // Reset complet du store
     reset() {
-      this.intelligence = 50;
+      this.deaths = 0;
+      this.flags = {};
       this.cluesFound = [];
-    }
+    },
   },
 });

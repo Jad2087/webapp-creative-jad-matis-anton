@@ -4,7 +4,7 @@
       <!-- TIMER à gauche -->
       <div class="columnleft">
         <Timer />
-        <Decoration />
+        <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
       <!-- Contenu droit -->
@@ -46,7 +46,7 @@ import AppHeader from "@/components/layout/AppHeader.vue";
 import ChoiceButtons from "@/components/common/ChoiceButtons.vue";
 import Timer from "@/components/layout/Timer.vue";
 import MiniMap from "@/components/layout/MiniMap.vue";
-import Decoration from "@/components/layout/Decoration.vue";
+import Stats from "@/components/layout/Stats.vue";
 import Echec from "@/components/specific/Echec.vue";
 
 
@@ -60,7 +60,7 @@ import { gsap } from "gsap";
 
 export default {
   name: "GameView",
-  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Decoration, MiniGame, Echec },
+  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Stats, MiniGame, Echec },
 
   data() {
     return {
@@ -99,68 +99,48 @@ export default {
 
   methods: {
     changeChapter(next) {
-      //  On récupère le store du joueur
-      const player = usePlayerStore();
-      const nextId = next.id;
+  const player = usePlayerStore();
+  const nextId = next.id;
 
-      // ----- MARQUER LES INDICES TROUVÉS -----
-      if (nextId === "clue01-01") {
-        player.addClue("clue01");
-      }
+  // ----- AJOUT DES INDICES -----  
+  if (nextId === "clue01-01") player.addClue("clue01");
+  if (nextId === "clue02-01") player.addClue("clue02");
 
-      if (nextId === "clue02-01") {
-        player.addClue("clue02");
-      }
+  // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----  
+  if (nextId === "clue01" && player.hasClue("clue01")) {
+    this.current = "clue01-03";
+    this.$router.push({ name: "game", params: { id: "clue01-03" } });
+    return;
+  }
+  if (nextId === "clue02" && player.hasClue("clue02")) {
+    this.current = "clue02-03";
+    this.$router.push({ name: "game", params: { id: "clue02-03" } });
+    return;
+  }
 
-      // ----- REDIRIGER VERS LA VERSION "DÉJÀ EXPLORÉE" -----
-      if (nextId === "clue01" && player.hasClue("clue01")) {
-        this.current = "clue01-03";
-        this.$router.push({ name: "game", params: { id: "clue01-03" } });
-        return;
-      }
+  // ----- MAUVAIS CHOIX → MORT -----  
+  if (next.good === false) {
+    player.incrementDeaths(1);
+  }
 
-      if (nextId === "clue02" && player.hasClue("clue02")) {
-        this.current = "clue02-03";
-        this.$router.push({ name: "game", params: { id: "clue02-03" } });
-        return;
-      }
+  // ----- NAVIGATION NORMALE -----  
+  if (next.type === "story") {
+    this.current = nextId;
+    this.$router.push({ name: "game", params: { id: nextId } });
+    this.openMiniGame = false;
 
-      // ----- NAVIGATION NORMALE -----
-      if (next.type === "story") {
-        this.current = nextId;
-        this.$router.push({ name: "game", params: { id: nextId } });
-        this.openMiniGame = false;
-      }
-
-      // On modifie l'intelligence AVANT de changer de chapitre
-      if (next.good === true) {
-        player.bonneDecision(3); // +3 intelligence
-      }
-      else if (next.good === false) {
-        player.mauvaiseDecision(2); // -2 intelligence
-      }
-      if (next.type === "story") {
-        this.$router.push({ name: "game", params: { id: next.id } });
-        this.current = next.id;
-        // ensure if we exit mini-game we reset the flag
-        this.openMiniGame = false;
-        // Si mort → afficher l'écran d'échec
-        if (next.id === "clue01-02" || next.id === "clue02-02") {
-          const player = usePlayerStore();
-          player.reset();
-          this.echecTitle = "Erreur Chronique";
-          this.echecDescription =
-            "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
-          this.showEchec = true;
-        }
-      }
-      else if (next.type === "game") {
-        console.log("Lancer le mini-jeu :", next.id);
-        console.log("openMiniGame set to true");
-        this.openMiniGame = true;
-      }
-    },
-
+    // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----  
+    if (next.id === "clue01-02" || next.id === "clue02-02") {
+      // on ne reset plus les morts ici, juste afficher l'écran
+      this.echecTitle = "Erreur Chronique";
+      this.echecDescription =
+        "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
+      this.showEchec = true;
+    }
+  } else if (next.type === "game") {
+    this.openMiniGame = true;
+  }
+},
 
     // MINIGAME GAMEOVER
 
