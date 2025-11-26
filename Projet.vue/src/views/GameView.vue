@@ -52,6 +52,8 @@ import Echec from "@/components/specific/Echec.vue";
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
+import { usePlayerStore } from "@/stores/playerStore";
+
 
 // Import de GSAP
 import { gsap } from "gsap";
@@ -97,6 +99,16 @@ export default {
 
   methods: {
     changeChapter(next) {
+       //  On récupère le store du joueur
+         const player = usePlayerStore();
+
+      // On modifie l'intelligence AVANT de changer de chapitre
+      if (next.good === true) {
+         player.bonneDecision(3); // +3 intelligence
+    } 
+     else if (next.good === false) {
+         player.mauvaiseDecision(2); // -2 intelligence
+    }
       if (next.type === "story") {
         this.$router.push({ name: "game", params: { id: next.id } });
         this.current = next.id;

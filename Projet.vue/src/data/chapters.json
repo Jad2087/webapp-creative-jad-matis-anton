@@ -2,11 +2,9 @@
   {
     "id": "intro",
     "title": "Act 1 — Intro",
-    "text": "[CRYO MODULE 07 • WAKE PROTOCOL: FORCED]\n> ALERT: ORBITAL DECAY DETECTED\n> ALERT: BIOMETRIC FAILURE • VITALS UNSTABLE\n> ALERT: MANUAL EGRESS REQUIRED\n\nUne alarme stridente vous arrache au sommeil alors que la capsule cryogénique s’ouvre. La porte se déverrouille dans un cliquetis lourd, et vous tombez sur le sol froid et humide. Vos muscles sont raides, comme si vous n’aviez pas bougé depuis très longtemps.\n\nVotre esprit est embrouillé. Vous ne vous souvenez plus d’où vous êtes — ni même de qui vous êtes. Lorsque votre vision s’éclaircit, vous apercevez un casier entrouvert contenant un uniforme simple. Vous l’enfilez, reprenez votre souffle et vous dirigez vers la seule sortie de la salle cryogénique."
-
-,
+    "text": "[CRYO MODULE 07 • WAKE PROTOCOL: FORCED]\n> ALERT: ORBITAL DECAY DETECTED\n> ALERT: BIOMETRIC FAILURE • VITALS UNSTABLE\n> ALERT: MANUAL EGRESS REQUIRED\n\nUne alarme stridente vous arrache au sommeil alors que la capsule cryogénique s’ouvre. La porte se déverrouille dans un cliquetis lourd, et vous tombez sur le sol froid et humide. Vos muscles sont raides, comme si vous n’aviez pas bougé depuis très longtemps.\n\nVotre esprit est embrouillé. Vous ne vous souvenez plus d’où vous êtes — ni même de qui vous êtes. Lorsque votre vision s’éclaircit, vous apercevez un casier entrouvert contenant un uniforme simple. Vous l’enfilez, reprenez votre souffle et vous dirigez vers la seule sortie de la salle cryogénique.",
     "choices": [
-      { "text": "Continuer", "next": { "type": "story", "id": "fork01" } }
+      { "text": "Continuer", "next": { "type": "story", "id": "fork01", "good": true } }
     ]
   },
   {
@@ -14,10 +12,10 @@
     "title": "Act 1 — Embranchement",
     "text": "Vous suivez le couloir faiblement éclairé jusqu’à un embranchement.\n\nLe passage se divise en trois directions, deux couloirs plongés dans l’obscurité complète, et un chemin central d’où émane une faible lueur verte.",
     "choices": [
-      { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01" } },
-      { "text": "Suivre la lueur verte", "next": { "type": "story", "id": "minigame01" } },
-      { "text": "Aller à droite", "next": { "type": "story", "id": "clue02" } },
-      { "text": "Retour", "next": { "type": "story", "id": "intro" } }
+      { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01", "good": false } },
+      { "text": "Suivre la lueur verte", "next": { "type": "game", "id": "minigame01", "good": true } },
+      { "text": "Aller à droite", "next": { "type": "story", "id": "clue02", "good": false } },
+      { "text": "Retour", "next": { "type": "story", "id": "intro", "good": false } }
     ]
   },
   {
@@ -25,69 +23,68 @@
     "title": "Act 1 — Effondrement",
     "text": "Vous suivez le couloir rouillé jusqu’à un effondrement qui bloque complètement le passage.\n\nAu pied des décombres, vous découvrez le corps momifié d’une femme, allongé là depuis très longtemps.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } },
-      { "text": "get the clue", "next": { "type": "story", "id": "clue01-01" } },
-      { "text": "die", "next": { "type": "story", "id": "clue01-02" } }
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } },
+      { "text": "Chercher un indice", "next": { "type": "story", "id": "clue01-01", "good": true } },
+      { "text": "Tenter de passer sous les décombres", "next": { "type": "story", "id": "clue01-02", "good": false } }
     ]
   },
   {
     "id": "clue01-01",
     "title": "Act 1 — Effondrement — Clue",
-    "text": "tu trouve un clue.",
+    "text": "Vous trouvez un indice précieux qui pourrait vous aider plus tard.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
     ]
   },
   {
     "id": "clue01-02",
     "title": "Act 1 — Effondrement — Mort",
-    "text": "tu meurt.",
+    "text": "Vous vous blessez gravement en essayant de passer sous les décombres et mourrez.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": false } }
     ]
   },
   {
     "id": "clue02",
     "title": "Act 1 — Placard",
-    "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journal. Vous vous penchez pour lire ce qui y est écrit : {CLUE}.",
+    "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journal.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } },
-      { "text": "get the clue", "next": { "type": "story", "id": "clue02-01" } },
-      { "text": "die", "next": { "type": "story", "id": "clue02-02" } }
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } },
+      { "text": "Chercher un indice", "next": { "type": "story", "id": "clue02-01", "good": true } },
+      { "text": "Tenter de fouiller la pièce dangereusement", "next": { "type": "story", "id": "clue02-02", "good": false } }
     ]
-  },  
+  },
+  {
+    "id": "clue02-01",
+    "title": "Act 1 — Placard — Clue",
+    "text": "Vous trouvez un indice qui pourrait vous aider plus tard.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
+    ]
+  },
+  {
+    "id": "clue02-02",
+    "title": "Act 1 — Placard — Mort",
+    "text": "Une étagère s’écroule sur vous. Vous mourrez instantanément.",
+    "choices": [
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": false } }
+    ]
+  },
   {
     "id": "minigame01",
     "title": "Act 1 — Mini-jeu",
     "text": "Vous suivez le couloir jusqu’à apercevoir une vieille console éclairée par une faible lueur verte.\n\nElle est reliée à une porte verrouillée. Le terminal fonctionne encore, mais demande un mot de passe.\n\nVous en concluez que pour avancer… il faudra essayer de le pirater.",
     "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } },
-    { "text": "launch-mini-game", "next": { "type": "game", "id": "minigame01" } }
+      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } },
+      { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame01", "good": true } }
     ]
   },
   {
-    "id": "clue02",
-    "title": "Act 1 — Placard",
-    "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journale. Vous vous penchez pour lire ce qui y est écrit : {CLUE}.",
+    "id": "intro2",
+    "title": "Acte 2 — Cauchemar",
+    "text": "Un grondement sourd résonne derrière vous. Les lumières vacillent. Puis un frisson vous traverse : quelque chose approche.\n\nVotre vision se brouille… vos oreilles bourdonnent… puis des images violentes éclatent dans votre esprit.\n\nVous n’êtes plus dans la station. Vous êtes ailleurs.\nDans un endroit où rien n’obéit aux lois de la réalité.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork01" } }
+      { "text": "Continuer", "next": { "type": "story", "id": "act2_scene01", "good": true } }
     ]
-  },
-
-
-
-
-
-  {
-  "id": "intro2",
-  "title": "Acte 2 — Cauchemar",
-  "text": "Un grondement sourd résonne derrière vous. Les lumières vacillent. Puis un frisson vous traverse : quelque chose approche.\n\nVotre vision se brouille… vos oreilles bourdonnent… puis des images violentes éclatent dans votre esprit.\n\nVous n’êtes plus dans la station. Vous êtes ailleurs.\nDans un endroit où rien n’obéit aux lois de la réalité.",
-  "choices": [
-    { "text": "Continuer", "next": { "type": "story", "id": "act2_scene01" } }
-  ]
-}
-
-
-
-
+  }
 ]
