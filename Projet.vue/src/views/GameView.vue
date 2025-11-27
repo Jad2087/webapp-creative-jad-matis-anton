@@ -19,25 +19,33 @@
           <!-- <p class="info-content">{{ activeChapter.text }}</p> -->
 
           <p class="info-content" ref="infoContent"></p>
-
         </div>
 
         <!-- Choices show up as buttons from ChoiceButtons component -->
-        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
+        <ChoiceButtons
+          :choices="activeChapter.choices"
+          @choice-selected="changeChapter"
+          class="choicebuttons"
+        />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame v-if="openMiniGame"  :minigame-id="activeMiniGameId" @close="openMiniGame = false" @done="onMiniGameDone" />
+        <MiniGame
+          v-if="openMiniGame"
+          :minigame-id="activeMiniGameId"
+          @close="openMiniGame = false"
+          @done="onMiniGameDone"
+        />
 
-        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
-          @menu="goToMenu" />
-
-
+        <Echec
+          v-if="showEchec"
+          :title="echecTitle"
+          :description="echecDescription"
+          @retry="retryGame"
+          @menu="goToMenu"
+        />
       </div>
-
     </div>
   </div>
-
-
 </template>
 
 <script>
@@ -49,29 +57,35 @@ import MiniMap from "@/components/layout/MiniMap.vue";
 import Stats from "@/components/layout/Stats.vue";
 import Echec from "@/components/specific/Echec.vue";
 
-
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
 import { usePlayerStore } from "@/stores/playerStore";
-
 
 // Import de GSAP
 import { gsap } from "gsap";
 
 export default {
   name: "GameView",
-  components: { AppHeader, Timer, ChoiceButtons, MiniMap, Stats, MiniGame, Echec },
+  components: {
+    AppHeader,
+    Timer,
+    ChoiceButtons,
+    MiniMap,
+    Stats,
+    MiniGame,
+    Echec,
+  },
 
   data() {
     return {
       current: this.$route.params.id || "intro",
-      openMiniGame: false,     // <-- your flag for showing/hiding the overlay
+      openMiniGame: false, // <-- your flag for showing/hiding the overlay
       // currentChapter is computed below so you can remove it from data
       showEchec: false,
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
       restartChapterId: "intro", // par défaut : Acte 1 intro
-      activeMiniGameId: null
+      activeMiniGameId: null,
     };
   },
 
@@ -85,7 +99,6 @@ export default {
     // permet d'utiliser `storyStore` dans le template
     storyStore() {
       return useStoryStore();
-
     },
 
     // Retourne le chapitre actuellement actif
@@ -103,11 +116,11 @@ export default {
       const player = usePlayerStore();
       const nextId = next.id;
 
-      // ----- AJOUT DES INDICES -----  
+      // ----- AJOUT DES INDICES -----
       if (nextId === "clue01-01") player.addClue("clue01");
       if (nextId === "clue02-01") player.addClue("clue02");
 
-      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----  
+      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----
       if (nextId === "clue01" && player.hasClue("clue01")) {
         this.current = "clue01-03";
         this.$router.push({ name: "game", params: { id: "clue01-03" } });
@@ -119,17 +132,16 @@ export default {
         return;
       }
 
-      // ----- MAUVAIS CHOIX → MORT -----  
+      // ----- MAUVAIS CHOIX → MORT -----
       if (next.good === false) {
         player.incrementDeaths(1);
       }
 
-      // ----- NAVIGATION NORMALE -----  
+      // ----- NAVIGATION NORMALE -----
       if (next.type === "story") {
         this.current = nextId;
         this.$router.push({ name: "game", params: { id: nextId } });
         this.openMiniGame = false;
-
       }
       if (nextId === "clue02" && player.hasClue("clue02")) {
         this.current = "clue02-03";
@@ -157,24 +169,21 @@ export default {
             "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
           this.showEchec = true;
         }
-      }
-      else if (next.type === "game") {
+      } else if (next.type === "game") {
         console.log("Lancer le mini-jeu :", next.id);
         console.log("openMiniGame set to true");
-        this.activeMiniGameId = next.id;    // 🔥 store which minigame is being launched
+        this.activeMiniGameId = next.id; // 🔥 store which minigame is being launched
         this.openMiniGame = true;
       }
 
-
-      // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----  
+      // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----
       if (next.id === "clue01-02" || next.id === "clue02-02") {
         // on ne reset plus les morts ici, juste afficher l'écran
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
         this.showEchec = true;
-      }
-      else if (next.type === "game") {
+      } else if (next.type === "game") {
         this.openMiniGame = true;
       }
     },
@@ -192,27 +201,28 @@ export default {
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
-        this.showEchec = true;   // 👉 affiche <Echec /> avec ce texte
+        this.showEchec = true; // 👉 affiche <Echec /> avec ce texte
       }
       // si result.success === true, on ne fait rien :
       // le joueur a réussi, tu gères déjà la suite (Acte 2)
     },
 
     retryGame() {
-      const player = usePlayerStore();   // 🔥 add this line
+      const player = usePlayerStore(); // 🔥 add this line
 
-      player.reset();                    // 🔥 reset intelligence + clues
+      player.reset(); // 🔥 reset intelligence + clues
       this.showEchec = false;
-      this.$router.push({ name: "game", params: { id: this.restartChapterId } });
+      this.$router.push({
+        name: "game",
+        params: { id: this.restartChapterId },
+      });
       this.current = this.restartChapterId;
     },
 
-
-
     goToMenu() {
-      const player = usePlayerStore();   // 🔥 add this line
+      const player = usePlayerStore(); // 🔥 add this line
 
-      player.reset();                    // 🔥 reset intelligence + clues
+      player.reset(); // 🔥 reset intelligence + clues
       this.showEchec = false;
       this.$router.push({ name: "home", params: { id: "" } });
       this.current = "intro";
@@ -235,7 +245,7 @@ export default {
           el.appendChild(document.createElement("br"));
         } else {
           const span = document.createElement("span");
-          span.textContent = char;   // on laisse les espaces normaux pour le retour à la ligne
+          span.textContent = char; // on laisse les espaces normaux pour le retour à la ligne
           el.appendChild(span);
         }
       });
@@ -251,8 +261,8 @@ export default {
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 0.02,   // vitesse de chaque lettre
-          stagger: 0.03,    // délai entre lettres
+          duration: 0.02, // vitesse de chaque lettre
+          stagger: 0.03, // délai entre lettres
           ease: "none",
         }
       );
@@ -261,7 +271,7 @@ export default {
 
   // TEXT ANIMATION
   mounted() {
-    this.animateText();          // animation au chargement
+    this.animateText(); // animation au chargement
   },
 
   watch: {
@@ -271,11 +281,12 @@ export default {
       this.openMiniGame = false;
     },
 
-    "$route.params.id"(newId) {  // watch route change too
+    "$route.params.id"(newId) {
+      // watch route change too
       this.current = newId;
       this.openMiniGame = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -338,10 +349,12 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.03) 0,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(0, 0, 0, 0.06) 4px);
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
   pointer-events: none;
 }
 
@@ -355,7 +368,7 @@ export default {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright>*:first-child {
+.columnright > *:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -383,7 +396,7 @@ export default {
 }
 
 /* ChoiceButtons en bas */
-.columnright>*:last-child {
+.columnright > *:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -420,5 +433,78 @@ export default {
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+}
+
+/* ---------------------- */
+/* VERSION MOBILE FULL HEIGHT + Hide Map & Border */
+/* ---------------------- */
+@media (max-width: 1080px) {
+  .container {
+    height: 100vh; /* prend toute la hauteur de l'écran */
+    padding: 0;
+  }
+
+  .screen {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    height: 100%; /* plein écran */
+    padding: 1rem;
+    gap: 1rem;
+
+    /* Effet CRT */
+    transform: perspective(800px) rotateX(1.5deg) scale(1.01);
+
+    /* Supprimer la bordure */
+    border: none;
+  }
+
+  /* Barre en haut */
+  .columnleft {
+    order: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    gap: 1rem;
+    flex: 0 0 auto; /* hauteur automatique selon le contenu */
+  }
+
+  /* Cacher la mini-map en mobile */
+  .columnleft MiniMap {
+    display: none;
+  }
+
+  /* Colonne droite prend tout le reste */
+  .columnright {
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto; /* prend le reste de la hauteur */
+  }
+
+  /* Header reste en haut */
+  .columnright > *:first-child {
+    margin-top: 0;
+  }
+
+  /* Story-box occupe l’espace restant avant les boutons */
+  .story-box {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Boutons TOUJOURS visibles en bas */
+  .choicebuttons {
+    flex: 0 0 auto;
+    position: sticky;
+    bottom: 0;
+    background: #111;
+    padding: 0.5rem 0;
+    border-top: 2px solid #03ab5e;
+    z-index: 20;
+  }
 }
 </style>
