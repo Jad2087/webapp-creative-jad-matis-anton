@@ -43,6 +43,8 @@
           @retry="retryGame"
           @menu="goToMenu"
         />
+
+        <ChoiceMade v-if="showEchec" />
       </div>
     </div>
   </div>
@@ -56,6 +58,7 @@ import Timer from "@/components/layout/Timer.vue";
 import MiniMap from "@/components/layout/MiniMap.vue";
 import Stats from "@/components/layout/Stats.vue";
 import Echec from "@/components/specific/Echec.vue";
+import ChoiceMade from "@/components/specific/ChoiceMade.vue";
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
@@ -74,6 +77,7 @@ export default {
     Stats,
     MiniGame,
     Echec,
+    ChoiceMade,
   },
 
   data() {

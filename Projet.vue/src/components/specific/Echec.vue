@@ -38,6 +38,7 @@ export default {
 
 
 <style scoped>
+
 * {
   font-family: "Courier New", monospace;
 }
