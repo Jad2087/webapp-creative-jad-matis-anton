@@ -22,27 +22,14 @@
         </div>
 
         <!-- Choices show up as buttons from ChoiceButtons component -->
-        <ChoiceButtons
-          :choices="activeChapter.choices"
-          @choice-selected="changeChapter"
-          class="choicebuttons"
-        />
+        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame
-          v-if="openMiniGame"
-          :minigame-id="activeMiniGameId"
-          @close="openMiniGame = false"
-          @done="onMiniGameDone"
-        />
+        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
+          @done="onMiniGameDone" />
 
-        <Echec
-          v-if="showEchec"
-          :title="echecTitle"
-          :description="echecDescription"
-          @retry="retryGame"
-          @menu="goToMenu"
-        />
+        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
+          @menu="goToMenu" />
       </div>
     </div>
   </div>
@@ -79,15 +66,35 @@ export default {
   data() {
     return {
       current: this.$route.params.id || "intro",
-      openMiniGame: false, // <-- your flag for showing/hiding the overlay
-      // currentChapter is computed below so you can remove it from data
+      openMiniGame: false,
       showEchec: false,
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
-      restartChapterId: "intro", // par défaut : Acte 1 intro
+      restartChapterId: "intro",
       activeMiniGameId: null,
+
+      // 🔥 textes de mort personnalisés
+      deathMessages: {
+        "clue01-02":
+          "En tentant de vous faufiler sous les décombres, votre corps cède brusquement. Tout s'efface.",
+        "clue02-02":
+          "L'étagère s'écroule sur vous dans un fracas sourd. Le choc vous projette dans l'inconscience.",
+        "clue03-01":
+          "Une erreur de jugement — tout devient flou avant de basculer dans le vide.",
+        "clue04-01":
+          "Un mécanisme instable se déclenche, et la lumière s'éteint autour de vous.",
+        "clue05-01":
+          "Quelque chose se brise net… puis le silence.",
+        "clue06-01":
+          "La structure cède sans prévenir. Une dernière secousse, puis plus rien.",
+        "clue07-01":
+          "Votre vision se trouble — l’environnement se dissout dans l’obscurité.",
+        "clue08-01":
+          "Une force invisible vous stoppe net. Le froid vous envahit et tout disparaît."
+      }
     };
   },
+
 
   created() {
     // charge le chapitre actuel selon id passé dans la route
@@ -114,78 +121,110 @@ export default {
   methods: {
     changeChapter(next) {
       const player = usePlayerStore();
+
+      if (!next || !next.id) {
+        console.warn("[changeChapter] next object invalide :", next);
+        return;
+      }
+
       const nextId = next.id;
+      console.log("[changeChapter] ----");
+      console.log("[changeChapter] Choix reçu :", next);
+      console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
 
       // ----- AJOUT DES INDICES -----
-      if (nextId === "clue01-01") player.addClue("clue01");
-      if (nextId === "clue02-01") player.addClue("clue02");
+      const clueAwards = {
+        "clue01-01": "clue01",
+        "clue02-01": "clue02",
+        "clue03-02": "clue03",
+        "clue04-02": "clue04",
+        "clue05-02": "clue05",
+        "clue06-02": "clue06",
+        "clue07-02": "clue07",
+        "clue08-02": "clue08"
+      };
 
-      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----
-      if (nextId === "clue01" && player.hasClue("clue01")) {
-        this.current = "clue01-03";
-        this.$router.push({ name: "game", params: { id: "clue01-03" } });
-        return;
-      }
-      if (nextId === "clue02" && player.hasClue("clue02")) {
-        this.current = "clue02-03";
-        this.$router.push({ name: "game", params: { id: "clue02-03" } });
-        return;
+      const awardedClue = clueAwards[nextId];
+      if (awardedClue) {
+        console.log(
+          "[changeChapter] Ajout de l'indice",
+          awardedClue,
+          "depuis le chapitre",
+          nextId
+        );
+        player.addClue(awardedClue);
       }
 
-      // ----- MAUVAIS CHOIX → MORT -----
-      if (next.good === false) {
+      // ----- DÉTECTION AUTOMATIQUE DES MORTS -----
+      if (next.type === "story" && next.good === false) {
+        console.log("[changeChapter] MORT détectée au chapitre", nextId);
         player.incrementDeaths(1);
-      }
 
-      // ----- NAVIGATION NORMALE -----
-      if (next.type === "story") {
-        this.current = nextId;
-        this.$router.push({ name: "game", params: { id: nextId } });
-        this.openMiniGame = false;
-      }
-      if (nextId === "clue02" && player.hasClue("clue02")) {
-        this.current = "clue02-03";
-        this.$router.push({ name: "game", params: { id: "clue02-03" } });
-        return;
-      }
-
-      // ----- NAVIGATION NORMALE -----
-      if (next.type === "story") {
-        this.current = nextId;
-        this.$router.push({ name: "game", params: { id: nextId } });
-        this.openMiniGame = false;
-      }
-      if (next.type === "story") {
-        this.$router.push({ name: "game", params: { id: next.id } });
-        this.current = next.id;
-        // ensure if we exit mini-game we reset the flag
-        this.openMiniGame = false;
-        // Si mort → afficher l'écran d'échec
-        if (next.id === "clue01-02" || next.id === "clue02-02") {
-          const player = usePlayerStore();
-          player.reset();
-          this.echecTitle = "Erreur Chronique";
-          this.echecDescription =
-            "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
-          this.showEchec = true;
-        }
-      } else if (next.type === "game") {
-        console.log("Lancer le mini-jeu :", next.id);
-        console.log("openMiniGame set to true");
-        this.activeMiniGameId = next.id; // 🔥 store which minigame is being launched
-        this.openMiniGame = true;
-      }
-
-      // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----
-      if (next.id === "clue01-02" || next.id === "clue02-02") {
-        // on ne reset plus les morts ici, juste afficher l'écran
+        const custom = this.deathMessages[nextId];
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
-          "Votre corps cède sous la pression de l’effondrement. Tout devient noir.";
+          custom ||
+          "Votre corps cède sous la pression... puis tout devient noir.";
+
         this.showEchec = true;
-      } else if (next.type === "game") {
-        this.openMiniGame = true;
+
+        // (optionnel) définir où recommencer plus tard
+        // this.restartChapterId = this.current;
+
+        console.log("[changeChapter] Écran d'échec affiché");
+        return; // on ne navigue pas plus loin
       }
+
+      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----
+      const dejaExplores = {
+        clue01: { clue: "clue01", target: "clue01-03" },
+        clue02: { clue: "clue02", target: "clue02-03" },
+        clue03: { clue: "clue03", target: "clue03-03" },
+        clue04: { clue: "clue04", target: "clue04-03" },
+        clue05: { clue: "clue05", target: "clue05-03" },
+        clue06: { clue: "clue06", target: "clue06-03" },
+        clue07: { clue: "clue07", target: "clue07-03" },
+        clue08: { clue: "clue08", target: "clue08-03" }
+      };
+
+      const deja = dejaExplores[nextId];
+      if (deja && player.hasClue(deja.clue)) {
+        console.log(
+          "[changeChapter] Déjà exploré détecté pour",
+          nextId,
+          "→ redirection vers",
+          deja.target
+        );
+        this.current = deja.target;
+        this.$router.push({ name: "game", params: { id: deja.target } });
+        this.openMiniGame = false;
+        return;
+      }
+
+      // ----- NAVIGATION NORMALE : STORY -----
+      if (next.type === "story") {
+        console.log("[changeChapter] Navigation normale vers le chapitre", nextId);
+        this.current = nextId;
+        this.$router.push({ name: "game", params: { id: nextId } });
+        this.openMiniGame = false;
+        return;
+      }
+
+      // ----- NAVIGATION VERS UN MINI-JEU -----
+      if (next.type === "game") {
+        console.log("[changeChapter] Lancement du mini-jeu", nextId);
+        this.activeMiniGameId = nextId;
+        this.openMiniGame = true;
+        return;
+      }
+
+      // ----- TYPE INCONNU -----
+      console.warn(
+        "[changeChapter] Type de next inconnu :",
+        next.type,
+        "pour",
+        next
+      );
     },
 
     // MINIGAME GAMEOVER
@@ -220,13 +259,19 @@ export default {
     },
 
     goToMenu() {
-      const player = usePlayerStore(); // 🔥 add this line
+      const player = usePlayerStore();
 
-      player.reset(); // 🔥 reset intelligence + clues
+      console.log("[goToMenu] Reset du joueur et retour au menu principal");
+
+      player.reset();
       this.showEchec = false;
-      this.$router.push({ name: "home", params: { id: "" } });
+
+      // FIX: do NOT pass params
+      this.$router.push({ name: "home" });
+
       this.current = "intro";
     },
+
 
     // TEXT ANIMATION
     animateText() {
@@ -349,12 +394,10 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -368,7 +411,7 @@ export default {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright > *:first-child {
+.columnright>*:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -396,7 +439,7 @@ export default {
 }
 
 /* ChoiceButtons en bas */
-.columnright > *:last-child {
+.columnright>*:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -440,7 +483,8 @@ export default {
 /* ---------------------- */
 @media (max-width: 1080px) {
   .container {
-    height: 100vh; /* prend toute la hauteur de l'écran */
+    height: 100vh;
+    /* prend toute la hauteur de l'écran */
     padding: 0;
   }
 
@@ -448,7 +492,8 @@ export default {
     display: flex;
     flex-direction: column;
     width: 95vw;
-    height: 100%; /* plein écran */
+    height: 100%;
+    /* plein écran */
     padding: 1rem;
     gap: 1rem;
 
@@ -466,7 +511,8 @@ export default {
     justify-content: space-around;
     width: 100%;
     gap: 1rem;
-    flex: 0 0 auto; /* hauteur automatique selon le contenu */
+    flex: 0 0 auto;
+    /* hauteur automatique selon le contenu */
   }
 
   /* Cacher la mini-map en mobile */
@@ -480,11 +526,12 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto; /* prend le reste de la hauteur */
+    flex: 1 1 auto;
+    /* prend le reste de la hauteur */
   }
 
   /* Header reste en haut */
-  .columnright > *:first-child {
+  .columnright>*:first-child {
     margin-top: 0;
   }
 
