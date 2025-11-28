@@ -113,121 +113,84 @@
     ]
   },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  {
+{
     "id": "intro2",
     "title": "Acte 2 — Intro",
-    "text": "Texte Intro.",
+    "text": "[CRYO MODULE 08 • WAKE PROTOCOL: FORCED]\n> ALERT: SYSTEM INSTABILITY DETECTED\n> ALERT: VITALS STABILIZING\n\nVous reprenez conscience dans une nouvelle section de la station. Les couloirs sont plus larges, mais l'éclairage est encore faible et les alarmes bourdonnent faiblement. Vous vous souvenez des indices précédents et sentez que chaque choix compte désormais.",
     "choices": [
-      { "text": "Continuer", "next": { "type": "story", "id": "fork02", "good": true } }
+      { "text": "Continuer vers le couloir central", "next": { "type": "story", "id": "fork02", "good": true } }
     ]
   },
   {
     "id": "fork02",
-    "title": "Acte 2 — Embranchement-2",
-    "text": "111",
+    "title": "Acte 2 — Embranchement",
+    "text": "Vous arrivez à un nouvel embranchement. Les passages se divisent en trois directions : un couloir à gauche légèrement éclairé, un couloir à droite avec une porte métallique verrouillée, et un passage central où une lumière clignotante attire votre attention.",
     "choices": [
-      { "text": "Retour au Intro", "next": { "type": "story", "id": "intro2", "good": true } },
-      { "text": "Vers le clue03", "next": { "type": "story", "id": "clue03", "good": true } },
-      { "text": "Vers le clue04", "next": { "type": "story", "id": "clue04", "good": true } },
-      { "text": "Vers le minigame2", "next": { "type": "story", "id": "minigame02", "good": true } }
+      { "text": "Aller à gauche", "next": { "type": "story", "id": "clue03", "good": true } },
+      { "text": "Aller à droite", "next": { "type": "story", "id": "clue04", "good": true } },
+      { "text": "Explorer le passage central", "next": { "type": "game", "id": "minigame02", "good": true } },
+      { "text": "Retour à la capsule", "next": { "type": "story", "id": "intro2", "good": false } }
     ]
   },
   {
     "id": "clue03",
-    "title": "Act 2 — Clue03",
-    "text": "Texte clue03.",
+    "title": "Acte 2 — Laboratoire abandonné",
+    "text": "Vous pénétrez dans un petit laboratoire. Des instruments scientifiques sont brisés et recouverts de poussière. Sur une table, un terminal éteint clignote faiblement. Vous remarquez des documents éparpillés qui pourraient contenir des informations cruciales.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } },
-      { "text": "Mort", "next": { "type": "story", "id": "clue03-01", "good": true } },
-      { "text": "Vie", "next": { "type": "story", "id": "clue03-02", "good": false } }
+      { "text": "Prendre les documents", "next": { "type": "story", "id": "clue03-01", "good": true } },
+      { "text": "Ignorer et continuer", "next": { "type": "story", "id": "clue03-02", "good": false } },
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": true } }
     ]
   },
   {
     "id": "clue03-01",
-    "title": "Act 2 — Clue03 — Mort",
-    "text": "Mort.",
+    "title": "Acte 2 — Laboratoire — Indice",
+    "text": "Vous trouvez des notes détaillant une procédure de sécurité oubliée. Cela pourrait vous aider pour un futur choix ou mini-jeu.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": true } }
     ]
   },
   {
     "id": "clue03-02",
-    "title": "Act 2 — Clue03 — Vie",
-    "text": "Vie.",
+    "title": "Acte 2 — Laboratoire — Danger",
+    "text": "En ignorant les documents, vous déclenchez un ancien système de sécurité. Une décharge électrique vous foudroie. Vous mourrez.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": false } }
     ]
   },
   {
     "id": "clue04",
-    "title": "Act 2 — Clue04",
-    "text": "Texte clue04.",
+    "title": "Acte 2 — Salle des machines",
+    "text": "Le couloir de droite mène à la salle des machines. L’endroit est bruyant et l’air est chaud. Des tuyaux éclatés et des étagères instables rendent le passage dangereux.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } },
-      { "text": "Mort", "next": { "type": "story", "id": "clue04-01", "good": true } },
-      { "text": "Vie", "next": { "type": "story", "id": "clue04-02", "good": false } }
+      { "text": "Examiner les machines", "next": { "type": "story", "id": "clue04-01", "good": true } },
+      { "text": "Prendre un chemin sûr", "next": { "type": "story", "id": "clue04-02", "good": false } },
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": true } }
     ]
   },
   {
     "id": "clue04-01",
-    "title": "Act 2 — Clue04 — Mort",
-    "text": "Mort.",
+    "title": "Acte 2 — Salle des machines — Indice",
+    "text": "Vous trouvez un panneau de contrôle fonctionnel qui pourrait être utile plus tard. Vous enregistrez mentalement son emplacement.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": true } }
     ]
   },
   {
     "id": "clue04-02",
-    "title": "Act 2 — Clue04 — Vie",
-    "text": "Vie.",
+    "title": "Acte 2 — Salle des machines — Danger",
+    "text": "Vous prenez un chemin qui semble sûr, mais un tuyau éclaté vous frappe violemment. Vous mourrez.",
     "choices": [
-      { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": false } }
     ]
   },
-
-
-
   {
     "id": "minigame02",
-    "title": "Act 2 — Terminal corrompu",
-    "text": "Le terminal clignote de manière instable, comme si quelque chose... attendait.",
-    
+    "title": "Acte 2 — Terminal corrompu",
+    "text": "Le passage central mène à un terminal corrompu. L'écran clignote de manière instable. Il semble demander un code que vous devez deviner ou pirater pour progresser.",
     "choices": [
-      { "text": "Retour", "next": { "type": "story", "id": "fork02", "good": true } },
+      { "text": "Retour à l'embranchement", "next": { "type": "story", "id": "fork02", "good": true } },
       { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame02", "good": true } }
     ]
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]

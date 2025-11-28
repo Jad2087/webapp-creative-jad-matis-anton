@@ -116,11 +116,11 @@ export default {
       const player = usePlayerStore();
       const nextId = next.id;
 
-      // ----- AJOUT DES INDICES -----
+      // AJOUT DES INDICES
       if (nextId === "clue01-01") player.addClue("clue01");
       if (nextId === "clue02-01") player.addClue("clue02");
 
-      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----
+      // REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS"
       if (nextId === "clue01" && player.hasClue("clue01")) {
         this.current = "clue01-03";
         this.$router.push({ name: "game", params: { id: "clue01-03" } });
@@ -132,12 +132,12 @@ export default {
         return;
       }
 
-      // ----- MAUVAIS CHOIX → MORT -----
+      // MAUVAIS CHOIX → MORT
       if (next.good === false) {
         player.incrementDeaths(1);
       }
 
-      // ----- NAVIGATION NORMALE -----
+      // NAVIGATION NORMALE 
       if (next.type === "story") {
         this.current = nextId;
         this.$router.push({ name: "game", params: { id: nextId } });
@@ -149,7 +149,7 @@ export default {
         return;
       }
 
-      // ----- NAVIGATION NORMALE -----
+      // NAVIGATION NORMALE
       if (next.type === "story") {
         this.current = nextId;
         this.$router.push({ name: "game", params: { id: nextId } });
@@ -176,8 +176,12 @@ export default {
         this.openMiniGame = true;
       }
 
-      // ----- CAS SPÉCIFIQUE : ÉCRAN D’ÉCHEC -----
-      if (next.id === "clue01-02" || next.id === "clue02-02") {
+      //  CAS SPÉCIFIQUE ÉCRAN D’ÉCHEC
+      if (next.id === "clue01-02" || 
+          next.id === "clue02-02" ||   
+          next.id === "clue03-02" || 
+          next.id === "clue04-02"
+      ) {
         // on ne reset plus les morts ici, juste afficher l'écran
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
@@ -189,7 +193,6 @@ export default {
     },
 
     // MINIGAME GAMEOVER
-
     onMiniGameDone(result) {
       // on ferme le mini-jeu
       this.openMiniGame = false;
@@ -201,16 +204,16 @@ export default {
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
-        this.showEchec = true; // 👉 affiche <Echec /> avec ce texte
+        this.showEchec = true; // affiche <Echec /> avec ce texte
       }
       // si result.success === true, on ne fait rien :
       // le joueur a réussi, tu gères déjà la suite (Acte 2)
     },
 
     retryGame() {
-      const player = usePlayerStore(); // 🔥 add this line
+      const player = usePlayerStore(); //add this line
 
-      player.reset(); // 🔥 reset intelligence + clues
+      player.reset(); // reset intelligence + clues
       this.showEchec = false;
       this.$router.push({
         name: "game",
@@ -220,9 +223,9 @@ export default {
     },
 
     goToMenu() {
-      const player = usePlayerStore(); // 🔥 add this line
+      const player = usePlayerStore(); // add this line
 
-      player.reset(); // 🔥 reset intelligence + clues
+      player.reset(); // reset intelligence + clues
       this.showEchec = false;
       this.$router.push({ name: "home", params: { id: "" } });
       this.current = "intro";
@@ -435,9 +438,8 @@ export default {
   gap: 1rem;
 }
 
-/* ---------------------- */
 /* VERSION MOBILE FULL HEIGHT + Hide Map & Border */
-/* ---------------------- */
+
 @media (max-width: 1080px) {
   .container {
     height: 100vh; /* prend toute la hauteur de l'écran */
