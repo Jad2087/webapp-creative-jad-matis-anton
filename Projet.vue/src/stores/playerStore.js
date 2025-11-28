@@ -31,7 +31,6 @@ export const usePlayerStore = defineStore('player', {
 
     // Reset complet du store
     reset() {
-      this.flags = {};
       this.cluesFound = [];
     },
   },

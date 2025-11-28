@@ -172,7 +172,7 @@ export default {
       } else if (next.type === "game") {
         console.log("Lancer le mini-jeu :", next.id);
         console.log("openMiniGame set to true");
-        this.activeMiniGameId = next.id; // 🔥 store which minigame is being launched
+        this.activeMiniGameId = next.id; // store which minigame is being launched
         this.openMiniGame = true;
       }
 
