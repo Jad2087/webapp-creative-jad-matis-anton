@@ -43,6 +43,7 @@ import Timer from "@/components/layout/Timer.vue";
 import MiniMap from "@/components/layout/MiniMap.vue";
 import Stats from "@/components/layout/Stats.vue";
 import Echec from "@/components/specific/Echec.vue";
+import ChoiceMade from "@/components/specific/ChoiceMade.vue";
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
@@ -61,6 +62,7 @@ export default {
     Stats,
     MiniGame,
     Echec,
+    ChoiceMade,
   },
 
   data() {
@@ -228,7 +230,6 @@ export default {
     },
 
     // MINIGAME GAMEOVER
-
     onMiniGameDone(result) {
       // on ferme le mini-jeu
       this.openMiniGame = false;
@@ -240,16 +241,16 @@ export default {
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
-        this.showEchec = true; // 👉 affiche <Echec /> avec ce texte
+        this.showEchec = true; // affiche <Echec /> avec ce texte
       }
       // si result.success === true, on ne fait rien :
       // le joueur a réussi, tu gères déjà la suite (Acte 2)
     },
 
     retryGame() {
-      const player = usePlayerStore(); // 🔥 add this line
+      const player = usePlayerStore(); //add this line
 
-      player.reset(); // 🔥 reset intelligence + clues
+      player.reset(); // reset intelligence + clues
       this.showEchec = false;
       this.$router.push({
         name: "game",
@@ -478,9 +479,8 @@ export default {
   gap: 1rem;
 }
 
-/* ---------------------- */
 /* VERSION MOBILE FULL HEIGHT + Hide Map & Border */
-/* ---------------------- */
+
 @media (max-width: 1080px) {
   .container {
     height: 100vh;
