@@ -4,7 +4,7 @@
   "title": "Act 1 — Intro",
   "text": "[CRYO MODULE 07 • WAKE PROTOCOL: FORCED]\n> ALERT: ORBITAL DECAY DETECTED\n> ALERT: BIOMETRIC FAILURE • VITALS UNSTABLE\n> ALERT: MANUAL EGRESS REQUIRED\n\nUne alarme stridente vous arrache au sommeil alors que la capsule cryogénique s’ouvre. La porte se déverrouille dans un cliquetis lourd, et vous tombez sur le sol froid et humide. Vos muscles sont raides, comme si vous n’aviez pas bougé depuis très longtemps.\n\nVotre esprit est embrouillé. Vous ne vous souvenez plus d’où vous êtes — ni même de qui vous êtes. Lorsque votre vision s’éclaircit, vous apercevez un casier entrouvert contenant un uniforme simple. Vous l’enfilez, reprenez votre souffle et vous dirigez vers la seule sortie de la salle cryogénique.",
   "choices": [
-    { "text": "Continuer", "next": { "type": "story", "id": "intro3", "good": true } }
+    { "text": "Continuer", "next": { "type": "story", "id": "fork01", "good": true } }
   ]
 },
 {
