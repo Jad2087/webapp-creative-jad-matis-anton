@@ -658,13 +658,6 @@
     { "text": "Retour au fork06", "next": { "type": "story", "id": "fork06", "good": true } }
   ]
 },
-
-
-
-
-
-
-
 {
   "id": "fork07",
   "title": "Acte 3 — Embranchement Final",
@@ -688,14 +681,7 @@
   "password": "FINALE",
   "wordCount": 20,
   "maxAttempts": 4,
-  "success": "ending01",
+  "success": "ending",
   "fail": null
 }
-
-
-
-
-
-
-
 ]
