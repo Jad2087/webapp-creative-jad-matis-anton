@@ -75,7 +75,7 @@ export default {
       restartChapterId: "intro",
       activeMiniGameId: null,
 
-      // 🔥 textes de mort personnalisés
+      // textes de mort personnalisés
       deathMessages: {
         "clue01-02":
           "En tentant de vous faufiler sous les décombres, votre corps cède brusquement. Tout s'efface.",
@@ -96,7 +96,6 @@ export default {
       }
     };
   },
-
 
   created() {
     // charge le chapitre actuel selon id passé dans la route
@@ -134,7 +133,7 @@ export default {
       console.log("[changeChapter] Choix reçu :", next);
       console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
 
-      // ----- AJOUT DES INDICES -----
+      // AJOUT DES INDICES
       const clueAwards = {
         "clue01-01": "clue01",
         "clue02-01": "clue02",
@@ -160,7 +159,7 @@ export default {
         player.addClue(awardedClue);
       }
 
-      // ----- DÉTECTION AUTOMATIQUE DES MORTS -----
+      // DÉTECTION AUTOMATIQUE DES MORTS
       if (next.type === "story" && next.good === false) {
         console.log("[changeChapter] MORT détectée au chapitre", nextId);
         player.incrementDeaths(1);
@@ -180,7 +179,7 @@ export default {
         return; // on ne navigue pas plus loin
       }
 
-      // ----- REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS" -----
+      // REDIRECTION VERS LES CHAPITRES "DÉJÀ EXPLORÉS"
       const dejaExplores = {
         clue01: { clue: "clue01", target: "clue01-03" },
         clue02: { clue: "clue02", target: "clue02-03" },
@@ -193,11 +192,7 @@ export default {
         clue09: { clue: "clue09", target: "clue09-03" },
         clue10: { clue: "clue10", target: "clue10-03" },
         engine01: { clue: "engine", target: "engine01-03" }
-
-
       };
-
-
 
       const deja = dejaExplores[nextId];
       if (deja && player.hasClue(deja.clue)) {
@@ -217,9 +212,7 @@ export default {
         player.addClue("engine");
       }
 
-
-
-      // ----- NAVIGATION NORMALE : STORY -----
+      // NAVIGATION NORMALE : STORY
       if (next.type === "story") {
         console.log("[changeChapter] Navigation normale vers le chapitre", nextId);
         this.current = nextId;
@@ -228,7 +221,7 @@ export default {
         return;
       }
 
-      // ----- NAVIGATION VERS UN MINI-JEU -----
+      // NAVIGATION VERS UN MINI-JEU
       if (next.type === "game") {
         console.log("[changeChapter] Lancement du mini-jeu", nextId);
         this.activeMiniGameId = nextId;
@@ -236,7 +229,7 @@ export default {
         return;
       }
 
-      // ----- TYPE INCONNU -----
+      // TYPE INCONNU
       console.warn(
         "[changeChapter] Type de next inconnu :",
         next.type,
@@ -245,36 +238,28 @@ export default {
       );
     },
 
-    // MINIGAME GAMEOVER
-    onMiniGameDone(result) {
-      this.openMiniGame = false;
+onMiniGameDone(result) {
+  this.openMiniGame = false;
 
-      // -- SUCCESS --
-      if (result && result.success) {
-        console.log("[MiniGame] Succès ->", result.target);
-
-        // If the minigame success leads to an ending:
-        if (result.target === "ending01") {
-          this.$router.push({ name: "ending01" });
-          return;
-        }
-
-        // Otherwise: treat success like normal navigation
-        this.changeChapter({ type: "story", id: result.target, good: true });
-        return;
-      }
-
-      // -- FAILURE --
-      const player = usePlayerStore();
-      player.reset();
-      this.echecTitle = "Erreur Chronique";
-      this.echecDescription =
-        "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
-      this.showEchec = true;
-    },
+    this.$router.push({ name: "ending" });
+  
+  // ÉCHEC : reset du joueur et écran d'échec
+  const player = usePlayerStore();
+  player.reset();
+  this.echecTitle = "Erreur Chronique";
+  this.echecDescription =
+    "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
+  this.showEchec = true;
+},
 
     retryGame() {
       const player = usePlayerStore(); //add this line
+
+       if (this.activeMiniGameId === "minigame08") {
+    // Naviguer vers EndingView
+    this.$router.push({ name: "ending" }); // assuming your route name is "ending"
+    return;
+  }
 
       player.reset(); // reset intelligence + clues
       this.showEchec = false;
@@ -298,7 +283,6 @@ export default {
 
       this.current = "intro";
     },
-
 
     // TEXT ANIMATION
     animateText() {

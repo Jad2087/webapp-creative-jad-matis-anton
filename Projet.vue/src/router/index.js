@@ -14,6 +14,7 @@ import HomeView from '../views/HomeView.vue';
 import IntroView from '../views/IntroView.vue';
 import GameView from '../views/GameView.vue';
 import MillieuView from '../views/MillieuView.vue';
+import EndingView from '../views/EndingView.vue';
 /*
 Définition des routes dans un tableau d’objets.
 Chaque objet correspond à une "page" de l’application.
@@ -40,13 +41,11 @@ const routes = [
     component: MillieuView,
     name: 'millieu',
   },
-  // ENDING 1
   {
     path: "/ending",
-    name: "ending01",
-    component: () => import("@/views/EndingView.vue")
+    component: EndingView,
+    name: "ending"
   }
-
 ];
 
 /*
