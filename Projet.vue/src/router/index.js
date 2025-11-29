@@ -35,11 +35,18 @@ const routes = [
     name: 'game',
     props: true         // pour récupérer id via props si tu veux
   },
-   {
+  {
     path: '/millieu', // ← ici on ajoute ":id" en optionnel
     component: MillieuView,
     name: 'millieu',
   },
+  // ENDING 1
+  {
+    path: "/ending",
+    name: "ending01",
+    component: () => import("@/views/EndingView.vue")
+  }
+
 ];
 
 /*

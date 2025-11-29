@@ -143,7 +143,10 @@ export default {
         "clue05-02": "clue05",
         "clue06-02": "clue06",
         "clue07-02": "clue07",
-        "clue08-02": "clue08"
+        "clue08-02": "clue08",
+        "clue09-02": "clue09",
+        "clue10-02": "clue10",
+        "engine04-success": "engine"
       };
 
       const awardedClue = clueAwards[nextId];
@@ -186,8 +189,15 @@ export default {
         clue05: { clue: "clue05", target: "clue05-03" },
         clue06: { clue: "clue06", target: "clue06-03" },
         clue07: { clue: "clue07", target: "clue07-03" },
-        clue08: { clue: "clue08", target: "clue08-03" }
+        clue08: { clue: "clue08", target: "clue08-03" },
+        clue09: { clue: "clue09", target: "clue09-03" },
+        clue10: { clue: "clue10", target: "clue10-03" },
+        engine01: { clue: "engine", target: "engine01-03" }
+
+
       };
+
+
 
       const deja = dejaExplores[nextId];
       if (deja && player.hasClue(deja.clue)) {
@@ -202,6 +212,12 @@ export default {
         this.openMiniGame = false;
         return;
       }
+
+      if (nextId === "engine04-success") {
+        player.addClue("engine");
+      }
+
+
 
       // ----- NAVIGATION NORMALE : STORY -----
       if (next.type === "story") {
@@ -231,20 +247,30 @@ export default {
 
     // MINIGAME GAMEOVER
     onMiniGameDone(result) {
-      // on ferme le mini-jeu
       this.openMiniGame = false;
 
-      // si le joueur a échoué au mini-jeu (4 mauvaises réponses)
-      if (!result || !result.success) {
-        const player = usePlayerStore();
-        player.reset();
-        this.echecTitle = "Erreur Chronique";
-        this.echecDescription =
-          "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
-        this.showEchec = true; // affiche <Echec /> avec ce texte
+      // -- SUCCESS --
+      if (result && result.success) {
+        console.log("[MiniGame] Succès ->", result.target);
+
+        // If the minigame success leads to an ending:
+        if (result.target === "ending01") {
+          this.$router.push({ name: "ending01" });
+          return;
+        }
+
+        // Otherwise: treat success like normal navigation
+        this.changeChapter({ type: "story", id: result.target, good: true });
+        return;
       }
-      // si result.success === true, on ne fait rien :
-      // le joueur a réussi, tu gères déjà la suite (Acte 2)
+
+      // -- FAILURE --
+      const player = usePlayerStore();
+      player.reset();
+      this.echecTitle = "Erreur Chronique";
+      this.echecDescription =
+        "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
+      this.showEchec = true;
     },
 
     retryGame() {

@@ -15,19 +15,27 @@ function choose() {
   emit("choose", props.choice.next);
 }
 
-// 🔥 Savoir si ce bouton mène à un clue déjà trouvé
+// 🔥 Highlight ANY button linked to a discovered clue or special flag
 const isClueFound = computed(() => {
   const next = props.choice?.next;
   if (!next || !next.id) return false;
 
-  // On ne s'intéresse qu'aux chapitres qui commencent par "clue"
-  if (!next.id.startsWith("clue")) return false;
+  const id = next.id;
 
-  // On prend la "base" du clue (clue01, clue02, etc.)
-  const baseId = next.id.split("-")[0]; // "clue01-01" -> "clue01"
+  // 1. Standard clue pages ("clue01", "clue01-02", etc.)
+  if (id.startsWith("clue")) {
+    const baseClue = id.split("-")[0]; // "clue01"
+    return player.hasClue(baseClue);
+  }
 
-  return player.hasClue(baseId);
+  // 2. SPECIAL CASE: Terminal B → engine01
+  if (id === "engine01") {
+    return player.hasClue("engine");
+  }
+
+  return false;
 });
+
 </script>
 
 <template>
