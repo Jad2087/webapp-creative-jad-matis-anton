@@ -238,28 +238,52 @@ export default {
       );
     },
 
-onMiniGameDone(result) {
-  this.openMiniGame = false;
+    onMiniGameDone(result) {
+      this.openMiniGame = false;
 
-    this.$router.push({ name: "ending" });
-  
-  // ÉCHEC : reset du joueur et écran d'échec
-  const player = usePlayerStore();
-  player.reset();
-  this.echecTitle = "Erreur Chronique";
-  this.echecDescription =
-    "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
-  this.showEchec = true;
-},
+      // --------------------------
+      // 1. SUCCESS → ending or next chapter
+      // --------------------------
+      if (result && result.success) {
+
+        // If success leads to an ending:
+        if (result.target === "ending01") {
+          this.$router.push({ name: "ending01" });
+          return;
+        }
+
+        // otherwise continue story
+        this.changeChapter({
+          type: "story",
+          id: result.target,
+          good: true,
+        });
+
+        return;
+      }
+
+      // --------------------------
+      // 2. FAILURE → death screen
+      // --------------------------
+      const player = usePlayerStore();
+      player.reset();
+
+      this.echecTitle = "Erreur Chronique";
+      this.echecDescription =
+        "Une surcharge parcourt le terminal. Une décharge électrique vous traverse le corps… puis plus rien.";
+
+      this.showEchec = true;
+    },
+
 
     retryGame() {
       const player = usePlayerStore(); //add this line
 
-       if (this.activeMiniGameId === "minigame08") {
-    // Naviguer vers EndingView
-    this.$router.push({ name: "ending" }); // assuming your route name is "ending"
-    return;
-  }
+      if (this.activeMiniGameId === "minigame08") {
+        // Naviguer vers EndingView
+        this.$router.push({ name: "ending" }); // assuming your route name is "ending"
+        return;
+      }
 
       player.reset(); // reset intelligence + clues
       this.showEchec = false;

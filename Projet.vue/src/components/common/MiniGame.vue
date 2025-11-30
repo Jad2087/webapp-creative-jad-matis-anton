@@ -334,7 +334,7 @@ export default {
         });
         this.success = true;
         this.gameOver = true;
-        // ❌ NE PAS appeler this.emitDone() ici
+
       } else {
         const matches = this.countMatchingChars(guess, this.secretWord);
         this.logs.unshift({
@@ -347,7 +347,7 @@ export default {
         if (this.attemptsRemaining <= 0) {
           this.gameOver = true;
           this.success = false;
-          this.emitDone();   // ✅ on garde ça pour l’échec
+          this.$emit("done", { success: false });
         }
       }
     },
@@ -374,20 +374,15 @@ export default {
       this.$emit("close");
     },
 
-    handleContinue() {
-      // si le joueur a réussi le mini-jeu
-      if (this.success) {
-        // 🔽 va au chapitre "intro2" (Acte 2 — Cauchemar)
-        this.$router.push({
-          name: "game",
-          params: { id: this.config.success },
-        });
+handleContinue() {
+  if (this.success) {
+    this.$emit("done", {
+      success: true,
+      target: this.config.success,
+    });
+  }
+},
 
-      } else {
-        // si jamais on montre le bouton sans succès, on ferme juste
-        this.handleClose();
-      }
-    },
 
 
 
