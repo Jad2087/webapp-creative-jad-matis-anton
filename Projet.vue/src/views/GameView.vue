@@ -30,6 +30,13 @@
 
         <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
           @menu="goToMenu" />
+
+          <Reussite 
+  v-if="showReussite"
+  :nextChapterId="reussiteTarget"
+  @continue="goToNextChapter"
+/>
+
       </div>
     </div>
   </div>
@@ -44,6 +51,7 @@ import MiniMap from "@/components/layout/MiniMap.vue";
 import Stats from "@/components/layout/Stats.vue";
 import Echec from "@/components/specific/Echec.vue";
 import ChoiceMade from "@/components/specific/ChoiceMade.vue";
+import Reussite from "@/components/specific/Reussite.vue";
 
 // Import du store Pinia
 import { useStoryStore } from "@/stores/storyStore";
@@ -63,6 +71,7 @@ export default {
     MiniGame,
     Echec,
     ChoiceMade,
+    Reussite,
   },
 
   data() {
@@ -70,6 +79,8 @@ export default {
       current: this.$route.params.id || "intro",
       openMiniGame: false,
       showEchec: false,
+      showReussite: false,
+      reussiteTarget: null,
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
       restartChapterId: "intro",
@@ -122,6 +133,7 @@ export default {
   methods: {
     changeChapter(next) {
       const player = usePlayerStore();
+      
 
       if (!next || !next.id) {
         console.warn("[changeChapter] next object invalide :", next);
@@ -241,26 +253,25 @@ export default {
     onMiniGameDone(result) {
       this.openMiniGame = false;
 
-      // --------------------------
-      // 1. SUCCESS → ending or next chapter
-      // --------------------------
-      if (result && result.success) {
+     if (result && result.success) {
 
-        // If success leads to an ending:
-        if (result.target === "ending01") {
-          this.$router.push({ name: "ending01" });
-          return;
-        }
+  // Si c'est minigame08 → afficher Reussite.vue
+  if (this.activeMiniGameId === "minigame08") {
+    this.showReussite = true;
+    this.reussiteTarget = result.target; // souvent FINALE
+    return;
+  }
 
-        // otherwise continue story
-        this.changeChapter({
-          type: "story",
-          id: result.target,
-          good: true,
-        });
+  // sinon navigation normale
+  this.changeChapter({
+    type: "story",
+    id: result.target,
+    good: true,
+  });
 
-        return;
-      }
+  return;
+}
+
 
       // --------------------------
       // 2. FAILURE → death screen
