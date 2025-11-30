@@ -2,26 +2,34 @@
   <div class="reussite-container">
     <div class="reussite-box">
       <h2 class="titre">{{ title }}</h2>
-
       <p class="description">{{ description }}</p>
 
       <div class="buttons">
-        <button class="btn continuer" @click="$emit('continuer')">
-          Stats
-        </button>
 
-        <button class="btn menu" @click="$emit('menu')">
-          Historique
+         <!-- Bouton Accueil -->
+        <button class="btn accueil" @click="$emit('home')">
+          Accueil
         </button>
         
+        <!-- Bouton Historique -->
+        <button class="btn menu" @click="showHistory = true">
+          Historique
+        </button>
+
       </div>
     </div>
+
+    <!-- Overlay historique par-dessus Réussite -->
+    <ChoiceMade v-if="showHistory" @close="showHistory = false" />
   </div>
 </template>
 
 <script>
+import ChoiceMade from "@/components/specific/ChoiceMade.vue";
+
 export default {
   name: "Reussite",
+  components: { ChoiceMade },
   props: {
     title: {
       type: String,
@@ -32,6 +40,11 @@ export default {
       default: "Bravo ! Vous avez complété le jeu.",
     },
   },
+  data() {
+    return {
+      showHistory: false,
+    };
+  },
 };
 </script>
 
@@ -40,7 +53,6 @@ export default {
   font-family: "Courier New", monospace;
 }
 
-/* Fond semi-transparent pour l’overlay */
 .reussite-container {
   position: absolute;
   inset: 0;
@@ -50,7 +62,6 @@ export default {
   justify-content: center;
 }
 
-/* La fenêtre verte */
 .reussite-box {
   width: 480px;
   padding: 30px;
@@ -59,19 +70,16 @@ export default {
   color: #39FF88;
 }
 
-/* Titre */
 .titre {
   margin: 0 0 15px 0;
   font-size: 1.4rem;
 }
 
-/* Texte */
 .description {
   margin-bottom: 30px;
   color: #39FF88;
 }
 
-/* Boutons */
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -89,5 +97,9 @@ export default {
 .btn:hover {
   background: #39FF8833;
   transform: scale(1.05);
+}
+
+.btn.accueil {
+  /* optionnel : style spécifique pour Accueil */
 }
 </style>

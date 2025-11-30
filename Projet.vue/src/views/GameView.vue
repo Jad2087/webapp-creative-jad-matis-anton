@@ -31,11 +31,11 @@
         <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
           @menu="goToMenu" />
 
-          <Reussite 
-  v-if="showReussite"
-  :nextChapterId="reussiteTarget"
-  @continue="goToNextChapter"
-/>
+         <!-- Réussite overlay -->
+        <Reussite v-if="showReussite" @continuer="showStats = true" @menu="showHistory = true"/>
+
+        <!-- Historique overlay par-dessus Réussite -->
+        <ChoiceMade v-if="showHistory" class="overlay" @close="showHistory = false" />
 
       </div>
     </div>
@@ -132,18 +132,20 @@ export default {
 
   methods: {
     changeChapter(next) {
-      const player = usePlayerStore();
-      
+   const player = usePlayerStore();
+  const storyStore = useStoryStore();
 
-      if (!next || !next.id) {
-        console.warn("[changeChapter] next object invalide :", next);
-        return;
-      }
+  if (!next || !next.id) {
+    console.warn("[changeChapter] next object invalide :", next);
+    return;
+  }
 
-      const nextId = next.id;
-      console.log("[changeChapter] ----");
-      console.log("[changeChapter] Choix reçu :", next);
-      console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
+  const nextId = next.id; 
+  storyStore.addChoice(nextId);
+
+  console.log("[changeChapter] ----");
+  console.log("[changeChapter] Choix reçu :", next);
+  console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
 
       // AJOUT DES INDICES
       const clueAwards = {
@@ -384,6 +386,15 @@ export default {
 <style scoped>
 * {
   font-family: "Courier New", monospace;
+}
+
+/* Overlay général au-dessus de Reussite */
+.overlay {
+  position: absolute;
+  width: 500px;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Container et screen restent inchangés */

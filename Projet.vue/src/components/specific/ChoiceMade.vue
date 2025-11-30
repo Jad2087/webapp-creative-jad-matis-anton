@@ -2,44 +2,43 @@
   <div class="choice-made">
     <h3>Historique des choix :</h3>
     <ul>
-      <li v-for="(choice, index) in choicesMade" :key="index">
+      <li v-for="(choice, index) in choicesHistory" :key="index">
         {{ index + 1 }}. {{ choice }}
       </li>
     </ul>
+    <button class="btn-close" @click="$emit('close')">Fermer</button>
   </div>
 </template>
 
 <script>
-import { usePlayerStore } from "@/stores/playerStore";
+import { useStoryStore } from "@/stores/storyStore";
 
 export default {
   name: "ChoiceMade",
   setup() {
-    const player = usePlayerStore();
-    return {
-      choicesMade: player.choicesMade,
-    };
+    const storyStore = useStoryStore();
+    return { choicesHistory: storyStore.choicesHistory };
   },
 };
 </script>
 
 <style scoped>
-
 * {
   font-family: "Courier New", monospace;
 }
 
 .choice-made {
   color: #03ab5e;
-  background-color: rgba(0,0,0,0.85);
+  background-color: #1b1b1b;
   padding: 1rem;
   border: 2px solid #03ab5e;
-  max-height: 40%;
-  width: 40%;
+  max-height: 60%;
+  width: 400px;
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  top: 10%;
+  right: 10%;
   overflow-y: auto;
+  z-index: 10;
 }
 
 .choice-made h3 {
@@ -49,5 +48,18 @@ export default {
 .choice-made ul {
   margin: 0;
   padding-left: 1rem;
+}
+
+.btn-close {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 2px solid #03ab5e;
+  background: transparent;
+  color: #03ab5e;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background: #03ab5e33;
 }
 </style>
