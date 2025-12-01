@@ -67,4 +67,10 @@ export default {
   font-size: 16px;
   font-weight: bold;
 }
+
+/* Version mobile : retirer la hauteur fixe */
+@media (max-width: 1080px) {
+  .stats-container {
+    height: auto; /* s'adapte au contenu */
+  } }
 </style>

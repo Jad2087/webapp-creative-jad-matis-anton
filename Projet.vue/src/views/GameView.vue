@@ -17,7 +17,6 @@
           <p class="info-title">{{ activeChapter.title }}</p>
 
           <!-- <p class="info-content">{{ activeChapter.text }}</p> -->
-
           <p class="info-content" ref="infoContent"></p>
         </div>
 
@@ -543,79 +542,18 @@ export default {
   gap: 1rem;
 }
 
-/* VERSION MOBILE FULL HEIGHT + Hide Map & Border */
-
 @media (max-width: 1080px) {
-  .container {
-    height: 100vh;
-    /* prend toute la hauteur de l'écran */
-    padding: 0;
-  }
 
-  .screen {
-    display: flex;
-    flex-direction: column;
-    width: 95vw;
-    height: 100%;
-    /* plein écran */
-    padding: 1rem;
-    gap: 1rem;
-
-    /* Effet CRT */
-    transform: perspective(800px) rotateX(1.5deg) scale(1.01);
-
-    /* Supprimer la bordure */
-    border: none;
-  }
-
-  /* Barre en haut */
-  .columnleft {
-    order: 1;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    gap: 1rem;
-    flex: 0 0 auto;
-    /* hauteur automatique selon le contenu */
-  }
-
-  /* Cacher la mini-map en mobile */
-  .columnleft MiniMap {
-    display: none;
-  }
-
-  /* Colonne droite prend tout le reste */
-  .columnright {
-    order: 2;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1 auto;
-    /* prend le reste de la hauteur */
-  }
-
-  /* Header reste en haut */
-  .columnright>*:first-child {
-    margin-top: 0;
-  }
-
-  /* Story-box occupe l’espace restant avant les boutons */
-  .story-box {
-    flex: 1 1 auto;
-    overflow-y: auto;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  /* Boutons TOUJOURS visibles en bas */
-  .choicebuttons {
-    flex: 0 0 auto;
-    position: sticky;
-    bottom: 0;
-    background: #111;
-    padding: 0.5rem 0;
-    border-top: 2px solid #03ab5e;
-    z-index: 20;
-  }
+.screen {
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  height: 100vh;
+  padding: 1rem;
+  gap: 1rem;
+  justify-content: flex-start;
+ 
 }
+}
+
 </style>
