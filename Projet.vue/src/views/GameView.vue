@@ -44,6 +44,7 @@
 </template>
 
 <script>
+// Import des composantes
 import MiniGame from "@/components/common/MiniGame.vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import ChoiceButtons from "@/components/common/ChoiceButtons.vue";
@@ -133,15 +134,17 @@ export default {
 
   methods: {
     changeChapter(next) {
-      const player = usePlayerStore();
-      const storyStore = useStoryStore();
+      const player = usePlayerStore();   // On récupère le store du joueur (pinia)
+      const storyStore = useStoryStore(); // On récupère le store de l'histoire (pinia)
 
+      // Vérifie que "next" existe et qu'il contient un id valide
       if (!next || !next.id) {
         console.warn("[changeChapter] next object invalide :", next);
         return;
       }
-
+      // récupère id du prochain chapitre
       const nextId = next.id;
+      // ajoute id à historique des choix dans le store
       storyStore.addChoice(nextId);
 
       console.log("[changeChapter] ----");
@@ -227,13 +230,12 @@ export default {
         player.addClue("engine");
       }
 
-      // ⭐ FIN SECRÈTE — déclenche Réussite.vue
+      // FIN SECRÈTE — déclenche Réussite.vue
       if (nextId === "ending") {
         console.log("[changeChapter] Fin secrète détectée");
         this.showReussite = true;
         return;
       }
-
 
       // NAVIGATION NORMALE : STORY
       if (next.type === "story") {
@@ -283,10 +285,7 @@ export default {
         return;
       }
 
-
-      // --------------------------
       // 2. FAILURE → death screen
-      // --------------------------
       const player = usePlayerStore();
       player.reset();
 

@@ -2,8 +2,9 @@
   <div class="choice-made">
     <h3>Historique des choix :</h3>
     <ul>
+       <!-- boucle sur chaque élément dans choicesHistory -->
       <li v-for="(choice, index) in choicesHistory" :key="index">
-        {{ index + 1 }}. {{ choice }}
+        {{ index + 1 }}. {{ choice }} <!-- affiche le numéro du choix + le texte du choix -->
       </li>
     </ul>
     <button class="btn-close" @click="$emit('close')">Fermer</button>
