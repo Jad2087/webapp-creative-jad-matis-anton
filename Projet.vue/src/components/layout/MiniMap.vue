@@ -13,17 +13,13 @@
 </template>
 
 <script>
-
-
 export default {
   name: "MiniMap",
   props: ["currentChapterId"],
 
   data() {
     return {
-
       miniMapImage: "/src/Images/minimap.png",
-
       chapterPositions: {
         intro: { top: "19%", left: "52%" },
         fork01: { top: "30%", left: "52%" },
@@ -32,9 +28,7 @@ export default {
         "clue01-02": { top: "30%", left: "12%" },
         clue02: { top: "45%", left: "42%" },
         minigame01: { top: "50%", left: "60%" },
-
         intro2: { top: "10%", left: "85%" },
-
         default: { top: "50%", left: "50%" }
       }
     };
@@ -42,8 +36,7 @@ export default {
 
   computed: {
     pointStyle() {
-      return this.chapterPositions[this.currentChapterId]
-        || this.chapterPositions.default;
+      return this.chapterPositions[this.currentChapterId] || this.chapterPositions.default;
     }
   }
 };
@@ -84,15 +77,8 @@ export default {
 }
 
 @keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .map-point {
@@ -102,6 +88,30 @@ export default {
   font-size: 1.4rem;
   pointer-events: none;
   animation: blink 1s infinite;
-  /* Clignote toutes les 1 seconde */
+}
+
+/* MEDIA QUERY POUR MOBILE */
+@media (max-width: 1080px) {
+  /* Cacher la mini-map sur mobile */
+  .minimap-container {
+    display: none;
+  }
+
+  /* Ajuster la barre du haut si nécessaire */
+  .columnleft {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  /* Exemple : rendre l’écran principal en colonne avec espace égal */
+  .screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    gap: 1rem;
+  }
 }
 </style>

@@ -68,9 +68,11 @@ const isVisible = computed(() => {
   border: 2px solid #03ab5e;
   padding: 0.75rem 1.5rem;
   font-size: 1.1rem;
-  margin: 0.5rem;
+  margin: 0.5rem 0;  
   cursor: pointer;
-  width: 250px;
+  width: 100%;           
+  max-width: 480px;     
+  box-sizing: border-box; 
   transition: 0.3s ease;
 }
 
@@ -80,17 +82,15 @@ const isVisible = computed(() => {
   transform: scale(1.05);
 }
 
-/* 🔥 État quand le clue lié à ce bouton a déjà été trouvé */
+/* états spéciaux */
 .choice-btn--clue-found {
   background-color: #111;
-  /* jaune */
   border-color: #f4e66a;
   color: #f4e66a;
 }
 
 .choice-btn--clue-found:hover {
   background-color: #f4e66a;
-  /* jaune un peu plus clair au hover */
   color: black;
 }
 </style>
