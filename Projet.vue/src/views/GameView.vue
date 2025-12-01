@@ -452,6 +452,12 @@ export default {
 
   /* Optionnel : légère arrondie pour correspondre à un écran rétro */
   border-radius: 6px;
+
+  box-shadow:
+    0 0 25px 5px rgba(3, 171, 94, 0.5),   /* halo vert */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),      /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),     /* ombre interne pour effet vitre */
+    inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
 }
 
 .screen::after {
