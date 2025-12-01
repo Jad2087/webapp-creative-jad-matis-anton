@@ -6,11 +6,11 @@
 
       <div class="buttons">
 
-         <!-- Bouton Accueil -->
+        <!-- Bouton Accueil -->
         <button class="btn accueil" @click="$emit('menu')">
           Accueil
         </button>
-        
+
         <!-- Bouton Historique -->
         <button class="btn menu" @click="showHistory = true">
           Historique

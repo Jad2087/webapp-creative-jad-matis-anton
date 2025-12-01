@@ -21,7 +21,7 @@ export default {
 
   data() {
     return {
-      
+
       miniMapImage: "/src/Images/minimap.png",
 
       chapterPositions: {

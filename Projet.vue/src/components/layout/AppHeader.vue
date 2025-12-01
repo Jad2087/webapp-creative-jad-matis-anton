@@ -26,8 +26,9 @@ export default {
   padding: 1rem;
   border: 2px solid #ffffff;
   background-color: #111;
-  box-sizing: border-box;  
-  min-height: 85px;   /* AJOUT POUR MATCHER */
+  box-sizing: border-box;
+  min-height: 85px;
+  /* AJOUT POUR MATCHER */
 }
 
 .app-header__logo {

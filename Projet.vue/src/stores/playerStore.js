@@ -1,10 +1,12 @@
-import { defineStore } from 'pinia';
+import {
+  defineStore
+} from 'pinia';
 
 export const usePlayerStore = defineStore('player', {
   state: () => ({
     deaths: 0,
-    flags: {},       // compteur pour chaque indice
-    cluesFound: [],  // liste des indices déjà trouvés
+    flags: {}, // compteur pour chaque indice
+    cluesFound: [], // liste des indices déjà trouvés
   }),
   actions: {
     // Ajouter un indice

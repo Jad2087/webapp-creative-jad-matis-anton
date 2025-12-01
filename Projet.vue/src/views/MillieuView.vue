@@ -30,7 +30,7 @@ export default {
     startStory() {
       this.$router.push({ name: "game", params: { id: "intro" } });
     },
-     // dirige l'utilisateur vers la route nommée "home".
+    // dirige l'utilisateur vers la route nommée "home".
     goBack() {
       this.$router.push({ name: "home" });
     },
@@ -42,11 +42,15 @@ export default {
 * {
   font-family: "Courier New", monospace;
 }
+
 .container {
   display: flex;
-  justify-content: center; /* centers horizontally */
-  align-items: center; /* centers vertically */
-  height: 100vh; /* full viewport height */
+  justify-content: center;
+  /* centers horizontally */
+  align-items: center;
+  /* centers vertically */
+  height: 100vh;
+  /* full viewport height */
   background-color: #111;
 }
 
@@ -61,7 +65,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 2rem; 
+  gap: 2rem;
 }
 
 /* EFFET RETRO */
@@ -69,9 +73,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -88,9 +94,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -100,7 +108,8 @@ export default {
   position: relative;
   overflow: hidden;
   animation: crtFlicker 0.15s infinite alternate;
-  transform: perspective(800px) rotateX(2deg) scale(1.02);  /* Effet de courbure CRT */
+  transform: perspective(800px) rotateX(2deg) scale(1.02);
+  /* Effet de courbure CRT */
   transform-origin: center top;
   border-radius: 6px;
 }
@@ -109,12 +118,10 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -150,7 +157,9 @@ export default {
 }
 
 .appheader {
-  width: 100%; /* prend la largeur du .screen */
-  align-self: stretch; /* juste au cas où */
+  width: 100%;
+  /* prend la largeur du .screen */
+  align-self: stretch;
+  /* juste au cas où */
 }
 </style>

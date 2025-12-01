@@ -82,14 +82,15 @@ const isVisible = computed(() => {
 
 /* 🔥 État quand le clue lié à ce bouton a déjà été trouvé */
 .choice-btn--clue-found {
-  background-color: #111;   /* jaune */
+  background-color: #111;
+  /* jaune */
   border-color: #f4e66a;
   color: #f4e66a;
 }
 
 .choice-btn--clue-found:hover {
-  background-color: #f4e66a;   /* jaune un peu plus clair au hover */
+  background-color: #f4e66a;
+  /* jaune un peu plus clair au hover */
   color: black;
 }
-
 </style>

@@ -2,7 +2,10 @@
 On importe les méthodes nécessaires depuis le module `vue-router`
 pour créer et configurer le système de routage de l’application.
 */
-import { createRouter, createWebHistory } from 'vue-router';
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router';
 
 /*
 On importe les différentes vues (pages) du projet.
@@ -19,8 +22,7 @@ import EndingView from '../views/EndingView.vue';
 Définition des routes dans un tableau d’objets.
 Chaque objet correspond à une "page" de l’application.
 */
-const routes = [
-  {
+const routes = [{
     path: '/', // (obligatoire) Partie de l’URL qui identifie la page
     component: HomeView, // (obligatoire) Composant (View) à afficher
     name: 'home' // (optionnel) Nom interne de la route (utile pour router.push({ name: 'home' }))
@@ -34,7 +36,7 @@ const routes = [
     path: '/game/:id', // ← ici on ajoute ":id" en optionnel
     component: GameView,
     name: 'game',
-    props: true         // pour récupérer id via props si tu veux
+    props: true // pour récupérer id via props si tu veux
   },
   {
     path: '/millieu', // ← ici on ajoute ":id" en optionnel
@@ -55,7 +57,8 @@ On y définit :
 - la liste des routes définies ci-dessus
 */
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(
+    import.meta.env.BASE_URL),
   routes
 });
 

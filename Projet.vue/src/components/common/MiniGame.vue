@@ -18,12 +18,7 @@
         <!-- Attempts line + blocks -->
         <div class="term-attempts">
           <span>{{ attemptsRemaining }} ATTEMPTS REMAINING:</span>
-          <span
-            v-for="n in maxAttempts"
-            :key="n"
-            class="attempt-block"
-            :class="{ used: n > attemptsRemaining }"
-          ></span>
+          <span v-for="n in maxAttempts" :key="n" class="attempt-block" :class="{ used: n > attemptsRemaining }"></span>
         </div>
 
         <!-- GRID + LOG AREA -->
@@ -37,24 +32,12 @@
 
           <!-- Character lines -->
           <div class="char-lines">
-            <div
-              class="char-line"
-              v-for="(row, rIndex) in visibleGridRows"
-              :key="rIndex"
-            >
-              <span
-                v-for="(cell, cIndex) in row"
-                :key="cIndex"
-                class="char-span"
-                :class="{
-                  word: cell.isWord,
-                  used: cell.used,
-                  hovered: isHovered(cell),
-                }"
-                @click="onCellClick(cell)"
-                @mouseover="hoverWord(cell)"
-                @mouseleave="hoverWord(null)"
-              >
+            <div class="char-line" v-for="(row, rIndex) in visibleGridRows" :key="rIndex">
+              <span v-for="(cell, cIndex) in row" :key="cIndex" class="char-span" :class="{
+                word: cell.isWord,
+                used: cell.used,
+                hovered: isHovered(cell),
+              }" @click="onCellClick(cell)" @mouseover="hoverWord(cell)" @mouseleave="hoverWord(null)">
                 {{ cell.text }}
               </span>
             </div>

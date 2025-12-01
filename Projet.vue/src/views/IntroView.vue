@@ -26,11 +26,11 @@ export default {
     return {};
   },
   methods: {
-     // dirige l'utilisateur vers la route "game" avec un paramètre "id" égal à "intro".
+    // dirige l'utilisateur vers la route "game" avec un paramètre "id" égal à "intro".
     startStory() {
       this.$router.push({ name: "game", params: { id: "intro" } });
     },
-     // dirige l'utilisateur vers la route nommée "home".
+    // dirige l'utilisateur vers la route nommée "home".
     goBack() {
       this.$router.push({ name: "home" });
     },
@@ -42,11 +42,15 @@ export default {
 * {
   font-family: "Courier New", monospace;
 }
+
 .container {
   display: flex;
-  justify-content: center; /* centers horizontally */
-  align-items: center; /* centers vertically */
-  height: 100vh; /* full viewport height */
+  justify-content: center;
+  /* centers horizontally */
+  align-items: center;
+  /* centers vertically */
+  height: 100vh;
+  /* full viewport height */
   background-color: #111;
 }
 
@@ -69,9 +73,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -88,9 +94,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -100,7 +108,8 @@ export default {
   position: relative;
   overflow: hidden;
   animation: crtFlicker 0.15s infinite alternate;
-  transform: perspective(800px) rotateX(2deg) scale(1.02);  /* Effet de courbure CRT */
+  transform: perspective(800px) rotateX(2deg) scale(1.02);
+  /* Effet de courbure CRT */
   transform-origin: center top;
   border-radius: 6px;
 }
@@ -109,12 +118,10 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -150,64 +157,67 @@ export default {
 }
 
 .appheader {
-  width: 100%; 
-  align-self: stretch; /* juste au cas où */
+  width: 100%;
+  align-self: stretch;
+  /* juste au cas où */
 }
 
 /* ==== MOBILE ==== */
 @media (max-width: 1080px) {
 
-/* FULL MOBILE RESET */
-html, body {
-  padding: 0;
-  margin: 0;
-  height: 100dvh;
-  overflow: hidden; /* sinon la hauteur casse */
+  /* FULL MOBILE RESET */
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100dvh;
+    overflow: hidden;
+    /* sinon la hauteur casse */
+  }
+
+  .container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100dvh;
+    /* plein écran réel */
+    display: flex;
+  }
+
+  .intro-layout {
+    width: 100%;
+    height: 100%;
+    /* IMPORTANT : sinon .screen ne peut pas s'étendre */
+    display: flex;
+  }
+
+  .screen {
+    width: 100%;
+    height: 100%;
+    /* FINALLY: prend 100% de l’espace */
+    padding: 1rem;
+
+    /* enlever le style CRT */
+    border: none;
+    border-radius: 0;
+    transform: none;
+    animation: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* ou center si tu veux centré */
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .start-btn {
+    width: 80%;
+  }
 }
-
-.container {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100dvh;   /* plein écran réel */
-  display: flex;
-}
-
-.intro-layout {
-  width: 100%;
-  height: 100%;     /* IMPORTANT : sinon .screen ne peut pas s'étendre */
-  display: flex;
-}
-
-.screen {
-  width: 100%;
-  height: 100%;     /* FINALLY: prend 100% de l’espace */
-  padding: 1rem;
-
-  /* enlever le style CRT */
-  border: none;
-  border-radius: 0;
-  transform: none;
-  animation: none;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* ou center si tu veux centré */
-  gap: 2rem;
-}
-
-.title {
-  font-size: 2rem;
-  margin-top: 2rem;
-}
-
-.start-btn {
-  width: 80%;
-}
-}
-
-
-
-
 </style>

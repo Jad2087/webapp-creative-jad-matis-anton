@@ -16,9 +16,9 @@ export default {
   },
 
   methods: {
-     // dirige l'utilisateur vers la route nommée "intro".
+    // dirige l'utilisateur vers la route nommée "intro".
     // startStory() {this.$router.push({ name: "intro" });},
-     startStory() {
+    startStory() {
       this.$router.push({ name: "game", params: { id: "intro" } });
     },
   },
@@ -33,9 +33,12 @@ export default {
 /* Fond de la page */
 .container {
   display: flex;
-  justify-content: center; /* centers horizontally */
-  align-items: center; /* centers vertically */
-  height: 100vh; /* full viewport height */
+  justify-content: center;
+  /* centers horizontally */
+  align-items: center;
+  /* centers vertically */
+  height: 100vh;
+  /* full viewport height */
   background-color: #111;
 }
 
@@ -57,9 +60,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -76,9 +81,11 @@ export default {
   0% {
     opacity: 0.98;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.97;
   }
@@ -88,21 +95,20 @@ export default {
   position: relative;
   overflow: hidden;
   animation: crtFlicker 0.15s infinite alternate;
-  transform: perspective(800px) rotateX(2deg) scale(1.02); /* Effet de courbure CRT */
+  transform: perspective(800px) rotateX(2deg) scale(1.02);
+  /* Effet de courbure CRT */
   transform-origin: center top;
-  border-radius: 6px; 
+  border-radius: 6px;
 }
 
 .screen::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -135,51 +141,55 @@ export default {
 /* ==== MOBILE ==== */
 @media (max-width: 768px) {
 
-/* IMPORTANT : forces le viewport mobile correct */
-html, body {
-  padding: 0;
-  margin: 0;
-  height: 100dvh;
-  overflow: hidden; /* évite que 100% casse */
+  /* IMPORTANT : forces le viewport mobile correct */
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100dvh;
+    overflow: hidden;
+    /* évite que 100% casse */
+  }
+
+  .container {
+    width: 100%;
+    height: 100dvh;
+    /* plein écran réel */
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .screen {
+    width: 100%;
+    height: 100%;
+    /* prend 100% du parent */
+    padding: 1rem;
+
+    /* On retire tout le style “CRT” */
+    border: none;
+    border-radius: 0;
+    transform: none;
+    animation: none;
+
+    /* Layout mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* centré verticalement */
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .start-btn {
+    width: 80%;
+    font-size: 1.1rem;
+    padding: 0.8rem;
+  }
 }
-
-.container {
-  width: 100%;
-  height: 100dvh;  /* plein écran réel */
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.screen {
-  width: 100%;
-  height: 100%;    /* prend 100% du parent */
-  padding: 1rem;
-
-  /* On retire tout le style “CRT” */
-  border: none;
-  border-radius: 0;
-  transform: none;
-  animation: none;
-
-  /* Layout mobile */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;   /* centré verticalement */
-  align-items: center;
-  gap: 2rem;
-}
-
-.title {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-}
-
-.start-btn {
-  width: 80%;
-  font-size: 1.1rem;
-  padding: 0.8rem;
-}
-}
-
 </style>
