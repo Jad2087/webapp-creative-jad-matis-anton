@@ -34,6 +34,7 @@ export default {
 <style scoped>
 .stats-container {
   width: 100%;
+  height: 150px;
   padding: 10px;
   border: 2px solid #03ab5e;
   background-color: #111;
