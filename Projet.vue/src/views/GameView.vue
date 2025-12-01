@@ -3,7 +3,7 @@
     <div class="screen">
       <!-- TIMER à gauche -->
       <div class="columnleft">
-        <Timer />
+        <Timer @timeout="killPlayerByOxygen" />
         <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
@@ -261,6 +261,19 @@ export default {
         next
       );
     },
+
+    // MORT OXYGEN
+    killPlayerByOxygen() {
+      const player = usePlayerStore();
+      player.incrementDeaths(1);
+
+      this.echecTitle = "Oxygène épuisé";
+      this.echecDescription =
+        "Votre vision se trouble... l’air manque... puis tout devient noir.";
+
+      this.showEchec = true;
+    },
+
 
     onMiniGameDone(result) {
       this.openMiniGame = false;
@@ -544,16 +557,15 @@ export default {
 
 @media (max-width: 1080px) {
 
-.screen {
-  display: flex;
-  flex-direction: column;
-  width: 95vw;
-  height: 100vh;
-  padding: 1rem;
-  gap: 1rem;
-  justify-content: flex-start;
- 
-}
-}
+  .screen {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    height: 100vh;
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: flex-start;
 
+  }
+}
 </style>

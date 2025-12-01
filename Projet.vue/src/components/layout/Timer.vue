@@ -4,12 +4,7 @@
 
     <!-- Barre contenant les segments -->
     <div class="bars">
-      <div
-        v-for="(bar, index) in totalBars"
-        :key="index"
-        class="bar"
-        :class="{ active: index < remainingBars }"
-      ></div>
+      <div v-for="(bar, index) in totalBars" :key="index" class="bar" :class="{ active: index < remainingBars }"></div>
     </div>
   </div>
 </template>
@@ -41,11 +36,18 @@ export default {
 
   methods: {
     startTimer() {
+      // évite de créer plusieurs intervals par erreur
+      if (this.interval) return;
+
       this.interval = setInterval(() => {
         if (this.elapsed < this.duration) {
           this.elapsed++;
         } else {
           clearInterval(this.interval);
+          this.interval = null;
+
+          // 🔥 Émettre l’event seulement quand le timer est TERMINÉ
+          this.$emit("timeout");
         }
       }, 1000);
     },
