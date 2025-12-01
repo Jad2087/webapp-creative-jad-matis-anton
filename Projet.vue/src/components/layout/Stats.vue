@@ -36,7 +36,7 @@ export default {
   width: 100%;
   height: 150px;
   padding: 10px;
-  border: 2px solid #03ab5e;
+  border: 2px solid #ffffff;
   background-color: #111;
   display: flex;
   flex-direction: column;
