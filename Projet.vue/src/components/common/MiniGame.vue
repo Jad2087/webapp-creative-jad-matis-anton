@@ -1,21 +1,29 @@
 <template>
   <div class="mini-game-overlay">
     <div class="mini-game-content">
-
       <!-- Close button -->
-      <button class="close-btn" @click="handleClose">Fermer</button>
 
       <!-- MAIN TERMINAL AREA -->
       <div class="terminal-frame">
         <!-- Header (typed) -->
-        <div class="term-header">
-          {{ typedHeader }}
+
+        <div class="header-bar">
+          <div class="term-header">
+            {{ typedHeader }}
+          </div>
+
+          <button class="close-x" @click="handleClose">✕</button>
         </div>
 
         <!-- Attempts line + blocks -->
         <div class="term-attempts">
           <span>{{ attemptsRemaining }} ATTEMPTS REMAINING:</span>
-          <span v-for="n in maxAttempts" :key="n" class="attempt-block" :class="{ used: n > attemptsRemaining }"></span>
+          <span
+            v-for="n in maxAttempts"
+            :key="n"
+            class="attempt-block"
+            :class="{ used: n > attemptsRemaining }"
+          ></span>
         </div>
 
         <!-- GRID + LOG AREA -->
@@ -29,18 +37,28 @@
 
           <!-- Character lines -->
           <div class="char-lines">
-            <div class="char-line" v-for="(row, rIndex) in visibleGridRows" :key="rIndex">
-              <span v-for="(cell, cIndex) in row" :key="cIndex" class="char-span" :class="{
-                word: cell.isWord,
-                used: cell.used,
-                hovered: isHovered(cell)
-              }" @click="onCellClick(cell)" @mouseover="hoverWord(cell)" @mouseleave="hoverWord(null)">
+            <div
+              class="char-line"
+              v-for="(row, rIndex) in visibleGridRows"
+              :key="rIndex"
+            >
+              <span
+                v-for="(cell, cIndex) in row"
+                :key="cIndex"
+                class="char-span"
+                :class="{
+                  word: cell.isWord,
+                  used: cell.used,
+                  hovered: isHovered(cell),
+                }"
+                @click="onCellClick(cell)"
+                @mouseover="hoverWord(cell)"
+                @mouseleave="hoverWord(null)"
+              >
                 {{ cell.text }}
               </span>
             </div>
           </div>
-
-
 
           <!-- Right address column -->
           <div class="addresses">
@@ -79,7 +97,6 @@
             <!-- pas de bouton ici : on laisse le parent afficher Échec -->
           </template>
         </div>
-
       </div>
     </div>
   </div>
@@ -88,17 +105,64 @@
 <script>
 import { useStoryStore } from "@/stores/storyStore";
 
-
 const CHAR_SET = [
-  "?", "$", "_", "{", "}", "^", "!", "|", "-", "=", "+",
-  "<", ">", "#", ":", ";", "*", ".", "(", ")", "`", ",", "@"
+  "?",
+  "$",
+  "_",
+  "{",
+  "}",
+  "^",
+  "!",
+  "|",
+  "-",
+  "=",
+  "+",
+  "<",
+  ">",
+  "#",
+  ":",
+  ";",
+  "*",
+  ".",
+  "(",
+  ")",
+  "`",
+  ",",
+  "@",
 ];
 
 const WORD_LIST = [
-  "STARK", "BURST", "CABLE", "SUGAR", "SHAVE", "DONOR", "STUFF", "MATCH",
-  "DAIRY", "ALLOW", "RAISE", "LAYER", "CHALK", "START", "MOUTH", "LUNCH",
-  "TWIST", "DRINK", "SPARE", "VOICE", "ELECT", "HUMOR", "LEASE", "BRINK",
-  "STOOL", "PAUSE", "VALID", "BLEED", "RIFLE", "TOAST", "POINT"
+  "STARK",
+  "BURST",
+  "CABLE",
+  "SUGAR",
+  "SHAVE",
+  "DONOR",
+  "STUFF",
+  "MATCH",
+  "DAIRY",
+  "ALLOW",
+  "RAISE",
+  "LAYER",
+  "CHALK",
+  "START",
+  "MOUTH",
+  "LUNCH",
+  "TWIST",
+  "DRINK",
+  "SPARE",
+  "VOICE",
+  "ELECT",
+  "HUMOR",
+  "LEASE",
+  "BRINK",
+  "STOOL",
+  "PAUSE",
+  "VALID",
+  "BLEED",
+  "RIFLE",
+  "TOAST",
+  "POINT",
 ];
 
 export default {
@@ -106,9 +170,8 @@ export default {
   emits: ["close", "done"],
 
   props: {
-    minigameId: { type: String, required: true }
+    minigameId: { type: String, required: true },
   },
-
 
   data() {
     return {
@@ -132,12 +195,10 @@ export default {
       success: false,
 
       // typing header
-      headerText:
-        "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nENTER PASSWORD NOW",
+      headerText: "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nENTER PASSWORD NOW",
       headerIndex: 0,
       headerTimer: null,
     };
-
   },
 
   computed: {
@@ -160,7 +221,6 @@ export default {
     },
   },
 
-
   created() {
     const storyStore = useStoryStore();
     this.config = storyStore.storyData.find(
@@ -170,7 +230,6 @@ export default {
     // ⚠️ Load config FIRST, THEN start the game
     this.initGame();
   },
-
 
   beforeUnmount() {
     if (this.headerTimer) {
@@ -188,7 +247,6 @@ export default {
 
       this.maxAttempts = this.config.maxAttempts;
       this.attemptsRemaining = this.config.maxAttempts;
-
 
       // 1) generate addresses
       this.generateAddresses();
@@ -218,20 +276,19 @@ export default {
     generateGrid() {
       this.cells = [];
       for (let i = 0; i < this.rows * this.cols; i++) {
-        const char =
-          CHAR_SET[Math.floor(Math.random() * CHAR_SET.length)];
+        const char = CHAR_SET[Math.floor(Math.random() * CHAR_SET.length)];
         this.cells.push({
           text: char,
           isWord: false,
           used: false,
-          wordIndex: null,   // <--- new
+          wordIndex: null, // <--- new
         });
       }
     },
 
     placeWords() {
       const wordCount = this.config.wordCount; // how many words in the grid
-      const pool = [...WORD_LIST];     // all possible words
+      const pool = [...WORD_LIST]; // all possible words
       const words = [];
 
       // pick some random words from the list
@@ -296,7 +353,6 @@ export default {
       }
     },
 
-
     startHeaderTyping() {
       if (this.headerTimer) {
         clearInterval(this.headerTimer);
@@ -317,11 +373,11 @@ export default {
       if (cell.used) return;
 
       const wordIndex = cell.wordIndex;
-      const wordCells = this.cells.filter(c => c.wordIndex === wordIndex);
-      const guess = wordCells.map(c => c.text).join("");
+      const wordCells = this.cells.filter((c) => c.wordIndex === wordIndex);
+      const guess = wordCells.map((c) => c.text).join("");
 
       // marque les lettres comme utilisées
-      wordCells.forEach(c => {
+      wordCells.forEach((c) => {
         c.used = true;
       });
 
@@ -334,7 +390,6 @@ export default {
         });
         this.success = true;
         this.gameOver = true;
-
       } else {
         const matches = this.countMatchingChars(guess, this.secretWord);
         this.logs.unshift({
@@ -351,8 +406,6 @@ export default {
         }
       }
     },
-
-
 
     countMatchingChars(wordA, wordB) {
       // similar spirit to original: count same letters (any position)
@@ -374,17 +427,14 @@ export default {
       this.$emit("close");
     },
 
-handleContinue() {
-  if (this.success) {
-    this.$emit("done", {
-      success: true,
-      target: this.config.success,
-    });
-  }
-},
-
-
-
+    handleContinue() {
+      if (this.success) {
+        this.$emit("done", {
+          success: true,
+          target: this.config.success,
+        });
+      }
+    },
 
     hoverWord(cell) {
       this.hoveredWordIndex = cell && cell.isWord ? cell.wordIndex : null;
@@ -393,11 +443,7 @@ handleContinue() {
     isHovered(cell) {
       return cell.isWord && cell.wordIndex === this.hoveredWordIndex;
     },
-
   },
-
-
-
 };
 </script>
 
@@ -553,8 +599,6 @@ handleContinue() {
   color: #555;
 }
 
-
-
 /* Log panel */
 .log-panel {
   font-size: 0.9rem;
@@ -599,5 +643,30 @@ handleContinue() {
   background-color: #03ab5e;
   color: #000;
   transform: scale(1.05);
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.close-x {
+  background: none;
+  border: 2px solid #03ab5e;
+  color: #03ab5e;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 4px 10px;
+  height: fit-content;
+  font-family: "Courier New", monospace;
+  transition: 0.2s ease;
+}
+
+.close-x:hover {
+  background: #03ab5e;
+  color: black;
 }
 </style>

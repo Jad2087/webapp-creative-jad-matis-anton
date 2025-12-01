@@ -4,22 +4,16 @@
       <h2 class="titre">{{ title }}</h2>
       <p class="description">{{ description }}</p>
 
-
       <div class="buttons">
-        <button class="btn retry" @click="$emit('retry')">
-          Recommencer
-        </button>
+        <button class="btn retry" @click="$emit('retry')">Recommencer</button>
 
-        <button class="btn menu" @click="$emit('menu')">
-          Menu Principal
-        </button>
+        <button class="btn menu" @click="$emit('menu')">Menu Principal</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "Echec",
   props: {
@@ -34,7 +28,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 * {
@@ -55,9 +48,9 @@ export default {
 .echec-box {
   width: 480px;
   padding: 30px;
-  border: 3px solid #E35E5E;
+  border: 3px solid #e35e5e;
   background: #1b1b1b;
-  color: #E35E5E;
+  color: #e35e5e;
 }
 
 /* Titre */
@@ -69,7 +62,7 @@ export default {
 /* Texte */
 .description {
   margin-bottom: 30px;
-  color: #E35E5E;
+  color: #e35e5e;
 }
 
 /* Boutons */
@@ -80,15 +73,16 @@ export default {
 
 .btn {
   padding: 10px 20px;
-  border: 2px solid #E35E5E;
+  border: 2px solid #e35e5e;
   background: transparent;
-  color: #E35E5E;
+  color: #e35e5e;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .btn:hover {
-  background: #E35E5E33;
+  background: #e35e5e;
   transform: scale(1.05);
+  color: black;
 }
 </style>
