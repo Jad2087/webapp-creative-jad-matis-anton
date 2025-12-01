@@ -6,7 +6,7 @@
     "choices": [
       {
         "text": "Continuer",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": { "type": "story", "id": "fork03", "good": true }
       }
     ]
   },
@@ -340,27 +340,38 @@
   },
   {
     "id": "clue05",
-    "title": "Act 2 — Clue05",
-    "text": "Texte clue05.",
+    "title": "Act 2 — Conduit d’Aération",
+    "text": "Vous explorez le couloir quand vous remarquez quelque chose d’anormal : une grille d’aération mal vissée, légèrement entrouverte.\n\nDerrière, un conduit sombre descend dans les entrailles de la station.\n\nVous pourriez tenter de vous y glisser pour contourner la zone… mais un mauvais mouvement pourrait être fatal.",
     "choices": [
       {
         "text": "Retour au fork03",
         "next": { "type": "story", "id": "fork03", "good": true }
       },
       {
-        "text": "Mort",
-        "next": { "type": "story", "id": "clue05-01", "good": false }
+        "text": "Entrer dans le conduit",
+        "next": { "type": "story", "id": "vent01", "good": true }
+      }
+    ]
+  },  
+  {
+    "id": "vent01",
+    "title": "Act 2 — Conduit • Étape 1",
+    "text": "Vous rampez dans le conduit étroit. L’air est glacial. Après quelques mètres, le passage se divise en deux :\n\nÀ gauche, une légère vibration.\nÀ droite, un souffle d’air constant.",
+    "choices": [
+      {
+        "text": "Aller à gauche",
+        "next": { "type": "story", "id": "vent01-death", "good": false }
       },
       {
-        "text": "Vie",
-        "next": { "type": "story", "id": "clue05-02", "good": true }
+        "text": "Aller à droite",
+        "next": { "type": "story", "id": "vent02", "good": true }
       }
     ]
   },
   {
-    "id": "clue05-01",
-    "title": "Act 2 — Clue05 — Mort",
-    "text": "Mort.",
+    "id": "vent01-death",
+    "title": "Act 2 — Conduit • Éboulement",
+    "text": "En avançant vers la vibration, le métal cède sous votre poids. Le conduit s’effondre et vous chutez dans le vide.",
     "choices": [
       {
         "text": "Retour au fork03",
@@ -369,27 +380,42 @@
     ]
   },
   {
-    "id": "clue05-02",
-    "title": "Act 2 — Clue05 — Vie",
-    "text": "POLARIS",
+    "id": "vent02",
+    "title": "Act 2 — Conduit • Étape 2",
+    "text": "Le conduit devient de plus en plus étroit. Vous apercevez deux issues :\n\nUne trappe rouillée au sol.\nUn conduit vertical qui monte vers une lumière faible.",
     "choices": [
       {
-        "text": "Retour au fork03",
-        "next": { "type": "story", "id": "fork03", "good": true }
+        "text": "Ouvrir la trappe",
+        "next": { "type": "story", "id": "vent02-death", "good": false }
+      },
+      {
+        "text": "Monter vers la lumière",
+        "next": { "type": "story", "id": "vent03", "good": true }
       }
     ]
   },
   {
-    "id": "clue05-03",
-    "title": "Act 2 — Clue05 (Déjà exploré)",
-    "text": "Vous êtes déjà revenu ici. Rien n’a changé depuis votre première visite, et l’indice que vous aviez trouvé est toujours en votre possession. POLARIS",
+    "id": "vent02-death",
+    "title": "Act 2 — Conduit • Chute Mortelle",
+    "text": "La trappe casse net sous vos doigts. Vous glissez et tombez dans une machinerie en marche.",
     "choices": [
       {
         "text": "Retour au fork03",
-        "next": { "type": "story", "id": "fork03", "good": true }
+        "next": { "type": "story", "id": "fork03", "good": false }
       }
     ]
   },
+  {
+    "id": "vent03",
+    "title": "Act 2 — Sortie du Conduit",
+    "text": "Vous poussez une grille et tombez dans un nouveau couloir. Vous avez réussi à contourner la zone.\n\nVous reconnaissez l’endroit sur les plans : ce couloir mène directement à l’embranchement suivant.",
+    "choices": [
+      {
+        "text": "Continuer",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      }
+    ]
+  },          
   {
     "id": "clue06",
     "title": "Act 2 — Clue06",
@@ -444,28 +470,16 @@
   },
   {
     "id": "minigame03",
-    "title": "Act 2 — Terminal verrouillé",
-    "text": "Texte minigame03.",
+    "title": "Act 2 — Terminal Hors-Service",
+    "text": "Un terminal ancien trône contre le mur… mais son écran est noir, brisé. Une odeur de brûlé s’en échappe. Les câbles internes ont fondu — ce terminal ne fonctionnera plus jamais.",
     "choices": [
       {
-        "text": "Retour",
+        "text": "Retour au fork",
         "next": { "type": "story", "id": "fork03", "good": true }
-      },
-      {
-        "text": "Lancer le mini-jeu",
-        "next": { "type": "game", "id": "minigame03", "good": true }
       }
     ]
-  },
-  {
-    "id": "minigame03",
-    "type": "game",
-    "password": "POLARIS",
-    "wordCount": 14,
-    "maxAttempts": 4,
-    "success": "fork04",
-    "fail": null
-  },
+  },  
+
 
   {
     "id": "fork04",

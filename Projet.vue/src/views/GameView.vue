@@ -100,7 +100,7 @@ export default {
         "clue05-01":
           "Quelque chose se brise net… puis le silence.",
         "clue06-01":
-          "La structure cède sans prévenir. Une dernière secousse, puis plus rien.",
+          "LLLLLLLLa structure cède sans prévenir. Une dernière secousse, puis plus rien.",
         "clue07-01":
           "Votre vision se trouble — l’environnement se dissout dans l’obscurité.",
         "clue08-01":
@@ -362,7 +362,7 @@ export default {
         {
           opacity: 1,
           duration: 0.02, // vitesse de chaque lettre
-          stagger: 0.03, // délai entre lettres
+          stagger: 0.02, // délai entre lettres
           ease: "none",
         }
       );
