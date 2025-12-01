@@ -4,6 +4,7 @@
     <NavChoice
       v-for="(choice, idx) in choices"  
       :key="idx"
+      
       :choice="choice"
       @choose="selectChoice"
     />

@@ -664,6 +664,8 @@
   "text": "Vous atteignez la dernière section de la station. Une porte blindée bloque votre route. À côté, un terminal attend une activation.",
   "choices": [
     { "text": "Terminal Final", "next": { "type": "story", "id": "minigame08", "good": true } }
+    { "text": "Terminal Final", "next": { "type": "story", "id": "minigame08", "good": true } },
+    { "text": "[OUVRIR LA PORTE] (si réacteur activé)", "requiresEngine": true, "next": { "type": "story", "id": "ending", "good": true } }
   ]
 },
 {

@@ -31,8 +31,9 @@
         <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
           @menu="goToMenu" />
 
-         <!-- Réussite overlay -->
-        <Reussite v-if="showReussite" @continuer="showStats = true" @menu="showHistory = true"/>
+        <!-- Réussite overlay -->
+        <Reussite v-if="showReussite" @menu="goToMenu" @historique="showHistory = true" />
+
 
         <!-- Historique overlay par-dessus Réussite -->
         <ChoiceMade v-if="showHistory" class="overlay" @close="showHistory = false" />
@@ -132,20 +133,20 @@ export default {
 
   methods: {
     changeChapter(next) {
-   const player = usePlayerStore();
-  const storyStore = useStoryStore();
+      const player = usePlayerStore();
+      const storyStore = useStoryStore();
 
-  if (!next || !next.id) {
-    console.warn("[changeChapter] next object invalide :", next);
-    return;
-  }
+      if (!next || !next.id) {
+        console.warn("[changeChapter] next object invalide :", next);
+        return;
+      }
 
-  const nextId = next.id; 
-  storyStore.addChoice(nextId);
+      const nextId = next.id;
+      storyStore.addChoice(nextId);
 
-  console.log("[changeChapter] ----");
-  console.log("[changeChapter] Choix reçu :", next);
-  console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
+      console.log("[changeChapter] ----");
+      console.log("[changeChapter] Choix reçu :", next);
+      console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
 
       // AJOUT DES INDICES
       const clueAwards = {
@@ -226,6 +227,14 @@ export default {
         player.addClue("engine");
       }
 
+      // ⭐ FIN SECRÈTE — déclenche Réussite.vue
+      if (nextId === "ending") {
+        console.log("[changeChapter] Fin secrète détectée");
+        this.showReussite = true;
+        return;
+      }
+
+
       // NAVIGATION NORMALE : STORY
       if (next.type === "story") {
         console.log("[changeChapter] Navigation normale vers le chapitre", nextId);
@@ -255,24 +264,24 @@ export default {
     onMiniGameDone(result) {
       this.openMiniGame = false;
 
-     if (result && result.success) {
+      if (result && result.success) {
 
-  // Si c'est minigame08 → afficher Reussite.vue
-  if (this.activeMiniGameId === "minigame08") {
-    this.showReussite = true;
-    this.reussiteTarget = result.target; // souvent FINALE
-    return;
-  }
+        // Si c'est minigame08 → afficher Reussite.vue
+        if (this.activeMiniGameId === "minigame08") {
+          this.showReussite = true;
+          this.reussiteTarget = result.target; // souvent FINALE
+          return;
+        }
 
-  // sinon navigation normale
-  this.changeChapter({
-    type: "story",
-    id: result.target,
-    good: true,
-  });
+        // sinon navigation normale
+        this.changeChapter({
+          type: "story",
+          id: result.target,
+          good: true,
+        });
 
-  return;
-}
+        return;
+      }
 
 
       // --------------------------

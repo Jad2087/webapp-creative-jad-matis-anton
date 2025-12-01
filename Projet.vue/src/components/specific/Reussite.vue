@@ -7,7 +7,7 @@
       <div class="buttons">
 
          <!-- Bouton Accueil -->
-        <button class="btn accueil" @click="$emit('home')">
+        <button class="btn accueil" @click="$emit('menu')">
           Accueil
         </button>
         

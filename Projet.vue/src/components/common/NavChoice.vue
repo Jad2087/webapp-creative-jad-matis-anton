@@ -36,11 +36,21 @@ const isClueFound = computed(() => {
   return false;
 });
 
+// 👇 Nouveau computed pour cacher le bouton si conditions non remplies
+const isVisible = computed(() => {
+  // Si le choix ne demande rien → visible
+  if (!props.choice.requiresEngine) return true;
+
+  // Si le choix demande engine → visible SEULEMENT si engine activé
+  return player.hasClue("engine");
+});
+
+
 </script>
 
 <template>
   <!-- représente un choix -->
-  <button class="choice-btn" :class="{ 'choice-btn--clue-found': isClueFound }" @click="choose()">
+  <button v-if="isVisible" class="choice-btn" :class="{ 'choice-btn--clue-found': isClueFound }" @click="choose()">
     {{ props.choice.text }}
   </button>
 
