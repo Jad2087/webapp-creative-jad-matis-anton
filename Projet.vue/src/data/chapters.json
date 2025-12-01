@@ -1,687 +1,986 @@
 [
   {
-  "id": "intro",
-  "title": "Act 1 — Intro",
-  "text": "[CRYO MODULE 07 • WAKE PROTOCOL: FORCED]\n> ALERT: ORBITAL DECAY DETECTED\n> ALERT: BIOMETRIC FAILURE • VITALS UNSTABLE\n> ALERT: MANUAL EGRESS REQUIRED\n\nUne alarme stridente vous arrache au sommeil alors que la capsule cryogénique s’ouvre. La porte se déverrouille dans un cliquetis lourd, et vous tombez sur le sol froid et humide. Vos muscles sont raides, comme si vous n’aviez pas bougé depuis très longtemps.\n\nVotre esprit est embrouillé. Vous ne vous souvenez plus d’où vous êtes — ni même de qui vous êtes. Lorsque votre vision s’éclaircit, vous apercevez un casier entrouvert contenant un uniforme simple. Vous l’enfilez, reprenez votre souffle et vous dirigez vers la seule sortie de la salle cryogénique.",
-  "choices": [
-    { "text": "Continuer", "next": { "type": "story", "id": "fork01", "good": true } }
-  ]
-},
-{
-  "id": "fork01",
-  "title": "Act 1 — Embranchement",
-  "text": "Vous suivez le couloir faiblement éclairé jusqu’à un embranchement.\n\nLe passage se divise en trois directions, deux couloirs plongés dans l’obscurité complète, et un chemin central d’où émane une faible lueur verte.",
-  "choices": [
-    { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01" } },
-    { "text": "Suivre la lueur verte", "next": { "type": "story", "id": "minigame01", "good": true } },
-    { "text": "Aller à droite", "next": { "type": "story", "id": "clue02" } },
-    { "text": "Retour", "next": { "type": "story", "id": "intro", "good": true } }
-  ]
-},
-{
-  "id": "clue01",
-  "title": "Act 1 — Effondrement",
-  "text": "Vous suivez le couloir rouillé jusqu’à un effondrement qui bloque complètement le passage.\n\nAu pied des décombres, vous découvrez le corps momifié d’une femme, allongé là depuis très longtemps.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } },
-    { "text": "Chercher un indice", "next": { "type": "story", "id": "clue01-01", "good": true } },
-    { "text": "Tenter de passer sous les décombres", "next": { "type": "story", "id": "clue01-02", "good": false } }
-  ]
-},
-{
-  "id": "clue01-01",
-  "title": "Act 1 — Effondrement — Clue",
-  "text": "Vous trouvez un indice précieux qui pourrait vous aider plus tard.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
-  ]
-},
-{
-  "id": "clue01-02",
-  "title": "Act 1 — Effondrement — Mort",
-  "text": "Vous vous blessez gravement en essayant de passer sous les décombres et mourrez.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": false } }
-  ]
-},
-{
-  "id": "clue01-03",
-  "title": "Act 1 — Effondrement (Déjà exploré)",
-  "text": "Vous êtes déjà venu ici. Le corps est toujours là, immobile. L’indice que vous avez trouvé vous semble encore plus important maintenant.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
-  ]
-},
-{
-  "id": "clue02",
-  "title": "Act 1 — Placard",
-  "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journal.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } },
-    { "text": "Chercher un indice", "next": { "type": "story", "id": "clue02-01", "good": true } },
-    { "text": "Tenter de fouiller la pièce dangereusement", "next": { "type": "story", "id": "clue02-02", "good": false } }
-  ]
-},
-{
-  "id": "clue02-01",
-  "title": "Act 1 — Placard — Clue",
-  "text": "Vous trouvez un indice qui pourrait vous aider plus tard.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
-  ]
-},
-{
-  "id": "clue02-02",
-  "title": "Act 1 — Placard — Mort",
-  "text": "Une étagère s’écroule sur vous. Vous mourrez instantanément.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": false } }
-  ]
-},
-{
-  "id": "clue02-03",
-  "title": "Act 1 — Placard (Déjà exploré)",
-  "text": "Vous êtes déjà venu fouiller ce placard. Le journal que vous avez trouvé est toujours dans votre poche.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } }
-  ]
-},
-{
-  "id": "minigame01",
-  "title": "Act 1 — Mini-jeu",
-  "text": "Vous suivez le couloir jusqu’à apercevoir une vieille console...",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork01", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame01", "good": true } }
-  ]
-},
-{
-  "id": "minigame01",
-  "type": "game",
-  "password": "ECHO",
-  "wordCount": 10,
-  "maxAttempts": 4,
-  "success": "intro2",
-  "fail": null
-},
-
-
-
-
-
-  
+    "id": "intro",
+    "title": "Act 1 — Intro",
+    "text": "[CRYO MODULE 07 • WAKE PROTOCOL: FORCED]\n> ALERT: ORBITAL DECAY DETECTED\n> ALERT: BIOMETRIC FAILURE • VITALS UNSTABLE\n> ALERT: MANUAL EGRESS REQUIRED\n\nUne alarme stridente vous arrache au sommeil alors que la capsule cryogénique s’ouvre. La porte se déverrouille dans un cliquetis lourd, et vous tombez sur le sol froid et humide. Vos muscles sont raides, comme si vous n’aviez pas bougé depuis très longtemps.\n\nVotre esprit est embrouillé. Vous ne vous souvenez plus d’où vous êtes — ni même de qui vous êtes. Lorsque votre vision s’éclaircit, vous apercevez un casier entrouvert contenant un uniforme simple. Vous l’enfilez, reprenez votre souffle et vous dirigez vers la seule sortie de la salle cryogénique.",
+    "choices": [
+      {
+        "text": "Continuer",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      }
+    ]
+  },
   {
-  "id": "intro2",
-  "title": "Acte 2 — Intro",
-  "text": "Texte Intro.",
-  "choices": [
-    { "text": "Continuer", "next": { "type": "story", "id": "fork02", "good": true } }
-  ]
-},
-{
-  "id": "fork02",
-  "title": "Acte 2 — Embranchement-2",
-  "text": "111",
-  "choices": [
-    { "text": "Retour au Intro", "next": { "type": "story", "id": "intro2", "good": true } },
-    { "text": "Vers le clue03", "next": { "type": "story", "id": "clue03", "good": true } },
-    { "text": "Vers le clue04", "next": { "type": "story", "id": "clue04", "good": true } },
-    { "text": "Vers le minigame2", "next": { "type": "story", "id": "minigame02", "good": true } }
-  ]
-},
-{
-  "id": "clue03",
-  "title": "Act 2 — Clue03",
-  "text": "Texte clue03.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue03-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue03-02", "good": true } }
-  ]
-},
-{
-  "id": "clue03-01",
-  "title": "Act 2 — Clue03 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
-  ]
-},
-{
-  "id": "clue03-02",
-  "title": "Act 2 — Clue03 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } }
-  ]
-},
-{
-  "id": "clue03-03",
-  "title": "Act 2 — Clue 03 (Déjà exploré)",
-  "text": "Vous avez déjà exploré cet endroit. L’indice que vous aviez ramassé ne s’est pas envolé.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } }
-  ]
-},
-{
-  "id": "clue04",
-  "title": "Act 2 — Clue04",
-  "text": "Texte clue04.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue04-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue04-02", "good": true } }
-  ]
-},
-{
-  "id": "clue04-01",
-  "title": "Act 2 — Clue04 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": false } }
-  ]
-},
-{
-  "id": "clue04-02",
-  "title": "Act 2 — Clue04 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } }
-  ]
-},
-{
-  "id": "clue04-03",
-  "title": "Act 2 — Clue 04 (Déjà exploré)",
-  "text": "Vous êtes déjà passé par ici. Rien de plus à récupérer — l’indice trouvé est toujours sur vous.",
-  "choices": [
-    { "text": "Retour au fork", "next": { "type": "story", "id": "fork02", "good": true } }
-  ]
-},
-{
-  "id": "minigame02",
-  "title": "Act 2 — Terminal corrompu",
-  "text": "Le terminal clignote de manière instable, comme si quelque chose... attendait.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork02", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame02", "good": true } }
-  ]
-},
-{
-  "id": "minigame02",
-  "type": "game",
-  "password": "GLACIER",
-  "wordCount": 12,
-  "maxAttempts": 4,
-  "success": "fork03",
-  "fail": null
-},
+    "id": "fork01",
+    "title": "Act 1 — Embranchement",
+    "text": "Vous suivez le couloir faiblement éclairé jusqu’à un embranchement.\n\nLe passage se divise en trois directions, deux couloirs plongés dans l’obscurité complète, et un chemin central d’où émane une faible lueur verte.",
+    "choices": [
+      { "text": "Aller à gauche", "next": { "type": "story", "id": "clue01" } },
+      {
+        "text": "Suivre la lueur verte",
+        "next": { "type": "story", "id": "minigame01", "good": true }
+      },
+      { "text": "Aller à droite", "next": { "type": "story", "id": "clue02" } },
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "intro", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue01",
+    "title": "Act 1 — Effondrement",
+    "text": "Vous suivez le couloir rouillé jusqu’à un effondrement qui bloque complètement le passage.\n\nAu pied des décombres, vous découvrez le corps momifié d’une femme, allongé là depuis très longtemps.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      },
+      {
+        "text": "Chercher un indice",
+        "next": { "type": "story", "id": "clue01-01", "good": true }
+      },
+      {
+        "text": "Tenter de passer sous les décombres",
+        "next": { "type": "story", "id": "clue01-02", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue01-01",
+    "title": "Act 1 — Effondrement — Clue",
+    "text": "Vous trouvez un indice précieux qui pourrait vous aider plus tard. ECHO",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue01-02",
+    "title": "Act 1 — Effondrement — Mort",
+    "text": "Vous vous blessez gravement en essayant de passer sous les décombres et mourrez.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue01-03",
+    "title": "Act 1 — Effondrement (Déjà exploré)",
+    "text": "Vous êtes déjà venu ici. Le corps est toujours là, immobile. L’indice que vous avez trouvé vous semble encore plus important maintenant.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue02",
+    "title": "Act 1 — Placard",
+    "text": "Vous avancez dans un couloir étroit jusqu’à une petite pièce ressemblant à un placard.\n\nÀ l’intérieur, une table couverte de poussière et de débris. Sur le dessus, vous trouvez un journal.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      },
+      {
+        "text": "Chercher un indice",
+        "next": { "type": "story", "id": "clue02-01", "good": true }
+      },
+      {
+        "text": "Tenter de fouiller la pièce dangereusement",
+        "next": { "type": "story", "id": "clue02-02", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue02-01",
+    "title": "Act 1 — Placard — Clue",
+    "text": "Vous trouvez un indice qui pourrait vous aider plus tard. ECHO",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue02-02",
+    "title": "Act 1 — Placard — Mort",
+    "text": "Une étagère s’écroule sur vous. Vous mourrez instantanément.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue02-03",
+    "title": "Act 1 — Placard (Déjà exploré)",
+    "text": "Vous êtes déjà venu fouiller ce placard. Le journal que vous avez trouvé est toujours dans votre poche.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame01",
+    "title": "Act 1 — Mini-jeu",
+    "text": "Vous suivez le couloir jusqu’à apercevoir une vieille console...",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork01", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame01", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame01",
+    "type": "game",
+    "password": "ECHO",
+    "wordCount": 10,
+    "maxAttempts": 4,
+    "success": "intro2",
+    "fail": null
+  },
 
+  {
+    "id": "intro2",
+    "title": "Acte 2 — Intro",
+    "text": "Texte Intro.",
+    "choices": [
+      {
+        "text": "Continuer",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "fork02",
+    "title": "Acte 2 — Embranchement-2",
+    "text": "111",
+    "choices": [
+      {
+        "text": "Retour au Intro",
+        "next": { "type": "story", "id": "intro2", "good": true }
+      },
+      {
+        "text": "Vers le clue03",
+        "next": { "type": "story", "id": "clue03", "good": true }
+      },
+      {
+        "text": "Vers le clue04",
+        "next": { "type": "story", "id": "clue04", "good": true }
+      },
+      {
+        "text": "Vers le minigame2",
+        "next": { "type": "story", "id": "minigame02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue03",
+    "title": "Act 2 — Clue03",
+    "text": "Texte clue03.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue03-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue03-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue03-01",
+    "title": "Act 2 — Clue03 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue03-02",
+    "title": "Act 2 — Clue03 — Vie",
+    "text": "GLACIER",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue03-03",
+    "title": "Act 2 — Clue 03 (Déjà exploré)",
+    "text": "Vous avez déjà exploré cet endroit. L’indice que vous aviez ramassé ne s’est pas envolé. GLACIER",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue04",
+    "title": "Act 2 — Clue04",
+    "text": "Texte clue04.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue04-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue04-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue04-01",
+    "title": "Act 2 — Clue04 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue04-02",
+    "title": "Act 2 — Clue04 — Vie",
+    "text": "GLACIER",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue04-03",
+    "title": "Act 2 — Clue 04 (Déjà exploré)",
+    "text": "Vous êtes déjà passé par ici. Rien de plus à récupérer — l’indice trouvé est toujours sur vous. GLACIER",
+    "choices": [
+      {
+        "text": "Retour au fork",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame02",
+    "title": "Act 2 — Terminal corrompu",
+    "text": "Le terminal clignote de manière instable, comme si quelque chose... attendait.",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork02", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame02",
+    "type": "game",
+    "password": "GLACIER",
+    "wordCount": 12,
+    "maxAttempts": 4,
+    "success": "fork03",
+    "fail": null
+  },
 
+  {
+    "id": "fork03",
+    "title": "Acte 2 — Embranchement-3",
+    "text": "Texte fork03.",
+    "choices": [
+      {
+        "text": "Vers le clue05",
+        "next": { "type": "story", "id": "clue05", "good": true }
+      },
+      {
+        "text": "Vers le clue06",
+        "next": { "type": "story", "id": "clue06", "good": true }
+      },
+      {
+        "text": "Vers le minigame3",
+        "next": { "type": "story", "id": "minigame03", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue05",
+    "title": "Act 2 — Clue05",
+    "text": "Texte clue05.",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue05-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue05-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue05-01",
+    "title": "Act 2 — Clue05 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue05-02",
+    "title": "Act 2 — Clue05 — Vie",
+    "text": "POLARIS",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue05-03",
+    "title": "Act 2 — Clue05 (Déjà exploré)",
+    "text": "Vous êtes déjà revenu ici. Rien n’a changé depuis votre première visite, et l’indice que vous aviez trouvé est toujours en votre possession. POLARIS",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue06",
+    "title": "Act 2 — Clue06",
+    "text": "Texte clue06.",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue06-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue06-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue06-01",
+    "title": "Act 2 — Clue06 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue06-02",
+    "title": "Act 2 — Clue06 — Vie",
+    "text": "POLARIS",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue06-03",
+    "title": "Act 2 — Clue06 (Déjà exploré)",
+    "text": "Vous avez déjà fouillé cet endroit. Aucun nouvel élément ne semble avoir changé, et l’indice que vous aviez récupéré reste le même. POLARIS",
+    "choices": [
+      {
+        "text": "Retour au fork03",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame03",
+    "title": "Act 2 — Terminal verrouillé",
+    "text": "Texte minigame03.",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork03", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame03", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame03",
+    "type": "game",
+    "password": "POLARIS",
+    "wordCount": 14,
+    "maxAttempts": 4,
+    "success": "fork04",
+    "fail": null
+  },
 
+  {
+    "id": "fork04",
+    "title": "Acte 2 — Embranchement-4",
+    "text": "Texte fork04.",
+    "choices": [
+      {
+        "text": "Vers le clue07",
+        "next": { "type": "story", "id": "clue07", "good": true }
+      },
+      {
+        "text": "Vers le clue08",
+        "next": { "type": "story", "id": "clue08", "good": true }
+      },
+      {
+        "text": "Vers le minigame4",
+        "next": { "type": "story", "id": "minigame04", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue07",
+    "title": "Act 2 — Clue07",
+    "text": "Texte clue07.",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue07-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue07-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue07-01",
+    "title": "Act 2 — Clue07 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue07-02",
+    "title": "Act 2 — Clue07 — Vie",
+    "text": "NEBULA",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue07-03",
+    "title": "Act 2 — Clue07 (Déjà exploré)",
+    "text": "Vous avez déjà exploré cette zone. Rien de plus à découvrir—l’indice trouvé lors de votre première visite est toujours avec vous. NEBULA",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue08",
+    "title": "Act 2 — Clue08",
+    "text": "Texte clue08.",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue08-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue08-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue08-01",
+    "title": "Act 2 — Clue08 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue08-02",
+    "title": "Act 2 — Clue08 — Vie",
+    "text": "NEBULA",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue08-03",
+    "title": "Act 2 — Clue08 (Déjà exploré)",
+    "text": "Vous êtes déjà venu ici, et tout est exactement comme avant. Aucun nouvel élément n’apparaît, et votre indice est toujours bien gardé. NEBULA",
+    "choices": [
+      {
+        "text": "Retour au fork04",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame04",
+    "title": "Act 2 — Terminal verrouillé 2",
+    "text": "Texte minigame04.",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork04", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame04", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame04",
+    "type": "game",
+    "password": "NEBULA",
+    "wordCount": 16,
+    "maxAttempts": 4,
+    "success": "intro3",
+    "fail": null
+  },
 
+  {
+    "id": "intro3",
+    "title": "Acte 3 — Intro",
+    "text": "Texte Intro 3.",
+    "choices": [
+      {
+        "text": "Continuer",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "fork05",
+    "title": "Acte 3 — Embranchement-5",
+    "text": "Texte fork05.",
+    "choices": [
+      {
+        "text": "Vers le clue09",
+        "next": { "type": "story", "id": "clue09", "good": true }
+      },
+      {
+        "text": "Retour au Intro",
+        "next": { "type": "story", "id": "intro3", "good": true }
+      },
+      {
+        "text": "Vers le clue10",
+        "next": { "type": "story", "id": "clue10", "good": true }
+      },
+      {
+        "text": "Vers le minigame5",
+        "next": { "type": "story", "id": "minigame05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue09",
+    "title": "Act 3 — Clue09",
+    "text": "Texte clue09.",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue09-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue09-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue09-01",
+    "title": "Act 3 — Clue09 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue09-02",
+    "title": "Act 3 — Clue09 — Vie",
+    "text": "ASTRA",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue09-03",
+    "title": "Act 3 — Clue09 (Déjà exploré)",
+    "text": "Vous avez déjà exploré cette zone. Rien d’autre à découvrir. ASTRA",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue10",
+    "title": "Act 3 — Clue10",
+    "text": "Texte clue10.",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      },
+      {
+        "text": "Mort",
+        "next": { "type": "story", "id": "clue10-01", "good": false }
+      },
+      {
+        "text": "Vie",
+        "next": { "type": "story", "id": "clue10-02", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue10-01",
+    "title": "Act 3 — Clue10 — Mort",
+    "text": "Mort.",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "clue10-02",
+    "title": "Act 3 — Clue10 — Vie",
+    "text": "ASTRA",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "clue10-03",
+    "title": "Act 3 — Clue10 (Déjà exploré)",
+    "text": "Vous êtes déjà passé ici. L’indice obtenu reste le même. ASTRA",
+    "choices": [
+      {
+        "text": "Retour au fork05",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame05",
+    "title": "Act 3 — Terminal Verrouillé 3",
+    "text": "Un ancien terminal pulse faiblement. Pour débloquer l’accès, vous devrez forcer son protocole de sécurité.",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame05", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame05",
+    "type": "game",
+    "password": "ASTRA",
+    "wordCount": 18,
+    "maxAttempts": 4,
+    "success": "fork06",
+    "fail": null
+  },
 
+  {
+    "id": "fork06",
+    "title": "Acte 3 — Embranchement-6",
+    "text": "Texte fork06.",
+    "choices": [
+      {
+        "text": "Terminal A",
+        "next": { "type": "story", "id": "minigame06", "good": true }
+      },
+      {
+        "text": "Terminal B",
+        "next": { "type": "story", "id": "engine01", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame06",
+    "title": "Act 3 — Terminal A",
+    "text": "Le premier terminal s’active. Un système de sécurité complexe protège l’accès. ORION",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork06", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame06", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame06",
+    "type": "game",
+    "password": "ORION",
+    "wordCount": 18,
+    "maxAttempts": 4,
+    "success": "fork07",
+    "fail": null
+  },
+  {
+    "id": "minigame07",
+    "title": "Act 3 — Terminal B",
+    "text": "Le second terminal semble plus ancien. Son interface clignote faiblement. NEXUS",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork06", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame07", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame07",
+    "type": "game",
+    "password": "NEXUS",
+    "wordCount": 16,
+    "maxAttempts": 4,
+    "success": "engine02",
+    "fail": null
+  },
 
-
-
-{
-  "id": "fork03",
-  "title": "Acte 2 — Embranchement-3",
-  "text": "Texte fork03.",
-  "choices": [
-    { "text": "Vers le clue05", "next": { "type": "story", "id": "clue05", "good": true } },
-    { "text": "Vers le clue06", "next": { "type": "story", "id": "clue06", "good": true } },
-    { "text": "Vers le minigame3", "next": { "type": "story", "id": "minigame03", "good": true } }
-  ]
-},
-{
-  "id": "clue05",
-  "title": "Act 2 — Clue05",
-  "text": "Texte clue05.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue05-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue05-02", "good": true } }
-  ]
-},
-{
-  "id": "clue05-01",
-  "title": "Act 2 — Clue05 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": false } }
-  ]
-},
-{
-  "id": "clue05-02",
-  "title": "Act 2 — Clue05 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": true } }
-  ]
-},
-{
-  "id": "clue05-03",
-  "title": "Act 2 — Clue05 (Déjà exploré)",
-  "text": "Vous êtes déjà revenu ici. Rien n’a changé depuis votre première visite, et l’indice que vous aviez trouvé est toujours en votre possession.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": true } }
-  ]
-},
-{
-  "id": "clue06",
-  "title": "Act 2 — Clue06",
-  "text": "Texte clue06.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue06-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue06-02", "good": true } }
-  ]
-},
-{
-  "id": "clue06-01",
-  "title": "Act 2 — Clue06 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": false } }
-  ]
-},
-{
-  "id": "clue06-02",
-  "title": "Act 2 — Clue06 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": true } }
-  ]
-},
-{
-  "id": "clue06-03",
-  "title": "Act 2 — Clue06 (Déjà exploré)",
-  "text": "Vous avez déjà fouillé cet endroit. Aucun nouvel élément ne semble avoir changé, et l’indice que vous aviez récupéré reste le même.",
-  "choices": [
-    { "text": "Retour au fork03", "next": { "type": "story", "id": "fork03", "good": true } }
-  ]
-},
-{
-  "id": "minigame03",
-  "title": "Act 2 — Terminal verrouillé",
-  "text": "Texte minigame03.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork03", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame03", "good": true } }
-  ]
-},
-{
-  "id": "minigame03",
-  "type": "game",
-  "password": "POLARIS",
-  "wordCount": 14,
-  "maxAttempts": 4,
-  "success": "fork04",
-  "fail": null
-},
-
-
-
-
-
-
-{
-  "id": "fork04",
-  "title": "Acte 2 — Embranchement-4",
-  "text": "Texte fork04.",
-  "choices": [
-    { "text": "Vers le clue07", "next": { "type": "story", "id": "clue07", "good": true } },
-    { "text": "Vers le clue08", "next": { "type": "story", "id": "clue08", "good": true } },
-    { "text": "Vers le minigame4", "next": { "type": "story", "id": "minigame04", "good": true } }
-  ]
-},
-{
-  "id": "clue07",
-  "title": "Act 2 — Clue07",
-  "text": "Texte clue07.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue07-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue07-02", "good": true } }
-  ]
-},
-{
-  "id": "clue07-01",
-  "title": "Act 2 — Clue07 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": false } }
-  ]
-},
-{
-  "id": "clue07-02",
-  "title": "Act 2 — Clue07 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": true } }
-  ]
-},
-{
-  "id": "clue07-03",
-  "title": "Act 2 — Clue07 (Déjà exploré)",
-  "text": "Vous avez déjà exploré cette zone. Rien de plus à découvrir—l’indice trouvé lors de votre première visite est toujours avec vous.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": true } }
-  ]
-},
-{
-  "id": "clue08",
-  "title": "Act 2 — Clue08",
-  "text": "Texte clue08.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue08-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue08-02", "good": true } }
-  ]
-},
-{
-  "id": "clue08-01",
-  "title": "Act 2 — Clue08 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": false } }
-  ]
-},
-{
-  "id": "clue08-02",
-  "title": "Act 2 — Clue08 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": true } }
-  ]
-},
-{
-  "id": "clue08-03",
-  "title": "Act 2 — Clue08 (Déjà exploré)",
-  "text": "Vous êtes déjà venu ici, et tout est exactement comme avant. Aucun nouvel élément n’apparaît, et votre indice est toujours bien gardé.",
-  "choices": [
-    { "text": "Retour au fork04", "next": { "type": "story", "id": "fork04", "good": true } }
-  ]
-},
-{
-  "id": "minigame04",
-  "title": "Act 2 — Terminal verrouillé 2",
-  "text": "Texte minigame04.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork04", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame04", "good": true } }
-  ]
-},
-{
-  "id": "minigame04",
-  "type": "game",
-  "password": "NEBULA",
-  "wordCount": 16,
-  "maxAttempts": 4,
-  "success": "intro3",
-  "fail": null
-},
-
-
-
-
-
-
-
-{
-  "id": "intro3",
-  "title": "Acte 3 — Intro",
-  "text": "Texte Intro 3.",
-  "choices": [
-    { "text": "Continuer", "next": { "type": "story", "id": "fork05", "good": true } }
-  ]
-},
-{
-  "id": "fork05",
-  "title": "Acte 3 — Embranchement-5",
-  "text": "Texte fork05.",
-  "choices": [
-    { "text": "Vers le clue09", "next": { "type": "story", "id": "clue09", "good": true } },
-    { "text": "Retour au Intro", "next": { "type": "story", "id": "intro3", "good": true } },
-    { "text": "Vers le clue10", "next": { "type": "story", "id": "clue10", "good": true } },
-    { "text": "Vers le minigame5", "next": { "type": "story", "id": "minigame05", "good": true } }
-  ]
-},
-{
-  "id": "clue09",
-  "title": "Act 3 — Clue09",
-  "text": "Texte clue09.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue09-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue09-02", "good": true } }
-  ]
-},
-{
-  "id": "clue09-01",
-  "title": "Act 3 — Clue09 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": false } }
-  ]
-},
-{
-  "id": "clue09-02",
-  "title": "Act 3 — Clue09 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": true } }
-  ]
-},
-{
-  "id": "clue09-03",
-  "title": "Act 3 — Clue09 (Déjà exploré)",
-  "text": "Vous avez déjà exploré cette zone. Rien d’autre à découvrir.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": true } }
-  ]
-},
-{
-  "id": "clue10",
-  "title": "Act 3 — Clue10",
-  "text": "Texte clue10.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": true } },
-    { "text": "Mort", "next": { "type": "story", "id": "clue10-01", "good": false } },
-    { "text": "Vie", "next": { "type": "story", "id": "clue10-02", "good": true } }
-  ]
-},
-{
-  "id": "clue10-01",
-  "title": "Act 3 — Clue10 — Mort",
-  "text": "Mort.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": false } }
-  ]
-},
-{
-  "id": "clue10-02",
-  "title": "Act 3 — Clue10 — Vie",
-  "text": "Vie.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": true } }
-  ]
-},
-{
-  "id": "clue10-03",
-  "title": "Act 3 — Clue10 (Déjà exploré)",
-  "text": "Vous êtes déjà passé ici. L’indice obtenu reste le même.",
-  "choices": [
-    { "text": "Retour au fork05", "next": { "type": "story", "id": "fork05", "good": true } }
-  ]
-},
-{
-  "id": "minigame05",
-  "title": "Act 3 — Terminal Verrouillé 3",
-  "text": "Un ancien terminal pulse faiblement. Pour débloquer l’accès, vous devrez forcer son protocole de sécurité.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork05", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame05", "good": true } }
-  ]
-},
-{
-  "id": "minigame05",
-  "type": "game",
-  "password": "ASTRA",
-  "wordCount": 18,
-  "maxAttempts": 4,
-  "success": "fork06",
-  "fail": null
-},
-
-
-
-
-
-
-
-
-
-{
-  "id": "fork06",
-  "title": "Acte 3 — Embranchement-6",
-  "text": "Texte fork06.",
-  "choices": [
-    { "text": "Terminal A", "next": { "type": "story", "id": "minigame06", "good": true } },
-    { "text": "Terminal B", "next": { "type": "story", "id": "engine01", "good": true } }
-  ]
-}
-,
-{
-  "id": "minigame06",
-  "title": "Act 3 — Terminal A",
-  "text": "Le premier terminal s’active. Un système de sécurité complexe protège l’accès.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork06", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame06", "good": true } }
-  ]
-},
-{
-  "id": "minigame06",
-  "type": "game",
-  "password": "ORION",
-  "wordCount": 18,
-  "maxAttempts": 4,
-  "success": "fork07",
-  "fail": null
-},
-{
-  "id": "minigame07",
-  "title": "Act 3 — Terminal B",
-  "text": "Le second terminal semble plus ancien. Son interface clignote faiblement.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork06", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame07", "good": true } }
-  ]
-},
-{
-  "id": "minigame07",
-  "type": "game",
-  "password": "NEXUS",
-  "wordCount": 16,
-  "maxAttempts": 4,
-  "success": "engine02",
-  "fail": null
-},
-
-
-
-
-
-
-{
-  "id": "engine01",
-  "title": "Act 3 — Salle du Réacteur",
-  "text": "Vous entrez dans la salle du réacteur. Les conduits vibrent faiblement et l’odeur d’ozone est omniprésente. Vous pouvez tenter d’activer le générateur… ou repartir.",
-  "choices": [
-    { "text": "Retour au fork06", "next": { "type": "story", "id": "fork06", "good": true } },
-    { "text": "Accéder au Terminal B", "next": { "type": "story", "id": "minigame07", "good": true } }
-  ]
-},
-{
-  "id": "engine02",
-  "title": "Act 3 — Réacteur • Étape 1",
-  "text": "Le terminal affiche plusieurs commandes. Une seule permettra d’amorcer la séquence correctement.",
-  "choices": [
-    { "text": "Séquence A", "next": { "type": "story", "id": "engine02-fail", "good": false } },
-    { "text": "Séquence B", "next": { "type": "story", "id": "engine03", "good": true } },
-    { "text": "Séquence C", "next": { "type": "story", "id": "engine02-fail", "good": false } },
-    { "text": "Séquence D", "next": { "type": "story", "id": "engine02-fail", "good": false } }
-  ]
-},
-{
-  "id": "engine02-fail",
-  "title": "Act 3 — Réacteur • Erreur",
-  "text": "Le panneau clignote en rouge. Un bruit sourd résonne dans la chambre du réacteur avant que tout ne s’effondre autour de vous.",
-  "choices": [
-    { "text": "Retour au fork06", "next": { "type": "story", "id": "fork06", "good": false } }
-  ]
-},
-{
-  "id": "engine03",
-  "title": "Act 3 — Réacteur • Étape 2",
-  "text": "La première étape est validée. Le système exige maintenant une confirmation supplémentaire. Une seule commande stabilisera le flux énergétique.",
-  "choices": [
-    { "text": "Module Alpha", "next": { "type": "story", "id": "engine03-fail", "good": false } },
-    { "text": "Module Delta", "next": { "type": "story", "id": "engine03-fail", "good": false } },
-    { "text": "Module Sigma", "next": { "type": "story", "id": "engine03-fail", "good": false } },
-    { "text": "Module Omega", "next": { "type": "story", "id": "engine04-success", "good": true } }
-  ]
-},
-{
-  "id": "engine03-fail",
-  "title": "Act 3 — Réacteur • Défaillance",
-  "text": "Un voyant s’allume, suivi d’un vrombissement inquiétant. L’énergie se libère brusquement et vous êtes balayé par une onde aveuglante.",
-  "choices": [
-    { "text": "Retour au fork06", "next": { "type": "story", "id": "fork06", "good": false } }
-  ]
-},
-{
-  "id": "engine04-success",
-  "title": "Act 3 — Réacteur • Stabilisé",
-  "text": "Le générateur s’est activé. Impossible de recommencer la procédure.",
-  "choices": [
-    { "text": "Retour au fork06", "next": { "type": "story", "id": "fork06", "good": true } }
-  ],
-  "award": "engine"
-},
-{
-  "id": "engine01-03",
-  "title": "Act 3 — Salle du Réacteur (Déjà visitée)",
-  "text": "Le générateur tourne déjà. Vous avez fait tout ce que vous pouviez ici.",
-  "choices": [
-    { "text": "Retour au fork06", "next": { "type": "story", "id": "fork06", "good": true } }
-  ]
-},
-{
-  "id": "fork07",
-  "title": "Acte 3 — Embranchement Final",
-  "text": "Vous atteignez la dernière section de la station. Une porte blindée bloque votre route. À côté, un terminal attend une activation.",
-  "choices": [
-    { "text": "Terminal Final", "next": { "type": "story", "id": "minigame08", "good": true } }
-  ]
-},
-{
-  "id": "minigame08",
-  "title": "Act 3 — Terminal Final",
-  "text": "Un dernier protocole de sécurité vous sépare de l'issue. Le terminal scintille en attendant vos instructions.",
-  "choices": [
-    { "text": "Retour", "next": { "type": "story", "id": "fork07", "good": true } },
-    { "text": "Lancer le mini-jeu", "next": { "type": "game", "id": "minigame08", "good": true } }
-  ]
-},
-{
-  "id": "minigame08",
-  "type": "game",
-  "password": "FINALE",
-  "wordCount": 20,
-  "maxAttempts": 4,
-  "success": "ending",
-  "fail": null
-}
+  {
+    "id": "engine01",
+    "title": "Act 3 — Salle du Réacteur",
+    "text": "Vous entrez dans la salle du réacteur. Les conduits vibrent faiblement et l’odeur d’ozone est omniprésente. Vous pouvez tenter d’activer le générateur… ou repartir.",
+    "choices": [
+      {
+        "text": "Retour au fork06",
+        "next": { "type": "story", "id": "fork06", "good": true }
+      },
+      {
+        "text": "Accéder au Terminal B",
+        "next": { "type": "story", "id": "minigame07", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "engine02",
+    "title": "Act 3 — Réacteur • Étape 1",
+    "text": "Le terminal affiche plusieurs commandes. Une seule permettra d’amorcer la séquence correctement. Séquence B",
+    "choices": [
+      {
+        "text": "Séquence A",
+        "next": { "type": "story", "id": "engine02-fail", "good": false }
+      },
+      {
+        "text": "Séquence B",
+        "next": { "type": "story", "id": "engine03", "good": true }
+      },
+      {
+        "text": "Séquence C",
+        "next": { "type": "story", "id": "engine02-fail", "good": false }
+      },
+      {
+        "text": "Séquence D",
+        "next": { "type": "story", "id": "engine02-fail", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "engine02-fail",
+    "title": "Act 3 — Réacteur • Erreur",
+    "text": "Le panneau clignote en rouge. Un bruit sourd résonne dans la chambre du réacteur avant que tout ne s’effondre autour de vous.",
+    "choices": [
+      {
+        "text": "Retour au fork06",
+        "next": { "type": "story", "id": "fork06", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "engine03",
+    "title": "Act 3 — Réacteur • Étape 2",
+    "text": "La première étape est validée. Le système exige maintenant une confirmation supplémentaire. Une seule commande stabilisera le flux énergétique. Module Omega",
+    "choices": [
+      {
+        "text": "Module Alpha",
+        "next": { "type": "story", "id": "engine03-fail", "good": false }
+      },
+      {
+        "text": "Module Delta",
+        "next": { "type": "story", "id": "engine03-fail", "good": false }
+      },
+      {
+        "text": "Module Sigma",
+        "next": { "type": "story", "id": "engine03-fail", "good": false }
+      },
+      {
+        "text": "Module Omega",
+        "next": { "type": "story", "id": "engine04-success", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "engine03-fail",
+    "title": "Act 3 — Réacteur • Défaillance",
+    "text": "Un voyant s’allume, suivi d’un vrombissement inquiétant. L’énergie se libère brusquement et vous êtes balayé par une onde aveuglante.",
+    "choices": [
+      {
+        "text": "Retour au fork06",
+        "next": { "type": "story", "id": "fork06", "good": false }
+      }
+    ]
+  },
+  {
+    "id": "engine04-success",
+    "title": "Act 3 — Réacteur • Stabilisé",
+    "text": "Le générateur s’est activé. Impossible de recommencer la procédure.",
+    "choices": [
+      {
+        "text": "Retour au fork06",
+        "next": { "type": "story", "id": "fork06", "good": true }
+      }
+    ],
+    "award": "engine"
+  },
+  {
+    "id": "engine01-03",
+    "title": "Act 3 — Salle du Réacteur (Déjà visitée)",
+    "text": "Le générateur tourne déjà. Vous avez fait tout ce que vous pouviez ici.",
+    "choices": [
+      {
+        "text": "Retour au fork06",
+        "next": { "type": "story", "id": "fork06", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "fork07",
+    "title": "Acte 3 — Embranchement Final",
+    "text": "Vous atteignez la dernière section de la station. Une porte blindée bloque votre route. À côté, un terminal attend une activation.",
+    "choices": [
+      {
+        "text": "Terminal Final",
+        "next": { "type": "story", "id": "minigame08", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame08",
+    "title": "Act 3 — Terminal Final",
+    "text": "Un dernier protocole de sécurité vous sépare de l'issue. Le terminal scintille en attendant vos instructions. FINALE",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "fork07", "good": true }
+      },
+      {
+        "text": "Lancer le mini-jeu",
+        "next": { "type": "game", "id": "minigame08", "good": true }
+      }
+    ]
+  },
+  {
+    "id": "minigame08",
+    "type": "game",
+    "password": "FINALE",
+    "wordCount": 20,
+    "maxAttempts": 4,
+    "success": "ending",
+    "fail": null
+  }
 ]

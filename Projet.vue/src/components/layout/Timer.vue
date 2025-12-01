@@ -1,6 +1,6 @@
 <template>
   <div class="timer-container">
-    <div class="label">Timer</div>
+    <div class="label">Oxygène</div>
 
     <!-- Barre contenant les segments -->
     <div class="bars">
@@ -8,7 +8,7 @@
         v-for="(bar, index) in totalBars"
         :key="index"
         class="bar"
-        :class="{ active: index < activeBars }"
+        :class="{ active: index < remainingBars }"
       ></div>
     </div>
   </div>
@@ -20,47 +20,44 @@ export default {
 
   data() {
     return {
-      duration: 5 * 60, // 5 minutes en secondes
+      duration: 4 * 60, // 4 minutes en secondes
       elapsed: 0,
-      totalBars: 8, // nombre de segments affichés comme sur l’image
+      totalBars: 8, // nombre de segments
     };
   },
 
   computed: {
-     // Calcule le nombre de segments activé d'une barre
-    // nombre de segments activés en fonction du progrès
-    activeBars() {
-      return Math.floor((this.elapsed / this.duration) * this.totalBars);
+    // Nombre de barres restantes (on part de 8 -> 0)
+    remainingBars() {
+      const progress = this.elapsed / this.duration;
+      const barsLeft = this.totalBars - Math.floor(progress * this.totalBars);
+      return Math.max(barsLeft, 0);
     },
   },
 
   mounted() {
-    // lorsque le composant est monté ca on le timer
     this.startTimer();
   },
 
   methods: {
-      // démarre le timer qui incrémente `elapsed` toutes les secondes
     startTimer() {
       this.interval = setInterval(() => {
         if (this.elapsed < this.duration) {
-          this.elapsed++; // ca augmente le temps écoulé d'une seconde
+          this.elapsed++;
         } else {
-          clearInterval(this.interval); // si le temps est écoulé ca arrête le timer
+          clearInterval(this.interval);
         }
-      }, 1000); // intervalle de 1000 ms = 1 seconde
+      }, 1000);
     },
   },
 
   beforeUnmount() {
-     // avant que le composant soit détruit ca nettoie l'intervalle
     clearInterval(this.interval);
   },
 };
 </script>
 
 <style scoped>
-/* Timer fixe */
 .timer-container {
   border: 2px solid #ffffff;
   padding: 1rem;
@@ -71,17 +68,15 @@ export default {
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
-  min-height: 85px; /* hauteur fixe */
-  flex: 0 0 auto;  /* ne s'étire pas */
+  min-height: 85px;
+  flex: 0 0 auto;
 }
 
 .label {
   color: #03ab5e;
   font-family: monospace;
   font-size: 20px;
-  margin: 0; /* plus de margin-bottom */
-  text-align: left; /* pas centré */
-  min-width: 80px; /* pour éviter que ça bouge */
+  min-width: 80px;
 }
 
 .bars {
@@ -90,8 +85,8 @@ export default {
 }
 
 .bar {
-  width: 12px; /* plus petit */
-  height: 40px; /* plus petit */
+  width: 12px;
+  height: 40px;
   background: #222;
   border: 2px solid #555;
 }
@@ -99,5 +94,4 @@ export default {
 .bar.active {
   background: #d6d6d6;
 }
-
 </style>
