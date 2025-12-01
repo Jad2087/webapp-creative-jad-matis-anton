@@ -417,7 +417,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(6, 1fr);
-  column-gap: 2rem;
+  column-gap: 1.5rem;
   width: 900px;
   height: 600px;
   padding: 2rem 2rem;
