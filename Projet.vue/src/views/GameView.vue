@@ -109,22 +109,35 @@ export default {
 
       // textes de mort personnalisés
       deathMessages: {
-        "clue01-02":
-          "En tentant de vous faufiler sous les décombres, votre corps cède brusquement. Tout s'efface.",
-        "clue02-02":
-          "L'étagère s'écroule sur vous dans un fracas sourd. Le choc vous projette dans l'inconscience.",
-        "clue03-01":
-          "Une erreur de jugement — tout devient flou avant de basculer dans le vide.",
-        "clue04-01":
-          "Un mécanisme instable se déclenche, et la lumière s'éteint autour de vous.",
-        "clue05-01": "Quelque chose se brise net… puis le silence.",
-        "clue06-01":
-          "LLLLLLLLa structure cède sans prévenir. Une dernière secousse, puis plus rien.",
-        "clue07-01":
-          "Votre vision se trouble — l’environnement se dissout dans l’obscurité.",
-        "clue08-01":
-          "Une force invisible vous stoppe net. Le froid vous envahit et tout disparaît.",
-      },
+  "clue01-02":
+    "Vous attrapez le bras du corps pour tenter de le dégager. Le métal au-dessus de vous gémit… un craquement sec retentit. Avant que vous puissiez réagir, la structure cède et tout devient noir.",
+
+  "clue02-02":
+    "Vous avancez dans la flaque noire.\n\nLe liquide visqueux se colle à vos pieds et vous immobilise peu à peu. Votre vision se trouble… puis tout disparaît.",
+
+  "clue03-01":
+    "Un souffle de gaz s’échappe derrière vous. Une étincelle jaillit d’un appareil renversé — un flash de lumière, puis tout s’éteint instantanément.",
+
+  "clue04-01":
+    "Votre pied touche l’eau inondée. Un bourdonnement soudain envahit la pièce — puis votre esprit sombre dans le noir.",
+
+  "clue05-01":
+    "Un bruit sec résonne derrière vous. La structure cède brusquement — puis tout disparaît dans un flou silencieux.",
+
+  "clue06-01":
+    "Le sol se dérobe sous vos pieds. Une secousse brusque vous projette dans l’obscurité totale, sans laisser le temps de réagir.",
+
+  "clue07-01":
+    "Une vibration étrange envahit la zone. Votre vision se brouille… puis tout s’efface dans un noir profond.",
+
+  "clue08-01":
+    "Un souffle glacial vous fige sur place. Le monde se dissout dans l’obscurité, sans un son.",
+
+    "ventA1-death": 
+  "Le métal sous vous vibre… puis se déchire d’un seul coup. Vous basculez dans le vide avant de comprendre ce qu’il se passe.",
+
+},
+
     };
   },
 
@@ -189,6 +202,9 @@ export default {
         "clue09-02": "clue09",
         "clue10-02": "clue10",
         "engine04-success": "engine",
+        "clue100-01": "clue100",
+"clue111-02": "clue111",
+
       };
 
       const awardedClue = clueAwards[nextId];
@@ -235,6 +251,9 @@ export default {
         clue09: { clue: "clue09", target: "clue09-03" },
         clue10: { clue: "clue10", target: "clue10-03" },
         engine01: { clue: "engine", target: "engine01-03" },
+        clue100: { clue: "clue100", target: "clue100-03" },
+clue111: { clue: "clue111", target: "clue111-03" },
+
       };
 
       const deja = dejaExplores[nextId];
