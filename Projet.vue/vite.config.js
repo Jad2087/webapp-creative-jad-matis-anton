@@ -10,6 +10,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  base: '/webapp-creative-jad-matis-anton/', // ← ajout du projet
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

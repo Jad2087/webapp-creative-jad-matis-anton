@@ -39,7 +39,7 @@ export default {
   /* centers vertically */
   height: 100vh;
   /* full viewport height */
-  background-image: url("/src/Images/space_background.png"); /* mets ton chemin ici */
+  background-image: url("./src/Images/space_background.png"); /* mets ton chemin ici */
   background-size: cover; /* prend tout l'écran */
   background-position: center; /* centré */
   background-repeat: no-repeat;
