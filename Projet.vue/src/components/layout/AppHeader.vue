@@ -2,7 +2,6 @@
   <header class="app-header">
     <div class="app-header__logo">
       <h1 class="app-header__title">Codex</h1>
-      <p class="app-header__subtitle">Mise en Contexte</p>
     </div>
 
     <nav class="app-header__nav">
@@ -38,16 +37,9 @@ export default {
 
 .app-header__title {
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 2.1rem;
   letter-spacing: 0.08em;
   color: #03ab5e;
-}
-
-.app-header__subtitle {
-  margin: 0.2rem 0 0;
-  font-size: 0.85rem;
-  color: #03ab5e;
-  opacity: 0.8;
 }
 
 .app-header__nav {

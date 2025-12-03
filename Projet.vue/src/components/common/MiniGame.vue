@@ -481,6 +481,10 @@ export default {
   position: relative;
   overflow: hidden;
   /* stop horizontal/vertical bleed */
+  box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
+    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
 }
 
 /* inner scroll area: only this part can scroll */
@@ -506,7 +510,6 @@ export default {
   cursor: pointer;
   width: 250px;
   transition: 0.3s ease;
-  font-family: "Courier New", monospace;
 }
 
 .close-btn:hover {
@@ -668,5 +671,88 @@ export default {
 .close-x:hover {
   background: #03ab5e;
   color: black;
+}
+
+@media (max-width: 1080px) {
+  /* Mise à l'échelle générale */
+  .mini-game-content {
+    width: 100vw;
+    height: 100dvh;
+    padding: 1rem;
+    border-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+
+  .terminal-frame {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+  }
+
+  /* En-tête plus lisible */
+  .term-header {
+    font-size: 1.1rem;
+  }
+
+  .term-attempts {
+    font-size: 1rem;
+  }
+
+  /* ❌ ENLÈVE LES BARRES LATÉRALES (addresses) */
+  .addresses {
+    display: none;
+  }
+
+  /* ❌ SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
+  .term-grid-layout {
+    display: block;
+    padding: 0;
+  }
+
+  /* Zone centrale : caractères */
+  .char-lines {
+    font-size: 1rem; /* plus gros */
+    line-height: 1.3;
+    white-space: pre-wrap;
+    width: 100%;
+  }
+
+  .char-span {
+    width: auto;
+  }
+
+  /* Log panel en bas, simple et lisible */
+  .log-panel {
+    border-top: none; /* supprime la ligne */
+    padding-top: 8px;
+    margin-top: 16px;
+
+    font-size: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .log-line {
+    margin-bottom: 6px;
+  }
+
+  /* Bouton X */
+  .close-x {
+    font-size: 24px;
+    padding: 8px 14px;
+  }
+
+  /* Bouton CONTINUER plus petit et ne déborde pas */
+  .continue-btn {
+    width: 80%;
+    max-width: 300px;
+    font-size: 1rem;
+    padding: 10px;
+    align-self: center; /* centre horizontalement */
+  }
 }
 </style>

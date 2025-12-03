@@ -5,17 +5,11 @@
       <p class="description">{{ description }}</p>
 
       <div class="buttons">
-
         <!-- Bouton Accueil -->
-        <button class="btn accueil" @click="$emit('menu')">
-          Accueil
-        </button>
+        <button class="btn accueil" @click="$emit('menu')">Accueil</button>
 
         <!-- Bouton Historique -->
-        <button class="btn menu" @click="showHistory = true">
-          Historique
-        </button>
-
+        <button class="btn menu" @click="showHistory = true">Historique</button>
       </div>
     </div>
 
@@ -56,7 +50,7 @@ export default {
 .reussite-container {
   position: absolute;
   inset: 0;
-  background: rgba(0, 255, 100, 0.20);
+  background: rgba(0, 255, 100, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,9 +59,9 @@ export default {
 .reussite-box {
   width: 480px;
   padding: 30px;
-  border: 3px solid #39FF88;
-  background: #1b1b1b;
-  color: #39FF88;
+  border: 3px solid #39ff88;
+  background: #111;
+  color: #39ff88;
 }
 
 .titre {
@@ -77,7 +71,7 @@ export default {
 
 .description {
   margin-bottom: 30px;
-  color: #39FF88;
+  color: #39ff88;
 }
 
 .buttons {
@@ -87,19 +81,73 @@ export default {
 
 .btn {
   padding: 10px 20px;
-  border: 2px solid #39FF88;
+  border: 2px solid #39ff88;
   background: transparent;
-  color: #39FF88;
+  color: #39ff88;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .btn:hover {
-  background: #39FF8833;
+  background: #39ff88;
+  color: black;
   transform: scale(1.05);
 }
 
-.btn.accueil {
-  /* optionnel : style spécifique pour Accueil */
+/* === VERSION MOBILE === */
+@media screen and (max-width: 1080px) {
+  .reussite-container {
+    position: fixed;
+    width: 100vw;
+    height: 100dvh;
+    background: rgba(0, 255, 100, 0.2);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .reussite-box {
+    width: 95vw;
+    height: 100dvh;
+    padding: 1rem;
+    border: 2px solid #39ff88;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* boutons en bas */
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .titre {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  .btn:hover {
+    transform: none; /* enlève le scale */
+  }
 }
 </style>

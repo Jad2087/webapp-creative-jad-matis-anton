@@ -20,18 +20,19 @@ export default {
 
   data() {
     return {
-      duration: 4 * 60, // 4 minutes en secondes
+      duration: 4 * 60,
       elapsed: 0,
-      totalBars: 8, // nombre de segments
+      totalBars: 8,
     };
   },
 
   computed: {
-    // Nombre de barres restantes (on part de 8 -> 0)
     remainingBars() {
       const progress = this.elapsed / this.duration;
-      const barsLeft = this.totalBars - Math.floor(progress * this.totalBars);
-      return Math.max(barsLeft, 0);
+      return Math.max(
+        this.totalBars - Math.floor(progress * this.totalBars),
+        0
+      );
     },
   },
 
@@ -41,7 +42,6 @@ export default {
 
   methods: {
     startTimer() {
-      // évite de créer plusieurs intervals par erreur
       if (this.interval) return;
 
       this.interval = setInterval(() => {
@@ -50,8 +50,6 @@ export default {
         } else {
           clearInterval(this.interval);
           this.interval = null;
-
-          // 🔥 Émettre l’event seulement quand le timer est TERMINÉ
           this.$emit("timeout");
         }
       }, 1000);
@@ -76,7 +74,6 @@ export default {
   width: 100%;
   box-sizing: border-box;
   min-height: 85px;
-  flex: 0 0 auto;
 }
 
 .label {
@@ -89,6 +86,7 @@ export default {
 .bars {
   display: flex;
   gap: 4px;
+  margin-left: auto; /* pousse les barres complètement à droite */
 }
 
 .bar {
@@ -100,5 +98,14 @@ export default {
 
 .bar.active {
   background: #d6d6d6;
+}
+
+/* Version mobile */
+@media (max-width: 1080px) {
+  .timer-container {
+    padding: 0.5rem;
+    min-height: 70px;
+    gap: 10px;
+  }
 }
 </style>

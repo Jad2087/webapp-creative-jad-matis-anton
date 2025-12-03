@@ -2,9 +2,8 @@
   <div class="choice-made">
     <h3>Historique des choix :</h3>
     <ul>
-      <!-- boucle sur chaque élément dans choicesHistory -->
       <li v-for="(choice, index) in choicesHistory" :key="index">
-        {{ index + 1 }}. {{ choice }} <!-- affiche le numéro du choix + le texte du choix -->
+        {{ index + 1 }}. {{ choice }}
       </li>
     </ul>
     <button class="btn-close" @click="$emit('close')">Fermer</button>
@@ -61,6 +60,26 @@ export default {
 }
 
 .btn-close:hover {
-  background: #03ab5e33;
+  background: #03ab5e;
+  color: black;
+  transform: scale(1.05);
+}
+
+/* --- Version mobile --- */
+@media (max-width: 600px) {
+  .choice-made {
+    width: 90%; /* prend presque toute la largeur */
+    max-height: 80%; /* plus haute pour s’adapter au contenu */
+    top: 50%; /* centre verticalement */
+    left: 50%; /* centre horizontalement */
+    right: auto; /* annule right:10% */
+    transform: translate(-50%, -50%); /* vrai centrage */
+    padding: 0.8rem;
+  }
+
+  .btn-close {
+    width: 100%; /* bouton large pour toucher facilement */
+    text-align: center;
+  }
 }
 </style>

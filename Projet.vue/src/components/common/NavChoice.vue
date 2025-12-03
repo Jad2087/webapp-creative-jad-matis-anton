@@ -59,10 +59,6 @@ const isVisible = computed(() => {
 </template>
 
 <style scoped>
-* {
-  font-family: "Courier New", monospace;
-}
-
 .choice-btn {
   background-color: #111;
   color: #03ab5e;
@@ -104,7 +100,7 @@ const isVisible = computed(() => {
   }
 
   .choice-btn:hover {
-    transform: none !important; /* enlève le scale */
+    transform: none; /* enlève le scale */
   }
 }
 </style>

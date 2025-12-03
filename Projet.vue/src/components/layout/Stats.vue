@@ -2,11 +2,11 @@
   <div class="stats-container">
     <div class="stats-display">
       <div class="stat">
-        <span class="title">MORTS :</span>
+        <span class="title">Mort :</span>
         <span class="value">{{ player.deaths }}</span>
       </div>
       <div class="stat">
-        <span class="title">AIDE INDICES :</span>
+        <span class="title">Indice :</span>
         <span class="value">{{ collectedClues }}</span>
       </div>
     </div>
@@ -59,7 +59,7 @@ export default {
 }
 
 .title {
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
 
