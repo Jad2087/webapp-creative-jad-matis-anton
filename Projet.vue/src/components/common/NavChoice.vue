@@ -83,12 +83,12 @@ const isVisible = computed(() => {
 /* états spéciaux */
 .choice-btn--clue-found {
   background-color: #111;
-  border-color: #f4e66a;
-  color: #f4e66a;
+  border-color: rgb(105, 105, 105);
+  color: rgb(105, 105, 105);
 }
 
 .choice-btn--clue-found:hover {
-  background-color: #f4e66a;
+  background-color: rgb(105, 105, 105);
   color: black;
 }
 

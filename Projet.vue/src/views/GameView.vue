@@ -449,7 +449,10 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #111;
+  background-image: url("/src/Images/space_background.png"); /* mets ton chemin ici */
+  background-size: cover; /* prend tout l'écran */
+  background-position: center; /* centré */
+  background-repeat: no-repeat;
 }
 
 .screen {
@@ -460,7 +463,7 @@ export default {
   width: 900px;
   height: 600px;
   padding: 2rem 2rem;
-  background-color: #111;
+  background-color: rgb(17, 17, 17);
   border: 2px solid #03ab5e;
   color: #03ab5e;
 }
