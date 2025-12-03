@@ -136,6 +136,22 @@ export default {
     "ventA1-death": 
   "Le métal sous vous vibre… puis se déchire d’un seul coup. Vous basculez dans le vide avant de comprendre ce qu’il se passe.",
 
+  "vent-slither":
+  "Un bruit humide se rapproche dans le noir. Avant même que vous puissiez reculer, quelque chose de glissant s’enroule autour de votre jambe et vous tire violemment dans l’obscurité. Vous n’avez même pas le temps de crier.",
+
+"vent-fans-button-death":
+  "Vous appuyez sur le bouton. Les ventilateurs ralentissent… puis redémarrent d’un coup. Les pales vous happent à pleine vitesse, sans vous laisser la moindre chance.",
+
+  "ventDeep-greenDeath":
+  "La rouille se brise sous vous. Le conduit s’effondre d’un coup, et vous tombez dans le vide sans pouvoir vous rattraper.",
+
+  "ventDeep-blackDeath":
+  "Dans l’obscurité totale, vous perdez le sens de l’orientation. Épuisé et désorienté, vous finissez par vous effondrer, incapable de retrouver la sortie.",
+
+  "clue07-01":
+  "Votre saut dévie d’un simple centimètre. La substance noire agrippe votre jambe, remonte le long de votre corps et vous immobilise avant que vous ne puissiez atteindre la porte.",
+
+
 },
 
     };
@@ -204,6 +220,7 @@ export default {
         "engine04-success": "engine",
         "clue100-01": "clue100",
 "clue111-02": "clue111",
+
 
       };
 
@@ -280,6 +297,12 @@ clue111: { clue: "clue111", target: "clue111-03" },
         this.showReussite = true;
         return;
       }
+
+      if (nextId === "ending-cryo") {
+  this.showReussite = true;
+  return;
+}
+
 
       // NAVIGATION NORMALE : STORY
       if (next.type === "story") {
