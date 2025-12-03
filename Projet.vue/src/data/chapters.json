@@ -6,7 +6,7 @@
     "choices": [
       {
         "text": "Continuer",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": { "type": "story", "id": "fork05", "good": true }
       }
     ]
   },
