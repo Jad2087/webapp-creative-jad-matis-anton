@@ -13,13 +13,14 @@
 </template>
 
 <script>
+import miniMap from '@/Images/minimap.png';
 export default {
   name: "MiniMap",
   props: ["currentChapterId"],
 
   data() {
     return {
-      miniMapImage: "/src/Images/minimap.png",
+      miniMapImage: miniMap,
       chapterPositions: {
         intro: { top: "19%", left: "52%" },
         fork01: { top: "30%", left: "52%" },
