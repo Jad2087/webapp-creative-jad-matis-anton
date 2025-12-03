@@ -468,7 +468,7 @@ clue111: { clue: "clue111", target: "clue111-03" },
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("./src/Images/space_background.png"); /* mets ton chemin ici */
+  background-image: url("@/Images/space_background.png"); /* mets ton chemin ici */
   background-size: cover; /* prend tout l'écran */
   background-position: center; /* centré */
   background-repeat: no-repeat;

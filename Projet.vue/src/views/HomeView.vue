@@ -8,6 +8,7 @@
 </template>
 
 <script>
+//import SpaceBackground from '@/Images/space_background.png';
 export default {
   name: "HomeView",
 
@@ -39,7 +40,7 @@ export default {
   /* centers vertically */
   height: 100vh;
   /* full viewport height */
-  background-image: url("./src/Images/space_background.png"); /* mets ton chemin ici */
+  background-image: url("@/Images/space_background.png"); /* mets ton chemin ici SpaceBackground */ 
   background-size: cover; /* prend tout l'écran */
   background-position: center; /* centré */
   background-repeat: no-repeat;
