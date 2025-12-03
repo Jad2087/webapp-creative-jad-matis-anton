@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      miniMapImage: "./src/Images/minimap.png",
+      miniMapImage: "../src/Images/minimap.png",
       chapterPositions: {
         intro: { top: "19%", left: "52%" },
         fork01: { top: "30%", left: "52%" },
