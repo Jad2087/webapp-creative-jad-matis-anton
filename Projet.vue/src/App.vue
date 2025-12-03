@@ -5,4 +5,13 @@
   <router-view />
 </template>
 
-<style scoped></style>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+</style>
