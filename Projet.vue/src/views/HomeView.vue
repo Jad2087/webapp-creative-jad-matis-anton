@@ -54,11 +54,10 @@ export default {
   justify-content: center;
   align-items: center;
 
-  box-shadow:
-    0 0 25px 5px rgba(3, 171, 94, 0.5),   /* halo vert */
-    0 0 60px 15px rgba(0, 0, 0, 0.9),      /* ombre profonde */
-    inset 0 0 20px rgba(0, 0, 0, 0.7),     /* ombre interne pour effet vitre */
-    inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
+  box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
+    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
 }
 
 /* EFFET RETRO */
@@ -111,10 +110,12 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.03) 0,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(0, 0, 0, 0.06) 4px);
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
   pointer-events: none;
 }
 
@@ -145,8 +146,7 @@ export default {
 }
 
 /* ==== MOBILE ==== */
-@media (max-width: 768px) {
-
+@media (max-width: 1080px) {
   /* IMPORTANT : forces le viewport mobile correct */
   html,
   body {

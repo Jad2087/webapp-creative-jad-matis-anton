@@ -34,7 +34,7 @@ export default {
 <style scoped>
 .stats-container {
   width: 100%;
-  height: 150px;
+  min-height: 85px;
   padding: 10px;
   border: 2px solid #ffffff;
   background-color: #111;
@@ -67,10 +67,4 @@ export default {
   font-size: 16px;
   font-weight: bold;
 }
-
-/* Version mobile : retirer la hauteur fixe */
-@media (max-width: 1080px) {
-  .stats-container {
-    height: auto; /* s'adapte au contenu */
-  } }
 </style>

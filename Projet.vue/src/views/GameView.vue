@@ -7,6 +7,7 @@
         <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
+
       <!-- Contenu droit -->
       <div class="columnright">
         <!-- Header -->
@@ -21,22 +22,41 @@
         </div>
 
         <!-- Choices show up as buttons from ChoiceButtons component -->
-        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
+        <ChoiceButtons
+          :choices="activeChapter.choices"
+          @choice-selected="changeChapter"
+          class="choicebuttons"
+        />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
-          @done="onMiniGameDone" />
+        <MiniGame
+          v-if="openMiniGame"
+          :minigame-id="activeMiniGameId"
+          @close="openMiniGame = false"
+          @done="onMiniGameDone"
+        />
 
-        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
-          @menu="goToMenu" />
+        <Echec
+          v-if="showEchec"
+          :title="echecTitle"
+          :description="echecDescription"
+          @retry="retryGame"
+          @menu="goToMenu"
+        />
 
         <!-- Réussite overlay -->
-        <Reussite v-if="showReussite" @menu="goToMenu" @historique="showHistory = true" />
-
+        <Reussite
+          v-if="showReussite"
+          @menu="goToMenu"
+          @historique="showHistory = true"
+        />
 
         <!-- Historique overlay par-dessus Réussite -->
-        <ChoiceMade v-if="showHistory" class="overlay" @close="showHistory = false" />
-
+        <ChoiceMade
+          v-if="showHistory"
+          class="overlay"
+          @close="showHistory = false"
+        />
       </div>
     </div>
   </div>
@@ -97,15 +117,14 @@ export default {
           "Une erreur de jugement — tout devient flou avant de basculer dans le vide.",
         "clue04-01":
           "Un mécanisme instable se déclenche, et la lumière s'éteint autour de vous.",
-        "clue05-01":
-          "Quelque chose se brise net… puis le silence.",
+        "clue05-01": "Quelque chose se brise net… puis le silence.",
         "clue06-01":
           "LLLLLLLLa structure cède sans prévenir. Une dernière secousse, puis plus rien.",
         "clue07-01":
           "Votre vision se trouble — l’environnement se dissout dans l’obscurité.",
         "clue08-01":
-          "Une force invisible vous stoppe net. Le froid vous envahit et tout disparaît."
-      }
+          "Une force invisible vous stoppe net. Le froid vous envahit et tout disparaît.",
+      },
     };
   },
 
@@ -133,7 +152,7 @@ export default {
 
   methods: {
     changeChapter(next) {
-      const player = usePlayerStore();   // On récupère le store du joueur (pinia)
+      const player = usePlayerStore(); // On récupère le store du joueur (pinia)
       const storyStore = useStoryStore(); // On récupère le store de l'histoire (pinia)
 
       // Vérifie que "next" existe et qu'il contient un id valide
@@ -148,7 +167,14 @@ export default {
 
       console.log("[changeChapter] ----");
       console.log("[changeChapter] Choix reçu :", next);
-      console.log("[changeChapter] nextId =", nextId, "type =", next.type, "good =", next.good);
+      console.log(
+        "[changeChapter] nextId =",
+        nextId,
+        "type =",
+        next.type,
+        "good =",
+        next.good
+      );
 
       // AJOUT DES INDICES
       const clueAwards = {
@@ -162,7 +188,7 @@ export default {
         "clue08-02": "clue08",
         "clue09-02": "clue09",
         "clue10-02": "clue10",
-        "engine04-success": "engine"
+        "engine04-success": "engine",
       };
 
       const awardedClue = clueAwards[nextId];
@@ -208,7 +234,7 @@ export default {
         clue08: { clue: "clue08", target: "clue08-03" },
         clue09: { clue: "clue09", target: "clue09-03" },
         clue10: { clue: "clue10", target: "clue10-03" },
-        engine01: { clue: "engine", target: "engine01-03" }
+        engine01: { clue: "engine", target: "engine01-03" },
       };
 
       const deja = dejaExplores[nextId];
@@ -238,7 +264,10 @@ export default {
 
       // NAVIGATION NORMALE : STORY
       if (next.type === "story") {
-        console.log("[changeChapter] Navigation normale vers le chapitre", nextId);
+        console.log(
+          "[changeChapter] Navigation normale vers le chapitre",
+          nextId
+        );
         this.current = nextId;
         this.$router.push({ name: "game", params: { id: nextId } });
         this.openMiniGame = false;
@@ -274,12 +303,10 @@ export default {
       this.showEchec = true;
     },
 
-
     onMiniGameDone(result) {
       this.openMiniGame = false;
 
       if (result && result.success) {
-
         // Si c'est minigame08 → afficher Reussite.vue
         if (this.activeMiniGameId === "minigame08") {
           this.showReussite = true;
@@ -307,7 +334,6 @@ export default {
 
       this.showEchec = true;
     },
-
 
     retryGame() {
       const player = usePlayerStore(); //add this line
@@ -466,21 +492,22 @@ export default {
   /* Optionnel : légère arrondie pour correspondre à un écran rétro */
   border-radius: 6px;
 
-  box-shadow:
-    0 0 25px 5px rgba(3, 171, 94, 0.5),   /* halo vert */
-    0 0 60px 15px rgba(0, 0, 0, 0.9),      /* ombre profonde */
-    inset 0 0 20px rgba(0, 0, 0, 0.7),     /* ombre interne pour effet vitre */
-    inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
+  box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
+    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
 }
 
 .screen::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.03) 0,
-      rgba(255, 255, 255, 0.03) 2px,
-      rgba(0, 0, 0, 0.06) 4px);
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
   pointer-events: none;
 }
 
@@ -494,7 +521,7 @@ export default {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright>*:first-child {
+.columnright > *:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -521,8 +548,7 @@ export default {
   color: #03ab5e;
 }
 
-/* ChoiceButtons en bas */
-.columnright>*:last-child {
+.columnright > *:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -562,16 +588,57 @@ export default {
 }
 
 @media (max-width: 1080px) {
+  /* IMPORTANT : forces le viewport mobile correct */
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    height: 100dvh;
+    overflow: hidden;
+    /* évite que 100% casse */
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+    /* plein écran réel */
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
 
   .screen {
     display: flex;
     flex-direction: column;
     width: 95vw;
-    height: 100vh;
+    height: 100dvh;
     padding: 1rem;
     gap: 1rem;
     justify-content: flex-start;
 
+    border: none;
+    border-radius: 0;
+    transform: none;
+    animation: none;
+  }
+
+  .columnright {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .story-box {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0; /* IMPORTANT pour autoriser le scroll */
+  }
+
+  .choicebuttons {
+    flex-shrink: 0;
+    padding-top: 1rem;
+    width: 100%;
+    margin-top: auto;
   }
 }
 </style>

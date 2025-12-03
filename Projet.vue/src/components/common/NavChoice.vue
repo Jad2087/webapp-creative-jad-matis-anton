@@ -44,16 +44,18 @@ const isVisible = computed(() => {
   // Si le choix demande engine → visible SEULEMENT si engine activé
   return player.hasClue("engine");
 });
-
-
 </script>
 
 <template>
   <!-- représente un choix -->
-  <button v-if="isVisible" class="choice-btn" :class="{ 'choice-btn--clue-found': isClueFound }" @click="choose()">
+  <button
+    v-if="isVisible"
+    class="choice-btn"
+    :class="{ 'choice-btn--clue-found': isClueFound }"
+    @click="choose()"
+  >
     {{ props.choice.text }}
   </button>
-
 </template>
 
 <style scoped>
@@ -68,11 +70,11 @@ const isVisible = computed(() => {
   border: 2px solid #03ab5e;
   padding: 0.75rem 1.5rem;
   font-size: 1.1rem;
-  margin: 0.5rem 0;  
+  margin: 0.5rem 0;
   cursor: pointer;
-  width: 100%;           
-  max-width: 480px;     
-  box-sizing: border-box; 
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
   transition: 0.3s ease;
 }
 
@@ -92,5 +94,17 @@ const isVisible = computed(() => {
 .choice-btn--clue-found:hover {
   background-color: #f4e66a;
   color: black;
+}
+
+@media (max-width: 1080px) {
+  .choice-btn {
+    width: 100%;
+    max-width: none; /* Permet au bouton de prendre TOUTE la largeur */
+    margin: 0; /* centré naturellement en full width */
+  }
+
+  .choice-btn:hover {
+    transform: none !important; /* enlève le scale */
+  }
 }
 </style>

@@ -4,7 +4,12 @@
 
     <!-- Barre contenant les segments -->
     <div class="bars">
-      <div v-for="(bar, index) in totalBars" :key="index" class="bar" :class="{ active: index < remainingBars }"></div>
+      <div
+        v-for="(bar, index) in totalBars"
+        :key="index"
+        class="bar"
+        :class="{ active: index < remainingBars }"
+      ></div>
     </div>
   </div>
 </template>

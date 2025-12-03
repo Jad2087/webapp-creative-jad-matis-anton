@@ -29,16 +29,19 @@ export default {
         clue02: { top: "45%", left: "42%" },
         minigame01: { top: "50%", left: "60%" },
         intro2: { top: "10%", left: "85%" },
-        default: { top: "50%", left: "50%" }
-      }
+        default: { top: "50%", left: "50%" },
+      },
     };
   },
 
   computed: {
     pointStyle() {
-      return this.chapterPositions[this.currentChapterId] || this.chapterPositions.default;
-    }
-  }
+      return (
+        this.chapterPositions[this.currentChapterId] ||
+        this.chapterPositions.default
+      );
+    },
+  },
 };
 </script>
 
@@ -77,8 +80,13 @@ export default {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .map-point {
@@ -95,23 +103,6 @@ export default {
   /* Cacher la mini-map sur mobile */
   .minimap-container {
     display: none;
-  }
-
-  /* Ajuster la barre du haut si nécessaire */
-  .columnleft {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  /* Exemple : rendre l’écran principal en colonne avec espace égal */
-  .screen {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: space-between;
-    gap: 1rem;
   }
 }
 </style>
