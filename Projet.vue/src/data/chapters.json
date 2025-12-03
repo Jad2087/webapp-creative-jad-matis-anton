@@ -321,7 +321,7 @@
     "choices": [
       {
         "text": "Entrer dans la salle de stockage droite",
-        "next": { "type": "story", "id": "clue07", "good": true }
+        "next": { "type": "story", "id": "clue06", "good": true }
       },
       {
         "text": "Entrer dans la salle de stockage gauche",
@@ -348,8 +348,8 @@
   
   {
     "id": "clue05",
-    "title": "Act 2 — Salle de Stockage (Gauche)",
-    "text": "La salle de stockage est encombrée de caisses renversées et de matériel inutile.\n\nDerrière une étagère déplacée, vous remarquez une grille d’aération légèrement descellée.\n\nUn conduit sombre descend derrière, assez large pour que vous puissiez vous y glisser.",
+    "title": "Acte 2 — Chambre Froide",
+    "text": "En poussant la porte, vous êtes immédiatement frappé par une bouffée d’air glacé.\n\nLa pièce est une grande chambre froide. Des caisses de nourriture gelée sont empilées contre les murs, et une fine couche de givre recouvre le sol.\n\nDerrière une rangée de casiers métalliques, un courant d’air plus vif attire votre attention. En déplaçant un des casiers, vous découvrez une grille d’aération entrouverte, d’où s’échappe un souffle constant.\n\nLe conduit semble praticable.",
     "choices": [
       {
         "text": "Retournez",
@@ -357,75 +357,99 @@
       },
       {
         "text": "Entrer dans le conduit",
-        "next": { "type": "story", "id": "vent-entry", "good": true }
+        "next": { "type": "story", "id": "vent01", "good": true }
       }
     ]
-  },
+  },  
   
   {
-    "id": "vent-entry",
-    "title": "Act 2 — Conduit d’Aération",
-    "text": "Vous vous glissez dans le conduit étroit. Le métal froid résonne sous vos mouvements.\n\nAprès plusieurs mètres, vous atteignez un croisement :\n\nÀ gauche, un passage plonge entièrement dans l’obscurité.\nÀ droite, un courant d’air constant provient du bruit régulier de ventilateurs.",
-    "choices": [
-      {
-        "text": "Aller vers l’obscurité",
-        "next": { "type": "story", "id": "vent-dark", "good": false }
-      },
-      {
-        "text": "Aller vers les ventilateurs",
-        "next": { "type": "story", "id": "vent-fans", "good": true }
-      }
-    ]
-  },
-  
-  {
-    "id": "vent-dark",
-    "title": "Act 2 — Conduit • Fin du Chemin",
-    "text": "Le conduit devient instable.\n\nUn craquement sec retentit… puis le métal cède sous votre poids.",
-    "choices": []
-  },
-  
-  {
-    "id": "vent-fans",
-    "title": "Act 2 — Conduit • Zone des Ventilateurs",
-    "text": "Vous atteignez une section plus large du conduit.\n\nDevant vous, plusieurs ventilateurs industriels tournent rapidement, bloquant totalement le passage.\n\nÀ votre droite, un petit boîtier électrique semble contrôler l’alimentation des ventilateurs.",
+    "id": "vent01",
+    "title": "Acte 2 — Conduit d’Aération",
+    "text": "Vous rampez dans le conduit glacé, éclairé faiblement par la lumière de votre tablette.\n\nAprès une longue progression en ligne droite, le passage se divise finalement en trois embranchements :\n\n• À gauche : une lueur blanche clignotante et le bourdonnement régulier d’un ventilateur.\n• Devant : une obscurité totale, silencieuse.\n• À droite : un couloir plongé dans le noir, d’où émane un bruit humide et irrégulier, comme un glissement visqueux.",
     "choices": [
       {
         "text": "Retournez",
-        "next": { "type": "story", "id": "vent-entry", "good": true }
+        "next": { "type": "story", "id": "clue05", "good": true }
       },
       {
-        "text": "Éteindre le boîtier normalement",
-        "next": { "type": "story", "id": "vent-box-fail", "good": false }
+        "text": "Aller vers la lumière et le ventilateur",
+        "next": { "type": "story", "id": "vent-light", "good": true }
       },
       {
-        "text": "Arracher les câbles",
-        "next": { "type": "story", "id": "vent-box-success", "good": true }
+        "text": "S’aventurer dans l’obscurité",
+        "next": { "type": "story", "id": "vent-dark", "good": true }
+      },
+      {
+        "text": "Aller vers le bruit visqueux",
+        "next": { "type": "story", "id": "vent-slither", "good": false }
       }
     ]
-  },
+  },  
   
   {
-    "id": "vent-box-fail",
-    "title": "Act 2 — Conduit • Surcharge",
-    "text": "Vous basculez l’interrupteur du boîtier.\n\nLes ventilateurs ralentissent… puis un bruit sec retentit.\n\nLa surcharge traverse le conduit et tout s’éteint.",
+    "id": "vent-slither",
+    "title": "Acte 2 — Conduit • Bruit Visqueux",
+    "text": "Vous avancez prudemment dans le couloir sombre. Le bruit humide s'intensifie… un glissement organique, juste devant vous.\n\nUn souffle froid frôle votre main.\n\nPuis quelque chose d’humide vous saisit violemment la jambe et vous tire dans l’obscurité.",
     "choices": []
   },
   
   {
-    "id": "vent-box-success",
-    "title": "Act 2 — Conduit • Passage Dégagé",
-    "text": "Vous arrachez les câbles du boîtier. Les ventilateurs s’arrêtent immédiatement.\n\nLe passage est libre.",
+    "id": "vent-light",
+    "title": "Acte 2 — Conduit • Vers la Lumière",
+    "text": "Vous avancez vers la clarté vacillante. Le grondement se renforce jusqu’à devenir assourdissant.\n\nAu bout du conduit, vous débouchez sur un virage où plusieurs ventilateurs industriels tournent à grande vitesse, bloquant complètement le passage.\n\nÀ votre droite, un petit boîtier électrique est fixé contre la paroi. Son capot, mal fermé, laisse apparaître un enchevêtrement de câbles et un bouton marqué « OFF ». Les pales du ventilateur sont assez petites pour que vous puissiez vous faufiler… si elles s’arrêtent.",
+    "choices": [
+      {
+        "text": "Inspecter le boîtier électrique",
+        "next": { "type": "story", "id": "vent-fans", "good": true }
+      },
+      {
+        "text": "Retournez",
+        "next": { "type": "story", "id": "vent01", "good": true }
+      }
+    ]
+  },  
+
+  {
+    "id": "vent-fans",
+    "title": "Acte 2 — Conduit • Ventilateurs",
+    "text": "Les ventilateurs tournent à grande vitesse, leurs pales sifflant dangereusement.\n\nLe boîtier électrique semble contrôler leur alimentation. Vous pouvez tenter de les arrêter.",
+    "choices": [
+      {
+        "text": "Appuyer sur le bouton OFF",
+        "next": { "type": "story", "id": "vent-fans-button-death", "good": false }
+      },
+      {
+        "text": "Arracher les câbles",
+        "next": { "type": "story", "id": "vent-fans-wires-success", "good": true }
+      },
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "vent-light", "good": true }
+      }
+    ]
+  },  
+  
+  {
+    "id": "vent-fans-button-death",
+    "title": "Acte 2 — Conduit • Erreur Fatale",
+    "text": "Vous appuyez sur le bouton.\n\nLes ventilateurs ralentissent… s’arrêtent… puis se remettent brusquement en marche.\n\nVous tentez de passer, mais les pales reviennent à pleine vitesse et vous happent dans un claquement métallique.",
+    "choices": []
+  },  
+  
+  {
+    "id": "vent-fans-wires-success",
+    "title": "Acte 2 — Conduit • Passage Dégagé",
+    "text": "Vous saisissez une poignée de câbles et tirez de toutes vos forces.\n\nDes étincelles jaillissent, les lumières vacillent… puis les ventilateurs s’arrêtent complètement.\n\nLe passage est enfin libre.",
     "choices": [
       {
         "text": "Continuer",
         "next": { "type": "story", "id": "fork04", "good": true }
       }
     ]
-  },
+  },  
   
   {
-    "id": "clue07",
+    "id": "clue06",
     "title": "Acte 2 — Salle de Stockage (Droite)",
     "text": "La salle est presque vide. Une fine couche de poussière recouvre chaque surface.\n\nUn courant d’air léger vous effleure le visage : il provient d’une grille d’aération dont les vis ont été retirées.\n\nLe conduit derrière semble assez large pour y ramper.",
     "choices": [
@@ -438,6 +462,135 @@
         "next": { "type": "story", "id": "ventA1", "good": true }
       }
     ]
+  },  
+
+  {
+    "id": "vent-dark",
+    "title": "Acte 2 — Conduit Sombre",
+    "text": "Vous avancez lentement dans l’obscurité totale du conduit. La lumière de votre tablette s’épuise, mais vous distinguez enfin une grille devant vous.\n\nEn la poussant, vous tombez dans une petite salle de maintenance enfouie profondément dans les entrailles de la station.\n\nDeux corps desséchés reposent contre le mur, assis l’un à côté de l’autre. Aucun signe de violence — juste un abandon silencieux.\n\nLa seule autre issue est un conduit sur le mur opposé.",
+    "choices": [
+      {
+        "text": "Retournez",
+        "next": { "type": "story", "id": "vent01", "good": true }
+      },
+      {
+        "text": "Entrer dans le conduit opposé",
+        "next": { "type": "story", "id": "ventDeep01", "good": true }
+      }
+    ]
+  },  
+
+  {
+    "id": "ventDeep01",
+    "title": "Acte 2 — Conduit Profond",
+    "text": "Le conduit mène à un nouvel embranchement, encore plus ancien.\n\nTrois chemins se présentent à vous :\n\n• À gauche : une faible lumière rouge éclaire les parois.\n• Au centre : un long conduit recouvert d’une rouille verdâtre, éclairé par une lumière verte.\n• À droite : un tunnel entièrement noir, sans le moindre son.",
+    "choices": [
+      {
+        "text": "Prendre le chemin rouge",
+        "next": { "type": "story", "id": "ventDeep-red", "good": true }
+      },
+      {
+        "text": "Suivre la lumière verte",
+        "next": { "type": "story", "id": "ventDeep-greenDeath", "good": false }
+      },
+      {
+        "text": "Avancer dans l’obscurité totale",
+        "next": { "type": "story", "id": "ventDeep-blackDeath", "good": false }
+      }
+    ]
+  },  
+
+  {
+    "id": "ventDeep-greenDeath",
+    "title": "Acte 2 — Conduit • Rupture",
+    "text": "Le conduit grince sous votre poids. La rouille craque… puis le métal cède brusquement.\n\nVous chutez dans le vide avant d’avoir le temps de réagir.",
+    "choices": []
+  },  
+
+  {
+    "id": "ventDeep-red",
+    "title": "Acte 2 — Conduit • Lumière Rouge",
+    "text": "Le conduit éclairé par la lumière rouge pulse doucement, comme si la source lumineuse vacillait.\n\nVous atteignez un carrefour étroit :\n\n• Tout droit : un long tunnel sombre.\n• À gauche : un coude où une lueur bleutée se diffuse faiblement.",
+    "choices": [
+      {
+        "text": "Continuer dans le tunnel sombre",
+        "next": { "type": "story", "id": "ventDeep-red-dark", "good": true }
+      },
+      {
+        "text": "Suivre la lumière bleue",
+        "next": { "type": "story", "id": "ventDeep-blue", "good": true }
+      },
+      {
+        "text": "Retour",
+        "next": { "type": "story", "id": "ventDeep01", "good": true }
+      }
+    ]
+  },
+  
+  {
+    "id": "ventDeep-red",
+    "title": "Acte 2 — Conduit • Lumière Rouge",
+    "text": "Le conduit éclairé par la lumière rouge pulse doucement, comme si la source lumineuse vacillait.\n\nVous atteignez un carrefour étroit :\n\n• Tout droit : un long tunnel sombre.\n• À gauche : un coude où une lueur bleutée se diffuse faiblement.",
+    "choices": [
+      {
+        "text": "Continuer dans le tunnel sombre",
+        "next": { "type": "story", "id": "ventDeep-red-dark", "good": true }
+      },
+      {
+        "text": "Suivre la lumière bleue",
+        "next": { "type": "story", "id": "ventDeep-blue", "good": true }
+      },
+      {
+        "text": "Retournez",
+        "next": { "type": "story", "id": "ventDeep01", "good": true }
+      }
+    ]
+  },  
+
+  {
+    "id": "ventDeep-red-dark",
+    "title": "Acte 2 — Conduit • Passage Étroit",
+    "text": "Le tunnel devient de plus en plus exigu. Vous sentez l’air se réchauffer légèrement.\n\nAprès un dernier virage, vous apercevez une grille. En la poussant, vous tombez dans un couloir technique éclairé par des lampes défaillantes.\n\nCe couloir mène directement à un nouvel embranchement.",
+    "choices": [
+      {
+        "text": "Continuer",
+        "next": { "type": "story", "id": "fork05", "good": true }
+      },
+      {
+        "text": "Retournez",
+        "next": { "type": "story", "id": "ventDeep-red", "good": true }
+      }
+    ]
+  },  
+
+  {
+    "id": "ventDeep-blue",
+    "title": "Acte 2 — Salle des Cryo-Pods",
+    "text": "Vous suivez la lueur bleutée et débouchez dans une petite chambre circulaire.\n\nDes caissons cryogéniques sont alignés contre les murs, la plupart hors service, fissurés ou totalement éteints.\n\nUn seul pod reste actif. Son interface clignote doucement, invitant à l’utilisation.\n\nVous pourriez entrer à l’intérieur… et dormir.",
+    "choices": [
+      {
+        "text": "Entrer dans le cryo-pod",
+        "next": { "type": "story", "id": "ending-cryo", "good": true }
+      },
+      {
+        "text": "Retournez",
+        "next": { "type": "story", "id": "ventDeep-red", "good": true }
+      }
+    ]
+  },  
+
+  {
+    "id": "ending-cryo",
+    "title": "Fin — Sommeil Éternel",
+    "text": "Vous vous installez dans le cryo-pod.\n\nLa paroi se referme doucement dans un souffle d’air froid.\n\nUne brume blanche envahit la vitre… et tout disparaît dans le silence.\n\nVous ne sentirez plus jamais la station vibrer autour de vous.",
+    "choices": []
+  },  
+  
+  {
+    "id": "ventDeep-blackDeath",
+    "title": "Acte 2 — Conduit • Perdu",
+    "text": "Vous vous engagez dans le noir absolu.\n\nLe conduit tourne, descend, remonte… vous perdez toute notion d’orientation.\n\nVous rampez pendant ce qui vous semble être des heures, jusqu’à ce que vos forces vous abandonnent.",
+    "choices": []
   },  
   
   {
@@ -627,7 +780,7 @@
     },
     {
       "text": "Traverser le hangar",
-      "next": { "type": "story", "id": "act3-intro", "good": true }
+      "next": { "type": "story", "id": "intro3", "good": true }
     }
   ]
 },
@@ -662,125 +815,116 @@
 
 
 
+{
+  "id": "fork04",
+  "title": "Acte 2 — Centre Médical",
+  "text": "Le conduit s'ouvre brusquement sous vous et vous tombez dans une vaste salle d’examen médicale.\n\nLe sol est presque entièrement recouvert de la même substance noire et huileuse que vous avez vue ailleurs. Seules quelques plaques de sol poussiéreux restent praticables.\n\nAutour de vous, des lits renversés, des chariots médicaux abandonnés, et des écrans brisés témoignent du chaos passé.\n\nDans un coin, un terminal encore en état de marche pulse faiblement.\nÀ l’opposé, une porte mène à une réserve médicale remplie d’étagères surchargées.\n\nVous pouvez explorer les environs.",
+  "choices": [
+    {
+      "text": "Aller vers la réserve médicale",
+      "next": { "type": "story", "id": "clue08", "good": true }
+    },
+    {
+      "text": "Examiner le terminal",
+      "next": { "type": "story", "id": "minigame04", "good": true }
+    },
+    {
+      "text": "Salle des Malades",
+      "next": { "type": "story", "id": "clue07", "good": true }
+    }
+  ]
+},
 
-  
+{
+  "id": "clue07",
+  "title": "Acte 2 — Salle des Malades",
+  "text": "Vous ouvrez la porte et découvrez une vaste salle d’infirmerie… transformée en tombe collective.\n\nDes rangées de lits sont renversées ou entassées les unes sur les autres. La substance noire recouvre les matelas, les murs, et les corps figés des membres d’équipage.\n\nQuelques plaques de sol encore sèches forment un chemin précaire jusqu'à une petite salle de bain verrouillée à l’extrémité de la pièce.\n\nVous pouvez tenter d’y accéder.",
+  "choices": [
+    {
+      "text": "Retour au centre médical",
+      "next": { "type": "story", "id": "fork04", "good": true }
+    },
+    {
+      "text": "Sauter de plaque en plaque",
+      "next": { "type": "story", "id": "clue07-01", "good": false }
+    },
+    {
+      "text": "Grimper sur les lits et avancer par-dessus",
+      "next": { "type": "story", "id": "clue07-02", "good": true }
+    }
+  ]
+},
 
+{
+  "id": "clue07-01",
+  "title": "Acte 2 — Salle des Malades — Mort",
+  "text": "Vous tentez de sauter d'une plaque de sol sec à une autre.\n\nVotre pied glisse légèrement… juste assez pour frôler la substance noire.\n\nElle réagit aussitôt, grimpe le long de votre jambe et vous fige sur place avant que vous n'atteigniez la porte.",
+  "choices": []
+},
 
-  
+{
+  "id": "clue07-02",
+  "title": "Acte 2 — Sanitaires Verrouillés",
+  "text": "Vous grimpez sur les lits renversés, évitant avec soin les zones contaminées.\n\nVous atteignez enfin la petite salle de bain verrouillée et parvenez à forcer la porte partiellement déformée.\n\nÀ l’intérieur, un soldat repose contre le mur, figé dans une posture silencieuse. Dans la poche de son uniforme, vous trouvez un petit enregistreur audio.\n\nVous l’activez.\n\nUne voix affaiblie se met à parler :\n\n« Ici… soldat Kelm… Le capitaine a ordonné de verrouiller toute la baie médicale… Les malades étaient trop instables. Il m’a dit de rester avec eux… de ‘garder un œil’. »\n\nUn long silence suit, puis la voix reprend faiblement :\n\n« Si quelqu’un trouve ceci… le mot de passe est ORION… Il a dit que seul le personnel autorisé devait pouvoir sortir d’ici… »\n\nL’enregistrement se coupe brusquement.",
+  "choices": [
+    {
+      "text": "Retour au centre médical",
+      "next": { "type": "story", "id": "fork04", "good": true }
+    }
+  ]
+},
 
+{
+  "id": "clue07-03",
+  "title": "Acte 2 — Salle des Malades (Déjà explorée)",
+  "text": "Vous êtes déjà passé par ici.\n\nLes lits renversés et les corps immobiles demeurent dans la même position.\n\nVous aviez trouvé un enregistrement : le mot de passe était « ORION ».\n\nIl n’y a rien de plus à découvrir.",
+  "choices": [
+    {
+      "text": "Retour au centre médical",
+      "next": { "type": "story", "id": "fork04", "good": true }
+    }
+  ]
+},
 
-  {
-    "id": "fork04",
-    "title": "Acte 2 — Embranchement-4",
-    "text": "Texte fork04.",
-    "choices": [
-      {
-        "text": "Vers le clue07",
-        "next": { "type": "story", "id": "clue07", "good": true }
-      },
-      {
-        "text": "Vers le clue08",
-        "next": { "type": "story", "id": "clue08", "good": true }
-      },
-      {
-        "text": "Vers le minigame4",
-        "next": { "type": "story", "id": "minigame04", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue07",
-    "title": "Act 2 — Clue07",
-    "text": "Texte clue07.",
-    "choices": [
-      {
-        "text": "Retour au fork04",
-        "next": { "type": "story", "id": "fork04", "good": true }
-      },
-      {
-        "text": "Mort",
-        "next": { "type": "story", "id": "clue07-01", "good": false }
-      },
-      {
-        "text": "Vie",
-        "next": { "type": "story", "id": "clue07-02", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue07-01",
-    "title": "Act 2 — Clue07 — Mort",
-    "text": "Mort.",
-    "choices": [
-      {
-        "text": "Retour au fork04",
-        "next": { "type": "story", "id": "fork04", "good": false }
-      }
-    ]
-  },
-  {
-    "id": "clue07-02",
-    "title": "Act 2 — Clue07 — Vie",
-    "text": "NEBULA",
-    "choices": [
-      {
-        "text": "Retour au fork04",
-        "next": { "type": "story", "id": "fork04", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue07-03",
-    "title": "Act 2 — Clue07 (Déjà exploré)",
-    "text": "Vous avez déjà exploré cette zone. Rien de plus à découvrir—l’indice trouvé lors de votre première visite est toujours avec vous. NEBULA",
-    "choices": [
-      {
-        "text": "Retour au fork04",
-        "next": { "type": "story", "id": "fork04", "good": true }
-      }
-    ]
-  },
   {
     "id": "clue08",
-    "title": "Act 2 — Clue08",
-    "text": "Texte clue08.",
+    "title": "Acte 2 — Réserve Médicale",
+    "text": "Vous poussez la porte de la réserve médicale.\n\nL’endroit est encombré de lourdes étagères métalliques, certaines tordues sous le poids des boîtes de médicaments. Beaucoup semblent prêtes à s’effondrer.\n\nEntre deux étagères affaissées, vous apercevez le corps momifié d’une femme en blouse médicale. Ses doigts crispés serrent une tablette brisée.\n\nVous pouvez tenter de récupérer la tablette… mais la position du corps semble instable.",
     "choices": [
       {
-        "text": "Retour au fork04",
+        "text": "Reculer prudemment",
         "next": { "type": "story", "id": "fork04", "good": true }
       },
       {
-        "text": "Mort",
-        "next": { "type": "story", "id": "clue08-01", "good": false }
-      },
-      {
-        "text": "Vie",
+        "text": "Prendre doucement la tablette",
         "next": { "type": "story", "id": "clue08-02", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue08-01",
-    "title": "Act 2 — Clue08 — Mort",
-    "text": "Mort.",
-    "choices": [
+      },
       {
-        "text": "Retour au fork04",
-        "next": { "type": "story", "id": "fork04", "good": false }
+        "text": "Tirer le corps pour dégager la tablette",
+        "next": { "type": "story", "id": "clue08-01", "good": false }
       }
     ]
   },
-  {
-    "id": "clue08-02",
-    "title": "Act 2 — Clue08 — Vie",
-    "text": "NEBULA",
-    "choices": [
-      {
-        "text": "Retour au fork04",
-        "next": { "type": "story", "id": "fork04", "good": true }
-      }
-    ]
-  },
+
+{
+  "id": "clue08-01",
+  "title": "Acte 2 — Réserve Médicale — Mort",
+  "text": "Vous tirez sur le corps pour libérer la tablette.\n\nLe poids déséquilibre soudain les étagères. Dans un fracas assourdissant, la structure entière s’effondre sur vous.\n\nUn nuage de poussière s’élève… puis le silence retombe.",
+  "choices": []
+},
+
+{
+  "id": "clue08-02",
+  "title": "Acte 2 — Rapport Médical",
+  "text": "Vous saisissez délicatement la tablette que la femme serrait entre ses mains.\n\nL’écran fissuré affiche encore un fichier : un rapport d’urgence.\n\n« Jour 12 : Nous sommes enfermés ici. Le capitaine affirme que c’est “pour contenir la contamination”. Les patients deviennent de plus en plus instables… leurs corps changent. La porte a été reprogrammée, nouveau mot de passe transmis uniquement au capitaine. »\n\nLa tablette s’éteint aussitôt.",
+  "choices": [
+    {
+      "text": "Retour au centre médical",
+      "next": { "type": "story", "id": "fork04", "good": true }
+    }
+  ]
+},
+
   {
     "id": "clue08-03",
     "title": "Act 2 — Clue08 (Déjà exploré)",
@@ -792,17 +936,30 @@
       }
     ]
   },
+
   {
-    "id": "minigame04",
-    "title": "Act 2 — Terminal verrouillé 2",
-    "text": "Texte minigame04.",
+    "id": "clue08-03",
+    "title": "Acte 2 — Réserve Médicale (Déjà explorée)",
+    "text": "Les étagères sont figées dans la même position qu’à votre précédente visite.\n\nLe rapport médical trouvé plus tôt reste votre seul indice.\n\nIl n’y a plus rien d’autre ici.",
     "choices": [
       {
         "text": "Retour",
         "next": { "type": "story", "id": "fork04", "good": true }
+      }
+    ]
+  },
+
+  {
+    "id": "minigame04",
+    "title": "Acte 2 — Terminal Médical",
+    "text": "Vous approchez du terminal situé dans le coin du centre médical. L’écran, vieux et verdâtre, clignote sous une pluie d’interférences.\n\nUn message s’affiche en lettres tremblantes :\n« ACCÈS RESTREINT — PERSONNEL MÉDICAL UNIQUEMENT ».\n\nPlus bas, une ligne apparaît :\n« MOT DE PASSE REQUIS ». \n\nLa machine semble encore fonctionnelle… Vous pourriez tenter de forcer le système.",
+    "choices": [
+      {
+        "text": "Retour au centre médical",
+        "next": { "type": "story", "id": "fork04", "good": true }
       },
       {
-        "text": "Lancer le mini-jeu",
+        "text": "Pirater le terminal",
         "next": { "type": "game", "id": "minigame04", "good": true }
       }
     ]
@@ -810,12 +967,25 @@
   {
     "id": "minigame04",
     "type": "game",
-    "password": "NEBULA",
-    "wordCount": 16,
+    "password": "ORION",
+    "wordCount": 18,
     "maxAttempts": 4,
-    "success": "intro3",
+    "success": "fork05",
     "fail": null
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   {
     "id": "intro3",
