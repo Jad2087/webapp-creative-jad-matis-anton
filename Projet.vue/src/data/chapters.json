@@ -987,248 +987,250 @@
 
 
 
-  {
-    "id": "intro3",
-    "title": "Acte 3 — Intro",
-    "text": "Texte Intro 3.",
-    "choices": [
-      {
-        "text": "Continuer",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "fork05",
-    "title": "Acte 3 — Embranchement-5",
-    "text": "Texte fork05.",
-    "choices": [
-      {
-        "text": "Vers le clue09",
-        "next": { "type": "story", "id": "clue09", "good": true }
-      },
-      {
-        "text": "Retour au Intro",
-        "next": { "type": "story", "id": "intro3", "good": true }
-      },
-      {
-        "text": "Vers le clue10",
-        "next": { "type": "story", "id": "clue10", "good": true }
-      },
-      {
-        "text": "Vers le minigame5",
-        "next": { "type": "story", "id": "minigame05", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue09",
-    "title": "Act 3 — Clue09",
-    "text": "Texte clue09.",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      },
-      {
-        "text": "Mort",
-        "next": { "type": "story", "id": "clue09-01", "good": false }
-      },
-      {
-        "text": "Vie",
-        "next": { "type": "story", "id": "clue09-02", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue09-01",
-    "title": "Act 3 — Clue09 — Mort",
-    "text": "Mort.",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": false }
-      }
-    ]
-  },
-  {
-    "id": "clue09-02",
-    "title": "Act 3 — Clue09 — Vie",
-    "text": "ASTRA",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue09-03",
-    "title": "Act 3 — Clue09 (Déjà exploré)",
-    "text": "Vous avez déjà exploré cette zone. Rien d’autre à découvrir. ASTRA",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue10",
-    "title": "Act 3 — Clue10",
-    "text": "Texte clue10.",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      },
-      {
-        "text": "Mort",
-        "next": { "type": "story", "id": "clue10-01", "good": false }
-      },
-      {
-        "text": "Vie",
-        "next": { "type": "story", "id": "clue10-02", "good": true }
-      }
-    ]
-  },
+{
+  "id": "intro3",
+  "title": "Acte 3 — Secteur Prioritaire",
+  "text": "En franchissant la porte, vous débouchez dans une section de la station radicalement différente.\n\nLes murs sont tapissés de plaques blindées, de renforts métalliques et d’épais câbles de puissance. Cette zone semble être un secteur prioritaire… peut-être même le cœur de la station.\n\nPourtant, quelque chose a terriblement mal tourné.\n\nDes dizaines d’impacts de balles couvrent les parois. Plusieurs corps en uniforme reposent là où ils sont tombés, certains encore crispés autour de leurs armes.\n\nPlus loin, un long corridor attend — mais l’accès principal est verrouillé par une porte blindée translucide au design beaucoup plus avancé que tout ce que vous avez vu jusqu’ici.\n\nUn terminal luminescent se dresse à sa droite.",
+  "choices": [
+    {
+      "text": "Continuer vers les fortifications",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "fork05",
+  "title": "Acte 3 — Embranchement Fortifié",
+  "text": "Vous avancez jusqu’à une barricade improvisée construite avec des meubles, des caisses militaires et des corps empilés.\n\nAu centre se trouve la grande porte blindée translucide. Bien que transparente comme du verre, elle semble aussi solide que l’acier. À travers elle, vous distinguez le corridor qui mène plus loin dans le secteur.\n\nUn terminal bleuâtre, encore actif, pulse doucement à sa droite.\n\nÀ gauche se trouve l’entrée d’un bureau dévasté.\nÀ droite, une cellule improvisée où plusieurs cages ont été montées à la hâte.",
+  "choices": [
+    {
+      "text": "Entrer dans le bureau",
+      "next": { "type": "story", "id": "clue09", "good": true }
+    },
+    {
+      "text": "Entrer dans la cellule improvisée",
+      "next": { "type": "story", "id": "clue10", "good": true }
+    },
+    {
+      "text": "Examiner la porte blindée",
+      "next": { "type": "story", "id": "minigame05", "good": true }
+    },
+    {
+      "text": "Retournez",
+      "next": { "type": "story", "id": "intro3", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "clue09",
+  "title": "Acte 3 — Bureau Dévasté",
+  "text": "Vous pénétrez dans le bureau, et l’air vous manque un instant.\n\nCette pièce est un véritable champ de bataille : les corps de soldats sont empilés près de l’entrée, leurs armes vides jonchant le sol. Les murs sont criblés d’impacts, et un bureau renversé semble avoir servi de dernière ligne de défense.\n\nDerrière ce meuble, vous apercevez la silhouette d’un soldat affaissé.\n\nVous pouvez tenter de l’atteindre en marchant autour de la barricade… ou en bondissant par-dessus.",
+  "choices": [
+    {
+      "text": "Contourner la barricade",
+      "next": { "type": "story", "id": "clue09-01", "good": false }
+    },
+    {
+      "text": "Sauter par-dessus",
+      "next": { "type": "story", "id": "clue09-02", "good": true }
+    },
+    {
+      "text": "Retournez",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "clue09-01",
+  "title": "Acte 3 — Bureau — Mort",
+  "text": "Vous avancez prudemment autour de la barricade.\n\nUn déclic sec retentit sous votre chaussure.\n\nUne mine artisanale, cachée sous un manteau, explose dans un flash aveuglant.\n\nVous n’avez pas le temps de comprendre ce qui vous arrive.",
+  "choices": []
+},
+
+{
+  "id": "clue09-02",
+  "title": "Acte 3 — Soldat Abattu",
+  "text": "Vous franchissez la barricade et atteignez enfin le soldat affaissé derrière le bureau.\n\nSon corps est criblé d’impacts de balles. Une arme déchargée repose encore à ses côtés, comme s’il avait tenté de défendre la pièce jusqu’au dernier instant.\n\nEn fouillant sa veste, vous trouvez une tablette encore fonctionnelle. Un message y est affiché, visiblement adressé au soldat :\n\n« Mathieu, n’oublie pas : le mot de passe pour accéder au secteur du réacteur a été changé. Il est maintenant GLACIER. Ne le partage à personne sans autorisation. »\n\nLe message est brouillé par des interférences, mais lisible.",
+  "choices": [
+    {
+      "text": "Retour au fortin",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "clue09-03",
+  "title": "Acte 3 — Bureau (Déjà exploré)",
+  "text": "Vous revenez dans le bureau dévasté. Les corps et les débris jonchent toujours le sol.\n\nVous relisez mentalement le message trouvé sur la tablette du soldat abattu :\n\n« Mathieu, n’oublie pas : le mot de passe pour accéder au secteur du réacteur a été changé. Il est maintenant GLACIER. Ne le partage à personne sans autorisation. »\n\nAucun autre indice ne semble présent.",
+  "choices": [
+    {
+      "text": "Retour au fortin",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "clue10",
+  "title": "Acte 3 — Cellule Improvisée",
+  "text": "Vous entrez dans une pièce transformée en prison de fortune. Des cages métalliques soudées grossièrement bordent les murs.\n\nDans l’une d’elles, un corps civil repose, recouvert de la substance noire et huileuse.\n\nÀ ses côtés, une tablette encore allumée diffuse une faible lueur bleutée.\n\nVous pouvez la récupérer avec précaution.",
+  "choices": [
+    {
+      "text": "Prendre la tablette",
+      "next": { "type": "story", "id": "clue10-02", "good": true }
+    },
+    {
+      "text": "Retournez",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
   {
     "id": "clue10-01",
     "title": "Act 3 — Clue10 — Mort",
     "text": "Mort.",
     "choices": [
       {
-        "text": "Retour au fork05",
+        "text": "Retournez",
         "next": { "type": "story", "id": "fork05", "good": false }
       }
     ]
   },
-  {
-    "id": "clue10-02",
-    "title": "Act 3 — Clue10 — Vie",
-    "text": "ASTRA",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "clue10-03",
-    "title": "Act 3 — Clue10 (Déjà exploré)",
-    "text": "Vous êtes déjà passé ici. L’indice obtenu reste le même. ASTRA",
-    "choices": [
-      {
-        "text": "Retour au fork05",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "minigame05",
-    "title": "Act 3 — Terminal Verrouillé 3",
-    "text": "Un ancien terminal pulse faiblement. Pour débloquer l’accès, vous devrez forcer son protocole de sécurité.",
-    "choices": [
-      {
-        "text": "Retour",
-        "next": { "type": "story", "id": "fork05", "good": true }
-      },
-      {
-        "text": "Lancer le mini-jeu",
-        "next": { "type": "game", "id": "minigame05", "good": true }
-      }
-    ]
-  },
+
+{
+  "id": "clue10-02",
+  "title": "Acte 3 — Message du Prisonnier",
+  "text": "Vous ramassez la tablette posée près du corps recouvert de substance noire. L’écran clignote, puis un message enregistré se lance automatiquement.\n\n« Ce n’est pas une infection… C’est cette chose. Celle qu’ils ont ramenée du drone revenu d’Europe. Ils disaient que ce n’était qu’un minerai étrange… rien d’autre. Jusqu’à ce que la chose s’échappe des laboratoires.\n\nElle est entrée dans les conduits d’aération… dans l’eau potable… et maintenant elle circule parmi nous. Nous l’avons tous en nous d’une manière ou d’une autre.\n\nIls ont ordonné de confiner la station et de tuer ceux qui tombaient malades. Je les ai vus abattre des collègues qui souffraient seulement depuis quelques heures.\n\nJ’ai entendu dire qu’ils veulent ramener la station vers le QG… si cette chose atteint la Terre… »\n\nLe message s’interrompt dans un grésillement angoissant.",
+  "choices": [
+    {
+      "text": "Retour au fortin",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "clue10-03",
+  "title": "Acte 3 — Cellule (Déjà explorée)",
+  "text": "Vous revenez dans la cellule improvisée. Rien n’a changé.\n\nLa tablette du prisonnier ne diffuse plus rien, mais vous vous souvenez parfaitement du message enregistré :\n\n« Ce n’est pas une infection… C’est cette chose. Celle qu’ils ont ramenée du drone revenu d’Europe. Ils disaient que ce n’était qu’un minerai étrange… rien d’autre. Jusqu’à ce que la chose s’échappe des laboratoires.\n\nElle est entrée dans les conduits d’aération… dans l’eau potable… et maintenant elle circule parmi nous. Nous l’avons tous en nous d’une manière ou d’une autre.\n\nIls ont ordonné de confiner la station et de tuer ceux qui tombaient malades. Je les ai vus abattre des collègues qui souffraient seulement depuis quelques heures.\n\nJ’ai entendu dire qu’ils veulent ramener la station vers le QG… si cette chose atteint la Terre… »\n\nIl n’y a rien d’autre à trouver ici.",
+  "choices": [
+    {
+      "text": "Retour",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "minigame05",
+  "title": "Acte 3 — Terminal Blindé",
+  "text": "Le terminal à droite de la porte blindée projette une lumière bleue froide.\n\n« PROTOCOLE DE VERROUILLAGE : ACTIVÉ »\n« IDENTIFICATION OU MOT DE PASSE REQUIS »\n\nVous pouvez tenter d’accéder au système.",
+  "choices": [
+    {
+      "text": "Retournez",
+      "next": { "type": "story", "id": "fork05", "good": true }
+    },
+    {
+      "text": "Forcer le terminal",
+      "next": { "type": "game", "id": "minigame05", "good": true }
+    }
+  ]
+},
+
   {
     "id": "minigame05",
     "type": "game",
-    "password": "ASTRA",
+    "password": "GLACIER",
     "wordCount": 18,
     "maxAttempts": 4,
     "success": "fork06",
     "fail": null
   },
 
-  {
-    "id": "fork06",
-    "title": "Acte 3 — Embranchement-6",
-    "text": "Texte fork06.",
-    "choices": [
-      {
-        "text": "Terminal A",
-        "next": { "type": "story", "id": "minigame06", "good": true }
-      },
-      {
-        "text": "Terminal B",
-        "next": { "type": "story", "id": "engine01", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "minigame06",
-    "title": "Act 3 — Terminal A",
-    "text": "Le premier terminal s’active. Un système de sécurité complexe protège l’accès. ORION",
-    "choices": [
-      {
-        "text": "Retour",
-        "next": { "type": "story", "id": "fork06", "good": true }
-      },
-      {
-        "text": "Lancer le mini-jeu",
-        "next": { "type": "game", "id": "minigame06", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "minigame06",
-    "type": "game",
-    "password": "ORION",
-    "wordCount": 18,
-    "maxAttempts": 4,
-    "success": "fork07",
-    "fail": null
-  },
-  {
-    "id": "minigame07",
-    "title": "Act 3 — Terminal B",
-    "text": "Le second terminal semble plus ancien. Son interface clignote faiblement. NEXUS",
-    "choices": [
-      {
-        "text": "Retour",
-        "next": { "type": "story", "id": "fork06", "good": true }
-      },
-      {
-        "text": "Lancer le mini-jeu",
-        "next": { "type": "game", "id": "minigame07", "good": true }
-      }
-    ]
-  },
-  {
-    "id": "minigame07",
-    "type": "game",
-    "password": "NEXUS",
-    "wordCount": 16,
-    "maxAttempts": 4,
-    "success": "engine02",
-    "fail": null
-  },
 
-  {
-    "id": "engine01",
-    "title": "Act 3 — Salle du Réacteur",
-    "text": "Vous entrez dans la salle du réacteur. Les conduits vibrent faiblement et l’odeur d’ozone est omniprésente. Vous pouvez tenter d’activer le générateur… ou repartir.",
-    "choices": [
-      {
-        "text": "Retour au fork06",
-        "next": { "type": "story", "id": "fork06", "good": true }
-      },
-      {
-        "text": "Accéder au Terminal B",
-        "next": { "type": "story", "id": "minigame07", "good": true }
-      }
-    ]
-  },
+
+
+
+
+
+
+
+
+{
+  "id": "fork06",
+  "title": "Acte 3 — Secteur Réacteur",
+  "text": "Vous progressez dans une série de couloirs étroits, noyés sous un réseau de câbles massifs qui serpentent le long des murs. Des arcs électriques éclatent parfois entre les conduits, projetant des lueurs bleutées.\n\nAprès plusieurs minutes, vous atteignez une zone sécurisée : une porte blindée immense bloque l’accès. Un panneau lumineux indique clairement :\n\n« MAIN BRIDGE ».\n\nLe terminal à côté est actif, mais un message d’alerte clignote :\n« Puissance du Pont Principal : HORS LIGNE. Source auxiliaire requise. »\n\nUn second accès, moins protégé, mène à la salle du générateur auxiliaire.",
+  "choices": [
+    {
+      "text": "Consulter le terminal du Pont Principal",
+      "next": { "type": "story", "id": "minigame06", "good": true }
+    },
+    {
+      "text": "Entrer dans la salle du générateur auxiliaire",
+      "next": { "type": "story", "id": "engine01", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "minigame06",
+  "title": "Acte 3 — Terminal du Pont Principal",
+  "text": "Le terminal du pont principal s’active dans un grésillement. Une ligne de texte apparaît :\n\n« Protocole de sécurité – Niveau 4. Mot de passe requis. »\n\nEn baissant les yeux, vous remarquez un corps affaissé juste à côté de la console. Dans sa main, un petit morceau de papier froissé.\n\nLa plupart des lettres sont effacées… mais vous parvenez à distinguer les deux dernières :\n\n« …on »\n\nImpossible d’en lire davantage. Le reste est illisible, comme brûlé.",
+  "choices": [
+    {
+      "text": "Retour",
+      "next": { "type": "story", "id": "fork06", "good": true }
+    },
+    {
+      "text": "Hacker le terminal",
+      "next": { "type": "game", "id": "minigame06", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "minigame06",
+  "type": "game",
+  "password": "ORION",
+  "wordCount": 18,
+  "maxAttempts": 4,
+  "success": "fork07",
+  "fail": null
+},
+
+{
+  "id": "engine01",
+  "title": "Acte 3 — Salle du Générateur Auxiliaire",
+  "text": "Vous pénétrez directement dans la salle du générateur auxiliaire. Une chaleur sèche émane des conduites fissurées, et plusieurs voyants rouges clignotent sans interruption.\n\nLa machine est encore opérationnelle, mais clairement instable. Une console de commande, au centre de la pièce, diffuse un message d’erreur en continu :\n\n« SYSTÈME EN VEILLE — RÉINITIALISATION REQUISE. »\n\nSi vous parvenez à rétablir ce générateur, la puissance du Pont Principal sera restaurée.",
+  "choices": [
+    {
+      "text": "Retour au Secteur Réacteur",
+      "next": { "type": "story", "id": "fork06", "good": true }
+    },
+    {
+      "text": "Tenter la réinitialisation du générateur",
+      "next": { "type": "story", "id": "engine02", "good": true }
+    }
+  ]
+},
+
+{
+  "id": "engine01-03",
+  "title": "Acte 3 — Salle du Générateur (Déjà visitée)",
+  "text": "Le générateur tourne à pleine capacité. Les voyants sont stabilisés et la salle vibre d’une énergie continue.\n\nVous avez déjà effectué toutes les manipulations nécessaires ici.",
+  "choices": [
+    {
+      "text": "Retour au Secteur Réacteur",
+      "next": { "type": "story", "id": "fork06", "good": true }
+    }
+  ]
+},
+
   {
     "id": "engine02",
     "title": "Act 3 — Réacteur • Étape 1",
@@ -1320,16 +1322,20 @@
       }
     ]
   },
+
+
+
+
   {
     "id": "fork07",
     "title": "Acte 3 — Embranchement Final",
-    "text": "Vous atteignez la dernière section de la station. Une porte blindée bloque votre route. À côté, un terminal attend une activation.",
+     "text": "Vous arrivez enfin dans la zone du Pont Principal.\n\nJuste devant vous, une capsule de secours ouverte est prête au lancement. Il suffirait de sauter à l’intérieur pour quitter immédiatement la station.\n\nSur le côté, une porte blindée mène directement au Pont Principal. Un terminal indique que l’accès ne peut être accordé que si l’alimentation auxiliaire a été rétablie.",
     "choices": [
       {
-        "text": "Terminal Final",
-        "next": { "type": "story", "id": "minigame08", "good": true }
+        "text": "Sauter dans la capsule de secours",
+        "next": { "type": "story", "id": "ending", "good": true }
       },
-      { "text": "[OUVRIR LA PORTE] (si réacteur activé)", "requiresEngine": true, "next": { "type": "story", "id": "ending", "good": true } }
+      { "text": "Ouvrir la porte du Pont Principal", "requiresEngine": true, "next": { "type": "story", "id": "ending-sabotage", "good": true } }
     ]
   },
   {
@@ -1353,7 +1359,26 @@
     "password": "FINALE",
     "wordCount": 20,
     "maxAttempts": 4,
-    "success": "ending",
+    "success": "ending-pod",
     "fail": null
-  }
+  },
+
+
+{
+  "id": "ending-pod",
+  "title": "Fin — Fuite Précaire",
+  "text": "Vous vous jetez dans la capsule de secours et activez la séquence de lancement.\n\nLes boulons explosent, la capsule est propulsée loin de la station.\n\nÀ travers le hublot, vous voyez la structure massive dériver silencieusement dans le vide… sans savoir si elle tiendra encore longtemps.",
+  "choices": []
+},
+{
+  "id": "ending-sabotage",
+  "title": "Fin — Chute Contrôlée",
+  "text": "Vous accédez enfin au Pont Principal.\n\nLes commandes de navigation vacillent encore, mais vous parvenez à détourner la trajectoire. La station entame une lente descente vers l’atmosphère terrestre.\n\nDans quelques minutes, elle brûlera entièrement.\n\nVous courez jusqu’à la capsule de secours et l'éjectez juste avant que la station ne traverse la haute atmosphère.\n\nPeu après, une lueur blanche illumine le ciel… puis disparaît à jamais.",
+  "choices": []
+}
+
+
+
+
+
 ]

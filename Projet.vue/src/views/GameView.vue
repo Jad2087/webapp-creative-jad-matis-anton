@@ -45,11 +45,14 @@
         />
 
         <!-- Réussite overlay -->
-        <Reussite
-          v-if="showReussite"
-          @menu="goToMenu"
-          @historique="showHistory = true"
-        />
+<Reussite
+  v-if="showReussite"
+  :title="reussiteTitle"
+  :description="reussiteDescription"
+  @menu="goToMenu"
+  @historique="showHistory = true"
+/>
+
 
         <!-- Historique overlay par-dessus Réussite -->
         <ChoiceMade
@@ -101,11 +104,15 @@ export default {
       openMiniGame: false,
       showEchec: false,
       showReussite: false,
+      reussiteTitle: "",
+      reussiteDescription: "",
       reussiteTarget: null,
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
       restartChapterId: "intro",
       activeMiniGameId: null,
+
+      
 
       // textes de mort personnalisés
       deathMessages: {
@@ -151,8 +158,41 @@ export default {
   "clue07-01":
   "Votre saut dévie d’un simple centimètre. La substance noire agrippe votre jambe, remonte le long de votre corps et vous immobilise avant que vous ne puissiez atteindre la porte.",
 
+  "engine02-fail":
+  "Une décharge parcourt brutalement le générateur. Un arc électrique bondit de la console et vous traverse. Le monde se brouille… puis tout disparaît.",
+
+"engine03-fail":
+  "Un avertissement sonore retentit, trop tard. Le générateur libère une surtension brusque, un éclair aveuglant jaillit et vous foudroie instantanément.",
+
+
 
 },
+
+
+endingMessages: {
+  "ending": {
+    title: "Fin — Évasion",
+    description:
+      "Vous activez les commandes de l’appareil. Les moteurs vibrent, la verrière se referme lentement.\n\nL’engin s’élève dans un grondement sourd et s’éloigne de la station.\n\nPour la première fois depuis votre réveil… vous respirez librement."
+  },
+  "ending-cryo": {
+    title: "Fin — Sommeil Éternel",
+    description:
+      "Vous vous installez dans le cryo-pod.\nLa paroi se referme lentement…\nUne brume blanche envahit la vitre.\n\nTout disparaît dans le silence."
+  },
+  "ending-pod": {
+    title: "Fin — Fuite Précaire",
+    description:
+      "Vous vous jetez dans la capsule de secours et activez la séquence de lancement.\n\nLa station s’éloigne dans un silence pesant."
+  },
+  "ending-sabotage": {
+    title: "Fin — Chute Contrôlée",
+    description:
+      "Vous détournez la station vers l’atmosphère terrestre...\n\nVous sautez dans la capsule juste avant la destruction finale."
+  }
+}
+
+
 
     };
   },
@@ -219,7 +259,7 @@ export default {
         "clue10-02": "clue10",
         "engine04-success": "engine",
         "clue100-01": "clue100",
-"clue111-02": "clue111",
+        "clue111-02": "clue111",
 
 
       };
@@ -268,6 +308,7 @@ export default {
         clue09: { clue: "clue09", target: "clue09-03" },
         clue10: { clue: "clue10", target: "clue10-03" },
         engine01: { clue: "engine", target: "engine01-03" },
+        
         clue100: { clue: "clue100", target: "clue100-03" },
 clue111: { clue: "clue111", target: "clue111-03" },
 
@@ -292,13 +333,14 @@ clue111: { clue: "clue111", target: "clue111-03" },
       }
 
       // FIN SECRÈTE — déclenche Réussite.vue
-      if (nextId === "ending") {
-        console.log("[changeChapter] Fin secrète détectée");
-        this.showReussite = true;
-        return;
-      }
+if (nextId.startsWith("ending")) {
+  const ending = this.endingMessages[nextId];
 
-      if (nextId === "ending-cryo") {
+  this.reussiteTitle = ending ? ending.title : "Fin";
+  this.reussiteDescription = ending
+    ? ending.description
+    : "Vous avez atteint une fin du jeu.";
+
   this.showReussite = true;
   return;
 }
