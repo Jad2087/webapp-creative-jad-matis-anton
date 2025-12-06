@@ -17,13 +17,8 @@
 
         <!-- Attempts line + blocks -->
         <div class="term-attempts">
-          <span>{{ attemptsRemaining }} ATTEMPTS REMAINING:</span>
-          <span
-            v-for="n in maxAttempts"
-            :key="n"
-            class="attempt-block"
-            :class="{ used: n > attemptsRemaining }"
-          ></span>
+          <span>{{ attemptsRemaining }} ESSAIS RESTANTS:</span>
+          <span v-for="n in maxAttempts" :key="n" class="attempt-block" :class="{ used: n > attemptsRemaining }"></span>
         </div>
 
         <!-- GRID + LOG AREA -->
@@ -37,24 +32,12 @@
 
           <!-- Character lines -->
           <div class="char-lines">
-            <div
-              class="char-line"
-              v-for="(row, rIndex) in visibleGridRows"
-              :key="rIndex"
-            >
-              <span
-                v-for="(cell, cIndex) in row"
-                :key="cIndex"
-                class="char-span"
-                :class="{
-                  word: cell.isWord,
-                  used: cell.used,
-                  hovered: isHovered(cell),
-                }"
-                @click="onCellClick(cell)"
-                @mouseover="hoverWord(cell)"
-                @mouseleave="hoverWord(null)"
-              >
+            <div class="char-line" v-for="(row, rIndex) in visibleGridRows" :key="rIndex">
+              <span v-for="(cell, cIndex) in row" :key="cIndex" class="char-span" :class="{
+                word: cell.isWord,
+                used: cell.used,
+                hovered: isHovered(cell),
+              }" @click="onCellClick(cell)" @mouseover="hoverWord(cell)" @mouseleave="hoverWord(null)">
                 {{ cell.text }}
               </span>
             </div>
@@ -71,11 +54,11 @@
           <div class="log-panel">
             <div class="log-line" v-for="(log, index) in logs" :key="index">
               <div>&gt; {{ log.guess }}</div>
-              <div v-if="!log.success">&gt; ENTRY DENIED</div>
+              <div v-if="!log.success">&gt; ACCÈS REFUSÉ</div>
               <div v-if="!log.success">
-                &gt; {{ log.matches }}/{{ secretWord.length }} CORRECT.
+                &gt; {{ log.matches }}/{{ secretWord.length }} CORRESPONDANCES.
               </div>
-              <div v-if="log.success">&gt; ACCESS GRANTED</div>
+              <div v-if="log.success">&gt; CCÈS AUTORISÉ</div>
             </div>
           </div>
         </div>
@@ -83,7 +66,7 @@
         <!-- END MESSAGE -->
         <div v-if="gameOver" class="end-message">
           <template v-if="success">
-            <p>&gt; TERMINAL CONNECTION SUCCESSFUL...</p>
+            <p>&gt; CONNEXION DU TERMINAL RÉUSSIE...</p>
             <button class="continue-btn" @click="handleContinue">
               CONTINUER
             </button>
@@ -91,8 +74,8 @@
 
           <template v-else>
             <p>
-              &gt; TERMINAL LOCKED<br />
-              &gt; PLEASE CONTACT AN ADMINISTRATOR
+              &gt; TERMINAL VERROUILLÉ<br />
+              &gt; ASSISTANCE TECHNIQUE REQUISE
             </p>
             <!-- pas de bouton ici : on laisse le parent afficher Échec -->
           </template>
@@ -195,7 +178,7 @@ export default {
       success: false,
 
       // typing header
-      headerText: "ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL\nENTER PASSWORD NOW",
+      headerText: "SYSTÈME-NUCLÉON v3.1\n> PROTOCOLE D’ACCÈS VERROUILLÉ\n> ENTRER LE MOT DE PASSE",
       headerIndex: 0,
       headerTimer: null,
     };
@@ -258,7 +241,7 @@ export default {
       this.placeWords();
 
       // 4) start typing header
-      this.startHeaderTyping();
+      this.headerIndex = this.headerText.length; // show full text instantly
     },
 
     generateAddresses() {
@@ -287,21 +270,24 @@ export default {
     },
 
     placeWords() {
-      const wordCount = this.config.wordCount; // how many words in the grid
-      const pool = [...WORD_LIST]; // all possible words
+      const wordCount = this.config.wordCount;
+
+      // If the JSON provides a word pool, use it. Otherwise fallback to default.
+      const pool = this.config.words && this.config.words.length > 0
+        ? [...this.config.words]
+        : [...WORD_LIST];
+
       const words = [];
 
-      // pick some random words from the list
       for (let i = 0; i < wordCount; i++) {
+        if (pool.length === 0) break;
         const idx = Math.floor(Math.random() * pool.length);
         words.push(pool[idx]);
         pool.splice(idx, 1);
       }
 
-      // ✅ fixed secret word
       this.secretWord = this.config.password;
 
-      // make sure the fixed secret word is actually in the list of words
       if (!words.includes(this.secretWord)) {
         words[0] = this.secretWord;
       }
@@ -469,7 +455,7 @@ export default {
 .mini-game-content {
   width: 90%;
   max-width: 1100px;
-  max-height: 85vh;
+  max-height: calc(85vh - 80px);
   /* do NOT grow higher than the screen */
   background: #111;
   border: 2px solid #03ab5e;
@@ -482,9 +468,13 @@ export default {
   overflow: hidden;
   /* stop horizontal/vertical bleed */
   box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
+    /* halo vert */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */
+    inset 0 0 40px rgba(3, 171, 94, 0.15);
+  /* lueur interne légère */
 }
 
 /* inner scroll area: only this part can scroll */
@@ -674,6 +664,7 @@ export default {
 }
 
 @media (max-width: 1080px) {
+
   /* Mise à l'échelle générale */
   .mini-game-content {
     width: 100vw;
@@ -715,7 +706,8 @@ export default {
 
   /* Zone centrale : caractères */
   .char-lines {
-    font-size: 1rem; /* plus gros */
+    font-size: 1rem;
+    /* plus gros */
     line-height: 1.3;
     white-space: pre-wrap;
     width: 100%;
@@ -727,7 +719,8 @@ export default {
 
   /* Log panel en bas, simple et lisible */
   .log-panel {
-    border-top: none; /* supprime la ligne */
+    border-top: none;
+    /* supprime la ligne */
     padding-top: 8px;
     margin-top: 16px;
 
@@ -752,7 +745,8 @@ export default {
     max-width: 300px;
     font-size: 1rem;
     padding: 10px;
-    align-self: center; /* centre horizontalement */
+    align-self: center;
+    /* centre horizontalement */
   }
 }
 </style>

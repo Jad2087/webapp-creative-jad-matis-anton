@@ -117,10 +117,10 @@ export default {
       // textes de mort personnalisés
       deathMessages: {
   "clue01-02":
-    "Vous attrapez le bras du corps pour tenter de le dégager. Le métal au-dessus de vous gémit… un craquement sec retentit. Avant que vous puissiez réagir, la structure cède et tout devient noir.",
+    "Vous tentez de tirer le corps hors des décombres.\n\nUn grincement aigu résonne au-dessus de vous. Avant même que vous puissiez reculer, une plaque de métal se détache et s'effondre brutalement.\n\nTout devient noir.",
 
   "clue02-02":
-    "Vous avancez dans la flaque noire.\n\nLe liquide visqueux se colle à vos pieds et vous immobilise peu à peu. Votre vision se trouble… puis tout disparaît.",
+    "Vous faites un pas dans la flaque noire.\n\nUn froid soudain remonte le long de votre jambe, si brutal qu’il vous coupe le souffle. Vos muscles se paralysent presque instantanément, comme englués dans une matière vivante.\n\nVotre vision se brouille.\n\nVous perdez conscience avant même de toucher le sol.",
 
   "clue03-01":
     "Un souffle de gaz s’échappe derrière vous. Une étincelle jaillit d’un appareil renversé — un flash de lumière, puis tout s’éteint instantanément.",
@@ -164,6 +164,9 @@ export default {
 "engine03-fail":
   "Un avertissement sonore retentit, trop tard. Le générateur libère une surtension brusque, un éclair aveuglant jaillit et vous foudroie instantanément.",
 
+  
+"clue111-01": 
+"Vous avancez prudemment, mais la substance noire réagit aussitôt.\n\nElle se met à onduler, puis à ramper vers vous comme attirée par votre chaleur.\n\nUn froid glacial vous saisit la cheville, remonte le long de votre jambe… et paralyse tout votre corps.\n\nVotre souffle se coupe.\n\nLa caserne s’assombrit autour de vous, comme si la lumière elle-même s’éteignait.\n\nPuis tout disparaît."
 
 
 },
@@ -173,7 +176,7 @@ endingMessages: {
   "ending": {
     title: "Fin — Évasion",
     description:
-      "Vous activez les commandes de l’appareil. Les moteurs vibrent, la verrière se referme lentement.\n\nL’engin s’élève dans un grondement sourd et s’éloigne de la station.\n\nPour la première fois depuis votre réveil… vous respirez librement."
+      "Vous grimpez à bord de la navette. Les systèmes internes s’allument un à un, inondant le cockpit d’une lueur verte familière.\n\nUn message automatique s’affiche : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». Vous n’avez même pas le temps de vous asseoir correctement que la verrière se referme, scellant votre décision.\n\nLe hangar s’éloigne tandis que les moteurs rugissent. La station entière se rétrécit derrière vous, un géant métallique dérivant dans le vide.\n\nEn quittant enfin la structure, les hublots s’illuminent d'une douce lueur bleue : la Terre, suspendue dans le silence spatial.\n\nEn jetant un dernier regard en arrière, vous apercevez la station — un immense amas de ferraille, solitaire et muet, perdu dans l'obscurité.\n\nPour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Peut-être que la Terre n’est qu’un souvenir… ou peut-être qu’elle vous attend encore.\n\nMais une chose est certaine : cette fois, c’est vous qui tracez votre chemin."
   },
   "ending-cryo": {
     title: "Fin — Sommeil Éternel",
@@ -191,6 +194,7 @@ endingMessages: {
       "Vous détournez la station vers l’atmosphère terrestre...\n\nVous sautez dans la capsule juste avant la destruction finale."
   }
 }
+
 
 
 
