@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <!-- Overlay historique par-dessus Réussite -->
+      <!-- Overlay historique seulement si showHistory est true -->
     <ChoiceMade v-if="showHistory" @close="showHistory = false" />
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
   },
   data() {
     return {
+      // Contrôle l'affichage de l'overlay historique
       showHistory: false,
     };
   },
@@ -113,7 +114,8 @@ export default {
     border: 2px solid #39ff88;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* boutons en bas */
+    justify-content: space-between;
+    /* boutons en bas */
     align-items: center;
     box-sizing: border-box;
   }
@@ -147,7 +149,8 @@ export default {
   }
 
   .btn:hover {
-    transform: none; /* enlève le scale */
+    transform: none;
+    /* enlève le scale */
   }
 }
 </style>

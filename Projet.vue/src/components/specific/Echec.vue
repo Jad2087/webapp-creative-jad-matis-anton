@@ -5,17 +5,28 @@
       <p class="description">{{ description }}</p>
 
       <div class="buttons">
+        <!-- Bouton Recommencer -->
         <button class="btn retry" @click="$emit('retry')">Recommencer</button>
 
+        <!-- Bouton Menu Principal -->
         <button class="btn menu" @click="$emit('menu')">Menu Principal</button>
+
+        <!-- Bouton Historique l'overlay ChoiceMade -->
+        <button class="btn history" @click="showHistory = true">Historique</button>
       </div>
     </div>
+
+    <!-- Overlay historique seulement si showHistory est true -->
+    <ChoiceMade v-if="showHistory" @close="showHistory = false" />
   </div>
 </template>
 
 <script>
+import ChoiceMade from "@/components/specific/ChoiceMade.vue";
+
 export default {
   name: "Echec",
+  components: { ChoiceMade },
   props: {
     title: {
       type: String,
@@ -25,6 +36,12 @@ export default {
       type: String,
       default: "Informations …",
     },
+  },
+  data() {
+    return {
+      // Contrôle l'affichage de l'overlay historique
+      showHistory: false,
+    };
   },
 };
 </script>
@@ -52,9 +69,13 @@ export default {
   background: #1b1b1b;
   color: #e35e5e;
   box-shadow: 0 0 25px 5px rgba(227, 94, 94, 0.5),
-    /* halo rouge */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne */ inset 0 0 40px rgba(227, 94, 94, 0.15); /* lueur interne légère */
+    /* halo rouge */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne */
+    inset 0 0 40px rgba(227, 94, 94, 0.15);
+  /* lueur interne légère */
 }
 
 /* Titre */
@@ -72,7 +93,10 @@ export default {
 /* Boutons */
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
+  /* ESPACEMENT ENTRE LES 3 BOUTONS */
+  margin-top: 20px;
 }
 
 .btn {
@@ -82,11 +106,24 @@ export default {
   color: #e35e5e;
   cursor: pointer;
   transition: 0.2s;
+  min-width: 130px;
+  /* Largeur uniforme */
+  text-align: center;
 }
 
 .btn:hover {
   background: #e35e5e;
   transform: scale(1.05);
+  color: black;
+}
+
+.history {
+  border-color: #e35e5e;
+  color: #e35e5e;
+}
+
+.history:hover {
+  background: #e35e5e;
   color: black;
 }
 
@@ -113,7 +150,8 @@ export default {
     color: #e35e5e;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* titre en haut, boutons en bas */
+    justify-content: space-between;
+    /* titre en haut, boutons en bas */
     align-items: center;
     text-align: center;
     box-sizing: border-box;
@@ -121,16 +159,19 @@ export default {
 
   .titre {
     font-size: 1.8rem;
-    margin-top: 1rem; /* reste en haut */
+    margin-top: 1rem;
+    /* reste en haut */
   }
 
   .description {
     font-size: 1.2rem;
     margin: 1rem 0;
-    flex: 1; /* prend tout l’espace central */
+    flex: 1;
+    /* prend tout l’espace central */
     display: flex;
     align-items: center;
-    justify-content: center; /* centre horizontalement et verticalement */
+    justify-content: center;
+    /* centre horizontalement et verticalement */
     text-align: center;
   }
 
@@ -138,12 +179,15 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    width: 100%; /* boutons pleine largeur */
-    padding-bottom: 1rem; /* espace par rapport au bas */
+    width: 100%;
+    /* boutons pleine largeur */
+    padding-bottom: 1rem;
+    /* espace par rapport au bas */
   }
 
   .btn {
-    width: 100%; /* pleine largeur */
+    width: 100%;
+    /* pleine largeur */
     padding: 0.75rem 1rem;
     font-size: 1.1rem;
     border: 2px solid #e35e5e;
@@ -157,7 +201,8 @@ export default {
     background: #e35e5e;
     transform: scale(1.05);
     color: black;
-    transform: none; /* enlève le scale */
+    transform: none;
+    /* enlève le scale */
   }
 }
 </style>

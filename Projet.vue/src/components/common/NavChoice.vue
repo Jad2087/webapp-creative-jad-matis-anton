@@ -1,62 +1,54 @@
-<script setup>
-import { defineProps, defineEmits, computed } from "vue";
-import { usePlayerStore } from "@/stores/playerStore";
-
-const props = defineProps({
-  choice: Object, // un seul choix
-});
-
-const emit = defineEmits(["choose"]);
-
-const player = usePlayerStore();
-
-// Quand on clique sur le bouton
-function choose() {
-  emit("choose", props.choice.next);
-}
-
-// 🔥 Highlight ANY button linked to a discovered clue or special flag
-const isClueFound = computed(() => {
-  const next = props.choice?.next;
-  if (!next || !next.id) return false;
-
-  const id = next.id;
-
-  // 1. Standard clue pages ("clue01", "clue01-02", etc.)
-  if (id.startsWith("clue")) {
-    const baseClue = id.split("-")[0]; // "clue01"
-    return player.hasClue(baseClue);
-  }
-
-  // 2. SPECIAL CASE: Terminal B → engine01
-  if (id === "engine01") {
-    return player.hasClue("engine");
-  }
-
-  return false;
-});
-
-// 👇 Nouveau computed pour cacher le bouton si conditions non remplies
-const isVisible = computed(() => {
-  // Si le choix ne demande rien → visible
-  if (!props.choice.requiresEngine) return true;
-
-  // Si le choix demande engine → visible SEULEMENT si engine activé
-  return player.hasClue("engine");
-});
-</script>
-
 <template>
-  <!-- représente un choix -->
-  <button
-    v-if="isVisible"
-    class="choice-btn"
-    :class="{ 'choice-btn--clue-found': isClueFound }"
-    @click="choose()"
-  >
-    {{ props.choice.text }}
+  <button v-if="isVisible" class="choice-btn" :class="{ 'choice-btn--clue-found': isClueFound }" @click="choose">
+    {{ choice.text }}
   </button>
 </template>
+
+<script>
+import { computed } from "vue";
+import { usePlayerStore } from "@/stores/playerStore";
+
+export default {
+  name: "NavChoice",
+  props: {
+    choice: Object, // le choix reçu
+  },
+  data() {
+    return {
+      player: usePlayerStore(), // store disponible partout
+    };
+  },
+  computed: {
+    isClueFound() {
+      const next = this.choice?.next;
+      if (!next || !next.id) return false;
+
+      const id = next.id;
+
+      if (id.startsWith("clue")) {
+        const baseClue = id.split("-")[0];
+        return this.player.hasClue(baseClue);
+      }
+
+      if (id === "engine01") {
+        return this.player.hasClue("engine");
+      }
+
+      return false;
+    },
+    isVisible() {
+      if (!this.choice.requiresEngine) return true;
+      return this.player.hasClue("engine");
+    },
+  },
+  methods: {
+    choose() {
+      // émet à l'extérieur le next et le texte du bouton
+      this.$emit("choose", this.choice.next, this.choice.text);
+    },
+  },
+};
+</script>
 
 <style scoped>
 .choice-btn {
@@ -80,7 +72,6 @@ const isVisible = computed(() => {
   transform: scale(1.05);
 }
 
-/* états spéciaux */
 .choice-btn--clue-found {
   background-color: #111;
   border-color: rgb(105, 105, 105);
@@ -95,12 +86,12 @@ const isVisible = computed(() => {
 @media (max-width: 1080px) {
   .choice-btn {
     width: 100%;
-    max-width: none; /* Permet au bouton de prendre TOUTE la largeur */
-    margin: 0; /* centré naturellement en full width */
+    max-width: none;
+    margin: 0;
   }
 
   .choice-btn:hover {
-    transform: none; /* enlève le scale */
+    transform: none;
   }
 }
 </style>

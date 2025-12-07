@@ -1,23 +1,37 @@
 <template>
   <div class="choice-made">
-    <h3>Historique des choix :</h3>
+    <h3>Historique</h3>
+
+    <!-- Liste des choix enregistrés -->
     <ul>
+      <!-- Boucle sur le tableau réactif choicesHistory -->
       <li v-for="(choice, index) in choicesHistory" :key="index">
         {{ index + 1 }}. {{ choice }}
       </li>
     </ul>
+
+    <!-- Bouton pour fermer l'historique -->
     <button class="btn-close" @click="$emit('close')">Fermer</button>
   </div>
 </template>
 
 <script>
 import { useStoryStore } from "@/stores/storyStore";
+import { storeToRefs } from "pinia";
 
 export default {
   name: "ChoiceMade",
   setup() {
+
+    // récupère le store de l'histoire
     const storyStore = useStoryStore();
-    return { choicesHistory: storyStore.choicesHistory };
+
+    // crée une référence réactive au tableau choicesHistory
+    // avec le storeToRefs toute modification dans le store se fait automatiquement dans le composant
+    const { choicesHistory } = storeToRefs(storyStore);
+
+    // retourne les refs au template
+    return { choicesHistory };
   },
 };
 </script>
@@ -65,20 +79,27 @@ export default {
   transform: scale(1.05);
 }
 
-/* --- Version mobile --- */
+/* Version mobile */
 @media (max-width: 600px) {
   .choice-made {
-    width: 90%; /* prend presque toute la largeur */
-    max-height: 80%; /* plus haute pour s’adapter au contenu */
-    top: 50%; /* centre verticalement */
-    left: 50%; /* centre horizontalement */
-    right: auto; /* annule right:10% */
-    transform: translate(-50%, -50%); /* vrai centrage */
+    width: 90%;
+    /* prend presque toute la largeur */
+    max-height: 80%;
+    /* plus haute pour s’adapter au contenu */
+    top: 50%;
+    /* centre verticalement */
+    left: 50%;
+    /* centre horizontalement */
+    right: auto;
+    /* annule right:10% */
+    transform: translate(-50%, -50%);
+    /* vrai centrage */
     padding: 0.8rem;
   }
 
   .btn-close {
-    width: 100%; /* bouton large pour toucher facilement */
+    width: 100%;
+    /* bouton large pour toucher facilement */
     text-align: center;
   }
 }

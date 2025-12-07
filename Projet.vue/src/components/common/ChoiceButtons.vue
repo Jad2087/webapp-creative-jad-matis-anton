@@ -1,12 +1,7 @@
 <template>
   <div class="choice-buttons">
     <!-- Boucle du tableau choice pour créer un composant NavChoice pour chaque élément -->
-    <NavChoice
-      v-for="(choice, idx) in choices"
-      :key="idx"
-      :choice="choice"
-      @choose="selectChoice"
-    />
+    <NavChoice v-for="(choice, idx) in choices" :key="idx" :choice="choice" @choose="selectChoice" />
   </div>
 </template>
 
@@ -22,13 +17,18 @@ export default {
       required: true,
     },
   },
+  
   methods: {
+    // il gère la sélection d’un choix par le joueur
+    // next : l'objet du chapitre suivant next.id et next.title
+    // text : le texte du bouton choisi
     // nextID` est l'identifiant du chapitre suivante
-    selectChoice(nextId) {
-      this.$emit("choice-selected", nextId);
-    },
+    selectChoice(next, text) {
+      this.$emit("choice-selected", next, text);
+    }
   },
 };
+
 </script>
 
 <style scoped>
@@ -39,8 +39,10 @@ export default {
 .choicebuttons {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 colonnes */
-  gap: 1rem; /* espace entre les boutons */
+  grid-template-columns: 1fr 1fr;
+  /* 2 colonnes */
+  gap: 1rem;
+  /* espace entre les boutons */
 }
 
 @media (max-width: 1080px) {

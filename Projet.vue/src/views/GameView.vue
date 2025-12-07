@@ -22,44 +22,22 @@
         </div>
 
         <!-- Choices show up as buttons from ChoiceButtons component -->
-        <ChoiceButtons
-          :choices="activeChapter.choices"
-          @choice-selected="changeChapter"
-          class="choicebuttons"
-        />
+        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" class="choicebuttons" />
 
         <!-- MiniGame overlay component, shown only when openMiniGame is true -->
-        <MiniGame
-          v-if="openMiniGame"
-          :minigame-id="activeMiniGameId"
-          @close="openMiniGame = false"
-          @done="onMiniGameDone"
-        />
+        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
+          @done="onMiniGameDone" />
 
-        <Echec
-          v-if="showEchec"
-          :title="echecTitle"
-          :description="echecDescription"
-          @retry="retryGame"
-          @menu="goToMenu"
-        />
+        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
+          @menu="goToMenu" />
 
         <!-- Réussite overlay -->
-<Reussite
-  v-if="showReussite"
-  :title="reussiteTitle"
-  :description="reussiteDescription"
-  @menu="goToMenu"
-  @historique="showHistory = true"
-/>
-
+        <Reussite v-if="showReussite" :title="reussiteTitle" :description="reussiteDescription" @menu="goToMenu"
+          @historique="showHistory = true" />
 
         <!-- Historique overlay par-dessus Réussite -->
-        <ChoiceMade
-          v-if="showHistory"
-          class="overlay"
-          @close="showHistory = false"
-        />
+        <ChoiceMade v-if="showHistory" class="overlay" @close="showHistory = false" />
+
       </div>
     </div>
   </div>
@@ -112,92 +90,83 @@ export default {
       restartChapterId: "intro",
       activeMiniGameId: null,
 
-      
-
       // textes de mort personnalisés
       deathMessages: {
-  "clue01-02":
-    "Vous tentez de tirer le corps hors des décombres.\n\nUn grincement aigu résonne au-dessus de vous. Avant même que vous puissiez reculer, une plaque de métal se détache et s'effondre brutalement.\n\nTout devient noir.",
+        "clue01-02":
+          "Vous tentez de tirer le corps hors des décombres.\n\nUn grincement aigu résonne au-dessus de vous. Avant même que vous puissiez reculer, une plaque de métal se détache et s'effondre brutalement.\n\nTout devient noir.",
 
-  "clue02-02":
-    "Vous faites un pas dans la flaque noire.\n\nUn froid soudain remonte le long de votre jambe, si brutal qu’il vous coupe le souffle. Vos muscles se paralysent presque instantanément, comme englués dans une matière vivante.\n\nVotre vision se brouille.\n\nVous perdez conscience avant même de toucher le sol.",
+        "clue02-02":
+          "Vous faites un pas dans la flaque noire.\n\nUn froid soudain remonte le long de votre jambe, si brutal qu’il vous coupe le souffle. Vos muscles se paralysent presque instantanément, comme englués dans une matière vivante.\n\nVotre vision se brouille.\n\nVous perdez conscience avant même de toucher le sol.",
 
-  "clue03-01":
-    "Un souffle de gaz s’échappe derrière vous. Une étincelle jaillit d’un appareil renversé — un flash de lumière, puis tout s’éteint instantanément.",
+        "clue03-01":
+          "Un souffle de gaz s’échappe derrière vous. Une étincelle jaillit d’un appareil renversé — un flash de lumière, puis tout s’éteint instantanément.",
 
-  "clue04-01":
-    "Votre pied touche l’eau inondée. Un bourdonnement soudain envahit la pièce — puis votre esprit sombre dans le noir.",
+        "clue04-01":
+          "Votre pied touche l’eau inondée. Un bourdonnement soudain envahit la pièce — puis votre esprit sombre dans le noir.",
 
-  "clue05-01":
-    "Un bruit sec résonne derrière vous. La structure cède brusquement — puis tout disparaît dans un flou silencieux.",
+        "clue05-01":
+          "Un bruit sec résonne derrière vous. La structure cède brusquement — puis tout disparaît dans un flou silencieux.",
 
-  "clue06-01":
-    "Le sol se dérobe sous vos pieds. Une secousse brusque vous projette dans l’obscurité totale, sans laisser le temps de réagir.",
+        "clue06-01":
+          "Le sol se dérobe sous vos pieds. Une secousse brusque vous projette dans l’obscurité totale, sans laisser le temps de réagir.",
 
-  "clue07-01":
-    "Une vibration étrange envahit la zone. Votre vision se brouille… puis tout s’efface dans un noir profond.",
+        "clue07-01":
+          "Une vibration étrange envahit la zone. Votre vision se brouille… puis tout s’efface dans un noir profond.",
 
-  "clue08-01":
-    "Un souffle glacial vous fige sur place. Le monde se dissout dans l’obscurité, sans un son.",
+        "clue08-01":
+          "Un souffle glacial vous fige sur place. Le monde se dissout dans l’obscurité, sans un son.",
 
-    "ventA1-death": 
-  "Le métal sous vous vibre… puis se déchire d’un seul coup. Vous basculez dans le vide avant de comprendre ce qu’il se passe.",
+        "ventA1-death":
+          "Le métal sous vous vibre… puis se déchire d’un seul coup. Vous basculez dans le vide avant de comprendre ce qu’il se passe.",
 
-  "vent-slither":
-  "Un bruit humide se rapproche dans le noir. Avant même que vous puissiez reculer, quelque chose de glissant s’enroule autour de votre jambe et vous tire violemment dans l’obscurité. Vous n’avez même pas le temps de crier.",
+        "vent-slither":
+          "Un bruit humide se rapproche dans le noir. Avant même que vous puissiez reculer, quelque chose de glissant s’enroule autour de votre jambe et vous tire violemment dans l’obscurité. Vous n’avez même pas le temps de crier.",
 
-"vent-fans-button-death":
-  "Vous appuyez sur le bouton. Les ventilateurs ralentissent… puis redémarrent d’un coup. Les pales vous happent à pleine vitesse, sans vous laisser la moindre chance.",
+        "vent-fans-button-death":
+          "Vous appuyez sur le bouton. Les ventilateurs ralentissent… puis redémarrent d’un coup. Les pales vous happent à pleine vitesse, sans vous laisser la moindre chance.",
 
-  "ventDeep-greenDeath":
-  "La rouille se brise sous vous. Le conduit s’effondre d’un coup, et vous tombez dans le vide sans pouvoir vous rattraper.",
+        "ventDeep-greenDeath":
+          "La rouille se brise sous vous. Le conduit s’effondre d’un coup, et vous tombez dans le vide sans pouvoir vous rattraper.",
 
-  "ventDeep-blackDeath":
-  "Dans l’obscurité totale, vous perdez le sens de l’orientation. Épuisé et désorienté, vous finissez par vous effondrer, incapable de retrouver la sortie.",
+        "ventDeep-blackDeath":
+          "Dans l’obscurité totale, vous perdez le sens de l’orientation. Épuisé et désorienté, vous finissez par vous effondrer, incapable de retrouver la sortie.",
 
-  "clue07-01":
-  "Votre saut dévie d’un simple centimètre. La substance noire agrippe votre jambe, remonte le long de votre corps et vous immobilise avant que vous ne puissiez atteindre la porte.",
+        "clue07-01":
+          "Votre saut dévie d’un simple centimètre. La substance noire agrippe votre jambe, remonte le long de votre corps et vous immobilise avant que vous ne puissiez atteindre la porte.",
 
-  "engine02-fail":
-  "Une décharge parcourt brutalement le générateur. Un arc électrique bondit de la console et vous traverse. Le monde se brouille… puis tout disparaît.",
+        "engine02-fail":
+          "Une décharge parcourt brutalement le générateur. Un arc électrique bondit de la console et vous traverse. Le monde se brouille… puis tout disparaît.",
 
-"engine03-fail":
-  "Un avertissement sonore retentit, trop tard. Le générateur libère une surtension brusque, un éclair aveuglant jaillit et vous foudroie instantanément.",
-
-  
-"clue111-01": 
-"Vous avancez prudemment, mais la substance noire réagit aussitôt.\n\nElle se met à onduler, puis à ramper vers vous comme attirée par votre chaleur.\n\nUn froid glacial vous saisit la cheville, remonte le long de votre jambe… et paralyse tout votre corps.\n\nVotre souffle se coupe.\n\nLa caserne s’assombrit autour de vous, comme si la lumière elle-même s’éteignait.\n\nPuis tout disparaît."
+        "engine03-fail":
+          "Un avertissement sonore retentit, trop tard. Le générateur libère une surtension brusque, un éclair aveuglant jaillit et vous foudroie instantanément.",
 
 
-},
+        "clue111-01":
+          "Vous avancez prudemment, mais la substance noire réagit aussitôt.\n\nElle se met à onduler, puis à ramper vers vous comme attirée par votre chaleur.\n\nUn froid glacial vous saisit la cheville, remonte le long de votre jambe… et paralyse tout votre corps.\n\nVotre souffle se coupe.\n\nLa caserne s’assombrit autour de vous, comme si la lumière elle-même s’éteignait.\n\nPuis tout disparaît."
+      },
 
-
-endingMessages: {
-  "ending": {
-    title: "Fin — Évasion",
-    description:
-      "Vous grimpez à bord de la navette. Les systèmes internes s’allument un à un, inondant le cockpit d’une lueur verte familière.\n\nUn message automatique s’affiche : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». Vous n’avez même pas le temps de vous asseoir correctement que la verrière se referme, scellant votre décision.\n\nLe hangar s’éloigne tandis que les moteurs rugissent. La station entière se rétrécit derrière vous, un géant métallique dérivant dans le vide.\n\nEn quittant enfin la structure, les hublots s’illuminent d'une douce lueur bleue : la Terre, suspendue dans le silence spatial.\n\nEn jetant un dernier regard en arrière, vous apercevez la station — un immense amas de ferraille, solitaire et muet, perdu dans l'obscurité.\n\nPour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Peut-être que la Terre n’est qu’un souvenir… ou peut-être qu’elle vous attend encore.\n\nMais une chose est certaine : cette fois, c’est vous qui tracez votre chemin."
-  },
-  "ending-cryo": {
-    title: "Fin — Sommeil Éternel",
-    description:
-      "Vous vous installez dans le cryo-pod.\nLa paroi se referme lentement…\nUne brume blanche envahit la vitre.\n\nTout disparaît dans le silence."
-  },
-  "ending-pod": {
-    title: "Fin — Fuite Précaire",
-    description:
-      "Vous vous jetez dans la capsule de secours et activez la séquence de lancement.\n\nLa station s’éloigne dans un silence pesant."
-  },
-  "ending-sabotage": {
-    title: "Fin — Chute Contrôlée",
-    description:
-      "Vous détournez la station vers l’atmosphère terrestre...\n\nVous sautez dans la capsule juste avant la destruction finale."
-  }
-}
-
-
-
-
+      endingMessages: {
+        "ending": {
+          title: "Fin — Évasion",
+          description:
+            "Vous grimpez à bord de la navette. Les systèmes internes s’allument un à un, inondant le cockpit d’une lueur verte familière.\n\nUn message automatique s’affiche : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». Vous n’avez même pas le temps de vous asseoir correctement que la verrière se referme, scellant votre décision.\n\nLe hangar s’éloigne tandis que les moteurs rugissent. La station entière se rétrécit derrière vous, un géant métallique dérivant dans le vide.\n\nEn quittant enfin la structure, les hublots s’illuminent d'une douce lueur bleue : la Terre, suspendue dans le silence spatial.\n\nEn jetant un dernier regard en arrière, vous apercevez la station — un immense amas de ferraille, solitaire et muet, perdu dans l'obscurité.\n\nPour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Peut-être que la Terre n’est qu’un souvenir… ou peut-être qu’elle vous attend encore.\n\nMais une chose est certaine : cette fois, c’est vous qui tracez votre chemin."
+        },
+        "ending-cryo": {
+          title: "Fin — Sommeil Éternel",
+          description:
+            "Vous vous installez dans le cryo-pod.\nLa paroi se referme lentement…\nUne brume blanche envahit la vitre.\n\nTout disparaît dans le silence."
+        },
+        "ending-pod": {
+          title: "Fin — Fuite Précaire",
+          description:
+            "Vous vous jetez dans la capsule de secours et activez la séquence de lancement.\n\nLa station s’éloigne dans un silence pesant."
+        },
+        "ending-sabotage": {
+          title: "Fin — Chute Contrôlée",
+          description:
+            "Vous détournez la station vers l’atmosphère terrestre...\n\nVous sautez dans la capsule juste avant la destruction finale."
+        }
+      }
     };
   },
 
@@ -214,6 +183,7 @@ endingMessages: {
     },
 
     // Retourne le chapitre actuellement actif
+    // Si aucun chapitre ne correspond à this.current, on retourne un objet vide avec choices []
     activeChapter() {
       return (
         this.storyStore.storyData.find((chap) => chap.id === this.current) || {
@@ -224,30 +194,17 @@ endingMessages: {
   },
 
   methods: {
-    changeChapter(next) {
-      const player = usePlayerStore(); // On récupère le store du joueur (pinia)
-      const storyStore = useStoryStore(); // On récupère le store de l'histoire (pinia)
+    changeChapter(next, choiceText) {
+      const storyStore = useStoryStore(); // récupère le store histoire pour gérer l'historique des choix
+      const player = usePlayerStore(); // récupère le store du joueur pour accéder à ses données (indices et morts)
 
-      // Vérifie que "next" existe et qu'il contient un id valide
-      if (!next || !next.id) {
-        console.warn("[changeChapter] next object invalide :", next);
-        return;
+      // Ajouter le choix uniquement s'il est différent du dernier
+      const lastChoice = storyStore.choicesHistory.slice(-1)[0]; // empêcher de doubler les choix enregistrés
+      if (lastChoice !== choiceText) { // ajouter le choix à l'historique s'il est différent du dernier
+        storyStore.addChoice(choiceText);
       }
-      // récupère id du prochain chapitre
-      const nextId = next.id;
-      // ajoute id à historique des choix dans le store
-      storyStore.addChoice(nextId);
 
-      console.log("[changeChapter] ----");
-      console.log("[changeChapter] Choix reçu :", next);
-      console.log(
-        "[changeChapter] nextId =",
-        nextId,
-        "type =",
-        next.type,
-        "good =",
-        next.good
-      );
+      const nextId = next.id; // enregistre l'identifiant du chapitre apres
 
       // AJOUT DES INDICES
       const clueAwards = {
@@ -264,8 +221,6 @@ endingMessages: {
         "engine04-success": "engine",
         "clue100-01": "clue100",
         "clue111-02": "clue111",
-
-
       };
 
       const awardedClue = clueAwards[nextId];
@@ -312,9 +267,9 @@ endingMessages: {
         clue09: { clue: "clue09", target: "clue09-03" },
         clue10: { clue: "clue10", target: "clue10-03" },
         engine01: { clue: "engine", target: "engine01-03" },
-        
+
         clue100: { clue: "clue100", target: "clue100-03" },
-clue111: { clue: "clue111", target: "clue111-03" },
+        clue111: { clue: "clue111", target: "clue111-03" },
 
       };
 
@@ -337,18 +292,17 @@ clue111: { clue: "clue111", target: "clue111-03" },
       }
 
       // FIN SECRÈTE — déclenche Réussite.vue
-if (nextId.startsWith("ending")) {
-  const ending = this.endingMessages[nextId];
+      if (nextId.startsWith("ending")) {
+        const ending = this.endingMessages[nextId];
 
-  this.reussiteTitle = ending ? ending.title : "Fin";
-  this.reussiteDescription = ending
-    ? ending.description
-    : "Vous avez atteint une fin du jeu.";
+        this.reussiteTitle = ending ? ending.title : "Fin";
+        this.reussiteDescription = ending
+          ? ending.description
+          : "Vous avez atteint une fin du jeu.";
 
-  this.showReussite = true;
-  return;
-}
-
+        this.showReussite = true;
+        return;
+      }
 
       // NAVIGATION NORMALE : STORY
       if (next.type === "story") {
@@ -424,21 +378,30 @@ if (nextId.startsWith("ending")) {
     },
 
     retryGame() {
-      const player = usePlayerStore(); //add this line
+      const player = usePlayerStore();
+      const storyStore = useStoryStore(); // accès au store de l'histoire (pinia)
 
       if (this.activeMiniGameId === "minigame08") {
         // Naviguer vers EndingView
-        this.$router.push({ name: "ending" }); // assuming your route name is "ending"
+        this.$router.push({ name: "ending" });
         return;
       }
 
-      player.reset(); // reset intelligence + clues
+      // Reset joueur
+      player.reset();
+
+      // Reset historique des choix
+      storyStore.resetChoices();
+
+      // Fermer l'écran d'échec
       this.showEchec = false;
+
+      // Repartir du chapitre de départ
+      this.current = this.restartChapterId;
       this.$router.push({
         name: "game",
         params: { id: this.restartChapterId },
       });
-      this.current = this.restartChapterId;
     },
 
     goToMenu() {
@@ -537,9 +500,12 @@ if (nextId.startsWith("ending")) {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("@/Images/space_background.png"); /* mets ton chemin ici */
-  background-size: cover; /* prend tout l'écran */
-  background-position: center; /* centré */
+  background-image: url("@/Images/space_background.png");
+  /* mets ton chemin ici */
+  background-size: cover;
+  /* prend tout l'écran */
+  background-position: center;
+  /* centré */
   background-repeat: no-repeat;
 }
 
@@ -584,21 +550,23 @@ if (nextId.startsWith("ending")) {
   border-radius: 6px;
 
   box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
+    /* halo vert */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */
+    inset 0 0 40px rgba(3, 171, 94, 0.15);
+  /* lueur interne légère */
 }
 
 .screen::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -612,7 +580,7 @@ if (nextId.startsWith("ending")) {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright > *:first-child {
+.columnright>*:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -639,7 +607,7 @@ if (nextId.startsWith("ending")) {
   color: #03ab5e;
 }
 
-.columnright > *:last-child {
+.columnright>*:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -679,6 +647,7 @@ if (nextId.startsWith("ending")) {
 }
 
 @media (max-width: 1080px) {
+
   /* IMPORTANT : forces le viewport mobile correct */
   html,
   body {
@@ -722,7 +691,8 @@ if (nextId.startsWith("ending")) {
   .story-box {
     flex: 1;
     overflow-y: auto;
-    min-height: 0; /* IMPORTANT pour autoriser le scroll */
+    min-height: 0;
+    /* IMPORTANT pour autoriser le scroll */
   }
 
   .choicebuttons {
