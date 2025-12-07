@@ -89,6 +89,7 @@ export default {
       echecDescription: "DEATH TEXT …",
       restartChapterId: "intro",
       activeMiniGameId: null,
+      animatedChapters: [],
 
       // textes de mort personnalisés
       deathMessages: {
@@ -425,37 +426,45 @@ export default {
 
       const rawText = this.activeChapter.text || "";
 
-      // on vide le paragraphe
+      // Si ce chapitre a déjà été animé ca affiche le texte complet
+      if (this.animatedChapters.includes(this.current)) {
+        el.innerHTML = rawText.replace(/\n/g, "<br>");
+        return;
+      }
+
+      // vide le paragraphe pour réanimer
       el.innerHTML = "";
 
-      // on recrée le texte caractère par caractère
-      [...rawText].forEach((char) => {
+      // On crée chaque caractère dans un span
+      [...rawText].forEach(char => {
         if (char === "\n") {
-          // garde les sauts de ligne (paragraphes)
-          el.appendChild(document.createElement("br"));
+          el.appendChild(document.createElement("br")); // garde les retours à la ligne
         } else {
           const span = document.createElement("span");
-          span.textContent = char; // on laisse les espaces normaux pour le retour à la ligne
+          span.textContent = char;
           el.appendChild(span);
         }
       });
 
       const letters = el.querySelectorAll("span");
 
-      // au cas où une ancienne anim tourne encore
+      // Stoppe toute ancienne animation sur ces lettres
       gsap.killTweensOf(letters);
 
-      // animation “vieux PC” : lettres une par une
+      // Animation “vieux PC” : lettres qui apparaissent une par une
       gsap.fromTo(
         letters,
         { opacity: 0 },
         {
           opacity: 1,
-          duration: 0.02, // vitesse de chaque lettre
-          stagger: 0.02, // délai entre lettres
+          duration: 0.02, // vitesse d'apparition par lettre
+          stagger: 0.02,   // délai entre les lettres
           ease: "none",
         }
       );
+
+      // dis que ce chapitre est animé pour ne pas le refaire
+      this.animatedChapters.push(this.current);
     },
   },
 
