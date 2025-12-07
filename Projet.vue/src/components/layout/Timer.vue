@@ -4,12 +4,7 @@
 
     <!-- Barre contenant les segments -->
     <div class="bars">
-      <div
-        v-for="(bar, index) in totalBars"
-        :key="index"
-        class="bar"
-        :class="{ active: index < remainingBars }"
-      ></div>
+      <div v-for="(bar, index) in totalBars" :key="index" class="bar" :class="{ active: index < remainingBars }"></div>
     </div>
   </div>
 </template>
@@ -86,7 +81,8 @@ export default {
 .bars {
   display: flex;
   gap: 4px;
-  margin-left: auto; /* pousse les barres complètement à droite */
+  margin-left: auto;
+  /* pousse les barres complètement à droite */
 }
 
 .bar {
