@@ -62,8 +62,8 @@ export default {
   color: #03ab5e;
   font-weight: bold;
   border: 2px solid #03ab5e;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
   margin: 0.5rem 0;
   cursor: pointer;
   width: 100%;
