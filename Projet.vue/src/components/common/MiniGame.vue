@@ -101,6 +101,8 @@
 import { useStoryStore } from "@/stores/storyStore";
 import clickSoundFile from "@/Sounds/futuristic_click.mp3";
 import hoverSoundFile from "@/Sounds/futuristic_hover.mp3";
+import clickCharSoundFile from "@/Sounds/minigame_click.mp3";
+import endMessageSoundFile from "@/Sounds/minigame_win.mp3";
 
 const CHAR_SET = [
   "?",
@@ -187,6 +189,8 @@ export default {
       headerTimer: null,
       clickAudio: new Audio(clickSoundFile),
       hoverAudio: new Audio(hoverSoundFile),
+      clickCharAudio: new Audio(clickCharSoundFile),
+      endMessageAudio: new Audio(endMessageSoundFile),
     };
   },
   computed: {
@@ -295,10 +299,14 @@ export default {
     },
     onCellClick(cell) {
       if (this.gameOver || !cell.isWord || cell.used) return;
+
+      this.playSound(this.clickCharAudio);
+
       const wordIndex = cell.wordIndex;
       const wordCells = this.cells.filter((c) => c.wordIndex === wordIndex);
       const guess = wordCells.map((c) => c.text).join("");
       wordCells.forEach((c) => (c.used = true));
+
       if (guess === this.secretWord) {
         this.logs.unshift({
           guess,
@@ -307,6 +315,7 @@ export default {
         });
         this.success = true;
         this.gameOver = true;
+        this.playSound(this.endMessageAudio);
       } else {
         const matches = this.countMatchingChars(guess, this.secretWord);
         this.logs.unshift({ guess, matches, success: false });
@@ -314,6 +323,7 @@ export default {
         if (this.attemptsRemaining <= 0) {
           this.gameOver = true;
           this.success = false;
+          this.playSound(this.endMessageAudio);
           this.$emit("done", { success: false });
         }
       }
@@ -336,6 +346,7 @@ export default {
     hoverWord(cell) {
       const newWordIndex = cell?.isWord ? cell.wordIndex : null;
       if (newWordIndex !== this.hoveredWordIndex && newWordIndex !== null) {
+        this.playSound(this.hoverAudio);
       }
       this.hoveredWordIndex = newWordIndex;
     },
