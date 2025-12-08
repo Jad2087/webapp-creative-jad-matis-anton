@@ -4,14 +4,15 @@
 
     <!-- Liste des choix enregistrés -->
     <ul>
-      <!-- Boucle sur le tableau réactif choicesHistory -->
       <li v-for="(choice, index) in choicesHistory" :key="index">
         {{ index + 1 }}. {{ choice }}
       </li>
     </ul>
 
     <!-- Bouton pour fermer l'historique -->
-    <button class="btn-close" @click="$emit('close')">Fermer</button>
+    <button class="btn-close" @mouseover="playHover" @click="onClose">
+      Fermer
+    </button>
   </div>
 </template>
 
@@ -19,19 +20,50 @@
 import { useStoryStore } from "@/stores/storyStore";
 import { storeToRefs } from "pinia";
 
+// SONS
+import clickSound from "@/Sounds/futuristic_click.mp3";
+import hoverSound from "@/Sounds/futuristic_hover.mp3";
+
 export default {
   name: "ChoiceMade",
+
   setup() {
-
-    // récupère le store de l'histoire
     const storyStore = useStoryStore();
-
-    // crée une référence réactive au tableau choicesHistory
-    // avec le storeToRefs toute modification dans le store se fait automatiquement dans le composant
     const { choicesHistory } = storeToRefs(storyStore);
 
-    // retourne les refs au template
     return { choicesHistory };
+  },
+
+  data() {
+    return {
+      clickAudio: null,
+      hoverAudio: null,
+    };
+  },
+
+  created() {
+    this.clickAudio = new Audio(clickSound);
+    this.hoverAudio = new Audio(hoverSound);
+
+    this.clickAudio.load();
+    this.hoverAudio.load();
+  },
+
+  methods: {
+    playClick() {
+      this.clickAudio.currentTime = 0;
+      this.clickAudio.play();
+    },
+
+    playHover() {
+      this.hoverAudio.currentTime = 0;
+      this.hoverAudio.play();
+    },
+
+    onClose() {
+      this.playClick();
+      this.$emit("close");
+    },
   },
 };
 </script>
@@ -71,6 +103,7 @@ export default {
   background: transparent;
   color: #03ab5e;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-close:hover {
@@ -83,23 +116,16 @@ export default {
 @media (max-width: 600px) {
   .choice-made {
     width: 90%;
-    /* prend presque toute la largeur */
     max-height: 80%;
-    /* plus haute pour s’adapter au contenu */
     top: 50%;
-    /* centre verticalement */
     left: 50%;
-    /* centre horizontalement */
     right: auto;
-    /* annule right:10% */
     transform: translate(-50%, -50%);
-    /* vrai centrage */
     padding: 0.8rem;
   }
 
   .btn-close {
     width: 100%;
-    /* bouton large pour toucher facilement */
     text-align: center;
   }
 }

@@ -34,6 +34,7 @@
           @done="onMiniGameDone"
         />
 
+        <!-- ECHEC -->
         <Echec
           v-if="showEchec"
           :title="echecTitle"
@@ -42,6 +43,7 @@
           @menu="goToMenu"
         />
 
+        <!-- REUSSITE -->
         <Reussite
           v-if="showReussite"
           :title="reussiteTitle"
@@ -73,12 +75,13 @@ import Reussite from "@/components/specific/Reussite.vue";
 
 import { useStoryStore } from "@/stores/storyStore";
 import { usePlayerStore } from "@/stores/playerStore";
-
 import { gsap } from "gsap";
 
-// Import des sons
-import clickSound from "@/Sounds/futuristic_click.mp3"; // import du son
+// SOUNDS
+import clickSound from "@/Sounds/futuristic_click.mp3";
 import hoverSound from "@/Sounds/futuristic_hover.mp3";
+import deathSound from "@/Sounds/error_sound.mp3";
+import successSound from "@/Sounds/win_sound.mp3";
 
 export default {
   name: "GameView",
@@ -98,36 +101,52 @@ export default {
     return {
       current: this.$route.params.id || "intro",
       openMiniGame: false,
+
+      // MODALES
       showEchec: false,
       showReussite: false,
+      showHistory: false,
+
+      // ECHEC & REUSSITE TEXTES
       reussiteTitle: "",
       reussiteDescription: "",
-      reussiteTarget: null,
       echecTitle: "DEATH TITLE",
       echecDescription: "DEATH TEXT …",
       restartChapterId: "intro",
+
+      // MINIJEUX
       activeMiniGameId: null,
+
+      // ANIMATION
       animatedChapters: [],
+
+      // AUDIOS
       clickAudio: null,
       hoverAudio: null,
-      deathMessages: {
-        /* ton objet deathMessages complet ici */
-      },
-      endingMessages: {
-        /* ton objet endingMessages complet ici */
-      },
+      deathAudio: null,
+      successAudio: null,
+
+      // CUSTOM MESSAGES
+      deathMessages: {},
+      endingMessages: {},
     };
   },
 
   created() {
     this.current = this.$route.params.id;
 
-    // Précharger les sons
+    // Pré-chargement sons
     this.clickAudio = new Audio(clickSound);
     this.clickAudio.load();
 
     this.hoverAudio = new Audio(hoverSound);
     this.hoverAudio.load();
+
+    this.deathAudio = new Audio(deathSound); // 🔥 NOUVEAU
+    this.deathAudio.load();
+
+    this.successAudio = new Audio(successSound);
+    this.successAudio.load();
   },
 
   computed: {
@@ -144,7 +163,7 @@ export default {
   },
 
   methods: {
-    // Sons
+    /* ------------------------ SONS ------------------------ */
     playClick() {
       if (this.clickAudio) {
         this.clickAudio.currentTime = 0;
@@ -157,56 +176,73 @@ export default {
         this.hoverAudio.play();
       }
     },
+    playDeath() {
+      if (this.deathAudio) {
+        this.deathAudio.currentTime = 0;
+        this.deathAudio.play();
+      }
+    },
+    playSuccess() {
+      if (this.successAudio) {
+        this.successAudio.currentTime = 0;
+        this.successAudio.play();
+      }
+    },
 
-    // Change de chapitre
+    /* ------------------- CHANGEMENT DE CHAPITRE ------------------- */
     changeChapter(next, choiceText) {
-      this.playClick(); // joue le son au clic
+      this.playClick();
+
       const storyStore = useStoryStore();
       const player = usePlayerStore();
 
-      // Ajout dans l'historique
+      // Historique
       const lastChoice = storyStore.choicesHistory.slice(-1)[0];
-      if (lastChoice !== choiceText) {
-        storyStore.addChoice(choiceText);
-      }
+      if (lastChoice !== choiceText) storyStore.addChoice(choiceText);
 
       const nextId = next.id;
 
-      // Gestion des indices
+      // Récompense indices
       const clueAwards = {
         "clue01-01": "clue01",
         "clue02-01": "clue02",
-        // ... tes autres indices
       };
+
       const awardedClue = clueAwards[nextId];
       if (awardedClue) player.addClue(awardedClue);
 
-      // Détection des morts
+      // ----- MORT -----
       if (next.type === "story" && next.good === false) {
         player.incrementDeaths(1);
         const custom = this.deathMessages[nextId];
+
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           custom ||
           "Votre corps cède sous la pression... puis tout devient noir.";
+
         this.showEchec = true;
+        this.playDeath(); // 🔥
+
         return;
       }
 
-      // Navigation normale ou mini-jeu
+      // Passage normal
       if (next.type === "story") {
         this.current = nextId;
         this.$router.push({ name: "game", params: { id: nextId } });
         this.openMiniGame = false;
         return;
       }
+
+      // Mini-jeu
       if (next.type === "game") {
         this.activeMiniGameId = nextId;
         this.openMiniGame = true;
         return;
       }
 
-      // Fin secrète
+      // Ending
       if (nextId.startsWith("ending")) {
         const ending = this.endingMessages[nextId];
         this.reussiteTitle = ending ? ending.title : "Fin";
@@ -214,20 +250,27 @@ export default {
           ? ending.description
           : "Vous avez atteint une fin du jeu.";
         this.showReussite = true;
+        this.$nextTick(() => this.playSuccess());
       }
     },
 
+    /* ----------------------- MORT PAR OXYGENE ----------------------- */
     killPlayerByOxygen() {
       const player = usePlayerStore();
       player.incrementDeaths(1);
+
       this.echecTitle = "Oxygène épuisé";
       this.echecDescription =
         "Votre vision se trouble... l’air manque... puis tout devient noir.";
+
       this.showEchec = true;
+      this.playDeath(); // 🔥
     },
 
+    /* ----------------------- FIN MINI-JEU ----------------------- */
     onMiniGameDone(result) {
       this.openMiniGame = false;
+
       if (result && result.success) {
         if (this.activeMiniGameId === "minigame08") {
           this.showReussite = true;
@@ -238,20 +281,27 @@ export default {
       } else {
         const player = usePlayerStore();
         player.reset();
+
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
           "Une surcharge parcourt le terminal... puis plus rien.";
+
         this.showEchec = true;
+        this.playDeath(); // 🔥
       }
     },
 
+    /* ---------------------------- RETRY ---------------------------- */
     retryGame() {
       const player = usePlayerStore();
       const storyStore = useStoryStore();
+
       player.reset();
       storyStore.resetChoices();
+
       this.showEchec = false;
       this.current = this.restartChapterId;
+
       this.$router.push({
         name: "game",
         params: { id: this.restartChapterId },
@@ -266,9 +316,11 @@ export default {
       this.$router.push({ name: "home" });
     },
 
+    /* ----------------------- ANIMATION TEXTE ----------------------- */
     animateText() {
       const el = this.$refs.infoContent;
       if (!el) return;
+
       const rawText = this.activeChapter.text || "";
 
       if (this.animatedChapters.includes(this.current)) {
@@ -287,7 +339,9 @@ export default {
       });
 
       const letters = el.querySelectorAll("span");
+
       gsap.killTweensOf(letters);
+
       gsap.fromTo(
         letters,
         { opacity: 0 },

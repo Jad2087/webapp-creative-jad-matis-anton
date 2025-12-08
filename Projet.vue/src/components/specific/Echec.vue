@@ -6,17 +6,23 @@
 
       <div class="buttons">
         <!-- Bouton Recommencer -->
-        <button class="btn retry" @click="$emit('retry')">Recommencer</button>
+        <button class="btn retry" @mouseover="playHover" @click="onRetry">
+          Recommencer
+        </button>
 
         <!-- Bouton Menu Principal -->
-        <button class="btn menu" @click="$emit('menu')">Menu Principal</button>
+        <button class="btn menu" @mouseover="playHover" @click="onMenu">
+          Menu Principal
+        </button>
 
-        <!-- Bouton Historique l'overlay ChoiceMade -->
-        <button class="btn history" @click="showHistory = true">Historique</button>
+        <!-- Bouton Historique -->
+        <button class="btn history" @mouseover="playHover" @click="onHistory">
+          Historique
+        </button>
       </div>
     </div>
 
-    <!-- Overlay historique seulement si showHistory est true -->
+    <!-- Overlay historique -->
     <ChoiceMade v-if="showHistory" @close="showHistory = false" />
   </div>
 </template>
@@ -24,24 +30,63 @@
 <script>
 import ChoiceMade from "@/components/specific/ChoiceMade.vue";
 
+// SONS
+import clickSound from "@/Sounds/futuristic_click.mp3";
+import hoverSound from "@/Sounds/futuristic_hover.mp3";
+
 export default {
   name: "Echec",
   components: { ChoiceMade },
+
   props: {
-    title: {
-      type: String,
-      default: "Erreur Chronique",
-    },
-    description: {
-      type: String,
-      default: "Informations …",
-    },
+    title: { type: String, default: "Erreur Chronique" },
+    description: { type: String, default: "Informations …" },
   },
+
   data() {
     return {
-      // Contrôle l'affichage de l'overlay historique
       showHistory: false,
+
+      // audio
+      clickAudio: null,
+      hoverAudio: null,
     };
+  },
+
+  created() {
+    // Préchargement
+    this.clickAudio = new Audio(clickSound);
+    this.hoverAudio = new Audio(hoverSound);
+
+    this.clickAudio.load();
+    this.hoverAudio.load();
+  },
+
+  methods: {
+    playClick() {
+      this.clickAudio.currentTime = 0;
+      this.clickAudio.play();
+    },
+
+    playHover() {
+      this.hoverAudio.currentTime = 0;
+      this.hoverAudio.play();
+    },
+
+    onRetry() {
+      this.playClick();
+      this.$emit("retry");
+    },
+
+    onMenu() {
+      this.playClick();
+      this.$emit("menu");
+    },
+
+    onHistory() {
+      this.playClick();
+      this.showHistory = true;
+    },
   },
 };
 </script>
@@ -69,12 +114,9 @@ export default {
   background: #1b1b1b;
   color: #e35e5e;
   box-shadow: 0 0 25px 5px rgba(227, 94, 94, 0.5),
-    /* halo rouge */
-    0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */
-    inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne */
-    inset 0 0 40px rgba(227, 94, 94, 0.15);
+    /* halo rouge */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne */ inset 0 0 40px rgba(227, 94, 94, 0.15);
   /* lueur interne légère */
 }
 

@@ -6,20 +6,28 @@
 
       <div class="buttons">
         <!-- Bouton Accueil -->
-        <button class="btn accueil" @click="$emit('menu')">Accueil</button>
+        <button class="btn accueil" @mouseover="playHover" @click="onMenu">
+          Accueil
+        </button>
 
         <!-- Bouton Historique -->
-        <button class="btn menu" @click="showHistory = true">Historique</button>
+        <button class="btn menu" @mouseover="playHover" @click="onHistory">
+          Historique
+        </button>
       </div>
     </div>
 
-      <!-- Overlay historique seulement si showHistory est true -->
+    <!-- Overlay historique seulement si showHistory est true -->
     <ChoiceMade v-if="showHistory" @close="showHistory = false" />
   </div>
 </template>
 
 <script>
 import ChoiceMade from "@/components/specific/ChoiceMade.vue";
+
+// SONS
+import clickSound from "@/Sounds/futuristic_click.mp3";
+import hoverSound from "@/Sounds/futuristic_hover.mp3";
 
 export default {
   name: "Reussite",
@@ -36,9 +44,35 @@ export default {
   },
   data() {
     return {
-      // Contrôle l'affichage de l'overlay historique
       showHistory: false,
+      clickAudio: null,
+      hoverAudio: null,
     };
+  },
+  created() {
+    this.clickAudio = new Audio(clickSound);
+    this.hoverAudio = new Audio(hoverSound);
+
+    this.clickAudio.load();
+    this.hoverAudio.load();
+  },
+  methods: {
+    playClick() {
+      this.clickAudio.currentTime = 0;
+      this.clickAudio.play();
+    },
+    playHover() {
+      this.hoverAudio.currentTime = 0;
+      this.hoverAudio.play();
+    },
+    onMenu() {
+      this.playClick();
+      this.$emit("menu");
+    },
+    onHistory() {
+      this.playClick();
+      this.showHistory = true;
+    },
   },
 };
 </script>
@@ -115,7 +149,6 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* boutons en bas */
     align-items: center;
     box-sizing: border-box;
   }
@@ -150,7 +183,6 @@ export default {
 
   .btn:hover {
     transform: none;
-    /* enlève le scale */
   }
 }
 </style>
