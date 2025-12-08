@@ -83,7 +83,7 @@
             @click="handleContinue"
             @mouseover="playSound(hoverAudio)"
           >
-            CONTINUER
+            Continuer
           </button>
         </template>
         <template v-else>
@@ -374,6 +374,7 @@ export default {
 } /* MAIN BOX */
 .mini-game-content {
   width: 90%;
+  height: 88%;
   max-width: 1100px;
   max-height: calc(85vh - 80px); /* do NOT grow higher than the screen */
   background: #111;
@@ -415,20 +416,20 @@ export default {
 } /* HEADER + ATTEMPTS */
 .term-header {
   white-space: pre-wrap;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
 .term-attempts {
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .attempt-block {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   background-color: #1aff80;
   margin-left: 3px;
 }
@@ -448,11 +449,11 @@ export default {
   margin: 0;
 }
 .addresses li {
-  font-size: 0.9rem;
-  margin: 2px 0;
+  font-size: 0.87rem;
+  margin: 1px 0;
 } /* === new, line-based “Fallout” layout === */
 .char-lines {
-  font-size: 0.95rem;
+  font-size: 0.87rem;
   line-height: 1.3;
   width: 100%;
 }
@@ -476,7 +477,7 @@ export default {
   color: #555;
 } /* Log panel */
 .log-panel {
-  font-size: 0.9rem;
+  font-size: 0.87rem;
   border-left: 1px solid #03ab5e;
   padding-left: 8px;
   max-height: 260px; /* own scroll, does not push layout */
@@ -488,7 +489,7 @@ export default {
 } /* End message */
 .end-message {
   margin-top: 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .end-message p {
   margin: 4px 0;
@@ -499,7 +500,7 @@ export default {
   font-weight: bold;
   border: 2px solid #03ab5e;
   padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   margin: 0.5rem;
   cursor: pointer;
   width: 250px;
@@ -521,7 +522,7 @@ export default {
   background: none;
   border: 2px solid #03ab5e;
   color: #03ab5e;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   padding: 4px 10px;
