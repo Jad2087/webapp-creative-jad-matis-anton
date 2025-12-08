@@ -139,7 +139,6 @@ export default {
 
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
 
   transition: 0.15s ease;
 }
