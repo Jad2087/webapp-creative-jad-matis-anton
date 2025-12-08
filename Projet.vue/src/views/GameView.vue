@@ -194,6 +194,7 @@ export default {
         this.deathAudio.play();
       }
       this.stopBackgroundMusic();
+      this.stopTypingAudio();
     },
     playSuccess() {
       if (this.successAudio) {
@@ -201,6 +202,7 @@ export default {
         this.successAudio.play();
       }
       this.stopBackgroundMusic();
+      this.stopTypingAudio();
     },
 
     playBackgroundMusic() {
@@ -216,6 +218,13 @@ export default {
         this.bgAudio.pause();
         this.bgAudio.currentTime = 0;
         this.bgAudio.isPlaying = false;
+      }
+    },
+
+    stopTypingAudio() {
+      if (this.typingAudio) {
+        this.typingAudio.pause();
+        this.typingAudio.currentTime = 0;
       }
     },
 
@@ -344,6 +353,10 @@ export default {
       this.showReussite = false;
       this.current = "intro";
       this.$router.push({ name: "home" });
+
+      // Stop tous les sons spécifiques au GameView
+      this.stopBackgroundMusic();
+      this.stopTypingAudio();
     },
 
     /* ----------------------- ANIMATION TEXTE ----------------------- */
@@ -385,10 +398,7 @@ export default {
           ease: "none",
           onComplete: () => {
             // Stoppe le son quand l'animation est finie
-            if (this.typingAudio) {
-              this.typingAudio.pause();
-              this.typingAudio.currentTime = 0;
-            }
+            this.stopTypingAudio();
           },
         }
       );
@@ -403,7 +413,9 @@ export default {
   },
 
   beforeUnmount() {
-    this.stopBackgroundMusic(); // stoppe la musique si on quitte le gameview
+    // stop tous les sons quand on quitte GameView
+    this.stopBackgroundMusic();
+    this.stopTypingAudio();
   },
 
   watch: {
@@ -414,6 +426,12 @@ export default {
     "$route.params.id"(newId) {
       this.current = newId;
       this.openMiniGame = false;
+    },
+    "$route.name"(newVal) {
+      if (newVal === "home") {
+        this.stopBackgroundMusic();
+        this.stopTypingAudio();
+      }
     },
   },
 };
