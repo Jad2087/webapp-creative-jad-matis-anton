@@ -68,7 +68,7 @@ export default {
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
-  min-height: 85px;
+  min-height: 73px;
 }
 
 .label {
@@ -87,7 +87,7 @@ export default {
 
 .bar {
   width: 12px;
-  height: 40px;
+  height: 34px;
   background: #222;
   border: 2px solid #555;
 }

@@ -51,7 +51,7 @@ export default {
   border: 2px solid #ffffff;
   background-color: #111;
   box-sizing: border-box;
-  min-height: 85px;
+  min-height: 70px;
 }
 
 .app-header__logo {
@@ -61,7 +61,7 @@ export default {
 
 .app-header__title {
   margin: 0;
-  font-size: 2.1rem;
+  font-size: 2rem;
   letter-spacing: 0.08em;
   color: #03ab5e;
 }

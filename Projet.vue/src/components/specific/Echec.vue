@@ -213,7 +213,7 @@ export default {
 
   /* Texte scrollable si très long */
   .description {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 1rem 0;
     max-height: 40vh;
     overflow-y: auto;
@@ -233,7 +233,7 @@ export default {
   .btn {
     width: 100%;
     padding: 0.75rem 1rem;
-    font-size: 1.1rem;
+    font-size: 0.87rem;
     border: 2px solid #e35e5e;
     background: transparent;
     color: #e35e5e;

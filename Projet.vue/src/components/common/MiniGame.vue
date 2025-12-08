@@ -537,8 +537,7 @@ export default {
 @media (max-width: 1080px) {
   /* Mise à l'échelle générale */
   .mini-game-content {
-    width: 100vw;
-    height: 100dvh;
+    width: 92%;
     padding: 1rem;
     border-radius: 0;
     display: flex;
@@ -585,8 +584,7 @@ export default {
     margin-bottom: 6px;
   } /* Bouton X */
   .close-x {
-    font-size: 24px;
-    padding: 8px 14px;
+    font-size: 15px;
   } /* Bouton CONTINUER plus petit et ne déborde pas */
   .continue-btn {
     width: 80%;
