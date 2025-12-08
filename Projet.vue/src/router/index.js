@@ -4,9 +4,8 @@ pour créer et configurer le système de routage de l’application.
 */
 import {
   createRouter,
-  createWebHistory
-} from 'vue-router';
-
+  createWebHashHistory
+} from 'vue-router'
 /*
 On importe les différentes vues (pages) du projet.
 Ici, ton application contient deux vues principales :
@@ -57,7 +56,7 @@ On y définit :
 - la liste des routes définies ci-dessus
 */
 const router = createRouter({
-  history: createWebHistory(
+  history: createWebHashHistory(
     import.meta.env.BASE_URL),
   routes
 });
