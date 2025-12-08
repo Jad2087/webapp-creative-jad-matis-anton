@@ -71,10 +71,9 @@
 
 | Priorité | Nombre | % |
 |----------|--------|---|
-| 🔴 Critiques | [X] | [X]% |
-| 🟠 Majeurs | [X] | [X]% |
-| 🟡 Mineurs | [X] | [X]% |
-| **TOTAL** | **[X]** | **100%** |
+| 🔴 Critiques | [2] | [100]% |
+| 🟠 Majeurs | [1] | [50]% |
+| **TOTAL** | **[3]** | **150%** |
 
 ### Liste des bugs trouvés (résumé)
 
@@ -274,10 +273,9 @@ RAS = Rien À Signaler
 
 | Test | Résultat | Action |
 |------|----------|--------|
-| Tab fonctionne sur tous les éléments | ✅ / ⚠️ / ❌ | [Si problème : plan de correction] |
-| Focus visible | ✅ / ⚠️ / ❌ | |
-| Enter/Space activent les boutons | ✅ / ⚠️ / ❌ | |
-| Skip links présents (optionnel) | ✅ / ⚠️ / ❌ | |
+| Tab fonctionne sur tous les éléments |⚠️ | [Si problème : plan de correction] |
+| Focus visible | ✅ |
+| Enter/Space activent les boutons | ✅ |
 
 **Problèmes trouvés :** [X]  
 **Corrigés :** [X]  
