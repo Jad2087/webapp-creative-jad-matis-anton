@@ -449,6 +449,8 @@ Nous avons déjà complété la majorité des fonctionnalités essentielles et l
 **Ce rapport a été rédigé et validé par :**
 
 - [Jad Saloumi] - [Chef] - Date : [7 décembre]
+- [Matis Ghariani] - [Designer] - Date : [7 décembre]
+- [Anton Nikulin] - [Histoire] - Date : [7 décembre]
 
 **Nous confirmons que ce rapport reflète fidèlement l'état de notre projet et de notre processus QA.**
 
