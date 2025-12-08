@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import miniMap from '@/Images/minimap.png';
+import miniMap from "@/Images/minimap.png";
 export default {
   name: "MiniMap",
   props: ["currentChapterId"],
@@ -81,7 +81,6 @@ export default {
 }
 
 @keyframes blink {
-
   0%,
   100% {
     opacity: 1;
@@ -103,7 +102,6 @@ export default {
 
 /* MEDIA QUERY POUR MOBILE */
 @media (max-width: 1080px) {
-
   /* Cacher la mini-map sur mobile */
   .minimap-container {
     display: none;
