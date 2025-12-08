@@ -1,12 +1,7 @@
 <template>
   <div class="choice-buttons">
-    <NavChoice
-      v-for="(choice, idx) in choices"
-      :key="idx"
-      :choice="choice"
-      @choose="selectChoice"
-      @hover-choice="emitHover"
-    />
+    <NavChoice v-for="(choice, idx) in choices" :key="idx" :choice="choice" @choose="selectChoice"
+      @hover-choice="emitHover" />
   </div>
 </template>
 

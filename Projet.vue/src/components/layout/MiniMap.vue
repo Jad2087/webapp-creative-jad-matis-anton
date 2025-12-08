@@ -22,8 +22,8 @@ export default {
     return {
       miniMapImage: miniMap,
       chapterPositions: {
-        intro: { top: "22%", left: "52%" },
-        fork01: { top: "28.5%", left: "51.5%" },
+        intro: { top: "11.5%", left: "50%" },
+        fork01: { top: "20.5%", left: "50.3%" },
         clue01: { top: "35%", left: "66%" },
         "clue01-01": { top: "35%", left: "8%" },
         "clue01-02": { top: "30%", left: "12%" },
@@ -81,6 +81,7 @@ export default {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
@@ -102,6 +103,7 @@ export default {
 
 /* MEDIA QUERY POUR MOBILE */
 @media (max-width: 1080px) {
+
   /* Cacher la mini-map sur mobile */
   .minimap-container {
     display: none;

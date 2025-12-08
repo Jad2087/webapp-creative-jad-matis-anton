@@ -19,44 +19,22 @@
         </div>
 
         <!-- Choices -->
-        <ChoiceButtons
-          :choices="activeChapter.choices"
-          @choice-selected="changeChapter"
-          @hover-choice="playHover"
-          class="choicebuttons"
-        />
+        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" @hover-choice="playHover"
+          class="choicebuttons" />
 
         <!-- MiniGame overlay -->
-        <MiniGame
-          v-if="openMiniGame"
-          :minigame-id="activeMiniGameId"
-          @close="openMiniGame = false"
-          @done="onMiniGameDone"
-        />
+        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
+          @done="onMiniGameDone" />
 
         <!-- ECHEC -->
-        <Echec
-          v-if="showEchec"
-          :title="echecTitle"
-          :description="echecDescription"
-          @retry="retryGame"
-          @menu="goToMenu"
-        />
+        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
+          @menu="goToMenu" />
 
         <!-- REUSSITE -->
-        <Reussite
-          v-if="showReussite"
-          :title="reussiteTitle"
-          :description="reussiteDescription"
-          @menu="goToMenu"
-          @historique="showHistory = true"
-        />
+        <Reussite v-if="showReussite" :title="reussiteTitle" :description="reussiteDescription" @menu="goToMenu"
+          @historique="showHistory = true" />
 
-        <ChoiceMade
-          v-if="showHistory"
-          class="overlay"
-          @close="showHistory = false"
-        />
+        <ChoiceMade v-if="showHistory" class="overlay" @close="showHistory = false" />
       </div>
     </div>
   </div>
@@ -507,9 +485,12 @@ export default {
   border-radius: 6px;
 
   box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15);
+    /* halo vert */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */
+    inset 0 0 40px rgba(3, 171, 94, 0.15);
   /* lueur interne légère */
 }
 
@@ -517,12 +498,10 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -536,7 +515,7 @@ export default {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright > *:first-child {
+.columnright>*:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -563,7 +542,7 @@ export default {
   color: #03ab5e;
 }
 
-.columnright > *:last-child {
+.columnright>*:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -603,58 +582,69 @@ export default {
 }
 
 @media (max-width: 1080px) {
-  /* IMPORTANT : forces le viewport mobile correct */
+
+  /* Permet à la page de scroller normalement */
   html,
   body {
     padding: 0;
     margin: 0;
-    height: 100dvh;
-    overflow: hidden;
-    /* évite que 100% casse */
+    height: auto;
+    /* NE PAS forcer 100dvh */
+    min-height: 100dvh;
+    overflow-y: auto;
   }
 
   .container {
     width: 100%;
-    height: 100vh;
-    /* plein écran réel */
+    min-height: 100dvh;
     padding: 0;
     margin: 0;
     display: flex;
+    align-items: stretch;
+    /* important */
   }
 
   .screen {
     display: flex;
     flex-direction: column;
-    width: 95vw;
-    height: 100dvh;
+
+    width: 100%;
+    height: auto;
+    /* height fixe */
+    min-height: 100dvh;
+    /* autorise l’agrandissement */
+
     padding: 1rem;
     gap: 1rem;
-    justify-content: flex-start;
 
     border: none;
     border-radius: 0;
+
+    overflow: visible;
+    /* indispensable */
     transform: none;
     animation: none;
   }
 
   .columnright {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    height: 100%;
+
+    height: auto;
+    min-height: 0;
   }
 
   .story-box {
     flex: 1;
     overflow-y: auto;
     min-height: 0;
-    /* IMPORTANT pour autoriser le scroll */
   }
 
   .choicebuttons {
     flex-shrink: 0;
-    padding-top: 1rem;
+    margin-top: 1rem;
     width: 100%;
-    margin-top: auto;
   }
 }
 </style>

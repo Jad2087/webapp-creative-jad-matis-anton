@@ -114,9 +114,12 @@ export default {
   background: #1b1b1b;
   color: #e35e5e;
   box-shadow: 0 0 25px 5px rgba(227, 94, 94, 0.5),
-    /* halo rouge */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne */ inset 0 0 40px rgba(227, 94, 94, 0.15);
+    /* halo rouge */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne */
+    inset 0 0 40px rgba(227, 94, 94, 0.15);
   /* lueur interne légère */
 }
 
@@ -170,66 +173,65 @@ export default {
 }
 
 @media (max-width: 1080px) {
+
+  /* Fond semi-transparent, mais pas obligé de couvrir pile 100% */
   .echec-container {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100dvh;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    padding: 1rem;
   }
 
+  /* Boîte centrale plus petite, élégante, non plein écran */
   .echec-box {
-    width: 95vw;
-    height: 100dvh;
-    max-width: 1100px;
-    padding: 1rem;
+    width: 90vw;
+    max-width: 480px;
+    max-height: 85vh;
+
+    padding: 1.5rem;
     border: 2px solid #e35e5e;
     background: #111;
     color: #e35e5e;
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* titre en haut, boutons en bas */
     align-items: center;
-    text-align: center;
-    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(227, 94, 94, 0.5);
+
+    overflow: hidden;
   }
 
+  /* Titre compact */
   .titre {
-    font-size: 1.8rem;
-    margin-top: 1rem;
-    /* reste en haut */
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
+  /* Texte scrollable si très long */
   .description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 1rem 0;
-    flex: 1;
-    /* prend tout l’espace central */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* centre horizontalement et verticalement */
+    max-height: 40vh;
+    overflow-y: auto;
     text-align: center;
+    padding: 0 0.5rem;
   }
 
+  /* Zone boutons */
   .buttons {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    /* boutons pleine largeur */
-    padding-bottom: 1rem;
-    /* espace par rapport au bas */
+    gap: 0.75rem;
+    margin-top: auto;
   }
 
   .btn {
     width: 100%;
-    /* pleine largeur */
     padding: 0.75rem 1rem;
     font-size: 1.1rem;
     border: 2px solid #e35e5e;
@@ -241,10 +243,7 @@ export default {
 
   .btn:hover {
     background: #e35e5e;
-    transform: scale(1.05);
     color: black;
-    transform: none;
-    /* enlève le scale */
   }
 }
 </style>

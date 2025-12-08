@@ -2,14 +2,14 @@
   {
     "id": "intro",
     "title": "Act 1 — Intro",
-    "text": "[MODULE CRYO 07 • PROTOCOLE DE RÉVEIL : FORCÉ]\n> ALERTE : DÉCROISSANCE ORBITALE DÉTECTÉE\n> ALERTE : DÉFAILLANCE BIOMÉTRIQUE • SIGNES VITAUX INSTABLES\n> ALERTE : ÉVACUATION MANUELLE REQUISE\n\nUne vibration sourde secoue votre cryo-pod alors que le liquide de stase s’écoule par l’ouverture du hublot.\n\nAvant même d’avoir compris ce qui se passe, vous glissez et vous effondrez sur le sol métallique détrempé.\n\nLa lumière rougeâtre qui pulse au plafond n’éclaire presque rien. Pendant quelques secondes, vous ne percevez qu’un bourdonnement sourd et votre propre respiration haletante.\n\nPeu à peu, votre vision revient.\n\nVous découvrez autour de vous une petite cellule rectangulaire, couverte de rouille, de câbles pendants et de condensation glacée. Aucun souvenir ne vous revient — ni votre nom, ni la raison de votre présence ici.\n\nÀ côté du cryo-pod, un vieux casier entrouvert contient un uniforme usé mais encore intact, ainsi qu’une tablette portative fissurée émettant une lueur bleutée.\n\nVous enfilez l’uniforme presque machinalement, comme si votre corps se souvenait d’une routine que votre esprit avait oubliée. La tablette, à moitié fonctionnelle, sera votre seule source de lumière.\n\nPrès du casier, une porte automatique mène vers un couloir sombre.\nVous n’avez d’autre choix que d’avancer.",
+    "text": "[MODULE CRYO 07 • PROTOCOLE DE RÉVEIL : FORCÉ]\n> ALERTE : DÉCROISSANCE ORBITALE\n> ALERTE : SIGNAUX VITAUX INSTABLES\n> ÉVACUATION MANUELLE REQUISE\n\nUne secousse arrache votre cryo-pod de sa stase tandis que le liquide se vide par le hublot. Vous glissez hors de la capsule et tombez sur le sol métallique encore trempé.\n\nLa lumière rouge qui pulse au plafond n'éclaire presque rien. Pendant quelques instants, vous n’entendez que le bourdonnement sourd des systèmes d'urgence et votre respiration haletante.\n\nLorsque votre vision revient, vous distinguez une petite cellule glaciale : métal rouillé, câbles pendants, condensation sur les parois. Aucun souvenir. Pas même votre nom.\n\nPrès du pod, un casier entrouvert contient un uniforme usé et une tablette fissurée diffusant une faible lueur bleutée. Vous enfilez l'uniforme machinalement. La tablette — à moitié fonctionnelle — sera votre seule lumière.\n\nUne porte automatique mène vers un couloir sombre. Vous avancez. Vous n'avez pas le choix.",
     "choices": [
       {
         "text": "Continuer dans le couloir obscur",
         "next": { "type": "story", "id": "fork01", "good": true }
       }
     ]
-  },
+  },  
   {
     "id": "fork01",
     "title": "Act 1 — Embranchement",

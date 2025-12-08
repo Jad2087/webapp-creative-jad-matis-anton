@@ -73,60 +73,110 @@ export default {
   font-family: "Courier New", monospace;
 }
 
+/* --- Fenêtre Historique (PC) — Style terminal dans le coin --- */
 .choice-made {
-  color: #03ab5e;
-  background-color: #1b1b1b;
-  padding: 1rem;
-  border: 2px solid #03ab5e;
-  max-height: 60%;
-  width: 400px;
   position: absolute;
-  top: 10%;
-  right: 10%;
+  top: 8%;
+  right: 5%;
+  /* coin haut droit rétro */
+
+  width: 340px;
+  max-height: 60vh;
+
+  background-color: #111;
+  border: 2px solid #03ab5e;
+  padding: 1rem;
+  color: #03ab5e;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+  box-shadow: 0 0 18px rgba(3, 171, 94, 0.3);
+
   overflow-y: auto;
-  z-index: 10;
+  border-radius: 4px;
+
+  z-index: 9999;
+
+  /* Légère transformation pour effet “HUD” */
+  transform: translateY(0) scale(0.98);
 }
 
+/* Titre */
 .choice-made h3 {
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  text-align: center;
 }
 
+/* Liste */
 .choice-made ul {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 0;
+  list-style: none;
+  max-height: 40vh;
+  overflow-y: auto;
 }
 
+.choice-made li {
+  margin: 0.25rem 0;
+  padding-left: 0.4rem;
+  border-left: 2px solid #03ab5e55;
+  font-size: 0.95rem;
+}
+
+/* Bouton */
 .btn-close {
-  margin-top: 10px;
-  padding: 5px 10px;
+  margin-top: 0.8rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+
   border: 2px solid #03ab5e;
   background: transparent;
   color: #03ab5e;
+
+  font-size: 1rem;
   cursor: pointer;
-  transition: 0.2s;
+  border-radius: 4px;
+
+  transition: 0.15s ease;
 }
 
 .btn-close:hover {
   background: #03ab5e;
   color: black;
-  transform: scale(1.05);
 }
 
-/* Version mobile */
+/* --- MOBILE VERSION --- */
 @media (max-width: 600px) {
   .choice-made {
     width: 90%;
-    max-height: 80%;
+    max-height: 80vh;
+
+    padding: 1rem;
+    border-radius: 6px;
+
+    /* toujours parfaitement centré */
     top: 50%;
     left: 50%;
-    right: auto;
     transform: translate(-50%, -50%);
-    padding: 0.8rem;
+  }
+
+  .choice-made h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .choice-made ul {
+    max-height: 55vh;
+    /* plus de place pour défiler */
   }
 
   .btn-close {
-    width: 100%;
-    text-align: center;
+    font-size: 1rem;
+    padding: 0.7rem;
   }
 }
 </style>
