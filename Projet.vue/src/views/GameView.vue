@@ -130,12 +130,13 @@ export default {
 
     this.bgAudio = new Audio(backgroundMusic);
     this.bgAudio.loop = true;
+    this.bgAudio.volume = 0.4;
     this.bgAudio.load();
     this.bgAudio.isPlaying = false;
 
     this.typingAudio = new Audio(typingSoundFile);
     this.typingAudio.loop = true;
-    this.typingAudio.volume = 0.3;
+    this.typingAudio.volume = 0.9;
     this.typingAudio.load();
   },
 
