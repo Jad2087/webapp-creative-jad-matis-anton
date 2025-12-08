@@ -82,6 +82,7 @@ import clickSound from "@/Sounds/futuristic_click.mp3";
 import hoverSound from "@/Sounds/futuristic_hover.mp3";
 import deathSound from "@/Sounds/error_sound.mp3";
 import successSound from "@/Sounds/win_sound.mp3";
+import backgroundMusic from "@/Sounds/background_music.mp3";
 
 export default {
   name: "GameView",
@@ -125,6 +126,7 @@ export default {
       hoverAudio: null,
       deathAudio: null,
       successAudio: null,
+      bgAudio: null,
 
       // CUSTOM MESSAGES
       deathMessages: {},
@@ -133,8 +135,6 @@ export default {
   },
 
   created() {
-    this.current = this.$route.params.id;
-
     // Pré-chargement sons
     this.clickAudio = new Audio(clickSound);
     this.clickAudio.load();
@@ -142,11 +142,16 @@ export default {
     this.hoverAudio = new Audio(hoverSound);
     this.hoverAudio.load();
 
-    this.deathAudio = new Audio(deathSound); // 🔥 NOUVEAU
+    this.deathAudio = new Audio(deathSound);
     this.deathAudio.load();
 
     this.successAudio = new Audio(successSound);
     this.successAudio.load();
+
+    this.bgAudio = new Audio(backgroundMusic);
+    this.bgAudio.loop = true;
+    this.bgAudio.load();
+    this.bgAudio.isPlaying = false;
   },
 
   computed: {
@@ -181,11 +186,29 @@ export default {
         this.deathAudio.currentTime = 0;
         this.deathAudio.play();
       }
+      this.stopBackgroundMusic();
     },
     playSuccess() {
       if (this.successAudio) {
         this.successAudio.currentTime = 0;
         this.successAudio.play();
+      }
+      this.stopBackgroundMusic();
+    },
+
+    playBackgroundMusic() {
+      if (this.bgAudio && !this.bgAudio.isPlaying) {
+        this.bgAudio.currentTime = 0;
+        this.bgAudio.play();
+        this.bgAudio.isPlaying = true;
+      }
+    },
+
+    stopBackgroundMusic() {
+      if (this.bgAudio) {
+        this.bgAudio.pause();
+        this.bgAudio.currentTime = 0;
+        this.bgAudio.isPlaying = false;
       }
     },
 
@@ -196,7 +219,6 @@ export default {
       const storyStore = useStoryStore();
       const player = usePlayerStore();
 
-      // Historique
       const lastChoice = storyStore.choicesHistory.slice(-1)[0];
       if (lastChoice !== choiceText) storyStore.addChoice(choiceText);
 
@@ -207,7 +229,6 @@ export default {
         "clue01-01": "clue01",
         "clue02-01": "clue02",
       };
-
       const awardedClue = clueAwards[nextId];
       if (awardedClue) player.addClue(awardedClue);
 
@@ -222,8 +243,7 @@ export default {
           "Votre corps cède sous la pression... puis tout devient noir.";
 
         this.showEchec = true;
-        this.playDeath(); // 🔥
-
+        this.playDeath();
         return;
       }
 
@@ -264,7 +284,7 @@ export default {
         "Votre vision se trouble... l’air manque... puis tout devient noir.";
 
       this.showEchec = true;
-      this.playDeath(); // 🔥
+      this.playDeath();
     },
 
     /* ----------------------- FIN MINI-JEU ----------------------- */
@@ -287,7 +307,7 @@ export default {
           "Une surcharge parcourt le terminal... puis plus rien.";
 
         this.showEchec = true;
-        this.playDeath(); // 🔥
+        this.playDeath();
       }
     },
 
@@ -306,12 +326,15 @@ export default {
         name: "game",
         params: { id: this.restartChapterId },
       });
+
+      this.playBackgroundMusic();
     },
 
     goToMenu() {
       const player = usePlayerStore();
       player.reset();
       this.showEchec = false;
+      this.showReussite = false;
       this.current = "intro";
       this.$router.push({ name: "home" });
     },
@@ -353,7 +376,12 @@ export default {
   },
 
   mounted() {
+    this.playBackgroundMusic(); // lance la musique une seule fois
     this.animateText();
+  },
+
+  beforeUnmount() {
+    this.stopBackgroundMusic(); // stoppe la musique si on quitte le gameview
   },
 
   watch: {
