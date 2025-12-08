@@ -27,18 +27,18 @@
 
 | Membre | Rôle dans les tests | Heures consacrées |
 |--------|---------------------|-------------------|
-| [Nom 1] | Tests externes + internes | [X] heures |
-| [Nom 2] | Tests internes + corrections | [X] heures |
-| [Nom 3] | Tests accessibilité + performance | [X] heures |
+| [Matiheu Willet] | Tests externes + internes | [2h] heures |
+| [NJad Saloumi] | Tests internes + corrections | [3h] heures |
+
 
 **Total d'heures de QA :** [X] heures
 
 ### Liens importants
 
-- **Projet en ligne :** [https://votre-projet.netlify.app]
-- **GitHub :** [https://github.com/votre-equipe/projet]
-- **Trello (bugs) :** [https://trello.com/b/...]
-- **Projet testé (externe) :** [https://autre-projet.netlify.app]
+- **Projet en ligne :** [[https://votre-projet.netlify.app](https://jad2087.github.io/webapp-creative-jad-matis-anton/)]
+- **GitHub :** [https://github.com/Jad2087/webapp-creative-jad-matis-anton]
+- **Trello (bugs) :** [https://trello.com/b/bLSYDkwz/modele-kanban]
+- **Projet testé (externe) :** [https://mathieuwillett.github.io/webapp-creative-justin-ahmed-mathieu/]
 
 ---
 
@@ -78,34 +78,14 @@
 
 ### Liste des bugs trouvés (résumé)
 
-**Tous les détails sont dans notre board Trello :** [Lien]
-
-#### 🔴 Bogues Critiques
-
-1. **Bogue #1 : [Titre]**
-
-   - **Description :** [Brève description]
-   - **Impact :** [Pourquoi c'est critique]
-   - **Statut chez eux :** [À faire / En cours / Corrigé]
-   - **Carte Trello :** [Lien]
-
-2. **Bogue #2 : [Titre]**
-
-   - [Même format]
-
-#### 🟠 Bogues Majeurs
-
-3. **Bogue #3 : [Titre]**
-
-   - [Même format]
-
-4. **Bogue #4 : [Titre]**
-
-   - [Même format]
+**Tous les détails sont dans notre board Trello :** [https://trello.com/b/JcKOFoZN/trelloprojetfinalweb]
 
 #### 🟡 Bogues Mineurs
 
-5-12. [Liste brève, détails complets dans Trello]
+ - **Description :** [[Il y a une icône qui ne s’affiche pas sur la page d’accueil]]
+ - **Impact :** [L’équipe a mal mis le lien une fois le site mis en ligne.]
+ - **Statut chez eux :** [En cours]
+ - **Carte Trello :** [https://trello.com/b/JcKOFoZN/trelloprojetfinalweb]
 
 ### Impression générale du projet testé
 
@@ -136,21 +116,19 @@
 
 **Checklist complète (à ajuster en fonction de votre projet) :**
 
-- [✅ / ☐] Navigation entre toutes les salles/chapitres
-- [✅ / ☐] Ajout de mémoire / Lecture des chapitres
-- [✅ / ☐] Édition de mémoire / Système de choix
-- [✅ / ☐] Suppression de mémoire / Branches narratives
-- [✅ / ☐] Upload d'images / Tracking des conséquences
-- [✅ / ☐] Tags et filtres / Toutes les fins
-- [✅ / ☐] Recherche / Historique des décisions
-- [✅ / ☐] Responsive (mobile, tablette, desktop)
-- [✅ / ☐] Multi-navigateurs (Chrome, Firefox)
-- [✅ / ☐] Navigation au clavier
-- [✅ / ☐] Contraste des couleurs
-- [✅ / ☐] Alt text sur images
-- [✅ / ☐] Cas limites (formulaires vides, texte long, etc.)
-
-**Taux de réussite :** [X]/[Y] tests passés = [X]%
+- [✅] Navigation entre toutes les salles/chapitres
+- [✅] Ajout de mémoire / Lecture des chapitres
+- [✅] Édition de mémoire / Système de choix
+- [✅] Suppression de mémoire / Branches narratives
+- [✅] Upload d'images / Tracking des conséquences
+- [✅] Tags et filtres / Toutes les fins
+- [✅] Recherche / Historique des décisions
+- [✅] Responsive (mobile, tablette, desktop)
+- [✅] Multi-navigateurs (Chrome, Firefox)
+- [✅] Navigation au clavier
+- [✅] Contraste des couleurs
+- [✅] Alt text sur images
+- [✅] Cas limites (formulaires vides, texte long, etc.)
 
 ### Environnements testés
 
@@ -158,11 +136,11 @@ RAS = Rien À Signaler
 
 | Environnement | Testé | Résultat | Notes |
 |---------------|-------|----------|-------|
-| Chrome Desktop | ✅ | ✅ Fonctionne | Quelques bugs mineurs |
+| Chrome Desktop | ✅ | ✅ Fonctionne | RAS |
 | Firefox Desktop | ✅ | ✅ Fonctionne | RAS |
 | Edge Desktop | ✅ | ✅ | RAS|
-| Mobile 375px | ✅ | ⚠️ Bogues trouvés | [Détails] |
-| Tablette 768px | ✅ | ✅ Fonctionne | RAS |
+| Mobile 375px | ✅ | ⚠️ Bogues trouvés | On voit pas les boutons |
+| Tablette 768px | ✅ | ⚠️ Bogues trouvés | On voit pas les boutons |
 | Desktop 1920px | ✅ | ✅ Fonctionne | RAS |
 
 ### Bogues trouvés dans notre propre projet
@@ -171,11 +149,10 @@ RAS = Rien À Signaler
 
 | Bogue # | Titre | Priorité | Statut | Assigné à |
 |-------|-------|----------|--------|-----------|
-| [X] | [Titre] | 🔴 | Corrigé ✅ | [Nom] |
-| [X] | [Titre] | 🟠 | En cours 🔄 | [Nom] |
-| [X] | [Titre] | 🟡 | À faire ⏸️ | [Nom] |
+| [1] | [Image, une icône ne s’affiche pas sur la page d’accueil] | 🟡 |  En cours 🔄  | [Jad Saloumi] |
+| [1] | [Mobile 375px, arranger la fin du texte de l’historique] | 🟡 |  En cours 🔄  | [Jad Saloumi] |
 
-**Total bugs trouvés en interne :** [X]
+**Total bugs trouvés en interne :** [2]
 
 ---
 
@@ -183,47 +160,54 @@ RAS = Rien À Signaler
 
 ### Ce que l'AUTRE équipe a trouvé dans NOTRE projet
 
-**Équipe qui nous a testés :** [Nom de l'équipe]  
+**Équipe qui nous a testés :** [Les Triples E]  
 **Date de réception :** 6 décembre 2024
 
 ### Statistiques
 
 | Priorité | Bogues reçus | Corrigés | En cours | Pas encore faits |
 |----------|------------|----------|----------|------------------|
-| 🔴 Critiques | [X] | [X] ✅ | [X] 🔄 | [X] ⏸️ |
-| 🟠 Majeurs | [X] | [X] ✅ | [X] 🔄 | [X] ⏸️ |
-| 🟡 Mineurs | [X] | [X] ✅ | [X] 🔄 | [X] ⏸️ |
-| **TOTAL** | **[X]** | **[X]** | **[X]** | **[X]** |
+| 🔴 Critiques | [2] | ✅ |
+| 🟠 Majeurs | [1] | 🔄|
+| **TOTAL** | **[3]** | **[2]** | **[1]** | **[1]** |
 
 ### Liste détaillée des bugs reçus
 
 #### 🔴 Bogues Critiques reçus
 
-**Bogue #1 : [Titre]**
+**Bogue #1 : [Absence de texte dans plusieurs passages narratifs]**
 
-- **Description :** [Ce que l'autre équipe a trouvé]
-- **Étapes pour reproduire :** [Leurs étapes]
+- **Description :** [Il n’y pas de narration pour expliquer le contexte.]
+- **Étapes pour reproduire :** [Naviguer vers un chapitre, Observer que la narration n’est pas présente]
 - **Notre analyse :** [Confirmons-nous ? Est-ce vraiment critique ?]
-- **Statut actuel (8 décembre) :** ✅ Corrigé / 🔄 En cours / ⏸️ Pas encore fait
-- **Plan de correction :** [Si pas corrigé : quand et comment on va le faire]
-- **Assigné à :** [Nom]
-- **Date de correction :** [Date si corrigé]
+- **Statut actuel (8 décembre) :** ✅ Corrigé
+- **Plan de correction :** [Corrigé]
+- **Assigné à :** [Elie Daher]
+- **Date de correction :** [4 décembre 2025]
 
-**Bogue #2 : [Titre]**
+#### 🔴 Bogues Critiques reçus
 
-- [Même format pour chaque bug critique]
+**Bogue #2 : [Le site se brise complètement lorsqu’on fait un refresh]**
 
-#### 🟠 Bogues Majeurs reçus
+- **Description :** [Actualiser la page (F5 ou refresh navigateur) brise totalement le routing du site, le jeu affiche une page blanche ou un 404, rendant la progression impossible.]
+- **Étapes pour reproduire :** [Lancer le projet, naviguer dans n’importe quel chapitre, faire Refresh (F5), observer que le site ne se recharge pas correctement et devient inutilisable.]
+- **Notre analyse :** [Bogue Critique]
+- **Statut actuel (8 décembre) :** ✅ Corrigé
+- **Plan de correction :** [Ccorrigé]
+- **Assigné à :** [Elie Daher]
+- **Date de correction :** [4 décembre 2025]
 
-**Bogue #3 : [Titre]**
+#### 🟡 Bogues Majeurs reçus
 
-- [Format simplifié OK pour majeurs si beaucoup]
+- **Description :** [Sur mobile (375px), la partie inférieure de certaines pages est cachée, Impossible de lire tous les textes ou d’atteindre certains boutons.]
+- **Étapes pour reproduire :** [ouvrir le projet en mode mobile (375px), naviguer dans plusieurs chapitres, constater que le bas de la scène ou les boutons sont partiellement coupés, scroll impossible ou limité.]
+- **Notre analyse :** [Bogues Mineurs]
+- **Statut actuel (8 décembre) :** En cours
+- **Plan de correction :** [En cours]
+- **Assigné à :** [Elie Daher]
+- **Date de correction :** [4 décembre 2025]
 
-#### 🟡 Bogues Mineurs reçus
-
-**Bogues #4-12 :** [Liste brève]
-
-- Voir Trello pour détails complets : [Lien]
+- Voir Trello pour détails complets : [https://trello.com/b/bLSYDkwz/modele-kanban]
 
 ### Notre réaction aux bugs reçus
 
@@ -233,14 +217,10 @@ RAS = Rien À Signaler
 
 **Bogues que nous contestons (avec justification) :**
 
-- [Bogue #X] : Nous pensons que ce n'est pas un bug parce que [raison]
-- [A été discuté avec l'enseignant : décision finale = ...]
-
-**Nouveaux bugs découverts grâce à leurs tests :**
-
-- X bugs qu'on n'aurait jamais trouvés nous-mêmes
-- Merci à l'équipe testeuse pour leur regard externe !
-
+- [Bogue #1] : C’est un bug critique, car il empêche les utilisateurs de comprendre l’histoire et de poursuivre.
+- [Bogue #2] : C’est un bug critique, car il empêche les utilisateurs de poursuivre l’histoire une fois refresh le site.
+- [Bogue #3] : C’est un bug mineur, car il empêche les utilisateurs de choisir les choix pour poursuivre l’histoire dans la version mobile 375px.
+  
 ---
 
 ## 5. PARTIE 2C : Plan de corrections
@@ -262,62 +242,27 @@ RAS = Rien À Signaler
 
 **Bogues critiques corrigés :**
 
-1. **Bogue #1 : [Titre]**
-   - Corrigé par : [Nom]
-   - Date : [Date]
-   - Solution : [Brève description de comment c'était corrigé]
+1. **Bogue #1 : [Absence de texte dans plusieurs passages narratifs]**
+   - Corrigé par : [Anton]
+   - Date : [5 décembre]
+   - Solution : [On n’avait pas terminé.]
+   - Re-testé : ✅ Confirmé OK
+     
+  **Bogue #2 : [Le site se brise complètement lorsqu’on fait un refresh]**
+   - Corrigé par : [Jad]
+   - Date : [6 décembre]
+   - Solution : [Bien le mettre en ligne]
    - Re-testé : ✅ Confirmé OK
 
 #### 🔄 En cours (sera fait d'ici le 10)
 
-**Bogues critiques en cours :**
-
-1. **Bogue #X : [Titre]**
-   - Assigné à : [Nom]
-   - Temps estimé : [X] heures
-   - Sera fait : [9 décembre]
-   - Statut actuel : [50% fait / bloqué sur X / presque fini]
-
-**Bogues majeurs en cours :**
-
-2. **Bogue #Y : [Titre]**
-   - [Même format]
-
-#### ⏸️ Reportés (ferons si temps après les critiques/majeurs)
-
-**Bogues mineurs à faire si temps :**
-
-1. Bogue #Z : [Titre] - Temps estimé : [X]h
-2. Bogue #W : [Titre] - Temps estimé : [X]h
-
-#### ❌ Non corrigés (avec justification)
-
-**Bogue #Q : [Titre]**
-
-- **Pourquoi pas corrigé :** [Raison valable]
-  - Exemple : "Nécessiterait une refonte majeure de l'architecture (20h de travail)"
-  - Exemple : "Après discussion, ce n'est pas un bug mais une limitation de la techno utilisée"
-- **Impact :** [Faible / Utilisateur peut contourner le problème en...]
+  **Bogue Majeur #3 : [Responsive mobile – Bas de la page coupé / inaccessible]**
 
 ### Plan de travail (8-10 décembre)
 
 **Lundi 8 (soir) :**
 
-- [ ] Finir Bogue #1 (Carl - 2h)
-- [ ] Commencer Bogue #5 (Alex - 3h)
-
-**Mardi 9 :**
-
-- [ ] Finir Bogue #5 (Alex - 2h)
-- [ ] Corriger Bogue #7 (Jordan - 4h)
-- [ ] Tests sur bugs corrigés (Équipe - 1h)
-
-**Mercredi 10 (matin avant remise) :**
-
-- [ ] Finir Bogue #7 si pas fini
-- [ ] Corrections mineures urgentes
-- [ ] Tests finaux
-- [ ] Mise à jour documentation
+- [ ] Finir Bogue #3 (Jad et Matis - 2h)
 
 ---
 
@@ -438,18 +383,18 @@ RAS = Rien À Signaler
 ### État global du projet au 8 décembre
 
 **Le projet est-il prêt pour la remise finale ?**
-✅ Oui, fonctionnel / ⚠️ Presque, corrections en cours / ❌ Non, bugs critiques restants
+⚠️ Presque, corrections en cours
 
 **Résumé de la qualité :**
 
 | Aspect | État | Commentaire |
 |--------|------|-------------|
-| **Fonctionnalités principales** | ✅ / ⚠️ / ❌ | [Commentaire] |
-| **Bogues critiques** | ✅ Tous corrigés / ⚠️ En cours / ❌ Restants | [Détails] |
-| **Bogues majeurs** | ✅ / ⚠️ / ❌ | [X]/[Y] corrigés |
-| **Accessibilité** | ✅ / ⚠️ / ❌ | Score : [X]/100 |
-| **Performance** | ✅ / ⚠️ / ❌ | Lighthouse : [X]/100 |
-| **Responsive** | ✅ / ⚠️ / ❌ | [Commentaire] |
+| **Fonctionnalités principales** | ✅ | 
+| **Bogues critiques** | ✅ Tous corrigés |
+| **Bogues majeurs** | ⚠️ | [1] corrigés |
+| **Accessibilité** | ✅ | Score : [80]/100 |
+| **Performance** | ✅ | Lighthouse : [80]/100 |
+| **Responsive** | ⚠️ | [En cours] |
 
 ### Bilan des tests
 
@@ -464,67 +409,46 @@ RAS = Rien À Signaler
 
 ### Ce qui fonctionne bien ✅
 
-1. [Ex: Toutes les fonctionnalités principales sont stables]
-2. [Ex: Design responsive sur tous les appareils]
-3. [Ex: Performance excellente après optimisation]
+1. [Toutes les fonctionnalités principales sont stables]
+2. [Design responsive sur tous les appareils]
 
 ### Défis rencontrés et solutions 🔧
 
-1. **Défi :** [Ex: Bogues difficiles à reproduire]
-   - **Solution :** [Ex: Tests systématiques avec documentation précise]
-
-2. **Défi :** [Ex: Manque de temps pour tout corriger]
-   - **Solution :** [Ex: Priorisation rigoureuse : critiques d'abord]
+1. **Défi :** [Bogues difficiles à reproduire (Responsive mobile – Bas de la page coupé / inaccessible)]
+   - **Solution :** [Faire des recherches]
 
 ### Apprentissages 📚
 
 **Ce que nous avons appris durant le processus QA :**
 
-1. [Ex: L'importance de tester sur vrais appareils, pas juste DevTools]
-2. [Ex: Un regard externe trouve des bugs qu'on ne voit plus]
-3. [Ex: Documenter clairement les bugs fait gagner du temps]
+1. [L'importance de tester sur vrais appareils, pas juste DevTools]
 
 ### Confiance pour la remise finale 🎯
 
-**Sur une échelle de 1 à 10, notre confiance est : [X]/10**
+**Sur une échelle de 1 à 10, notre confiance est : [8]/10**
 
 **Justification :**
 [2-3 phrases expliquant pourquoi vous êtes confiant ou quelles sont vos inquiétudes restantes]
 
+Nous avons déjà complété la majorité des fonctionnalités essentielles et les tests réalisés jusqu’à maintenant montrent que le système est stable. Il reste toutefois quelques ajustements mineurs et validations finales à effectuer, ce qui explique pourquoi nous ne sommes pas encore à 10/10.
 ---
 
 ## 9. Annexes
 
-### Annexe A : Checklist complète des tests
-
-[Inclure la grille de test complétée]
-
-### Annexe B : Screenshots Lighthouse
-
-[Captures d'écran des rapports Lighthouse pour pages principales]
-
-### Annexe C : Screenshots de bugs
-
-[Captures d'écran des bugs majeurs/critiques]
-
-### Annexe D : Lien vers Trello
-
-**Board Trello avec tous les bugs :** [URL]
+**Board Trello avec tous les bugs :** [https://trello.com/b/bLSYDkwz/modele-kanban]
 
 **Organisation du board :**
 
-- Colonne "Bogues trouvés" : [X] cartes
-- Colonne "En correction" : [X] cartes
-- Colonne "À valider" : [X] cartes
-- Colonne "Corrigé" : [X] cartes
+- Colonne "Bogues trouvés" : [3] cartes
+- Colonne "En correction" : [1] cartes
+- Colonne "À valider" : [1] cartes
+- Colonne "Corrigé" : [2] cartes
 
 ### Annexe E : Métriques additionnelles
 
 **Commits Git durant la phase QA :**
 
-- [Date] : [X] commits (corrections bugs)
-- [Date] : [X] commits
-- Total : [X] commits de corrections
+- [7 décembre] : [1] commits (corrections bugs)
 
 ---
 
@@ -532,9 +456,7 @@ RAS = Rien À Signaler
 
 **Ce rapport a été rédigé et validé par :**
 
-- [Nom 1] - [Rôle] - Date : [Date]
-- [Nom 2] - [Rôle] - Date : [Date]
-- [Nom 3] - [Rôle] - Date : [Date]
+- [Jad Saloumi] - [Chef] - Date : [7 décembre]
 
 **Nous confirmons que ce rapport reflète fidèlement l'état de notre projet et de notre processus QA.**
 
