@@ -83,6 +83,7 @@ import hoverSound from "@/Sounds/futuristic_hover.mp3";
 import deathSound from "@/Sounds/error_sound.mp3";
 import successSound from "@/Sounds/win_sound.mp3";
 import backgroundMusic from "@/Sounds/background_music.mp3";
+import typingSoundFile from "@/Sounds/texte_typing.mp3";
 
 export default {
   name: "GameView",
@@ -127,6 +128,7 @@ export default {
       deathAudio: null,
       successAudio: null,
       bgAudio: null,
+      typingAudio: null,
 
       // CUSTOM MESSAGES
       deathMessages: {},
@@ -152,6 +154,11 @@ export default {
     this.bgAudio.loop = true;
     this.bgAudio.load();
     this.bgAudio.isPlaying = false;
+
+    this.typingAudio = new Audio(typingSoundFile);
+    this.typingAudio.loop = true;
+    this.typingAudio.volume = 0.3;
+    this.typingAudio.load();
   },
 
   computed: {
@@ -363,12 +370,27 @@ export default {
 
       const letters = el.querySelectorAll("span");
 
+      // Démarre le son de frappe
+      if (this.typingAudio) this.typingAudio.play();
+
       gsap.killTweensOf(letters);
 
       gsap.fromTo(
         letters,
         { opacity: 0 },
-        { opacity: 1, duration: 0.02, stagger: 0.02, ease: "none" }
+        {
+          opacity: 1,
+          duration: 0.02,
+          stagger: 0.02,
+          ease: "none",
+          onComplete: () => {
+            // Stoppe le son quand l'animation est finie
+            if (this.typingAudio) {
+              this.typingAudio.pause();
+              this.typingAudio.currentTime = 0;
+            }
+          },
+        }
       );
 
       this.animatedChapters.push(this.current);
