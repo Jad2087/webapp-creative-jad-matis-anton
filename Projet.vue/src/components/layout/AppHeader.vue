@@ -5,7 +5,14 @@
     </div>
 
     <nav class="app-header__nav">
-      <RouterLink to="/" class="app-header__link">Accueil</RouterLink>
+      <RouterLink
+        to="/"
+        class="app-header__link"
+        @click="playClick"
+        @mouseenter="playHover"
+      >
+        Accueil
+      </RouterLink>
     </nav>
   </header>
 </template>
@@ -13,6 +20,24 @@
 <script>
 export default {
   name: "AppHeader",
+  props: {
+    clickAudio: Object, // Audio pour le clic
+    hoverAudio: Object, // Audio pour le hover
+  },
+  methods: {
+    playClick() {
+      if (this.clickAudio) {
+        this.clickAudio.currentTime = 0;
+        this.clickAudio.play();
+      }
+    },
+    playHover() {
+      if (this.hoverAudio) {
+        this.hoverAudio.currentTime = 0;
+        this.hoverAudio.play();
+      }
+    },
+  },
 };
 </script>
 
@@ -27,7 +52,6 @@ export default {
   background-color: #111;
   box-sizing: border-box;
   min-height: 85px;
-  /* AJOUT POUR MATCHER */
 }
 
 .app-header__logo {

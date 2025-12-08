@@ -1,5 +1,11 @@
 <template>
-  <button v-if="isVisible" class="choice-btn" :class="{ 'choice-btn--clue-found': isClueFound }" @click="choose">
+  <button
+    v-if="isVisible"
+    class="choice-btn"
+    :class="{ 'choice-btn--clue-found': isClueFound }"
+    @click="choose"
+    @mouseenter="$emit('hover-choice')"
+  >
     {{ choice.text }}
   </button>
 </template>
@@ -43,7 +49,7 @@ export default {
   },
   methods: {
     choose() {
-      // émet à l'extérieur le next et le texte du bouton
+      // émet l'événement de clic
       this.$emit("choose", this.choice.next, this.choice.text);
     },
   },

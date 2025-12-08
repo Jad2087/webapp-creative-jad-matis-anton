@@ -2,25 +2,48 @@
   <div class="container">
     <div class="screen">
       <h1 class="title">Codex</h1>
-      <button class="start-btn" @click="startStory">Commencer</button>
+      <button class="start-btn" @click="startStory" @mouseenter="playHover">
+        Commencer
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-//import SpaceBackground from '@/Images/space_background.png';
+import clickSound from "@/Sounds/futuristic_click.mp3"; // import du son
+import hoverSound from "@/Sounds/futuristic_hover.mp3";
+
 export default {
   name: "HomeView",
 
   data() {
-    return {};
+    return {
+      clickAudio: null,
+      hoverAudio: null,
+    };
+  },
+
+  created() {
+    // Précharger le son du clic
+    this.clickAudio = new Audio(clickSound);
+    this.clickAudio.load();
+
+    // Précharger le son du hover
+    this.hoverAudio = new Audio(hoverSound);
+    this.hoverAudio.load();
   },
 
   methods: {
-    // dirige l'utilisateur vers la route nommée "intro".
-    // startStory() {this.$router.push({ name: "intro" });},
     startStory() {
+      this.clickAudio.currentTime = 0;
+      this.clickAudio.play();
+
       this.$router.push({ name: "game", params: { id: "intro" } });
+    },
+
+    playHover() {
+      this.hoverAudio.currentTime = 0;
+      this.hoverAudio.play();
     },
   },
 };
@@ -40,7 +63,7 @@ export default {
   /* centers vertically */
   height: 100vh;
   /* full viewport height */
-  background-image: url("@/Images/space_background.png"); /* mets ton chemin ici SpaceBackground */ 
+  background-image: url("@/Images/space_background.png"); /* mets ton chemin ici SpaceBackground */
   background-size: cover; /* prend tout l'écran */
   background-position: center; /* centré */
   background-repeat: no-repeat;

@@ -1,85 +1,97 @@
 <template>
   <div class="mini-game-overlay">
     <div class="mini-game-content">
-      <!-- Close button -->
+      <!-- Close button + header -->
+      <div class="header-bar">
+        <div class="term-header">{{ typedHeader }}</div>
+        <button
+          class="close-x"
+          @click="handleClose"
+          @mouseover="playSound(hoverAudio)"
+        >
+          ✕
+        </button>
+      </div>
 
-      <!-- MAIN TERMINAL AREA -->
-      <div class="terminal-frame">
-        <!-- Header (typed) -->
+      <!-- Attempts line -->
+      <div class="term-attempts">
+        <span>{{ attemptsRemaining }} ESSAIS RESTANTS:</span>
+        <span
+          v-for="n in maxAttempts"
+          :key="n"
+          class="attempt-block"
+          :class="{ used: n > attemptsRemaining }"
+        ></span>
+      </div>
 
-        <div class="header-bar">
-          <div class="term-header">
-            {{ typedHeader }}
-          </div>
-
-          <button class="close-x" @click="handleClose">✕</button>
+      <!-- GRID + LOG AREA -->
+      <div class="term-grid-layout">
+        <div class="addresses">
+          <ul>
+            <li v-for="addr in leftAddresses" :key="addr">{{ addr }}</li>
+          </ul>
         </div>
 
-        <!-- Attempts line + blocks -->
-        <div class="term-attempts">
-          <span>{{ attemptsRemaining }} ESSAIS RESTANTS:</span>
-          <span v-for="n in maxAttempts" :key="n" class="attempt-block" :class="{ used: n > attemptsRemaining }"></span>
-        </div>
-
-        <!-- GRID + LOG AREA -->
-        <div class="term-grid-layout">
-          <!-- Left address column -->
-          <div class="addresses">
-            <ul>
-              <li v-for="addr in leftAddresses" :key="addr">{{ addr }}</li>
-            </ul>
-          </div>
-
-          <!-- Character lines -->
-          <div class="char-lines">
-            <div class="char-line" v-for="(row, rIndex) in visibleGridRows" :key="rIndex">
-              <span v-for="(cell, cIndex) in row" :key="cIndex" class="char-span" :class="{
+        <div class="char-lines">
+          <div
+            class="char-line"
+            v-for="(row, rIndex) in visibleGridRows"
+            :key="rIndex"
+          >
+            <span
+              v-for="(cell, cIndex) in row"
+              :key="cIndex"
+              class="char-span"
+              :class="{
                 word: cell.isWord,
                 used: cell.used,
                 hovered: isHovered(cell),
-              }" @click="onCellClick(cell)" @mouseover="hoverWord(cell)" @mouseleave="hoverWord(null)">
-                {{ cell.text }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Right address column -->
-          <div class="addresses">
-            <ul>
-              <li v-for="addr in rightAddresses" :key="addr">{{ addr }}</li>
-            </ul>
-          </div>
-
-          <!-- Log / feedback panel -->
-          <div class="log-panel">
-            <div class="log-line" v-for="(log, index) in logs" :key="index">
-              <div>&gt; {{ log.guess }}</div>
-              <div v-if="!log.success">&gt; ACCÈS REFUSÉ</div>
-              <div v-if="!log.success">
-                &gt; {{ log.matches }}/{{ secretWord.length }} CORRESPONDANCES.
-              </div>
-              <div v-if="log.success">&gt; CCÈS AUTORISÉ</div>
-            </div>
+              }"
+              @click="onCellClick(cell)"
+              @mouseover="hoverWord(cell)"
+              @mouseleave="hoverWord(null)"
+            >
+              {{ cell.text }}
+            </span>
           </div>
         </div>
 
-        <!-- END MESSAGE -->
-        <div v-if="gameOver" class="end-message">
-          <template v-if="success">
-            <p>&gt; CONNEXION DU TERMINAL RÉUSSIE...</p>
-            <button class="continue-btn" @click="handleContinue">
-              CONTINUER
-            </button>
-          </template>
-
-          <template v-else>
-            <p>
-              &gt; TERMINAL VERROUILLÉ<br />
-              &gt; ASSISTANCE TECHNIQUE REQUISE
-            </p>
-            <!-- pas de bouton ici : on laisse le parent afficher Échec -->
-          </template>
+        <div class="addresses">
+          <ul>
+            <li v-for="addr in rightAddresses" :key="addr">{{ addr }}</li>
+          </ul>
         </div>
+
+        <div class="log-panel">
+          <div class="log-line" v-for="(log, index) in logs" :key="index">
+            <div>&gt; {{ log.guess }}</div>
+            <div v-if="!log.success">&gt; ACCÈS REFUSÉ</div>
+            <div v-if="!log.success">
+              &gt; {{ log.matches }}/{{ secretWord.length }} CORRESPONDANCES.
+            </div>
+            <div v-if="log.success">&gt; ACCÈS AUTORISÉ</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- END MESSAGE -->
+      <div v-if="gameOver" class="end-message">
+        <template v-if="success">
+          <p>&gt; CONNEXION DU TERMINAL RÉUSSIE...</p>
+          <button
+            class="continue-btn"
+            @click="handleContinue"
+            @mouseover="playSound(hoverAudio)"
+          >
+            CONTINUER
+          </button>
+        </template>
+        <template v-else>
+          <p>
+            &gt; TERMINAL VERROUILLÉ<br />
+            &gt; ASSISTANCE TECHNIQUE REQUISE
+          </p>
+        </template>
       </div>
     </div>
   </div>
@@ -87,6 +99,8 @@
 
 <script>
 import { useStoryStore } from "@/stores/storyStore";
+import clickSoundFile from "@/Sounds/futuristic_click.mp3";
+import hoverSoundFile from "@/Sounds/futuristic_hover.mp3";
 
 const CHAR_SET = [
   "?",
@@ -151,44 +165,34 @@ const WORD_LIST = [
 export default {
   name: "MiniGame",
   emits: ["close", "done"],
-
-  props: {
-    minigameId: { type: String, required: true },
-  },
-
+  props: { minigameId: { type: String, required: true } },
   data() {
     return {
       hoveredWordIndex: null,
-
       config: null,
-
       maxAttempts: null,
       attemptsRemaining: null,
-
       rows: 15,
       cols: 36,
       cells: [],
-
       leftAddresses: [],
       rightAddresses: [],
-
       logs: [],
       secretWord: "",
       gameOver: false,
       success: false,
-
-      // typing header
-      headerText: "SYSTÈME-NUCLÉON v3.1\n> PROTOCOLE D’ACCÈS VERROUILLÉ\n> ENTRER LE MOT DE PASSE",
+      headerText:
+        "SYSTÈME-NUCLÉON v3.1\n> PROTOCOLE D’ACCÈS VERROUILLÉ\n> ENTRER LE MOT DE PASSE",
       headerIndex: 0,
       headerTimer: null,
+      clickAudio: new Audio(clickSoundFile),
+      hoverAudio: new Audio(hoverSoundFile),
     };
   },
-
   computed: {
     typedHeader() {
       return this.headerText.slice(0, this.headerIndex);
     },
-
     gridRows() {
       const rows = [];
       for (let r = 0; r < this.rows; r++) {
@@ -197,65 +201,44 @@ export default {
       }
       return rows;
     },
-
-    // show all rows except the last one → removes the “stray” bottom line
     visibleGridRows() {
       return this.gridRows.slice(0, this.gridRows.length - 1);
     },
   },
-
   created() {
     const storyStore = useStoryStore();
     this.config = storyStore.storyData.find(
       (c) => c.id === this.minigameId && c.type === "game"
     );
-
-    // ⚠️ Load config FIRST, THEN start the game
     this.initGame();
   },
-
   beforeUnmount() {
-    if (this.headerTimer) {
-      clearInterval(this.headerTimer);
-    }
+    if (this.headerTimer) clearInterval(this.headerTimer);
   },
-
   methods: {
+    playSound(audio) {
+      audio.currentTime = 0;
+      audio.play();
+    },
     initGame() {
-      this.attemptsRemaining = this.maxAttempts;
+      this.maxAttempts = this.config.maxAttempts;
+      this.attemptsRemaining = this.config.maxAttempts;
       this.gameOver = false;
       this.success = false;
       this.logs = [];
-      this.headerIndex = 0;
-
-      this.maxAttempts = this.config.maxAttempts;
-      this.attemptsRemaining = this.config.maxAttempts;
-
-      // 1) generate addresses
+      this.headerIndex = this.headerText.length;
       this.generateAddresses();
-
-      // 2) generate grid with random chars
       this.generateGrid();
-
-      // 3) place words & choose secret word
       this.placeWords();
-
-      // 4) start typing header
-      this.headerIndex = this.headerText.length; // show full text instantly
     },
-
     generateAddresses() {
       this.leftAddresses = [];
       this.rightAddresses = [];
       for (let i = 0; i < this.rows; i++) {
-        // just mimic FX01xx pattern
-        const addrLeft = `FX01${String(i).padStart(2, "0")}`;
-        const addrRight = `FX02${String(i).padStart(2, "0")}`;
-        this.leftAddresses.push(addrLeft);
-        this.rightAddresses.push(addrRight);
+        this.leftAddresses.push(`FX01${String(i).padStart(2, "0")}`);
+        this.rightAddresses.push(`FX02${String(i).padStart(2, "0")}`);
       }
     },
-
     generateGrid() {
       this.cells = [];
       for (let i = 0; i < this.rows * this.cols; i++) {
@@ -264,65 +247,39 @@ export default {
           text: char,
           isWord: false,
           used: false,
-          wordIndex: null, // <--- new
+          wordIndex: null,
         });
       }
     },
-
     placeWords() {
+      const pool =
+        this.config.words?.length > 0 ? [...this.config.words] : [...WORD_LIST];
       const wordCount = this.config.wordCount;
-
-      // If the JSON provides a word pool, use it. Otherwise fallback to default.
-      const pool = this.config.words && this.config.words.length > 0
-        ? [...this.config.words]
-        : [...WORD_LIST];
-
       const words = [];
-
       for (let i = 0; i < wordCount; i++) {
-        if (pool.length === 0) break;
+        if (!pool.length) break;
         const idx = Math.floor(Math.random() * pool.length);
         words.push(pool[idx]);
         pool.splice(idx, 1);
       }
-
       this.secretWord = this.config.password;
-
-      if (!words.includes(this.secretWord)) {
-        words[0] = this.secretWord;
-      }
+      if (!words.includes(this.secretWord)) words[0] = this.secretWord;
 
       const usedPositions = new Set();
-
       let wordIndex = 0;
-
       for (const word of words) {
-        let placed = false;
-        let safety = 0; // just in case, avoid infinite loop
-
+        let placed = false,
+          safety = 0;
         while (!placed && safety < 1000) {
           safety++;
-
           const row = Math.floor(Math.random() * this.rows);
-
-          // horizontal ONLY
           const maxCol = this.cols - word.length;
-          if (maxCol < 0) break; // word longer than row, bail out
-
+          if (maxCol < 0) break;
           const col = Math.floor(Math.random() * (maxCol + 1));
-
-          // check for conflicts
           let conflict = false;
-          for (let i = 0; i < word.length; i++) {
-            const pos = `${row},${col + i}`;
-            if (usedPositions.has(pos)) {
-              conflict = true;
-              break;
-            }
-          }
+          for (let i = 0; i < word.length; i++)
+            if (usedPositions.has(`${row},${col + i}`)) conflict = true;
           if (conflict) continue;
-
-          // place the word horizontally
           for (let i = 0; i < word.length; i++) {
             const pos = `${row},${col + i}`;
             usedPositions.add(pos);
@@ -331,59 +288,28 @@ export default {
             this.cells[index].isWord = true;
             this.cells[index].wordIndex = wordIndex;
           }
-
           placed = true;
         }
-
         wordIndex++;
       }
     },
-
-    startHeaderTyping() {
-      if (this.headerTimer) {
-        clearInterval(this.headerTimer);
-      }
-      this.headerTimer = setInterval(() => {
-        if (this.headerIndex < this.headerText.length) {
-          this.headerIndex++;
-        } else {
-          clearInterval(this.headerTimer);
-          this.headerTimer = null;
-        }
-      }, 35); // speed similar to original
-    },
-
     onCellClick(cell) {
-      if (this.gameOver) return;
-      if (!cell.isWord) return;
-      if (cell.used) return;
-
+      if (this.gameOver || !cell.isWord || cell.used) return;
       const wordIndex = cell.wordIndex;
       const wordCells = this.cells.filter((c) => c.wordIndex === wordIndex);
       const guess = wordCells.map((c) => c.text).join("");
-
-      // marque les lettres comme utilisées
-      wordCells.forEach((c) => {
-        c.used = true;
-      });
-
+      wordCells.forEach((c) => (c.used = true));
       if (guess === this.secretWord) {
-        const matches = this.secretWord.length;
         this.logs.unshift({
           guess,
-          matches,
+          matches: this.secretWord.length,
           success: true,
         });
         this.success = true;
         this.gameOver = true;
       } else {
         const matches = this.countMatchingChars(guess, this.secretWord);
-        this.logs.unshift({
-          guess,
-          matches,
-          success: false,
-        });
-
+        this.logs.unshift({ guess, matches, success: false });
         this.attemptsRemaining--;
         if (this.attemptsRemaining <= 0) {
           this.gameOver = true;
@@ -392,40 +318,27 @@ export default {
         }
       }
     },
-
     countMatchingChars(wordA, wordB) {
-      // similar spirit to original: count same letters (any position)
       let count = 0;
-      for (let i = 0; i < wordA.length; i++) {
-        const ch = wordA[i];
-        if (wordB.includes(ch)) {
-          count++;
-        }
-      }
+      for (let i = 0; i < wordA.length; i++)
+        if (wordB.includes(wordA[i])) count++;
       return count;
     },
-
-    emitDone() {
-      this.$emit("done", { success: this.success });
-    },
-
     handleClose() {
+      this.playSound(this.clickAudio);
       this.$emit("close");
     },
-
     handleContinue() {
-      if (this.success) {
-        this.$emit("done", {
-          success: true,
-          target: this.config.success,
-        });
-      }
+      this.playSound(this.clickAudio);
+      if (this.success)
+        this.$emit("done", { success: true, target: this.config.success });
     },
-
     hoverWord(cell) {
-      this.hoveredWordIndex = cell && cell.isWord ? cell.wordIndex : null;
+      const newWordIndex = cell?.isWord ? cell.wordIndex : null;
+      if (newWordIndex !== this.hoveredWordIndex && newWordIndex !== null) {
+      }
+      this.hoveredWordIndex = newWordIndex;
     },
-
     isHovered(cell) {
       return cell.isWord && cell.wordIndex === this.hoveredWordIndex;
     },
@@ -445,50 +358,33 @@ export default {
   background: rgba(0, 0, 0, 0.45);
   z-index: 9999;
   display: flex;
-  align-items: center;
-  /* center vertically */
-  justify-content: center;
-  /* center horizontally */
-}
-
-/* MAIN BOX */
+  align-items: center; /* center vertically */
+  justify-content: center; /* center horizontally */
+} /* MAIN BOX */
 .mini-game-content {
   width: 90%;
   max-width: 1100px;
-  max-height: calc(85vh - 80px);
-  /* do NOT grow higher than the screen */
+  max-height: calc(85vh - 80px); /* do NOT grow higher than the screen */
   background: #111;
   border: 2px solid #03ab5e;
   color: #03ab5e;
   font-family: "Courier New", monospace;
-  padding: 40px;
-  /* a bit smaller than 80px */
+  padding: 40px; /* a bit smaller than 80px */
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
-  /* stop horizontal/vertical bleed */
+  overflow: hidden; /* stop horizontal/vertical bleed */
   box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */
-    0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */
-    inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */
-    inset 0 0 40px rgba(3, 171, 94, 0.15);
-  /* lueur interne légère */
-}
-
-/* inner scroll area: only this part can scroll */
+    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
+} /* inner scroll area: only this part can scroll */
 .terminal-frame {
   width: 100%;
   max-height: calc(85vh - 80px);
-  overflow-y: auto;
-
-  /* ⬇️ add this */
+  overflow-y: auto; /* ⬇️ add this */
   padding-bottom: 24px;
   box-sizing: border-box;
-}
-
-/* Close button */
+} /* Close button */
 .close-btn {
   background-color: #111;
   color: #03ab5e;
@@ -501,21 +397,17 @@ export default {
   width: 250px;
   transition: 0.3s ease;
 }
-
 .close-btn:hover {
   background-color: #03ab5e;
   color: #000;
   transform: scale(1.05);
-}
-
-/* HEADER + ATTEMPTS */
+} /* HEADER + ATTEMPTS */
 .term-header {
   white-space: pre-wrap;
   font-size: 1.1rem;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-
 .term-attempts {
   font-size: 1rem;
   margin-bottom: 12px;
@@ -523,101 +415,73 @@ export default {
   align-items: center;
   gap: 8px;
 }
-
 .attempt-block {
   width: 14px;
   height: 14px;
   background-color: #1aff80;
   margin-left: 3px;
 }
-
 .attempt-block.used {
   background-color: #044422;
-}
-
-/* GRID + LOG layout */
+} /* GRID + LOG layout */
 .term-grid-layout {
   margin-top: 10px;
-  display: grid;
-  /* force columns to stay inside width */
+  display: grid; /* force columns to stay inside width */
   grid-template-columns: 80px minmax(0, 1fr) 80px 200px;
   gap: 12px;
   align-items: flex-start;
-}
-
-/* Addresses */
+} /* Addresses */
 .addresses ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .addresses li {
   font-size: 0.9rem;
   margin: 2px 0;
-}
-
-/* === new, line-based “Fallout” layout === */
+} /* === new, line-based “Fallout” layout === */
 .char-lines {
   font-size: 0.95rem;
   line-height: 1.3;
   width: 100%;
 }
-
 .char-line {
   white-space: pre;
-}
-
-/* each slot is exactly one character wide */
+} /* each slot is exactly one character wide */
 .char-span {
   display: inline-block;
   width: 1ch;
   text-align: center;
-}
-
-/* it's part of a word (clickable) */
+} /* it's part of a word (clickable) */
 .char-span.word {
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
-}
-
-/* whole word hovered */
+} /* whole word hovered */
 .char-span.word.hovered {
   background: #1aff80;
   color: #000;
-}
-
-/* already tried word */
+} /* already tried word */
 .char-span.used {
   color: #555;
-}
-
-/* Log panel */
+} /* Log panel */
 .log-panel {
   font-size: 0.9rem;
   border-left: 1px solid #03ab5e;
   padding-left: 8px;
-  max-height: 260px;
-  /* own scroll, does not push layout */
+  max-height: 260px; /* own scroll, does not push layout */
   overflow-y: auto;
-  word-break: break-word;
-  /* long text wraps instead of pushing width */
+  word-break: break-word; /* long text wraps instead of pushing width */
 }
-
 .log-line {
   margin-bottom: 8px;
-}
-
-/* End message */
+} /* End message */
 .end-message {
   margin-top: 20px;
   font-size: 1rem;
 }
-
 .end-message p {
   margin: 4px 0;
 }
-
 .continue-btn {
   background-color: #111;
   color: #03ab5e;
@@ -631,20 +495,17 @@ export default {
   transition: 0.3s ease;
   font-family: "Courier New", monospace;
 }
-
 .continue-btn:hover {
   background-color: #03ab5e;
   color: #000;
   transform: scale(1.05);
 }
-
 .header-bar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 12px;
 }
-
 .close-x {
   background: none;
   border: 2px solid #03ab5e;
@@ -657,96 +518,70 @@ export default {
   font-family: "Courier New", monospace;
   transition: 0.2s ease;
 }
-
 .close-x:hover {
   background: #03ab5e;
   color: black;
 }
-
 @media (max-width: 1080px) {
-
   /* Mise à l'échelle générale */
   .mini-game-content {
     width: 100vw;
     height: 100dvh;
     padding: 1rem;
     border-radius: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow: hidden;
   }
-
   .terminal-frame {
     flex: 1;
     overflow-y: auto;
     padding-bottom: 2rem;
-  }
-
-  /* En-tête plus lisible */
+  } /* En-tête plus lisible */
   .term-header {
     font-size: 1.1rem;
   }
-
   .term-attempts {
     font-size: 1rem;
-  }
-
-  /* ❌ ENLÈVE LES BARRES LATÉRALES (addresses) */
+  } /* ❌ ENLÈVE LES BARRES LATÉRALES (addresses) */
   .addresses {
     display: none;
-  }
-
-  /* ❌ SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
+  } /* ❌ SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
   .term-grid-layout {
     display: block;
     padding: 0;
-  }
-
-  /* Zone centrale : caractères */
+  } /* Zone centrale : caractères */
   .char-lines {
-    font-size: 1rem;
-    /* plus gros */
+    font-size: 1rem; /* plus gros */
     line-height: 1.3;
     white-space: pre-wrap;
     width: 100%;
   }
-
   .char-span {
     width: auto;
-  }
-
-  /* Log panel en bas, simple et lisible */
+  } /* Log panel en bas, simple et lisible */
   .log-panel {
-    border-top: none;
-    /* supprime la ligne */
+    border-top: none; /* supprime la ligne */
     padding-top: 8px;
     margin-top: 16px;
-
     font-size: 1rem;
     max-height: 200px;
     overflow-y: auto;
   }
-
   .log-line {
     margin-bottom: 6px;
-  }
-
-  /* Bouton X */
+  } /* Bouton X */
   .close-x {
     font-size: 24px;
     padding: 8px 14px;
-  }
-
-  /* Bouton CONTINUER plus petit et ne déborde pas */
+  } /* Bouton CONTINUER plus petit et ne déborde pas */
   .continue-btn {
     width: 80%;
     max-width: 300px;
     font-size: 1rem;
     padding: 10px;
-    align-self: center;
-    /* centre horizontalement */
+    align-self: center; /* centre horizontalement */
   }
 }
 </style>
