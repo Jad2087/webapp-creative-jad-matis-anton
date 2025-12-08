@@ -219,7 +219,7 @@ RAS = Rien À Signaler
 
 - [Bogue #1] : C’est un bug critique, car il empêche les utilisateurs de comprendre l’histoire et de poursuivre.
 - [Bogue #2] : C’est un bug critique, car il empêche les utilisateurs de poursuivre l’histoire une fois refresh le site.
-- [Bogue #3] : C’est un bug mineur, car il empêche les utilisateurs de choisir les choix pour poursuivre l’histoire dans la version mobile 375px.
+- [Bogue #3] : C’est un bug majeur, car il empêche les utilisateurs de choisir les choix pour poursuivre l’histoire dans la version mobile 375px.
   
 ---
 
@@ -332,15 +332,15 @@ RAS = Rien À Signaler
 
 | Page | Performance | Accessibility | Best Practices | Notes |
 |------|-------------|---------------|----------------|-------|
-| Accueil | [X]/100 | [X]/100 | [X]/100 | [Commentaires] |
-| [Page principale] | [X]/100 | [X]/100 | [X]/100 | [Commentaires] |
+| Accueil | [100]/100 | [100]/100 | [100]/100 | [Commentaires] |
+| [Page principale] | [100]/100 | [100]/100 | [100]/100 | [Commentaires] |
 
 #### Résultats Mobile
 
 | Page | Performance | Accessibility | Best Practices | Notes |
 |------|-------------|---------------|----------------|-------|
-| Accueil | [X]/100 | [X]/100 | [X]/100 | [Commentaires] |
-| [Page principale] | [X]/100 | [X]/100 | [X]/100 | [Commentaires] |
+| Accueil | [100]/100 | [100]/100 | [100]/100 | [Commentaires] |
+| [Page principale] | [50/100 | [50]/100 | [50]/100 | [En cours] |
 
 **Screenshots Lighthouse :** Voir annexes
 
@@ -350,28 +350,22 @@ RAS = Rien À Signaler
 
 | Avant | Après | Économie |
 |-------|-------|----------|
-| [X] MB total | [X] MB total | [X]% économisés |
-| [X] images | [X] images compressées | Outil : TinyPNG |
+| [3] MB total | [2.50] MB total | [20]% économisés |
+| [3] images | [1] images compressées | Outil : PNG |
 
 **Exemples :**
 
-- `image1.jpg` : 5.2 MB → 1.8 MB (65% économie)
-- `background.png` : 3.1 MB → 800 KB (74% économie)
-
-#### Autres optimisations
-
-- ✅ Ajout de `loading="lazy"` sur [X] images
-- ✅ Minification du code (build production)
-- ✅ Suppression de console.log()
-- ⏸️ À faire : [Si applicable]
+- `minimap.png` : 8.98 KB → 0 (0% économie)
+- `narative.png` : 141 KB → 121 KB (74% économie)
+- `narative.png` : 2 MB → 1.87 MB (60% économie)
 
 ### Temps de chargement
 
 **Tests manuels (connexion normale) :**
 
-- Page d'accueil : [X] secondes
-- Page principale : [X] secondes
-- Page la plus lourde : [X] secondes
+- Page d'accueil : [1] secondes
+- Page principale : [1] secondes
+- Page la plus lourde : [page Intro] secondes
 
 **Objectif :** < 3 secondes  
 **Atteint :** ✅ Oui / ⚠️ Partiellement / ❌ Non
