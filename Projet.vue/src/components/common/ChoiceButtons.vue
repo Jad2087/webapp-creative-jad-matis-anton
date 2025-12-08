@@ -40,7 +40,8 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  column-gap: 0.9rem;
+  row-gap: 0rem;
 }
 
 @media (max-width: 1080px) {
