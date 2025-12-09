@@ -6,7 +6,7 @@
     "choices": [
       {
         "text": "Continuer dans le couloir obscur",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": { "type": "story", "id": "fork05", "good": true }
       }
     ]
   },  
@@ -1349,17 +1349,7 @@
     ],
     "award": "engine"
   },
-  {
-    "id": "engine01-03",
-    "title": "Act 3 — Salle du Réacteur (Déjà visitée)",
-    "text": "Le générateur tourne déjà. Vous avez fait tout ce que vous pouviez ici.",
-    "choices": [
-      {
-        "text": "Retourner",
-        "next": { "type": "story", "id": "fork06", "good": true }
-      }
-    ]
-  },
+
 
 
 

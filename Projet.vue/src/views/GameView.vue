@@ -19,44 +19,22 @@
         </div>
 
         <!-- Choices -->
-        <ChoiceButtons
-          :choices="activeChapter.choices"
-          @choice-selected="changeChapter"
-          @hover-choice="playHover"
-          class="choicebuttons"
-        />
+        <ChoiceButtons :choices="activeChapter.choices" @choice-selected="changeChapter" @hover-choice="playHover"
+          class="choicebuttons" />
 
         <!-- MiniGame overlay -->
-        <MiniGame
-          v-if="openMiniGame"
-          :minigame-id="activeMiniGameId"
-          @close="openMiniGame = false"
-          @done="onMiniGameDone"
-        />
+        <MiniGame v-if="openMiniGame" :minigame-id="activeMiniGameId" @close="openMiniGame = false"
+          @done="onMiniGameDone" />
 
         <!-- ECHEC -->
-        <Echec
-          v-if="showEchec"
-          :title="echecTitle"
-          :description="echecDescription"
-          @retry="retryGame"
-          @menu="goToMenu"
-        />
+        <Echec v-if="showEchec" :title="echecTitle" :description="echecDescription" @retry="retryGame"
+          @menu="goToMenu" />
 
         <!-- REUSSITE -->
-        <Reussite
-          v-if="showReussite"
-          :title="reussiteTitle"
-          :description="reussiteDescription"
-          @menu="goToMenu"
-          @historique="showHistory = true"
-        />
+        <Reussite v-if="showReussite" :title="reussiteTitle" :description="reussiteDescription" @menu="goToMenu"
+          @historique="showHistory = true" />
 
-        <ChoiceMade
-          v-if="showHistory"
-          class="overlay"
-          @close="showHistory = false"
-        />
+        <ChoiceMade v-if="showHistory" class="overlay" @close="showHistory = false" />
       </div>
     </div>
   </div>
@@ -243,9 +221,29 @@ export default {
 
       // Récompense indices
       const clueAwards = {
+        // Act 1
         "clue01-01": "clue01",
         "clue02-01": "clue02",
+
+        // Act 2
+        "clue03-02": "clue03",
+        "clue04-02": "clue04",
+        "clue07-02": "clue07",
+        "clue08-02": "clue08",
+        "clue09-02": "clue09",
+        "clue10-02": "clue10",
+        "clue100-01": "clue100",
+        "clue111-02": "clue111",
+        "engine04-success": "engine01",
+
       };
+
+      // Award from chapter JSON itself
+if (next.award) {
+  player.addClue(next.award);
+}
+
+
       const awardedClue = clueAwards[nextId];
       if (awardedClue) player.addClue(awardedClue);
 
@@ -290,6 +288,8 @@ export default {
         this.$nextTick(() => this.playSuccess());
       }
     },
+
+    
 
     /* ----------------------- MORT PAR OXYGENE ----------------------- */
     killPlayerByOxygen() {
@@ -508,9 +508,12 @@ export default {
   border-radius: 6px;
 
   box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15);
+    /* halo vert */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */
+    inset 0 0 40px rgba(3, 171, 94, 0.15);
   /* lueur interne légère */
 }
 
@@ -518,12 +521,10 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
 
@@ -537,7 +538,7 @@ export default {
 }
 
 /* Place AppHeader en haut de la colonne */
-.columnright > *:first-child {
+.columnright>*:first-child {
   margin-top: 0;
   align-self: flex-start;
 }
@@ -564,7 +565,7 @@ export default {
   color: #03ab5e;
 }
 
-.columnright > *:last-child {
+.columnright>*:last-child {
   margin-top: auto;
   align-self: stretch;
 }
@@ -604,6 +605,7 @@ export default {
 }
 
 @media (max-width: 1080px) {
+
   /* Permet à la page de scroller normalement */
   html,
   body {
