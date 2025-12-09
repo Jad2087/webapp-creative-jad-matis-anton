@@ -4,7 +4,12 @@
 
     <!-- Barre contenant les segments -->
     <div class="bars">
-      <div v-for="(bar, index) in totalBars" :key="index" class="bar" :class="{ active: index < remainingBars }"></div>
+      <div
+        v-for="(bar, index) in totalBars"
+        :key="index"
+        class="bar"
+        :class="{ active: index < remainingBars }"
+      ></div>
     </div>
   </div>
 </template>
@@ -58,6 +63,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: "Courier New", monospace;
+}
+
 .timer-container {
   border: 2px solid #ffffff;
   padding: 1rem;
@@ -73,8 +82,8 @@ export default {
 
 .label {
   color: #03ab5e;
-  font-family: monospace;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
   min-width: 80px;
 }
 

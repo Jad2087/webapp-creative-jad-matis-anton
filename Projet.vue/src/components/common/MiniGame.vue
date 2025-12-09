@@ -377,7 +377,7 @@ export default {
   height: 88%;
   max-width: 1100px;
   max-height: calc(85vh - 80px); /* do NOT grow higher than the screen */
-  background: #111;
+  background-color: rgb(17, 17, 17);
   border: 2px solid #03ab5e;
   color: #03ab5e;
   font-family: "Courier New", monospace;
@@ -495,13 +495,13 @@ export default {
   margin: 4px 0;
 }
 .continue-btn {
-  background-color: #111;
+  background-color: rgb(17, 17, 17);
   color: #03ab5e;
   font-weight: bold;
   border: 2px solid #03ab5e;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   font-size: 0.9rem;
-  margin: 0.5rem;
+  margin: 0.5rem 0;
   cursor: pointer;
   width: 250px;
   transition: 0.3s ease;
@@ -555,10 +555,10 @@ export default {
   }
   .term-attempts {
     font-size: 1rem;
-  } /* ❌ ENLÈVE LES BARRES LATÉRALES (addresses) */
+  } /* ENLÈVE LES BARRES LATÉRALES (addresses) */
   .addresses {
     display: none;
-  } /* ❌ SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
+  } /* SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
   .term-grid-layout {
     display: block;
     padding: 0;

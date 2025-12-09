@@ -64,7 +64,7 @@ export default {
   border: 2px solid #03ab5e;
   padding: 0.5rem 1.5rem;
   font-size: 0.9rem;
-  margin: 0.5rem 0;
+  margin: 0;
   cursor: pointer;
   width: 100%;
   max-width: 480px;

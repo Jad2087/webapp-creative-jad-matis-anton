@@ -62,7 +62,7 @@ export default {
 .app-header__title {
   margin: 0;
   font-size: 2rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 2px;
   color: #03ab5e;
 }
 
@@ -74,8 +74,8 @@ export default {
 .app-header__link {
   text-decoration: none;
   font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  padding: 0.4rem 0.9rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
   border: 2px solid #03ab5e;
   color: #03ab5e;
   background-color: transparent;

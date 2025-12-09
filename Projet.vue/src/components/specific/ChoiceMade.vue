@@ -95,7 +95,6 @@ export default {
   box-shadow: 0 0 18px rgba(3, 171, 94, 0.3);
 
   overflow-y: auto;
-  border-radius: 4px;
 
   z-index: 9999;
 
@@ -107,7 +106,6 @@ export default {
 .choice-made h3 {
   margin-bottom: 0.6rem;
   font-size: 1.2rem;
-  letter-spacing: 1.5px;
   text-align: center;
 }
 
@@ -139,9 +137,9 @@ export default {
 
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
 
   transition: 0.15s ease;
+  font-weight: bold;
 }
 
 .btn-close:hover {

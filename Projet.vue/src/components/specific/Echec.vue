@@ -114,12 +114,9 @@ export default {
   background: #1b1b1b;
   color: #e35e5e;
   box-shadow: 0 0 25px 5px rgba(227, 94, 94, 0.5),
-    /* halo rouge */
-    0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */
-    inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne */
-    inset 0 0 40px rgba(227, 94, 94, 0.15);
+    /* halo rouge */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne */ inset 0 0 40px rgba(227, 94, 94, 0.15);
   /* lueur interne légère */
 }
 
@@ -154,6 +151,7 @@ export default {
   min-width: 130px;
   /* Largeur uniforme */
   text-align: center;
+  font-weight: bold;
 }
 
 .btn:hover {
@@ -173,12 +171,10 @@ export default {
 }
 
 @media (max-width: 1080px) {
-
   /* Fond semi-transparent, mais pas obligé de couvrir pile 100% */
   .echec-container {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -232,8 +228,8 @@ export default {
 
   .btn {
     width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 0.87rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
     border: 2px solid #e35e5e;
     background: transparent;
     color: #e35e5e;
@@ -244,6 +240,7 @@ export default {
   .btn:hover {
     background: #e35e5e;
     color: black;
+    transform: none;
   }
 }
 </style>

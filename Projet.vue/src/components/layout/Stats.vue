@@ -32,10 +32,14 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: "Courier New", monospace;
+}
+
 .stats-container {
   width: 100%;
-  min-height: 85px;
-  padding: 10px;
+  min-height: 97px;
+  padding: 1rem;
   border: 2px solid #ffffff;
   background-color: #111;
   display: flex;
@@ -60,11 +64,17 @@ export default {
 
 .title {
   font-size: 16px;
-  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 .value {
   font-size: 16px;
   font-weight: bold;
+}
+
+@media (max-width: 1080px) {
+  .stats-container {
+    min-height: 80px;
+  }
 }
 </style>

@@ -25,17 +25,17 @@ export default {
         intro: { top: "11.5%", left: "50%" },
         fork01: { top: "20.5%", left: "50.3%" },
         clue01: { top: "22%", left: "62%" },
-        "clue01-01": {  top: "22%", left: "62%" },
+        "clue01-01": { top: "22%", left: "62%" },
         clue02: { top: "22%", left: "38.5%" },
         "clue02-01": { top: "22%", left: "38.5%" },
         minigame01: { top: "20.5%", left: "50.3%" },
         intro2: { top: "30.5%", left: "50.3%" },
         fork02: { top: "30.5%", left: "50.3%" },
         clue03: { top: "33%", left: "64%" },
-       "clue03-02": { top: "33%", left: "64%" },
-       clue04: { top: "33%", left: "37%" },
-       "clue04-02": { top: "33%", left: "37%" },
-        minigame02: {  top: "30.5%", left: "50.3%" },
+        "clue03-02": { top: "33%", left: "64%" },
+        clue04: { top: "33%", left: "37%" },
+        "clue04-02": { top: "33%", left: "37%" },
+        minigame02: { top: "30.5%", left: "50.3%" },
         fork03: { top: "42%", left: "50.3%" },
         clue06: { top: "43%", left: "38.5%" },
         ventA1: { top: "51%", left: "27%" },
@@ -59,7 +59,7 @@ export default {
 .minimap-container {
   border: 2px solid #ffffff;
   background-color: #111;
-  padding: 0.8rem;
+  padding: 0.3rem;
   width: 100%;
   flex: 1 1 auto;
   display: flex;
@@ -72,7 +72,7 @@ export default {
   color: #03ab5e;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .minimap-content {
@@ -90,7 +90,6 @@ export default {
 }
 
 @keyframes blink {
-
   0%,
   100% {
     opacity: 1;
@@ -112,7 +111,6 @@ export default {
 
 /* MEDIA QUERY POUR MOBILE */
 @media (max-width: 1080px) {
-
   /* Cacher la mini-map sur mobile */
   .minimap-container {
     display: none;

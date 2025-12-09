@@ -1,7 +1,12 @@
 <template>
   <div class="choice-buttons">
-    <NavChoice v-for="(choice, idx) in choices" :key="idx" :choice="choice" @choose="selectChoice"
-      @hover-choice="emitHover" />
+    <NavChoice
+      v-for="(choice, idx) in choices"
+      :key="idx"
+      :choice="choice"
+      @choose="selectChoice"
+      @hover-choice="emitHover"
+    />
   </div>
 </template>
 
@@ -40,8 +45,8 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 0.9rem;
-  row-gap: 0rem;
+  column-gap: 1rem;
+  row-gap: 1rem;
 }
 
 @media (max-width: 1080px) {
