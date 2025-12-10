@@ -3,7 +3,7 @@
     <div class="screen">
       <div class="columnleft">
            <!-- TIMER -->
-       <Timer ref="oxygenTimer" :key="timerKey" :duration="10" @timeout="killPlayerByOxygen" />  <!-- ref est pour pour contrôler le timer du parent --> 
+       <Timer ref="oxygenTimer" :key="timerKey" :duration="4 * 60" @timeout="killPlayerByOxygen" />  <!-- ref est pour pour contrôler le timer du parent --> 
         <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
