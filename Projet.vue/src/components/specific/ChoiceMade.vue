@@ -98,8 +98,43 @@ export default {
 
   z-index: 9999;
 
-  /* Légère transformation pour effet “HUD” */
-  transform: translateY(0) scale(0.98);
+  box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
+    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
+}
+
+/* SCREEN: EFFET RETRO + COUBRE */
+@keyframes crtFlicker {
+  0% {
+    opacity: 0.98;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.97;
+  }
+}
+
+.choice-made {
+  overflow: hidden;
+  animation: crtFlicker 0.15s infinite alternate;
+}
+
+.choice-made::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
 }
 
 /* Titre */
@@ -121,7 +156,7 @@ export default {
 .choice-made li {
   margin: 0.25rem 0;
   padding-left: 0.4rem;
-  border-left: 2px solid #03ab5e55;
+  border-left: 2px solid #03ab5e;
   font-size: 0.95rem;
 }
 
@@ -154,7 +189,6 @@ export default {
     max-height: 80vh;
 
     padding: 1rem;
-    border-radius: 6px;
 
     /* toujours parfaitement centré */
     top: 50%;
