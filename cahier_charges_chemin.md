@@ -399,8 +399,6 @@ Comment stockez-vous les chapitres et choix?
   }
 }
 ```
-
-
 ## 🎬 5. Fonctionnalités et User Stories
 
 ### 5.1 Fonctionnalités MVP (Minimum Viable Product)
@@ -429,7 +427,7 @@ Comment stockez-vous les chapitres et choix?
   - Chargement d'une sauvegarde
   - Affichage des infos de sauvegarde (date, progression)
 
-- [ ] *F5 - Historique des choix*
+- [x] *F5 - Historique des choix*
   - Garder trace des décisions prises
   - Affichage dans un menu (optionnel mais recommandé)
 
@@ -438,7 +436,7 @@ Comment stockez-vous les chapitres et choix?
   - Récapitulatif des choix faits
   - Option de recommencer ou charger
 
-- [ ] *F7 - Interface responsive*
+- [x] *F7 - Interface responsive*
   - Mobile (320px+)
   - Tablette (768px+)
   - Desktop (1024px+)
@@ -519,7 +517,6 @@ Comment stockez-vous les chapitres et choix?
 
 10. [Ajoutez vos user stories]
 
-
 ## 📊 6. Maquettes et Wireframes
 
 ### 6.1 Lien vers les maquettes Figma
@@ -552,10 +549,9 @@ Comment stockez-vous les chapitres et choix?
 
 | Membre | Rôle principal | Responsabilités |
 |--------|----------------|-----------------|
-| [Nom] | Chef de projet + Architecture Vue | Coordination, Vue Router, stores Pinia, structure de l'histoire |
-| [Nom] | Design + Animations | CSS, design visuel, animations GSAP, transitions |
-| [Nom] | Contenu + Narration | Écriture des chapitres, création de l'arbre narratif, dialogues |
-| [Nom] | Données + Système | Gestion des sauvegardes, LocalStorage, logique de choix, stats |
+| [Jad Saloumi] | Chef de projet + Architecture Vue | Coordination, Vue Router, stores Pinia, structure de l'histoire, stats |
+| [Matis Ghariani] | Design + Animations | CSS, design visuel, animations GSAP, transitions |
+| [Anton Nikulin] | Contenu + Narration | Écriture des chapitres, création de l'arbre narratif, dialogues, logique de choix |
 
 *Note:* Tous participent au développement, mais chacun a sa spécialité.
 
@@ -605,23 +601,22 @@ Comment stockez-vous les chapitres et choix?
 
 ### 8.3 Critères de qualité
 
-- [ ] Interface intuitive et facile à utiliser
-- [ ] Design cohérent et esthétique
-- [ ] Lisibilité du texte (taille, contraste, police)
-- [ ] Animations pertinentes (pas excessives)
-- [ ] Temps de chargement < 2 secondes
-- [ ] Aucun bug bloquant
-- [ ] Musique/sons appropriés
-- [ ] Documentation complète (README)
+- [x] Interface intuitive et facile à utiliser
+- [x] Design cohérent et esthétique
+- [x] Lisibilité du texte (taille, contraste, police)
+- [x] Animations pertinentes (pas excessives)
+- [x] Temps de chargement < 2 secondes
+- [x] Aucun bug bloquant
+- [x] Musique/sons appropriés
+- [x] Documentation complète (README)
 
 ### 8.4 Critères créatifs
 
-- [ ] Histoire originale et engageante
-- [ ] Personnages mémorables
-- [ ] Twist ou surprise dans l'intrigue
-- [ ] Expérience émotionnelle impactante
-- [ ] Rejouabilité (envie de tester d'autres chemins)
-
+- [x] Histoire originale et engageante
+- [x] Personnages mémorables
+- [x] Twist ou surprise dans l'intrigue
+- [x] Expérience émotionnelle impactante
+- [x] Rejouabilité (envie de tester d'autres chemins)
 
 ## 📅 9. Calendrier du projet: Planning prévisionnel
 
