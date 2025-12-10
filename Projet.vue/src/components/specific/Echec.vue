@@ -114,9 +114,12 @@ export default {
   background: #1b1b1b;
   color: #e35e5e;
   box-shadow: 0 0 25px 5px rgba(227, 94, 94, 0.5),
-    /* halo rouge */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne */ inset 0 0 40px rgba(227, 94, 94, 0.15);
+    /* halo rouge */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne */
+    inset 0 0 40px rgba(227, 94, 94, 0.15);
   /* lueur interne légère */
 }
 
@@ -171,6 +174,7 @@ export default {
 }
 
 @media (max-width: 1080px) {
+
   /* Fond semi-transparent, mais pas obligé de couvrir pile 100% */
   .echec-container {
     position: fixed;

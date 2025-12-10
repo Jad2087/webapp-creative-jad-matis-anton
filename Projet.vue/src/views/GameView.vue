@@ -219,6 +219,7 @@ export default {
     },
     activeChapter() {
       return (
+        // il cherche ds le store le id correspond à this.current
         this.storyStore.storyData.find((chap) => chap.id === this.current) || {
           choices: [],
         }
@@ -282,15 +283,19 @@ export default {
 
     /* changer de chapitre*/
     changeChapter(next, choiceText) {
-      this.playClick();
+      this.playClick();  // joue un son de clic à chaque sélection de choix\
 
+      // récupère les stores pour accéder aux données du jeu et du joueur
       const storyStore = useStoryStore();
       const player = usePlayerStore();
 
+      // récupère le dernier choix choisi pour éviter les doublons
       const lastChoice = storyStore.choicesHistory.slice(-1)[0];
+
+      // si le choix actuel est différent du dernier enregistré, il affiche au historique
       if (lastChoice !== choiceText) storyStore.addChoice(choiceText);
 
-      const nextId = next.id;
+      const nextId = next.id;  //enregistre le id du chapitre
 
       // Récompense indices
       const clueAwards = {
@@ -344,7 +349,7 @@ export default {
     return; 
   }
 
-      // ----- ENDING DETECTION -----
+      // ENDING DETECTION
       if (nextId.startsWith("ending")) {
         const ending = this.endingMessages[nextId];
         this.reussiteTitle = ending ? ending.title : "Fin";
@@ -353,7 +358,7 @@ export default {
           : "Vous avez atteint une fin du jeu.";
 
         this.showReussite = true;
-        this.playSuccess();
+        this.playSuccess(); // joue le son
         return;   // IMPORTANT sinon le code continue !
       }
 
@@ -450,7 +455,7 @@ export default {
       this.stopTypingAudio();
     },
 
-    /* ----------------------- ANIMATION TEXTE ----------------------- */
+    /* ANIMATION TEXTE*/
     animateText() {
       const el = this.$refs.infoContent;
       if (!el) return;
