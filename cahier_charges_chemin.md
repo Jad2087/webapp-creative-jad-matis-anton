@@ -2,7 +2,7 @@
 
 ## 📌 Informations du Projet
 
-*Nom du projet:* Code³ 
+*Nom du projet:* Codex
 
 *Nom de l'équipe:* jad-matis-anton
 
