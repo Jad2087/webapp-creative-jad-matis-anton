@@ -97,25 +97,14 @@ export default {
 .reussite-box {
   width: 480px;
   padding: 30px;
-<<<<<<< Updated upstream
-  border: 3px solid #39ff88;
+  border: 3px solid #03ab5e;
   /* vert fluo */
   background: #111;
   /* fond sombre */
-  color: #39ff88;
-  box-shadow: 0 0 25px 5px rgba(57, 255, 136, 0.5),
-    0 0 60px 15px rgba(0, 0, 0, 0.9),
-    inset 0 0 20px rgba(0, 0, 0, 0.7),
-    inset 0 0 40px rgba(57, 255, 136, 0.15);
-=======
-  border: 3px solid #03ab5e;
-  background: #111;
   color: #03ab5e;
-  box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
->>>>>>> Stashed changes
+  box-shadow: 0 0 25px 5px rgba(57, 255, 136, 0.5),
+    0 0 60px 15px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.7),
+    inset 0 0 40px rgba(57, 255, 136, 0.15);
 }
 
 /* Titre */
@@ -128,12 +117,8 @@ export default {
 /* Texte */
 .description {
   margin-bottom: 30px;
-<<<<<<< Updated upstream
-  color: #39ff88;
-  text-align: center;
-=======
   color: #03ab5e;
->>>>>>> Stashed changes
+  text-align: center;
 }
 
 /* Boutons */
@@ -158,33 +143,28 @@ export default {
 }
 
 .btn:hover {
-<<<<<<< Updated upstream
-  background: #39ff88;
-=======
   background: #03ab5e;
-  color: black;
->>>>>>> Stashed changes
   transform: scale(1.05);
   color: black;
 }
 
 .accueil {
-  border-color: #39ff88;
-  color: #39ff88;
+  border-color: #03ab5e;
+  color: #03ab5e;
 }
 
 .accueil:hover {
-  background: #39ff88;
+  background: #03ab5e;
   color: black;
 }
 
 .menu {
-  border-color: #39ff88;
-  color: #39ff88;
+  border-color: #03ab5e;
+  color: #03ab5e;
 }
 
 .menu:hover {
-  background: #39ff88;
+  background: #03ab5e;
   color: black;
 }
 
@@ -201,20 +181,13 @@ export default {
   }
 
   .reussite-box {
-<<<<<<< Updated upstream
     width: 90vw;
     max-width: 480px;
     max-height: 85vh;
     padding: 1.5rem;
-    border: 2px solid #39ff88;
-    background: #111;
-    color: #39ff88;
-=======
-    width: 95vw;
-    height: 100dvh;
-    padding: 1rem;
     border: 2px solid #03ab5e;
->>>>>>> Stashed changes
+    background: #111;
+    color: #03ab5e;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -244,11 +217,7 @@ export default {
   }
 
   .btn {
-<<<<<<< Updated upstream
     width: 100%;
-=======
-    max-width: 480px;
->>>>>>> Stashed changes
     padding: 0.5rem 1.5rem;
     font-size: 0.9rem;
   }
