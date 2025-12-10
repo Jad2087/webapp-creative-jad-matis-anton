@@ -6,12 +6,16 @@
 
 *Nom de l'équipe:* jad-matis-anton
 
-*Membres:* 
-Jad Saloumi – Chef de projet / Gestion et coordination
+### 👥 Membres de l’équipe
 
-Matis Ghariani – Création et conception
+**Jad Saloumi – Chef de projet / Développeur principal**  
+Responsable de la coordination générale, de l’architecture Vue.js, de la logique interne du projet et de l’intégration principale du code. Il assure la cohérence technique et organise le déroulement du développement.
 
-Anton Nikulin – Développement et technique (Front-end)
+**Matis Ghariani – Conception visuelle & sonore / Direction artistique**  
+Chargé de l’identité visuelle et sonore du projet : conception des maquettes, choix esthétiques, ambiance, animations et atmosphère générale. Il a imaginé la majorité des concepts visuels qui définissent l’univers du jeu.
+
+**Anton Nikulin – Narration & Structure narrative / Chapitres et intégration**  
+Responsable de l’écriture de l’histoire, de la création des différents chapitres, de leurs variations et de l’arbre narratif. Il s’est assuré que toutes les pages, embranchements et conséquences soient logiquement connectés et intégrés dans le projet.
 
 *Date de début:* 15 OCT 2025  
 *Date de livraison finale:* [Date]  
