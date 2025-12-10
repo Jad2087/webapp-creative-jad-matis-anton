@@ -205,9 +205,9 @@ export default {
       }
       return rows;
     },
-    visibleGridRows() {
-      return this.gridRows.slice(0, this.gridRows.length - 1);
-    },
+visibleGridRows() {
+  return this.gridRows; // show all rows
+},
   },
   created() {
     const storyStore = useStoryStore();

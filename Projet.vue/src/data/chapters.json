@@ -6,7 +6,7 @@
     "choices": [
       {
         "text": "Continuer dans le couloir obscur",
-        "next": { "type": "story", "id": "fork06", "good": true }
+        "next": { "type": "story", "id": "fork01", "good": true }
       }
     ]
   },  

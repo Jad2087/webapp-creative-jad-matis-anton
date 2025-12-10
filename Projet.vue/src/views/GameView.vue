@@ -109,8 +109,76 @@ export default {
       typingAudio: null,
 
       // CUSTOM MESSAGES
-      deathMessages: {},
-      endingMessages: {},
+      deathMessages: {
+        "clue01-02":
+          "Vous tentez de tirer le corps hors des décombres.\n\nUn grincement aigu résonne au-dessus de vous. Avant même que vous puissiez reculer, une plaque de métal se détache et s'effondre brutalement.\n\nTout devient noir.",
+
+        "clue02-02":
+          "Vous faites un pas dans la flaque noire.\n\nUn froid soudain remonte le long de votre jambe, si brutal qu’il vous coupe le souffle. Vos muscles se paralysent presque instantanément, comme englués dans une matière vivante.\n\nVotre vision se brouille.\n\nVous perdez connaissance avant même de toucher le sol.",
+
+        "clue03-01":
+          "Un souffle de gaz s’échappe derrière vous. Une étincelle jaillit — un flash de lumière, puis tout s’éteint instantanément.",
+
+        "clue04-01":
+          "Votre pied touche l’eau inondée. Un bourdonnement soudain envahit la pièce — puis votre esprit sombre dans le noir.",
+
+        "clue07-01":
+          "Votre saut dévie d’un simple centimètre. La substance noire agrippe votre jambe, remonte le long de votre corps et vous immobilise instantanément.",
+
+        "clue08-01":
+          "Un souffle glacial vous fige sur place. Le monde se dissout dans l’obscurité.",
+
+        "ventA1-death":
+          "Le métal sous vous vibre… puis se déchire d’un seul coup. Vous basculez dans le vide avant de comprendre ce qu’il se passe.",
+
+        "vent-slither":
+          "Un bruit humide se rapproche dans le noir… Avant que vous puissiez reculer, quelque chose s’enroule autour de votre jambe et vous tire dans l’obscurité.",
+
+        "vent-fans-button-death":
+          "Les ventilateurs ralentissent… puis redémarrent violemment. Les pales vous happent à pleine vitesse.",
+
+        "ventDeep-greenDeath":
+          "La rouille se brise sous vous. Le conduit s’effondre — vous tombez dans le vide sans pouvoir vous rattraper.",
+
+        "ventDeep-blackDeath":
+          "Dans l’obscurité totale, vous perdez le sens de l’orientation. Épuisé et désorienté, vous finissez par vous effondrer.",
+
+        "engine02-fail":
+          "Une décharge parcourt brutalement le générateur. Un arc électrique bondit de la console et vous traverse.",
+
+        "engine03-fail":
+          "Un avertissement sonore retentit… trop tard. Une surtension jaillit et vous foudroie instantanément.",
+
+        "clue111-01":
+          "La substance noire s’anime et rampe vers vous comme attirée par votre chaleur. Un froid glacial remonte votre corps… puis tout disparaît."
+      },
+
+      endingMessages: {
+        "ending": {
+          title: "Fin — Évasion",
+          description:
+            "Vous grimpez à bord de la navette. Les systèmes internes s’allument un à un, inondant le cockpit d’une lueur verte familière.\n\nUn message automatique s’affiche : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». Vous n’avez même pas le temps de vous asseoir correctement que la verrière se referme, scellant votre décision.\n\nLe hangar s’éloigne tandis que les moteurs rugissent. La station entière se rétrécit derrière vous, un géant métallique dérivant dans le vide.\n\nEn quittant enfin la structure, les hublots s’illuminent d'une douce lueur bleue : la Terre, suspendue dans le silence spatial.\n\nPour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Peut-être que la Terre n’est qu’un souvenir… ou peut-être qu’elle vous attend encore.\n\nMais une chose est certaine : cette fois, c’est vous qui tracez votre chemin."
+        },
+
+        "ending-cryo": {
+          title: "Fin — Sommeil Éternel",
+          description:
+            "Vous vous installez dans le cryo-pod.\nLa paroi se referme lentement…\nUne brume blanche envahit la vitre.\n\nTout disparaît dans le silence."
+        },
+
+        "ending-pod": {
+          title: "Fin — Fuite Précaire",
+          description:
+            "Vous vous jetez dans la capsule de secours et activez la séquence de lancement.\n\nLa station s’éloigne dans un silence pesant."
+        },
+
+        "ending-sabotage": {
+          title: "Fin — Chute Contrôlée",
+          description:
+            "Vous détournez la station vers l’atmosphère terrestre...\n\nVous sautez dans la capsule juste avant la destruction finale."
+        }
+      },
+
     };
   },
 
@@ -239,34 +307,49 @@ export default {
 
       };
 
-// Award from chapter JSON itself
-if (next.award) {
-  player.addClue(next.award);
-}
+      // Award from chapter JSON itself
+      if (next.award) {
+        player.addClue(next.award);
+      }
 
-const awardedClue = clueAwards[nextId];
-if (awardedClue) {
-  player.addClue(awardedClue);
-}
+      const awardedClue = clueAwards[nextId];
+      if (awardedClue) {
+        player.addClue(awardedClue);
+      }
 
-// If this is engine activation — also mark engine room visited
-if (nextId === "engine04-success") {
-  player.addClue("engine01");
-}
+      // If this is engine activation — also mark engine room visited
+      if (nextId === "engine04-success") {
+        player.addClue("engine01");
+      }
 
-      // ----- MORT -----
+      // ----- DEATH DETECTED -----
       if (next.type === "story" && next.good === false) {
+        const player = usePlayerStore();
         player.incrementDeaths(1);
-        const custom = this.deathMessages[nextId];
+
+        const customText = this.deathMessages[nextId];
 
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
-          custom ||
-          "Votre corps cède sous la pression... puis tout devient noir.";
+          customText || "Votre corps cède sous la pression... puis tout devient noir.";
 
         this.showEchec = true;
-        this.playDeath();
+        this.playDeath?.(); // if you added sound
         return;
+      }
+
+
+      // ----- ENDING DETECTION -----
+      if (nextId.startsWith("ending")) {
+        const ending = this.endingMessages[nextId];
+        this.reussiteTitle = ending ? ending.title : "Fin";
+        this.reussiteDescription = ending
+          ? ending.description
+          : "Vous avez atteint une fin du jeu.";
+
+        this.showReussite = true;
+        this.playSuccess();
+        return;   // ⛔ IMPORTANT sinon le code continue !
       }
 
       // Passage normal
@@ -284,19 +367,11 @@ if (nextId === "engine04-success") {
         return;
       }
 
-      // Ending
-      if (nextId.startsWith("ending")) {
-        const ending = this.endingMessages[nextId];
-        this.reussiteTitle = ending ? ending.title : "Fin";
-        this.reussiteDescription = ending
-          ? ending.description
-          : "Vous avez atteint une fin du jeu.";
-        this.showReussite = true;
-        this.$nextTick(() => this.playSuccess());
-      }
+
+
     },
 
-    
+
 
     /* ----------------------- MORT PAR OXYGENE ----------------------- */
     killPlayerByOxygen() {
@@ -328,7 +403,7 @@ if (nextId === "engine04-success") {
 
         this.echecTitle = "Erreur Chronique";
         this.echecDescription =
-          "Une surcharge parcourt le terminal... puis plus rien.";
+          "Le terminal grésille, puis explose en une gerbe d’étincelles. Un arc électrique vous traverse la poitrine — et tout s’interrompt d’un seul coup.";
 
         this.showEchec = true;
         this.playDeath();
