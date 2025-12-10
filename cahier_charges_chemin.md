@@ -1,25 +1,31 @@
 # Cahier de Charges: Trace ton chemin
 
+---
+
 ## 📌 Informations du Projet
 
-*Nom du projet:* Codex
+**Nom du projet :** Codex  
+**Nom de l'équipe :** jad-matis-anton
 
-*Nom de l'équipe:* jad-matis-anton
+---
 
-### 👥 Membres de l’équipe
+## 👥 Membres de l’équipe
 
-**Jad Saloumi – Chef de projet / Développeur principal**  
-Responsable de la coordination générale, de l’architecture Vue.js, de la logique interne du projet et de l’intégration principale du code. Il assure la cohérence technique et organise le déroulement du développement.
+### **Jad Saloumi – Chef de projet / Développeur principal**  
+Responsable de la coordination générale, de l’architecture Vue.js, et de l’intégration des fonctionnalités essentielles. Il supervise la structure du code, organise les tâches et garantit la cohérence technique du projet.
 
-**Matis Ghariani – Conception visuelle & sonore / Direction artistique**  
-Chargé de l’identité visuelle et sonore du projet : conception des maquettes, choix esthétiques, ambiance, animations et atmosphère générale. Il a imaginé la majorité des concepts visuels qui définissent l’univers du jeu.
+### **Matis Ghariani – Conception visuelle & sonore / Direction artistique**  
+Chargé de l’identité visuelle et sonore : création des maquettes, direction artistique, choix esthétiques, animations et ambiance générale. Il a conçu la majorité des concepts visuels qui définissent l’univers du jeu.
 
-**Anton Nikulin – Narration & Structure narrative / Chapitres et intégration**  
-Responsable de l’écriture de l’histoire, de la création des différents chapitres, de leurs variations et de l’arbre narratif. Il s’est assuré que toutes les pages, embranchements et conséquences soient logiquement connectés et intégrés dans le projet.
+### **Anton Nikulin – Narration & Structure narrative / Chapitres et intégration**  
+Responsable de la scénarisation complète : écriture des chapitres, création de l’arbre narratif, élaborations des variations et intégration logique des embranchements. Il assure la cohérence de l’histoire et la fluidité entre les différentes pages du jeu.
 
-*Date de début:* 15 OCT 2025  
-*Date de livraison finale:* [Date]  
-*Version du document:* 1.0
+---
+
+**Date de début :** 15 OCT 2025  
+**Date de livraison finale :** 10 décembre 2025  
+**Version du document :** 1.0  
+
 
 ## 🎯 1. Présentation du Projet
 
