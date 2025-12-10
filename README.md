@@ -14,7 +14,7 @@ L’option choisie est B, « Trace ton chemin ».
 ## Lien de Brainstorm
 [Brainstorm](https://www.figma.com/board/gnDEgdkdOBhtZe0rOdbgHJ/webapp-creative-jad-matis-anton?t=8gFLbzy4hklwBoZD-1)
 
-## Lien de Jeu Narratif
+## Lien du Jeu Narratif
 [Narratif](https://www.figma.com/design/3wJLs2NqQm0a8wD6kKpkXn/JEU-WEB-DESIGN)
 
 ## Lien de Trello (Modèle Kanban)
