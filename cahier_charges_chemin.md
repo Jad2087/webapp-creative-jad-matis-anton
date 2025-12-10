@@ -112,9 +112,6 @@ Fin 1    Fin 2        Fin 3    Fin 4
 | 11 | Générateur de leurre           | Objet / Texte        | Dispositif pour **attirer** la créature et gagner du temps pour fuir.              | Activer / Conserver                               | Réduit le risque; ouvre fenêtre d’évasion |
 | 12 | Cabine du capitaine            | Objet / Fin cachée   | Si l’objet requis est trouvé, on peut déverrouiller une **troisième fin** cachée.  | Chercher l’objet / Utiliser l’objet              | Débloque la **fin cachée** |
 
-
-
-
 ### 2.4 Fins possibles
 
 Listez toutes les fins de votre histoire (minimum 3, idéal 4–6):
@@ -196,7 +193,7 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 
 ### 3.3 Typographie
 
-- [Fira Code] - SemiBold
+- [monospace] - Courier New
 
 ### 3.4 Style visuel
 
