@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="screen">
-      <!-- TIMER à gauche -->
       <div class="columnleft">
-       <Timer :key="timerKey" @timeout="killPlayerByOxygen" />
+           <!-- TIMER -->
+       <Timer ref="oxygenTimer" :key="timerKey" :duration="10" @timeout="killPlayerByOxygen" />  <!-- ref est pour pour contrôler le timer du parent --> 
         <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
@@ -107,6 +107,9 @@ export default {
       successAudio: null,
       bgAudio: null,
       typingAudio: null,
+
+     // Timer
+      timerKey: 0,
 
       // CUSTOM MESSAGES
       deathMessages: {
@@ -224,7 +227,7 @@ export default {
   },
 
   methods: {
-    /* ------------------------ SONS ------------------------ */
+    /* SONS */
     playClick() {
       if (this.clickAudio) {
         this.clickAudio.currentTime = 0;
@@ -277,7 +280,7 @@ export default {
       }
     },
 
-    /* ------------------- CHANGEMENT DE CHAPITRE ------------------- */
+    /* changer de chapitre*/
     changeChapter(next, choiceText) {
       this.playClick();
 
@@ -324,22 +327,22 @@ export default {
         player.addClue("engine01");
       }
 
-      // ----- DEATH DETECTED -----
-      if (next.type === "story" && next.good === false) {
-        const player = usePlayerStore();
-        player.incrementDeaths(1);
+ // --- mort mauvaise décision ---
+ // si le chapitre choisi est un échec
+  if (next.type === "story" && next.good === false) {
+    this.$refs.oxygenTimer?.stopTimer(); // stop immédiat du timer 
+    player.incrementDeaths(1); // incrémente le compteur de morts du joueur
 
-        const customText = this.deathMessages[nextId];
+    const customText = this.deathMessages[nextId]; // récupère un texte spécifique pour cette mort
 
-        this.echecTitle = "Erreur Chronique";
-        this.echecDescription =
-          customText || "Votre corps cède sous la pression... puis tout devient noir.";
+    this.echecTitle = "Erreur Chronique";
+    this.echecDescription =
+      customText || "Votre corps cède sous la pression... puis tout devient noir.";
 
-        this.showEchec = true;
-        this.playDeath?.(); // if you added sound
-        return;
-      }
-
+    this.showEchec = true; // affiche la modal d’échec
+    this.playDeath(); // joue le son de mort 
+    return; 
+  }
 
       // ----- ENDING DETECTION -----
       if (nextId.startsWith("ending")) {
@@ -351,7 +354,7 @@ export default {
 
         this.showReussite = true;
         this.playSuccess();
-        return;   // ⛔ IMPORTANT sinon le code continue !
+        return;   // IMPORTANT sinon le code continue !
       }
 
       // Passage normal
@@ -368,27 +371,23 @@ export default {
         this.openMiniGame = true;
         return;
       }
-
-
-
     },
 
+    /* MORT PAR OXYGENE */
+  killPlayerByOxygen() {
+  this.$refs.oxygenTimer?.stopTimer(); // // stopper le timer pour éviter qu’il continue
+  const player = usePlayerStore();
+  player.incrementDeaths(1); // compte les morts
 
+  this.echecTitle = "Oxygène épuisé";
+  this.echecDescription =
+    "Votre vision se trouble... l’air manque... puis tout devient noir.";
 
-    /* ----------------------- MORT PAR OXYGENE ----------------------- */
-    killPlayerByOxygen() {
-      const player = usePlayerStore();
-      player.incrementDeaths(1);
+  this.showEchec = true; // affiche la modal d’échec
+  this.playDeath(); // joue le son de mort
+},
 
-      this.echecTitle = "Oxygène épuisé";
-      this.echecDescription =
-        "Votre vision se trouble... l’air manque... puis tout devient noir.";
-
-      this.showEchec = true;
-      this.playDeath();
-    },
-
-    /* ----------------------- FIN MINI-JEU ----------------------- */
+    /* FIN MINI-JEU */
     onMiniGameDone(result) {
       this.openMiniGame = false;
 
