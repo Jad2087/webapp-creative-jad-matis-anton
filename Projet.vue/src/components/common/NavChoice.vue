@@ -31,24 +31,26 @@ export default {
         return this.player.hasClue(baseClue);
       }
 
-if (id === "engine01" || id === "engine01-03") {
-  return this.player.hasClue("engine01");
-}
+      // Engine visited logic: if engine room already visited
+      if (id === "engine01" || id === "engine01-03") {
+        return this.player.hasClue("engine01");
+      }
 
 
       return false;
     },
     isVisible() {
       if (!this.choice.requiresEngine) return true;
-      return this.player.hasClue("engine");
+      // For engine-dependent choices (like ending), check engineActivated flag
+      return this.player.hasClue("engineActivated");
     },
   },
   methods: {
-choose() {
-  const resolved = this.resolveNext(this.choice);
-  console.log("NavChoice.choose → resolved:", resolved, "player.clues:", this.player.clues);
-  this.$emit("choose", resolved, this.choice.text);
-},
+    choose() {
+      const resolved = this.resolveNext(this.choice);
+      console.log("NavChoice.choose → resolved:", resolved, "player.clues:", this.player.clues);
+      this.$emit("choose", resolved, this.choice.text);
+    },
 
 
 
@@ -110,9 +112,9 @@ choose() {
       // -------------------------
 
       // If player already reactivated the generator
-if (id === "engine01" && this.player.hasClue("engine01")) {
-  return { id: "engine01-03", type: "story", good: true };
-}
+      if (id === "engine01" && this.player.hasClue("engine01")) {
+        return { id: "engine01-03", type: "story", good: true };
+      }
 
 
 

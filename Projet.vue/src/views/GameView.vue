@@ -234,18 +234,25 @@ export default {
         "clue10-02": "clue10",
         "clue100-01": "clue100",
         "clue111-02": "clue111",
-        "engine04-success": "engine01",
+        "engine04-success": "engine",
+        "engine04-success": "engineActivated",  // flag: engine has been turned on
 
       };
 
-      // Award from chapter JSON itself
+// Award from chapter JSON itself
 if (next.award) {
   player.addClue(next.award);
 }
 
+const awardedClue = clueAwards[nextId];
+if (awardedClue) {
+  player.addClue(awardedClue);
+}
 
-      const awardedClue = clueAwards[nextId];
-      if (awardedClue) player.addClue(awardedClue);
+// If this is engine activation — also mark engine room visited
+if (nextId === "engine04-success") {
+  player.addClue("engine01");
+}
 
       // ----- MORT -----
       if (next.type === "story" && next.good === false) {

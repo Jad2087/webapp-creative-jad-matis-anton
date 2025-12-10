@@ -6,7 +6,7 @@
     "choices": [
       {
         "text": "Continuer dans le couloir obscur",
-        "next": { "type": "story", "id": "fork05", "good": true }
+        "next": { "type": "story", "id": "fork06", "good": true }
       }
     ]
   },  
@@ -1229,7 +1229,7 @@
   "id": "minigame06",
   "type": "game",
   "password": "ORION",
-  "wordCount": 30,
+  "wordCount": 29,
   "words": ["ORION","ASTRE","RADAR","LASER","SONDE","PROBE","NAVET","SUIVI","SIGMA",
 "DELTA","MODUL","ROTOR","VITES","SONAR","CAPTE","FUSEE","ALPHA","SECTE",
 "SYSTEM","NIVEA","COEUR","PLAQU","ANODE","CABLE","PANNE","PHASE","NUCLE",
