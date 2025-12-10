@@ -112,9 +112,6 @@ Fin 1    Fin 2        Fin 3    Fin 4
 | 11 | Générateur de leurre           | Objet / Texte        | Dispositif pour **attirer** la créature et gagner du temps pour fuir.              | Activer / Conserver                               | Réduit le risque; ouvre fenêtre d’évasion |
 | 12 | Cabine du capitaine            | Objet / Fin cachée   | Si l’objet requis est trouvé, on peut déverrouiller une **troisième fin** cachée.  | Chercher l’objet / Utiliser l’objet              | Débloque la **fin cachée** |
 
-
-
-
 ### 2.4 Fins possibles
 
 Listez toutes les fins de votre histoire (minimum 3, idéal 4–6):
@@ -196,7 +193,7 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 
 ### 3.3 Typographie
 
-- [Fira Code] - SemiBold
+- [monospace] - Courier New
 
 ### 3.4 Style visuel
 
@@ -402,8 +399,6 @@ Comment stockez-vous les chapitres et choix?
   }
 }
 ```
-
-
 ## 🎬 5. Fonctionnalités et User Stories
 
 ### 5.1 Fonctionnalités MVP (Minimum Viable Product)
@@ -432,7 +427,7 @@ Comment stockez-vous les chapitres et choix?
   - Chargement d'une sauvegarde
   - Affichage des infos de sauvegarde (date, progression)
 
-- [ ] *F5 - Historique des choix*
+- [x] *F5 - Historique des choix*
   - Garder trace des décisions prises
   - Affichage dans un menu (optionnel mais recommandé)
 
@@ -441,7 +436,7 @@ Comment stockez-vous les chapitres et choix?
   - Récapitulatif des choix faits
   - Option de recommencer ou charger
 
-- [ ] *F7 - Interface responsive*
+- [x] *F7 - Interface responsive*
   - Mobile (320px+)
   - Tablette (768px+)
   - Desktop (1024px+)
@@ -522,7 +517,6 @@ Comment stockez-vous les chapitres et choix?
 
 10. [Ajoutez vos user stories]
 
-
 ## 📊 6. Maquettes et Wireframes
 
 ### 6.1 Lien vers les maquettes Figma
@@ -555,10 +549,9 @@ Comment stockez-vous les chapitres et choix?
 
 | Membre | Rôle principal | Responsabilités |
 |--------|----------------|-----------------|
-| [Nom] | Chef de projet + Architecture Vue | Coordination, Vue Router, stores Pinia, structure de l'histoire |
-| [Nom] | Design + Animations | CSS, design visuel, animations GSAP, transitions |
-| [Nom] | Contenu + Narration | Écriture des chapitres, création de l'arbre narratif, dialogues |
-| [Nom] | Données + Système | Gestion des sauvegardes, LocalStorage, logique de choix, stats |
+| [Jad Saloumi] | Chef de projet + Architecture Vue | Coordination, Vue Router, stores Pinia, structure de l'histoire, stats |
+| [Matis Ghariani] | Design + Animations | CSS, design visuel, animations GSAP, transitions |
+| [Anton Nikulin] | Contenu + Narration | Écriture des chapitres, création de l'arbre narratif, dialogues, logique de choix |
 
 *Note:* Tous participent au développement, mais chacun a sa spécialité.
 
@@ -574,58 +567,56 @@ Comment stockez-vous les chapitres et choix?
 
 ### 7.3 Outils de collaboration
 
-- *Git/GitHub:* [Lien du repo]
-- *Gestion de projet:* [Trello / Word / GitHub Projects]
-- *Communication:* [Teams]
-- *Design:* [Figma]
+- *Git/GitHub:* [[Lien du repo](https://github.com/Jad2087/webapp-creative-jad-matis-anton)]
+- *Gestion de projet:* [[Trello / Word / GitHub Projects](https://trello.com/b/bLSYDkwz/modele-kanban)]
+- *Communication:* [2257715@cmontmorency.qc.ca, 2014470@cmontmorency.qc.ca, 2278673@cmontmorency.qc.ca]
+- *Design:* [[Figma](https://www.figma.com/design/NYORCfer7iDWWjMfVaiR2e/webapp-creative-jad-matis-anton?node-id=0-1&p=f&t=j1SahqeOevGKEd14-0)]
 - *Documentation:* [Word / Google Docs / README.md]
 - *Écriture collaborative:* [Google Docs / Word]
-
 
 ## 🚀 8. Critères de Succès
 
 ### 8.1 Critères techniques
 
-- [ ] Application Vue.js fonctionnelle sans erreurs console
-- [ ] Minimum 8 composants Vue bien structurés
-- [ ] Vue Router avec 5+ routes
-- [ ] Pinia implémenté avec state management cohérent
-- [ ] CSS organisé avec variables
-- [ ] Animations GSAP fluides
-- [ ] Système de sauvegarde fonctionnel
-- [ ] Code validé (ESLint)
-- [ ] Responsive sur 3 breakpoints
-- [ ] Accessibilité WCAG AA
+- [x] Application Vue.js fonctionnelle sans erreurs console
+- [x] Minimum 8 composants Vue bien structurés
+- [x] Vue Router avec 5+ routes
+- [x] Pinia implémenté avec state management cohérent
+- [x] CSS organisé avec variables
+- [x] Animations GSAP fluides
+- [x] Système de sauvegarde fonctionnel
+- [x] Code validé (ESLint)
+- [x] Responsive sur 3 breakpoints
+- [x] Accessibilité WCAG AA
 
 ### 8.2 Critères narratifs
 
-- [ ] Histoire cohérente du début à la fin
-- [ ] Minimum 8 chapitres/scènes
-- [ ] Au moins 3 fins différentes
-- [ ] Choix ayant un impact réel sur l'histoire
-- [ ] Aucune faute d'orthographe majeure
-- [ ] Dialogues naturels et crédibles
-- [ ] Rythme narratif bien dosé
+- [x] Histoire cohérente du début à la fin
+- [x] Minimum 8 chapitres/scènes
+- [x] Au moins 3 fins différentes
+- [x] Choix ayant un impact réel sur l'histoire
+- [x] Aucune faute d'orthographe majeure
+- [x] Dialogues naturels et crédibles
+- [x] Rythme narratif bien dosé
 
 ### 8.3 Critères de qualité
 
-- [ ] Interface intuitive et facile à utiliser
-- [ ] Design cohérent et esthétique
-- [ ] Lisibilité du texte (taille, contraste, police)
-- [ ] Animations pertinentes (pas excessives)
-- [ ] Temps de chargement < 2 secondes
-- [ ] Aucun bug bloquant
-- [ ] Musique/sons appropriés
-- [ ] Documentation complète (README)
+- [x] Interface intuitive et facile à utiliser
+- [x] Design cohérent et esthétique
+- [x] Lisibilité du texte (taille, contraste, police)
+- [x] Animations pertinentes (pas excessives)
+- [x] Temps de chargement < 2 secondes
+- [x] Aucun bug bloquant
+- [x] Musique/sons appropriés
+- [x] Documentation complète (README)
 
 ### 8.4 Critères créatifs
 
-- [ ] Histoire originale et engageante
-- [ ] Personnages mémorables
-- [ ] Twist ou surprise dans l'intrigue
-- [ ] Expérience émotionnelle impactante
-- [ ] Rejouabilité (envie de tester d'autres chemins)
-
+- [x] Histoire originale et engageante
+- [x] Personnages mémorables
+- [x] Twist ou surprise dans l'intrigue
+- [x] Expérience émotionnelle impactante
+- [x] Rejouabilité (envie de tester d'autres chemins)
 
 ## 📅 9. Calendrier du projet: Planning prévisionnel
 
@@ -669,7 +660,6 @@ Comment stockez-vous les chapitres et choix?
 - Composants de choix interactifs
 - Plus de chapitres écrits et intégrés
 
-
 ### 9.4 *PHASE 4: ANIMATIONS ET MÉDIAS*
 <!-- Semaine 6 -->
 
@@ -682,13 +672,11 @@ Comment stockez-vous les chapitres et choix?
 - Musiques/sons d'ambiance
 - Animations de texte
 
-
 ### 9.x *ÉVALUATION PAR LES PAIRS ET AUTO-ÉVALUATION DE MI PARCOURS*
 
 **Sera fait en classe le 19 novembre**
 
 *Remise de l'évaluation par les pairs et auto-évaluation de mi parcours: 19 novembre | 5%*
-
 
 ### 9.5 *PHASE 5: PERSISTANCE ET SAUVEGARDE DES DONNÉES + Fin de l'histoire*
 <!-- Semaine 7 -->
@@ -742,7 +730,6 @@ Comment stockez-vous les chapitres et choix?
 
 *Remise de l'analyse réflexive et suivi de l'évaluation de mi-parcours: 12 décembre | 5%*
 
-
 ## 🎯 10. Risques et Solutions
 
 | Risque | Probabilité | Impact | Solution préventive |
@@ -753,7 +740,6 @@ Comment stockez-vous les chapitres et choix?
 | Incohérences narratives | Moyenne | Moyen | Relecture croisée, document de tracking des flags |
 | Fautes d'orthographe | Élevée | Faible | Utiliser correcteur, relecture collective |
 | Sauvegardes corrompues | Faible | Élevé | Validation JSON, gestion d'erreurs, tests intensifs |
-
 
 ## 📝 11. Annexes
 
@@ -787,8 +773,6 @@ Comment stockez-vous les chapitres et choix?
 - *Karma:* Système de moralité basé sur les choix
 - *Node:* Point de décision dans l'arbre narratif
 - *Save slot:* Emplacement de sauvegarde
-
-
 
 ## ✅ Validation du Cahier de Charges
 

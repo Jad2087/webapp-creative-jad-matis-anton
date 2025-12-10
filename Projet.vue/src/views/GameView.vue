@@ -3,7 +3,7 @@
     <div class="screen">
       <!-- TIMER à gauche -->
       <div class="columnleft">
-        <Timer @timeout="killPlayerByOxygen" />
+       <Timer :key="timerKey" @timeout="killPlayerByOxygen" />
         <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
@@ -410,13 +410,15 @@ export default {
       }
     },
 
-    /* ---------------------------- RETRY ---------------------------- */
+    /* recommencer */
     retryGame() {
       const player = usePlayerStore();
       const storyStore = useStoryStore();
 
       player.reset();
       storyStore.resetChoices();
+
+      this.timerKey++; // reset Timer
 
       this.showEchec = false;
       this.current = this.restartChapterId;
@@ -431,9 +433,14 @@ export default {
 
     goToMenu() {
       const player = usePlayerStore();
+
       player.reset();
+
+      this.timerKey++; // reset Timer
+
       this.showEchec = false;
       this.showReussite = false;
+      
       this.current = "intro";
       this.$router.push({ name: "home" });
 
