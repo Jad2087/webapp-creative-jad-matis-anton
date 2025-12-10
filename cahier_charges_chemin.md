@@ -22,7 +22,7 @@ Responsable de la scénarisation complète : écriture des chapitres, création 
 
 ---
 
-**Date de début :** 15 OCT 2025  
+**Date de début :** 15 October 2025  
 **Date de livraison finale :** 10 décembre 2025  
 **Version du document :** 1.0  
 
@@ -31,32 +31,28 @@ Responsable de la scénarisation complète : écriture des chapitres, création 
 
 ### 1.1 Concept général
 
-Décrivez en 2-3 paragraphes le concept de votre histoire interactive:
+**Codex** est une expérience interactive de science-fiction teintée de mystère et de tension psychologique. Le joueur incarne un individu anonyme qui se réveille d’une cryostase au cœur d’une station spatiale partiellement effondrée, silencieuse et abandonnée. Aucun souvenir, aucun contact extérieur — seulement des modules dépressurisés, des systèmes en panne, une réserve d’oxygène limitée et une étrange substance noire qui contamine certaines sections. L’objectif est simple en apparence : comprendre ce qui reste fonctionnel et trouver un moyen de quitter la station avant qu’elle ne se désintègre en orbite.
 
-- **Quel est le genre narratif ?** Horror sci‑fi.
-  
-- **Quelle est l’histoire principale ?** Le jouer se réveille d’une cuve cryogénique sans aucun souvenir. Son but : quitter la station avant la rentrée atmosphérique. Il est seul — pas de PNJ — et doit explorer les modules (couloirs, énergie, communications, cryo…), collecter des indices, et déverrouiller portes/terminaux pour progresser. L’interface simule un terminal rétro (texte vert sur noir, style code) pour renforcer l’immersion.
-  
-- **Qui est le personnage principal ?** Le joueur incarne Interloper (nom provisoire), avatar neutre pour favoriser la projection du joueur.
-  
-- **Quel est le mécanisme de choix ?** es choix servent d’interface d’exploration : boutons contextuels pour se déplacer entre zones, examiner, fouiller, et hacker. Les passages bloqués s’ouvrent via mots de passe trouvés en environnement ou un mini-jeu de hacking (inspiré des mécaniques Fallout : mots de même longueur, indice de similarité, suppression de « duds », réinit des essais), adapté à notre format web.
+L’histoire repose sur l’exploration : le joueur choisit quels secteurs visiter (énergie, maintenance, communications, modules de service…), comment aborder des environnements dangereux, et dans quel ordre récolter les indices nécessaires pour progresser. La progression dépend de la capacité du joueur à analyser les indices, contourner les obstacles environnementaux et déverrouiller différents terminaux informatiques grâce à un mini-jeu de hacking basé sur la logique, les mots de passe et la similarité des caractères.
 
+Le protagoniste reste volontairement neutre — un « personne » sans identité définie — mais de petits détails (compétences techniques, compréhension des systèmes, aisance avec les terminaux) suggèrent un passé de mécanicien ou technicien de bord. Ce choix renforce l’immersion : le joueur devient littéralement celui qui se réveille et tente de survivre, sans menace vivante qui le pourchasse, mais avec une atmosphère lourde, des risques bien réels et la pression constante d’un compte à rebours invisible : l’oxygène qui s’épuise.
 
 ### 1.2 Public cible
 
-- *Âge:* 18–30 ans (cœur de cible ~24 ans)
-- *Profil:* Amateurs de sci-fi/horror, de récits interactifs et d’esthétique rétro/terminal
-- *Niveau technique:* Grand public (navigation par clic)
-- *Temps de lecture estimé:* 20 minutes pour une partie complète
+- *Âge:* 18–30 ans (cœur de cible ~24 ans)  
+- *Profil:* Amateurs de récits interactifs, de science-fiction immersive, d’histoires atmosphériques et d’esthétique rétro/terminal  
+- *Niveau technique:* Grand public (navigation par clic)  
+- *Temps de lecture estimé:* ~20 minutes pour une partie complète  
 
 ### 1.3 Objectifs du projet
 
-- [ ] Créer une expérience narrative immersive et émotionnelle
-- [ ] Développer un système de choix avec conséquences réelles
-- [ ] Implémenter un système de sauvegarde de progression
-- [X] Démontrer la maîtrise de Vue.js, GSAP et Pinia
-- [X] Créer une interface accessible et responsive
-- [ ] [Autre objectif spécifique]
+- [x] Créer une expérience narrative immersive et atmosphérique  
+- [x] Développer un système de choix influençant réellement le parcours du joueur  
+- [x] Implémenter un mini-jeu de hacking cohérent avec l’univers  
+- [ ] Implémenter un système de sauvegarde de progression  
+- [x] Démontrer la maîtrise de Vue.js, Pinia et GSAP  
+- [x] Créer une interface accessible et responsive  
+- [ ] [Autre objectif spécifique]  
 
 
 
