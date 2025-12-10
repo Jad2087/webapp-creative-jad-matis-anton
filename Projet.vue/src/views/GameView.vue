@@ -153,13 +153,15 @@ export default {
           "La substance noire s’anime et rampe vers vous comme attirée par votre chaleur. Un froid glacial remonte votre corps… puis tout disparaît."
       },
 
-      endingMessages: {
-        "ending": {
-          title: "Fin — Évasion",
-          description:
-            "Vous grimpez à bord de la navette. Les systèmes internes s’allument un à un, inondant le cockpit d’une lueur verte familière.\n\nUn message automatique s’affiche : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». Vous n’avez même pas le temps de vous asseoir correctement que la verrière se referme, scellant votre décision.\n\nLe hangar s’éloigne tandis que les moteurs rugissent. La station entière se rétrécit derrière vous, un géant métallique dérivant dans le vide.\n\nEn quittant enfin la structure, les hublots s’illuminent d'une douce lueur bleue : la Terre, suspendue dans le silence spatial.\n\nPour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Peut-être que la Terre n’est qu’un souvenir… ou peut-être qu’elle vous attend encore.\n\nMais une chose est certaine : cette fois, c’est vous qui tracez votre chemin."
-        },
-
+    endingMessages: {
+  "ending": {
+    title: "Fin — Évasion",
+    description:
+      "Vous montez à bord de la navette. Les systèmes s’allument un à un, inondant le cockpit d’une lueur verte.\n\n" +
+      "Un message automatique apparaît : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». La verrière se referme, scellant votre décision.\n\n" +
+      "Le hangar s’éloigne tandis que les moteurs rugissent. La Terre apparaît enfin à travers les hublots, suspendue dans le silence spatial.\n\n" +
+      "Pour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Cette fois, c’est vous qui tracez votre chemin."
+  },
         "ending-cryo": {
           title: "Fin — Sommeil Éternel",
           description:
@@ -440,7 +442,7 @@ export default {
 
       this.showEchec = false;
       this.showReussite = false;
-      
+
       this.current = "intro";
       this.$router.push({ name: "home" });
 

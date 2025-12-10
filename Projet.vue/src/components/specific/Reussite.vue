@@ -82,36 +82,53 @@ export default {
   font-family: "Courier New", monospace;
 }
 
+/* Fond semi-transparent pour l’overlay */
 .reussite-container {
   position: absolute;
   inset: 0;
-  background: rgba(0, 255, 100, 0.2);
+  background: rgba(0, 255, 100, 0.25);
+  /* vert clair semi-transparent */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Boîte centrale */
 .reussite-box {
   width: 480px;
   padding: 30px;
   border: 3px solid #39ff88;
+  /* vert fluo */
   background: #111;
+  /* fond sombre */
   color: #39ff88;
+  box-shadow: 0 0 25px 5px rgba(57, 255, 136, 0.5),
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    inset 0 0 40px rgba(57, 255, 136, 0.15);
 }
 
+/* Titre */
 .titre {
   margin: 0 0 15px 0;
   font-size: 1.4rem;
+  font-weight: bold;
 }
 
+/* Texte */
 .description {
   margin-bottom: 30px;
   color: #39ff88;
+  text-align: center;
 }
 
+/* Boutons */
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 15px;
+  /* espace entre les boutons */
+  margin-top: 20px;
 }
 
 .btn {
@@ -121,64 +138,89 @@ export default {
   color: #39ff88;
   cursor: pointer;
   transition: 0.2s;
+  min-width: 130px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .btn:hover {
   background: #39ff88;
-  color: black;
   transform: scale(1.05);
+  color: black;
 }
 
-/* === VERSION MOBILE === */
-@media screen and (max-width: 1080px) {
+.accueil {
+  border-color: #39ff88;
+  color: #39ff88;
+}
+
+.accueil:hover {
+  background: #39ff88;
+  color: black;
+}
+
+.menu {
+  border-color: #39ff88;
+  color: #39ff88;
+}
+
+.menu:hover {
+  background: #39ff88;
+  color: black;
+}
+
+/* version mobile */
+@media (max-width: 1080px) {
   .reussite-container {
     position: fixed;
-    width: 100vw;
-    height: 100dvh;
-    background: rgba(0, 255, 100, 0.2);
+    inset: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    padding: 1rem;
   }
 
   .reussite-box {
-    width: 95vw;
-    height: 100dvh;
-    padding: 1rem;
+    width: 90vw;
+    max-width: 480px;
+    max-height: 85vh;
+    padding: 1.5rem;
     border: 2px solid #39ff88;
+    background: #111;
+    color: #39ff88;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(57, 255, 136, 0.5);
+    overflow: hidden;
   }
 
   .titre {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
 
   .description {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin: 1rem 0;
+    max-height: 40vh;
+    overflow-y: auto;
     text-align: center;
-    margin: 0;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .buttons {
-    flex-direction: column;
-    gap: 1rem;
     width: 100%;
-    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
   }
 
   .btn {
     width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
   }
 
   .btn:hover {
