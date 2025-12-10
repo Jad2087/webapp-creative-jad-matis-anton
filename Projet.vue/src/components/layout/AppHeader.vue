@@ -5,12 +5,7 @@
     </div>
 
     <nav class="app-header__nav">
-      <RouterLink
-        to="/"
-        class="app-header__link"
-        @click="playClick"
-        @mouseenter="playHover"
-      >
+      <RouterLink to="/" class="app-header__link" @click="playClick" @mouseenter="playHover">
         Accueil
       </RouterLink>
     </nav>

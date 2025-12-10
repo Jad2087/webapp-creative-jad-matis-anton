@@ -2,8 +2,9 @@
   <div class="container">
     <div class="screen">
       <div class="columnleft">
-           <!-- TIMER -->
-       <Timer ref="oxygenTimer" :key="timerKey" :duration="4 * 60" @timeout="killPlayerByOxygen" />  <!-- ref est pour pour contrôler le timer du parent --> 
+        <!-- TIMER -->
+        <Timer ref="oxygenTimer" :key="timerKey" :duration="4 * 60" @timeout="killPlayerByOxygen" />
+        <!-- ref est pour pour contrôler le timer du parent -->
         <Stats />
         <MiniMap :currentChapterId="current" />
       </div>
@@ -108,7 +109,7 @@ export default {
       bgAudio: null,
       typingAudio: null,
 
-     // Timer
+      // Timer
       timerKey: 0,
 
       // CUSTOM MESSAGES
@@ -156,15 +157,15 @@ export default {
           "La substance noire s’anime et rampe vers vous comme attirée par votre chaleur. Un froid glacial remonte votre corps… puis tout disparaît."
       },
 
-    endingMessages: {
-  "ending": {
-    title: "Fin — Évasion",
-    description:
-      "Vous montez à bord de la navette. Les systèmes s’allument un à un, inondant le cockpit d’une lueur verte.\n\n" +
-      "Un message automatique apparaît : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». La verrière se referme, scellant votre décision.\n\n" +
-      "Le hangar s’éloigne tandis que les moteurs rugissent. La Terre apparaît enfin à travers les hublots, suspendue dans le silence spatial.\n\n" +
-      "Pour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Cette fois, c’est vous qui tracez votre chemin."
-  },
+      endingMessages: {
+        "ending": {
+          title: "Fin — Évasion",
+          description:
+            "Vous montez à bord de la navette. Les systèmes s’allument un à un, inondant le cockpit d’une lueur verte.\n\n" +
+            "Un message automatique apparaît : « TRAJECTOIRE DE RETOUR — CONFIRMÉE ». La verrière se referme, scellant votre décision.\n\n" +
+            "Le hangar s’éloigne tandis que les moteurs rugissent. La Terre apparaît enfin à travers les hublots, suspendue dans le silence spatial.\n\n" +
+            "Pour la première fois depuis votre réveil, vous sentez votre poitrine se détendre. Cette fois, c’est vous qui tracez votre chemin."
+        },
         "ending-cryo": {
           title: "Fin — Sommeil Éternel",
           description:
@@ -332,22 +333,22 @@ export default {
         player.addClue("engine01");
       }
 
- // --- mort mauvaise décision ---
- // si le chapitre choisi est un échec
-  if (next.type === "story" && next.good === false) {
-    this.$refs.oxygenTimer?.stopTimer(); // stop immédiat du timer 
-    player.incrementDeaths(1); // incrémente le compteur de morts du joueur
+      // --- mort mauvaise décision ---
+      // si le chapitre choisi est un échec
+      if (next.type === "story" && next.good === false) {
+        this.$refs.oxygenTimer?.stopTimer(); // stop immédiat du timer 
+        player.incrementDeaths(1); // incrémente le compteur de morts du joueur
 
-    const customText = this.deathMessages[nextId]; // récupère un texte spécifique pour cette mort
+        const customText = this.deathMessages[nextId]; // récupère un texte spécifique pour cette mort
 
-    this.echecTitle = "Erreur Chronique";
-    this.echecDescription =
-      customText || "Votre corps cède sous la pression... puis tout devient noir.";
+        this.echecTitle = "Erreur Chronique";
+        this.echecDescription =
+          customText || "Votre corps cède sous la pression... puis tout devient noir.";
 
-    this.showEchec = true; // affiche la modal d’échec
-    this.playDeath(); // joue le son de mort 
-    return; 
-  }
+        this.showEchec = true; // affiche la modal d’échec
+        this.playDeath(); // joue le son de mort 
+        return;
+      }
 
       // ENDING DETECTION
       if (nextId.startsWith("ending")) {
@@ -379,18 +380,18 @@ export default {
     },
 
     /* MORT PAR OXYGENE */
-  killPlayerByOxygen() {
-  this.$refs.oxygenTimer?.stopTimer(); // // stopper le timer pour éviter qu’il continue
-  const player = usePlayerStore();
-  player.incrementDeaths(1); // compte les morts
+    killPlayerByOxygen() {
+      this.$refs.oxygenTimer?.stopTimer(); // // stopper le timer pour éviter qu’il continue
+      const player = usePlayerStore();
+      player.incrementDeaths(1); // compte les morts
 
-  this.echecTitle = "Oxygène épuisé";
-  this.echecDescription =
-    "Votre vision se trouble... l’air manque... puis tout devient noir.";
+      this.echecTitle = "Oxygène épuisé";
+      this.echecDescription =
+        "Votre vision se trouble... l’air manque... puis tout devient noir.";
 
-  this.showEchec = true; // affiche la modal d’échec
-  this.playDeath(); // joue le son de mort
-},
+      this.showEchec = true; // affiche la modal d’échec
+      this.playDeath(); // joue le son de mort
+    },
 
     /* FIN MINI-JEU */
     onMiniGameDone(result) {

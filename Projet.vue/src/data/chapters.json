@@ -6,27 +6,50 @@
     "choices": [
       {
         "text": "Continuer dans le couloir obscur",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       }
     ]
-  },  
+  },
   {
     "id": "fork01",
     "title": "Act 1 — Embranchement",
     "text": "Après avoir marché pendant ce qui vous semble être de longues minutes dans le couloir métallique, vous arrivez devant un embranchement.\n\nLe passage se divise en trois directions :\n\nÀ gauche, le couloir plonge dans une obscurité totale.\n\nÀ droite, un court passage s'achève sur une faible lueur ambrée.\n\nAu centre, une pâle lueur verte émane de quelque chose plus loin dans l’ombre.\n\nImpossible de savoir ce qui vous attend dans chacun de ces chemins.",
-"choices": [
-  { "text": "S’aventurer dans l’obscurité", "next": { "type": "story", "id": "clue01" } },
-  {
-    "text": "Suivre la lueur verte",
-    "next": { "type": "story", "id": "minigame01", "good": true }
-  },
-  { "text": "Aller vers la lueur ambrée", "next": { "type": "story", "id": "clue02" } },
-  {
-    "text": "Retourner",
-    "next": { "type": "story", "id": "intro", "good": true }
-  }
-]
-
+    "choices": [
+      {
+        "text": "S’aventurer dans l’obscurité",
+        "next": {
+          "type": "story",
+          "id": "clue01"
+        }
+      },
+      {
+        "text": "Suivre la lueur verte",
+        "next": {
+          "type": "story",
+          "id": "minigame01",
+          "good": true
+        }
+      },
+      {
+        "text": "Aller vers la lueur ambrée",
+        "next": {
+          "type": "story",
+          "id": "clue02"
+        }
+      },
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "intro",
+          "good": true
+        }
+      }
+    ]
   },
   {
     "id": "clue01",
@@ -35,15 +58,27 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       },
       {
         "text": "Fouiller ses poches",
-        "next": { "type": "story", "id": "clue01-01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue01-01",
+          "good": true
+        }
       },
       {
         "text": "Tenter de dégager son corps des décombres",
-        "next": { "type": "story", "id": "clue01-02", "good": false }
+        "next": {
+          "type": "story",
+          "id": "clue01-02",
+          "good": false
+        }
       }
     ]
   },
@@ -54,7 +89,11 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       }
     ]
   },
@@ -62,9 +101,7 @@
     "id": "clue01-02",
     "title": "Act 1 — Effondrement",
     "text": "",
-    "choices": [
-
-    ]
+    "choices": []
   },
   {
     "id": "clue01-03",
@@ -73,7 +110,11 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       }
     ]
   },
@@ -84,15 +125,27 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       },
       {
         "text": "Marcher sur les objets renversés",
-        "next": { "type": "story", "id": "clue02-01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue02-01",
+          "good": true
+        }
       },
       {
         "text": "Marcher dans le liquide noir",
-        "next": { "type": "story", "id": "clue02-02", "good": false }
+        "next": {
+          "type": "story",
+          "id": "clue02-02",
+          "good": false
+        }
       }
     ]
   },
@@ -103,7 +156,11 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       }
     ]
   },
@@ -120,10 +177,14 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       }
     ]
-  },  
+  },
   {
     "id": "minigame01",
     "title": "Act 1 — Terminal Verrouillé",
@@ -131,32 +192,45 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork01",
+          "good": true
+        }
       },
       {
         "text": "Pirater le terminal",
-        "next": { "type": "game", "id": "minigame01", "good": true }
+        "next": {
+          "type": "game",
+          "id": "minigame01",
+          "good": true
+        }
       }
     ]
-  },  
-{
-  "id": "minigame01",
-  "type": "game",
-  "password": "ECHO",
-  "wordCount": 12,
-  "maxAttempts": 4,
-  "words": ["ECHO","CODE","PORT","NOIR","CLEF","BOIT","SUIT","MURM","VIDE","VOIE","FROU","SANG"],
-  "success": "intro2",
-  "fail": null
-},
-
-
-
-
-
-
-
-
+  },
+  {
+    "id": "minigame01",
+    "type": "game",
+    "password": "ECHO",
+    "wordCount": 12,
+    "maxAttempts": 4,
+    "words": [
+      "ECHO",
+      "CODE",
+      "PORT",
+      "NOIR",
+      "CLEF",
+      "BOIT",
+      "SUIT",
+      "MURM",
+      "VIDE",
+      "VOIE",
+      "FROU",
+      "SANG"
+    ],
+    "success": "intro2",
+    "fail": null
+  },
   {
     "id": "intro2",
     "title": "Acte 2 — Intro",
@@ -164,7 +238,11 @@
     "choices": [
       {
         "text": "Continuer",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       }
     ]
   },
@@ -175,23 +253,38 @@
     "choices": [
       {
         "text": "Aller vers les cuisines",
-        "next": { "type": "story", "id": "clue03", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue03",
+          "good": true
+        }
       },
       {
         "text": "Aller vers les toilettes",
-        "next": { "type": "story", "id": "clue04", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue04",
+          "good": true
+        }
       },
       {
         "text": "Accéder au terminal",
-        "next": { "type": "story", "id": "minigame02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "minigame02",
+          "good": true
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "intro2", "good": true }
+        "next": {
+          "type": "story",
+          "id": "intro2",
+          "good": true
+        }
       }
     ]
   },
-  
   {
     "id": "clue03",
     "title": "Act 2 — Cuisine",
@@ -199,15 +292,27 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       },
       {
         "text": "Avancer sur les comptoirs",
-        "next": { "type": "story", "id": "clue03-02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue03-02",
+          "good": true
+        }
       },
       {
         "text": "Marcher sur le sol",
-        "next": { "type": "story", "id": "clue03-01", "good": false }
+        "next": {
+          "type": "story",
+          "id": "clue03-01",
+          "good": false
+        }
       }
     ]
   },
@@ -224,7 +329,11 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       }
     ]
   },
@@ -235,11 +344,14 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       }
     ]
   },
-  
   {
     "id": "clue04",
     "title": "Act 2 — Toilettes",
@@ -247,15 +359,27 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       },
       {
         "text": "Sauter par-dessus l'eau",
-        "next": { "type": "story", "id": "clue04-02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue04-02",
+          "good": true
+        }
       },
       {
         "text": "Marcher dans l'eau",
-        "next": { "type": "story", "id": "clue04-01", "good": false }
+        "next": {
+          "type": "story",
+          "id": "clue04-01",
+          "good": false
+        }
       }
     ]
   },
@@ -272,7 +396,11 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       }
     ]
   },
@@ -283,10 +411,14 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       }
     ]
-  },  
+  },
   {
     "id": "minigame02",
     "title": "Act 2 — Terminal de la Porte",
@@ -294,35 +426,49 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork02",
+          "good": true
+        }
       },
       {
         "text": "Pirater le terminal",
-        "next": { "type": "game", "id": "minigame02", "good": true }
+        "next": {
+          "type": "game",
+          "id": "minigame02",
+          "good": true
+        }
       }
     ]
-  },  
+  },
   {
     "id": "minigame02",
     "type": "game",
     "password": "CINQ",
     "wordCount": 16,
     "maxAttempts": 4,
-    "words": ["CINQ","MOTE","CLAV","CODE","PORT","ACCE","LOCK","GRIS","NOIR","VERT","LIME","SUIT","TEST","PAIN","NIVE","ZONE"],
+    "words": [
+      "CINQ",
+      "MOTE",
+      "CLAV",
+      "CODE",
+      "PORT",
+      "ACCE",
+      "LOCK",
+      "GRIS",
+      "NOIR",
+      "VERT",
+      "LIME",
+      "SUIT",
+      "TEST",
+      "PAIN",
+      "NIVE",
+      "ZONE"
+    ],
     "success": "fork03",
     "fail": null
   },
-
-
-
-
-
-
-
-
-
-
-
   {
     "id": "fork03",
     "title": "Acte 2 — Embranchement",
@@ -330,19 +476,30 @@
     "choices": [
       {
         "text": "Entrer dans la salle de stockage droite",
-        "next": { "type": "story", "id": "clue06", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue06",
+          "good": true
+        }
       },
       {
         "text": "Entrer dans la salle de stockage gauche",
-        "next": { "type": "story", "id": "clue05", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue05",
+          "good": true
+        }
       },
       {
         "text": "Examiner le terminal éteint",
-        "next": { "type": "story", "id": "minigame03", "good": true }
+        "next": {
+          "type": "story",
+          "id": "minigame03",
+          "good": true
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "minigame03",
     "title": "Acte 2 — Terminal Hors-Service",
@@ -350,11 +507,14 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork03", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork03",
+          "good": true
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "clue05",
     "title": "Acte 2 — Chambre Froide",
@@ -362,15 +522,22 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork03", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork03",
+          "good": true
+        }
       },
       {
         "text": "Entrer dans le conduit",
-        "next": { "type": "story", "id": "vent01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent01",
+          "good": true
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "vent01",
     "title": "Acte 2 — Conduit d’Aération",
@@ -378,30 +545,44 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "clue05", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue05",
+          "good": true
+        }
       },
       {
         "text": "Aller vers la lumière et le ventilateur",
-        "next": { "type": "story", "id": "vent-light", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent-light",
+          "good": true
+        }
       },
       {
         "text": "S’aventurer dans l’obscurité",
-        "next": { "type": "story", "id": "vent-dark", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent-dark",
+          "good": true
+        }
       },
       {
         "text": "Aller vers le bruit visqueux",
-        "next": { "type": "story", "id": "vent-slither", "good": false }
+        "next": {
+          "type": "story",
+          "id": "vent-slither",
+          "good": false
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "vent-slither",
     "title": "Acte 2 — Conduit • Bruit Visqueux",
     "text": "Vous avancez prudemment dans le couloir sombre. Le bruit humide s'intensifie… un glissement organique, juste devant vous.\n\nUn souffle froid frôle votre main.\n\nPuis quelque chose d’humide vous saisit violemment la jambe et vous tire dans l’obscurité.",
     "choices": []
   },
-  
   {
     "id": "vent-light",
     "title": "Acte 2 — Conduit • Vers la Lumière",
@@ -409,15 +590,22 @@
     "choices": [
       {
         "text": "Inspecter le boîtier électrique",
-        "next": { "type": "story", "id": "vent-fans", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent-fans",
+          "good": true
+        }
       },
       {
         "text": "Retournez",
-        "next": { "type": "story", "id": "vent01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent01",
+          "good": true
+        }
       }
     ]
-  },  
-
+  },
   {
     "id": "vent-fans",
     "title": "Acte 2 — Conduit • Ventilateurs",
@@ -425,26 +613,36 @@
     "choices": [
       {
         "text": "Appuyer sur le bouton OFF",
-        "next": { "type": "story", "id": "vent-fans-button-death", "good": false }
+        "next": {
+          "type": "story",
+          "id": "vent-fans-button-death",
+          "good": false
+        }
       },
       {
         "text": "Arracher les câbles",
-        "next": { "type": "story", "id": "vent-fans-wires-success", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent-fans-wires-success",
+          "good": true
+        }
       },
       {
         "text": "Retour",
-        "next": { "type": "story", "id": "vent-light", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent-light",
+          "good": true
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "vent-fans-button-death",
     "title": "Acte 2 — Conduit • Erreur Fatale",
     "text": "Vous appuyez sur le bouton.\n\nLes ventilateurs ralentissent… s’arrêtent… puis se remettent brusquement en marche.\n\nVous tentez de passer, mais les pales reviennent à pleine vitesse et vous happent dans un claquement métallique.",
     "choices": []
-  },  
-  
+  },
   {
     "id": "vent-fans-wires-success",
     "title": "Acte 2 — Conduit • Passage Dégagé",
@@ -452,23 +650,14 @@
     "choices": [
       {
         "text": "Continuer",
-        "next": { "type": "story", "id": "fork04", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
       }
     ]
-  },  
-
-
-
-
-
-
-
-
-
-  
-  
-
-
+  },
   {
     "id": "vent-dark",
     "title": "Acte 2 — Conduit Sombre",
@@ -476,15 +665,22 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "vent01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "vent01",
+          "good": true
+        }
       },
       {
         "text": "Entrer dans le conduit opposé",
-        "next": { "type": "story", "id": "ventDeep01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep01",
+          "good": true
+        }
       }
     ]
-  },  
-
+  },
   {
     "id": "ventDeep01",
     "title": "Acte 2 — Conduit Profond",
@@ -492,26 +688,36 @@
     "choices": [
       {
         "text": "Prendre le chemin rouge",
-        "next": { "type": "story", "id": "ventDeep-red", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-red",
+          "good": true
+        }
       },
       {
         "text": "Suivre la lumière verte",
-        "next": { "type": "story", "id": "ventDeep-greenDeath", "good": false }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-greenDeath",
+          "good": false
+        }
       },
       {
         "text": "Avancer dans l’obscurité totale",
-        "next": { "type": "story", "id": "ventDeep-blackDeath", "good": false }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-blackDeath",
+          "good": false
+        }
       }
     ]
-  },  
-
+  },
   {
     "id": "ventDeep-greenDeath",
     "title": "Acte 2 — Conduit • Rupture",
     "text": "Le conduit grince sous votre poids. La rouille craque… puis le métal cède brusquement.\n\nVous chutez dans le vide avant d’avoir le temps de réagir.",
     "choices": []
-  },  
-
+  },
   {
     "id": "ventDeep-red",
     "title": "Acte 2 — Conduit • Lumière Rouge",
@@ -519,19 +725,30 @@
     "choices": [
       {
         "text": "Continuer dans le tunnel sombre",
-        "next": { "type": "story", "id": "ventDeep-red-dark", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-red-dark",
+          "good": true
+        }
       },
       {
         "text": "Suivre la lumière bleue",
-        "next": { "type": "story", "id": "ventDeep-blue", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-blue",
+          "good": true
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "ventDeep01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep01",
+          "good": true
+        }
       }
     ]
   },
-  
   {
     "id": "ventDeep-red",
     "title": "Acte 2 — Conduit • Lumière Rouge",
@@ -539,19 +756,30 @@
     "choices": [
       {
         "text": "Continuer dans le tunnel sombre",
-        "next": { "type": "story", "id": "ventDeep-red-dark", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-red-dark",
+          "good": true
+        }
       },
       {
         "text": "Suivre la lumière bleue",
-        "next": { "type": "story", "id": "ventDeep-blue", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-blue",
+          "good": true
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "ventDeep01", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep01",
+          "good": true
+        }
       }
     ]
-  },  
-
+  },
   {
     "id": "ventDeep-red-dark",
     "title": "Acte 2 — Conduit • Passage Étroit",
@@ -559,15 +787,22 @@
     "choices": [
       {
         "text": "Continuer",
-        "next": { "type": "story", "id": "fork04", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "ventDeep-red", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-red",
+          "good": true
+        }
       }
     ]
-  },  
-
+  },
   {
     "id": "ventDeep-blue",
     "title": "Acte 2 — Salle des Cryo-Pods",
@@ -575,55 +810,57 @@
     "choices": [
       {
         "text": "Entrer dans le cryo-pod",
-        "next": { "type": "story", "id": "ending-cryo", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ending-cryo",
+          "good": true
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "ventDeep-red", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventDeep-red",
+          "good": true
+        }
       }
     ]
-  },  
-
+  },
   {
     "id": "ending-cryo",
     "title": "Fin — Sommeil Éternel",
     "text": "Vous vous installez dans le cryo-pod.\n\nLa paroi se referme doucement dans un souffle d’air froid.\n\nUne brume blanche envahit la vitre… et tout disparaît dans le silence.\n\nVous ne sentirez plus jamais la station vibrer autour de vous.",
     "choices": []
-  },  
-  
+  },
   {
     "id": "ventDeep-blackDeath",
     "title": "Acte 2 — Conduit • Perdu",
     "text": "Vous vous engagez dans le noir absolu.\n\nLe conduit tourne, descend, remonte… vous perdez toute notion d’orientation.\n\nVous rampez pendant ce qui vous semble être des heures, jusqu’à ce que vos forces vous abandonnent.",
     "choices": []
-  },  
-
-
-
-
-
-
-
-
-
-
-
-    {
+  },
+  {
     "id": "clue06",
     "title": "Acte 2 — Salle de Stockage (Droite)",
     "text": "La salle est presque vide. Une fine couche de poussière recouvre chaque surface.\n\nUn courant d’air léger vous effleure le visage : il provient d’une grille d’aération dont les vis ont été retirées.\n\nLe conduit derrière semble assez large pour y ramper.",
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork03", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork03",
+          "good": true
+        }
       },
       {
         "text": "Entrer dans le conduit",
-        "next": { "type": "story", "id": "ventA1", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventA1",
+          "good": true
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "ventA1",
     "title": "Acte 2 — Conduit d’Aération",
@@ -631,26 +868,36 @@
     "choices": [
       {
         "text": "Aller vers la lumière",
-        "next": { "type": "story", "id": "ventA1-death", "good": false }
+        "next": {
+          "type": "story",
+          "id": "ventA1-death",
+          "good": false
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "clue06", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue06",
+          "good": true
+        }
       },
       {
         "text": "Aller vers le grondement",
-        "next": { "type": "story", "id": "ventA2", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventA2",
+          "good": true
+        }
       }
     ]
-  },  
-  
+  },
   {
     "id": "ventA1-death",
     "title": "Acte 2 — Conduit • Rupture",
     "text": "",
     "choices": []
-  },  
-  
+  },
   {
     "id": "ventA2",
     "title": "Acte 2 — Conduit • Ventilateur",
@@ -658,271 +905,364 @@
     "choices": [
       {
         "text": "Forcer la grille et passer",
-        "next": { "type": "story", "id": "fork10", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
       },
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "ventA1", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ventA1",
+          "good": true
+        }
       }
     ]
   },
-  
-
-
-
-
-{
-  "id": "fork10",
-  "title": "Act 2 — Embranchement : Hangar",
-  "text": "Après avoir glissé le long du conduit d’aération, vous chutez brutalement dans une petite pièce métallique. Votre respiration se stabilise lentement tandis que vous observez autour de vous.\n\nDeux des murs sont entièrement composés de vitres blindées. À travers celles-ci, vous découvrez un immense hangar militaire… et au-delà, la vue vous coupe le souffle.\n\nDes dizaines de modules, de navettes et de véhicules aérospatiaux reposent dans la pénombre du hangar. Et derrière eux… l’espace. Le vide. Les étoiles. C’est à cet instant que la vérité vous frappe : vous êtes à bord d’une station orbitale.\n\nSi l’un de ces appareils fonctionne encore, vous pourriez peut-être quitter cet endroit.\n\nDans la pièce où vous vous trouvez, trois accès s’offrent à vous : une porte massivement renforcée menant au hangar, commandée par un terminal encore actif ; un petit placard militaire entrouvert ; et une caserne adjacente plongée dans l’obscurité.",
-  "choices": [
-    {
-      "text": "Inspecter le placard militaire",
-      "next": { "type": "story", "id": "clue100", "good": true }
-    },
-    {
-      "text": "Explorer la caserne",
-      "next": { "type": "story", "id": "clue111", "good": true }
-    },
-    {
-      "text": "Examiner le terminal",
-      "next": { "type": "story", "id": "minigame10", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue100",
-  "title": "Act 2 — Placard Militaire",
-  "text": "Le petit placard métallique s’ouvre dans un grincement. À l’intérieur, un seul uniforme militaire est encore suspendu, parfaitement intact malgré la poussière.\n\nLe tissu est épais, marqué de symboles d’un ancien corps d’armée.\n\nVous pouvez inspecter l’uniforme de plus près.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    },
-    {
-      "text": "Inspecter les poches de l’uniforme",
-      "next": { "type": "story", "id": "clue100-01", "good": true }
-    }
-  ]
-},
-{
-  "id": "clue100-01",
-  "title": "Act 2 — Note Trouvée",
-  "text": "Vous fouillez les poches de l’uniforme avec précaution.\n\nVos doigts se referment sur un petit morceau de papier plié plusieurs fois.\n\nEn l’ouvrant, vous découvrez une écriture rapide, presque illisible :\n\n« Hey mec, oublie pas — j’ai changé le mot de passe pour le nom du commandant. Dis-lui surtout pas. »\n\nUn indice précieux… si vous parvenez à identifier ce fameux commandant.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    }
-  ]
-},
-{
-  "id": "clue100-03",
-  "title": "Act 2 — Placard (Déjà exploré)",
-  "text": "Le placard est tel que vous l’avez laissé.\n\nL’uniforme et l’équipement militaire ne contiennent rien de plus d’utile.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    }
-  ]
-},
-{
-  "id": "clue111",
-  "title": "Act 2 — Caserne Militaire",
-  "text": "La caserne est plongée dans la pénombre. Les lits superposés sont renversés.\n\nLe liquide noir et huileux vu auparavant recouvre le sol, les meubles et certains matelas.\n\nDans un coin, une silhouette semble recouverte d’une couverture.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    },
-    {
-      "text": "Avancer rapidement vers la silhouette",
-      "next": { "type": "story", "id": "clue111-02", "good": true }
-    },
-    {
-      "text": "Avancer lentement",
-      "next": { "type": "story", "id": "clue111-01", "good": false }
-    }
-  ]
-},
-
-{
-  "id": "clue111-01",
-  "title": "Act 2 — Caserne",
-  "text": "En avançant lentement, la substance noire réagit à vos mouvements.\n\nUne sensation étrange vous envahit… puis tout devient flou.",
-  "choices": []
-},
-
-{
-  "id": "clue111-02",
-  "title": "Act 2 — Caserne",
-  "text": "Vous bondissez entre les zones contaminées et atteignez la silhouette.\n\nSous la couverture, vous trouvez un corps immobile. Dans sa main, une plaque d’identification militaire porte un nom gravé :\n\n« JACOB ».\n\nCet indice pourrait être utile.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue111-03",
-  "title": "Act 2 — Caserne (Déjà explorée)",
-  "text": "Vous êtes déjà passé par ici.\n\nLa caserne n’a pas changé. Vous aviez trouvé une plaque militaire portant le nom « JACOB ».\n\nRien d’autre à récupérer.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "minigame10",
-  "title": "Act 2 — Terminal du Hangar",
-  "text": "Le terminal militaire s’allume dans un clignotement. L’interface verte indique clairement :\n\n« ACCÈS RÉSERVÉ — MOT DE PASSE REQUIS ».\n\nGrâce au protocole de piratage que vous avez déjà utilisé, vous pourriez tenter de contourner la sécurité.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork10", "good": true }
-    },
-    {
-      "text": "Pirater le terminal",
-      "next": { "type": "game", "id": "minigame10", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "minigame10",
-  "type": "game",
-  "password": "JACOB",
-  "wordCount": 30,
-  "words": ["JACOB","GARDE","PORTE","SUITE","RADAR","LASER","METAL","NAVET","SERGE",
-"CASER","GUIDE","MURAT","TENIR","FROID","NOIRE","VERTS","MOTEK","SIGIL",
-"RIGID","VIGIE","POINT","NIVEL","MODULE","RAMPE","VITES","FUSEE","APLAT",
-"CRANE","SECUR","TENUE"],
-  "maxAttempts": 4,
-  "success": "hangar-entry",
-  "fail": null
-},
-
-{
-  "id": "hangar-entry",
-  "title": "Act 2 — Hangar Militaire",
-"text": "En franchissant la porte, un bip grave résonne dans l’immense hangar.\n\nSous la lumière pâle des projecteurs, vous découvrez une flotte de navettes stationnées. Certaines semblent encore alimentées : leurs voyants clignotent lentement, comme si une IA embarquée maintenait les systèmes en veille.\n\nSi vous parvenez à monter à bord de l’une d’elles, elle pourrait peut-être vous conduire jusqu’à la Terre.\n\nMais un long couloir métallique s’étend également vers les profondeurs de la station. Peut-être existe-t-il une autre voie d’évacuation… ou d’autres secrets encore enfouis.",
-  "choices": [
-    {
-      "text": "Monter à bord d’un appareil",
-      "next": { "type": "story", "id": "ending", "good": true }
-    },
-    {
-      "text": "Traverser le hangar vers le l'autre partie de la station",
-      "next": { "type": "story", "id": "intro3", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "ending",
-  "title": "Fin — Évasion",
-  "text": "",
-  "choices": []
-},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
-  "id": "fork04",
-  "title": "Acte 2 — Centre Médical",
-  "text": "Le conduit s'ouvre brusquement sous vous et vous tombez dans une vaste salle d’examen médicale.\n\nLe sol est presque entièrement recouvert de la même substance noire et huileuse que vous avez vue ailleurs. Seules quelques plaques de sol poussiéreux restent praticables.\n\nAutour de vous, des lits renversés, des chariots médicaux abandonnés, et des écrans brisés témoignent du chaos passé.\n\nDans un coin, un terminal encore en état de marche pulse faiblement.\nÀ l’opposé, une porte mène à une réserve médicale remplie d’étagères surchargées.\n\nVous pouvez explorer les environs.",
-  "choices": [
-    {
-      "text": "Aller vers la réserve médicale",
-      "next": { "type": "story", "id": "clue08", "good": true }
-    },
-    {
-      "text": "Examiner le terminal",
-      "next": { "type": "story", "id": "minigame04", "good": true }
-    },
-    {
-      "text": "Salle des Malades",
-      "next": { "type": "story", "id": "clue07", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue07",
-  "title": "Acte 2 — Salle des Malades",
-  "text": "Vous ouvrez la porte et découvrez une vaste salle d’infirmerie… transformée en tombe collective.\n\nDes rangées de lits sont renversées ou entassées les unes sur les autres. La substance noire recouvre les matelas, les murs, et les corps figés des membres d’équipage.\n\nQuelques plaques de sol encore sèches forment un chemin précaire jusqu'à une petite salle de bain verrouillée à l’extrémité de la pièce.\n\nVous pouvez tenter d’y accéder.",
-  "choices": [
-    {
-      "text": "Retour au centre médical",
-      "next": { "type": "story", "id": "fork04", "good": true }
-    },
-    {
-      "text": "Sauter de plaque en plaque",
-      "next": { "type": "story", "id": "clue07-01", "good": false }
-    },
-    {
-      "text": "Grimper sur les lits et avancer par-dessus",
-      "next": { "type": "story", "id": "clue07-02", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue07-01",
-  "title": "Acte 2 — Salle des Malades",
-  "text": "Vous tentez de sauter d'une plaque de sol sec à une autre.\n\nVotre pied glisse légèrement… juste assez pour frôler la substance noire.\n\nElle réagit aussitôt, grimpe le long de votre jambe et vous fige sur place avant que vous n'atteigniez la porte.",
-  "choices": []
-},
-
-{
-  "id": "clue07-02",
-  "title": "Acte 2 — Salle des Malades",
-  "text": "Vous grimpez sur les lits renversés, évitant avec soin les zones contaminées.\n\nVous atteignez enfin la petite salle de bain verrouillée et parvenez à forcer la porte partiellement déformée.\n\nÀ l’intérieur, un soldat repose contre le mur, figé dans une posture silencieuse. Dans la poche de son uniforme, vous trouvez un petit enregistreur audio.\n\nVous l’activez.\n\nUne voix affaiblie se met à parler :\n\n« Ici… soldat Kelm… Le capitaine a ordonné de verrouiller toute la baie médicale… Les malades étaient trop instables. Il m’a dit de rester avec eux… de ‘garder un œil’. »\n\nUn long silence suit, puis la voix reprend faiblement :\n\n« Si quelqu’un trouve ceci… le mot de passe est NEBULA Il a dit que seul le personnel autorisé devait pouvoir sortir d’ici… »\n\nL’enregistrement se coupe brusquement.",
-  "choices": [
-    {
-      "text": "Retour au centre médical",
-      "next": { "type": "story", "id": "fork04", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue07-03",
-  "title": "Acte 2 — Salle des Malades (Déjà explorée)",
-  "text": "Vous êtes déjà passé par ici.\n\nLes lits renversés et les corps immobiles demeurent dans la même position.\n\nVous aviez trouvé un enregistrement : le mot de passe était « NEBULA ».\n\nIl n’y a rien de plus à découvrir.",
-  "choices": [
-    {
-      "text": "Retour au centre médical",
-      "next": { "type": "story", "id": "fork04", "good": true }
-    }
-  ]
-},
-
+  {
+    "id": "fork10",
+    "title": "Act 2 — Embranchement : Hangar",
+    "text": "Après avoir glissé le long du conduit d’aération, vous chutez brutalement dans une petite pièce métallique. Votre respiration se stabilise lentement tandis que vous observez autour de vous.\n\nDeux des murs sont entièrement composés de vitres blindées. À travers celles-ci, vous découvrez un immense hangar militaire… et au-delà, la vue vous coupe le souffle.\n\nDes dizaines de modules, de navettes et de véhicules aérospatiaux reposent dans la pénombre du hangar. Et derrière eux… l’espace. Le vide. Les étoiles. C’est à cet instant que la vérité vous frappe : vous êtes à bord d’une station orbitale.\n\nSi l’un de ces appareils fonctionne encore, vous pourriez peut-être quitter cet endroit.\n\nDans la pièce où vous vous trouvez, trois accès s’offrent à vous : une porte massivement renforcée menant au hangar, commandée par un terminal encore actif ; un petit placard militaire entrouvert ; et une caserne adjacente plongée dans l’obscurité.",
+    "choices": [
+      {
+        "text": "Inspecter le placard militaire",
+        "next": {
+          "type": "story",
+          "id": "clue100",
+          "good": true
+        }
+      },
+      {
+        "text": "Explorer la caserne",
+        "next": {
+          "type": "story",
+          "id": "clue111",
+          "good": true
+        }
+      },
+      {
+        "text": "Examiner le terminal",
+        "next": {
+          "type": "story",
+          "id": "minigame10",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue100",
+    "title": "Act 2 — Placard Militaire",
+    "text": "Le petit placard métallique s’ouvre dans un grincement. À l’intérieur, un seul uniforme militaire est encore suspendu, parfaitement intact malgré la poussière.\n\nLe tissu est épais, marqué de symboles d’un ancien corps d’armée.\n\nVous pouvez inspecter l’uniforme de plus près.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      },
+      {
+        "text": "Inspecter les poches de l’uniforme",
+        "next": {
+          "type": "story",
+          "id": "clue100-01",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue100-01",
+    "title": "Act 2 — Note Trouvée",
+    "text": "Vous fouillez les poches de l’uniforme avec précaution.\n\nVos doigts se referment sur un petit morceau de papier plié plusieurs fois.\n\nEn l’ouvrant, vous découvrez une écriture rapide, presque illisible :\n\n« Hey mec, oublie pas — j’ai changé le mot de passe pour le nom du commandant. Dis-lui surtout pas. »\n\nUn indice précieux… si vous parvenez à identifier ce fameux commandant.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue100-03",
+    "title": "Act 2 — Placard (Déjà exploré)",
+    "text": "Le placard est tel que vous l’avez laissé.\n\nL’uniforme et l’équipement militaire ne contiennent rien de plus d’utile.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue111",
+    "title": "Act 2 — Caserne Militaire",
+    "text": "La caserne est plongée dans la pénombre. Les lits superposés sont renversés.\n\nLe liquide noir et huileux vu auparavant recouvre le sol, les meubles et certains matelas.\n\nDans un coin, une silhouette semble recouverte d’une couverture.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      },
+      {
+        "text": "Avancer rapidement vers la silhouette",
+        "next": {
+          "type": "story",
+          "id": "clue111-02",
+          "good": true
+        }
+      },
+      {
+        "text": "Avancer lentement",
+        "next": {
+          "type": "story",
+          "id": "clue111-01",
+          "good": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue111-01",
+    "title": "Act 2 — Caserne",
+    "text": "En avançant lentement, la substance noire réagit à vos mouvements.\n\nUne sensation étrange vous envahit… puis tout devient flou.",
+    "choices": []
+  },
+  {
+    "id": "clue111-02",
+    "title": "Act 2 — Caserne",
+    "text": "Vous bondissez entre les zones contaminées et atteignez la silhouette.\n\nSous la couverture, vous trouvez un corps immobile. Dans sa main, une plaque d’identification militaire porte un nom gravé :\n\n« JACOB ».\n\nCet indice pourrait être utile.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue111-03",
+    "title": "Act 2 — Caserne (Déjà explorée)",
+    "text": "Vous êtes déjà passé par ici.\n\nLa caserne n’a pas changé. Vous aviez trouvé une plaque militaire portant le nom « JACOB ».\n\nRien d’autre à récupérer.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "minigame10",
+    "title": "Act 2 — Terminal du Hangar",
+    "text": "Le terminal militaire s’allume dans un clignotement. L’interface verte indique clairement :\n\n« ACCÈS RÉSERVÉ — MOT DE PASSE REQUIS ».\n\nGrâce au protocole de piratage que vous avez déjà utilisé, vous pourriez tenter de contourner la sécurité.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork10",
+          "good": true
+        }
+      },
+      {
+        "text": "Pirater le terminal",
+        "next": {
+          "type": "game",
+          "id": "minigame10",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "minigame10",
+    "type": "game",
+    "password": "JACOB",
+    "wordCount": 30,
+    "words": [
+      "JACOB",
+      "GARDE",
+      "PORTE",
+      "SUITE",
+      "RADAR",
+      "LASER",
+      "METAL",
+      "NAVET",
+      "SERGE",
+      "CASER",
+      "GUIDE",
+      "MURAT",
+      "TENIR",
+      "FROID",
+      "NOIRE",
+      "VERTS",
+      "MOTEK",
+      "SIGIL",
+      "RIGID",
+      "VIGIE",
+      "POINT",
+      "NIVEL",
+      "MODULE",
+      "RAMPE",
+      "VITES",
+      "FUSEE",
+      "APLAT",
+      "CRANE",
+      "SECUR",
+      "TENUE"
+    ],
+    "maxAttempts": 4,
+    "success": "hangar-entry",
+    "fail": null
+  },
+  {
+    "id": "hangar-entry",
+    "title": "Act 2 — Hangar Militaire",
+    "text": "En franchissant la porte, un bip grave résonne dans l’immense hangar.\n\nSous la lumière pâle des projecteurs, vous découvrez une flotte de navettes stationnées. Certaines semblent encore alimentées : leurs voyants clignotent lentement, comme si une IA embarquée maintenait les systèmes en veille.\n\nSi vous parvenez à monter à bord de l’une d’elles, elle pourrait peut-être vous conduire jusqu’à la Terre.\n\nMais un long couloir métallique s’étend également vers les profondeurs de la station. Peut-être existe-t-il une autre voie d’évacuation… ou d’autres secrets encore enfouis.",
+    "choices": [
+      {
+        "text": "Monter à bord d’un appareil",
+        "next": {
+          "type": "story",
+          "id": "ending",
+          "good": true
+        }
+      },
+      {
+        "text": "Traverser le hangar vers le l'autre partie de la station",
+        "next": {
+          "type": "story",
+          "id": "intro3",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "ending",
+    "title": "Fin — Évasion",
+    "text": "",
+    "choices": []
+  },
+  {
+    "id": "fork04",
+    "title": "Acte 2 — Centre Médical",
+    "text": "Le conduit s'ouvre brusquement sous vous et vous tombez dans une vaste salle d’examen médicale.\n\nLe sol est presque entièrement recouvert de la même substance noire et huileuse que vous avez vue ailleurs. Seules quelques plaques de sol poussiéreux restent praticables.\n\nAutour de vous, des lits renversés, des chariots médicaux abandonnés, et des écrans brisés témoignent du chaos passé.\n\nDans un coin, un terminal encore en état de marche pulse faiblement.\nÀ l’opposé, une porte mène à une réserve médicale remplie d’étagères surchargées.\n\nVous pouvez explorer les environs.",
+    "choices": [
+      {
+        "text": "Aller vers la réserve médicale",
+        "next": {
+          "type": "story",
+          "id": "clue08",
+          "good": true
+        }
+      },
+      {
+        "text": "Examiner le terminal",
+        "next": {
+          "type": "story",
+          "id": "minigame04",
+          "good": true
+        }
+      },
+      {
+        "text": "Salle des Malades",
+        "next": {
+          "type": "story",
+          "id": "clue07",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue07",
+    "title": "Acte 2 — Salle des Malades",
+    "text": "Vous ouvrez la porte et découvrez une vaste salle d’infirmerie… transformée en tombe collective.\n\nDes rangées de lits sont renversées ou entassées les unes sur les autres. La substance noire recouvre les matelas, les murs, et les corps figés des membres d’équipage.\n\nQuelques plaques de sol encore sèches forment un chemin précaire jusqu'à une petite salle de bain verrouillée à l’extrémité de la pièce.\n\nVous pouvez tenter d’y accéder.",
+    "choices": [
+      {
+        "text": "Retour au centre médical",
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
+      },
+      {
+        "text": "Sauter de plaque en plaque",
+        "next": {
+          "type": "story",
+          "id": "clue07-01",
+          "good": false
+        }
+      },
+      {
+        "text": "Grimper sur les lits et avancer par-dessus",
+        "next": {
+          "type": "story",
+          "id": "clue07-02",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue07-01",
+    "title": "Acte 2 — Salle des Malades",
+    "text": "Vous tentez de sauter d'une plaque de sol sec à une autre.\n\nVotre pied glisse légèrement… juste assez pour frôler la substance noire.\n\nElle réagit aussitôt, grimpe le long de votre jambe et vous fige sur place avant que vous n'atteigniez la porte.",
+    "choices": []
+  },
+  {
+    "id": "clue07-02",
+    "title": "Acte 2 — Salle des Malades",
+    "text": "Vous grimpez sur les lits renversés, évitant avec soin les zones contaminées.\n\nVous atteignez enfin la petite salle de bain verrouillée et parvenez à forcer la porte partiellement déformée.\n\nÀ l’intérieur, un soldat repose contre le mur, figé dans une posture silencieuse. Dans la poche de son uniforme, vous trouvez un petit enregistreur audio.\n\nVous l’activez.\n\nUne voix affaiblie se met à parler :\n\n« Ici… soldat Kelm… Le capitaine a ordonné de verrouiller toute la baie médicale… Les malades étaient trop instables. Il m’a dit de rester avec eux… de ‘garder un œil’. »\n\nUn long silence suit, puis la voix reprend faiblement :\n\n« Si quelqu’un trouve ceci… le mot de passe est NEBULA Il a dit que seul le personnel autorisé devait pouvoir sortir d’ici… »\n\nL’enregistrement se coupe brusquement.",
+    "choices": [
+      {
+        "text": "Retour au centre médical",
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue07-03",
+    "title": "Acte 2 — Salle des Malades (Déjà explorée)",
+    "text": "Vous êtes déjà passé par ici.\n\nLes lits renversés et les corps immobiles demeurent dans la même position.\n\nVous aviez trouvé un enregistrement : le mot de passe était « NEBULA ».\n\nIl n’y a rien de plus à découvrir.",
+    "choices": [
+      {
+        "text": "Retour au centre médical",
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
+      }
+    ]
+  },
   {
     "id": "clue08",
     "title": "Acte 2 — Réserve Médicale",
@@ -930,50 +1270,66 @@
     "choices": [
       {
         "text": "Reculer prudemment",
-        "next": { "type": "story", "id": "fork04", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
       },
       {
         "text": "Prendre doucement la tablette",
-        "next": { "type": "story", "id": "clue08-02", "good": true }
+        "next": {
+          "type": "story",
+          "id": "clue08-02",
+          "good": true
+        }
       },
       {
         "text": "Tirer le corps pour dégager la tablette",
-        "next": { "type": "story", "id": "clue08-01", "good": false }
+        "next": {
+          "type": "story",
+          "id": "clue08-01",
+          "good": false
+        }
       }
     ]
   },
-
-{
-  "id": "clue08-01",
-  "title": "Acte 2 — Réserve Médicale",
-  "text": "Vous tirez sur le corps pour libérer la tablette.\n\nLe poids déséquilibre soudain les étagères. Dans un fracas assourdissant, la structure entière s’effondre sur vous.\n\nUn nuage de poussière s’élève… puis le silence retombe.",
-  "choices": []
-},
-
-{
-  "id": "clue08-02",
-  "title": "Acte 2 — Réserve Médicale",
-  "text": "Vous saisissez délicatement la tablette que la femme serrait entre ses mains.\n\nL’écran fissuré affiche encore un fichier : un rapport d’urgence.\n\n« Jour 12 : Nous sommes enfermés ici. Le capitaine affirme que c’est “pour contenir la contamination”. Les patients deviennent de plus en plus instables… leurs corps changent. La porte a été reprogrammée, nouveau mot de passe transmis uniquement au capitaine. »\n\nLa tablette s’éteint aussitôt.",
-  "choices": [
-    {
-      "text": "Retour au centre médical",
-      "next": { "type": "story", "id": "fork04", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue08-03",
-  "title": "Acte 2 — Réserve Médicale (Déjà exploré)",
-  "text": "Vous êtes déjà revenu dans la réserve. Rien n’a changé depuis votre première visite.\n\nLe carnet de bord que vous aviez trouvé repose toujours à l’endroit exact où vous l’aviez laissé. Vous vous souvenez de ses dernières lignes :\n\n« Jour 12 : Les couloirs ont été scellés. Le capitaine dit que c’est la seule façon d’empêcher la contamination de se propager. Les malades… changent. Certains ne parlent plus. D’autres restent immobiles pendant des heures. Nous ne comprenons pas ce qui leur arrive.\n\nLa porte d’accès a été reprogrammée. Le nouveau mot de passe n’a été transmis qu’au capitaine. »\n\nAucun élément nouveau ne semble avoir été ajouté. L’indice que vous aviez obtenu demeure inchangé.",
-  "choices": [
-    {
-      "text": "Retour au centre médical",
-      "next": { "type": "story", "id": "fork04", "good": true }
-    }
-  ]
-},
-
+  {
+    "id": "clue08-01",
+    "title": "Acte 2 — Réserve Médicale",
+    "text": "Vous tirez sur le corps pour libérer la tablette.\n\nLe poids déséquilibre soudain les étagères. Dans un fracas assourdissant, la structure entière s’effondre sur vous.\n\nUn nuage de poussière s’élève… puis le silence retombe.",
+    "choices": []
+  },
+  {
+    "id": "clue08-02",
+    "title": "Acte 2 — Réserve Médicale",
+    "text": "Vous saisissez délicatement la tablette que la femme serrait entre ses mains.\n\nL’écran fissuré affiche encore un fichier : un rapport d’urgence.\n\n« Jour 12 : Nous sommes enfermés ici. Le capitaine affirme que c’est “pour contenir la contamination”. Les patients deviennent de plus en plus instables… leurs corps changent. La porte a été reprogrammée, nouveau mot de passe transmis uniquement au capitaine. »\n\nLa tablette s’éteint aussitôt.",
+    "choices": [
+      {
+        "text": "Retour au centre médical",
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue08-03",
+    "title": "Acte 2 — Réserve Médicale (Déjà exploré)",
+    "text": "Vous êtes déjà revenu dans la réserve. Rien n’a changé depuis votre première visite.\n\nLe carnet de bord que vous aviez trouvé repose toujours à l’endroit exact où vous l’aviez laissé. Vous vous souvenez de ses dernières lignes :\n\n« Jour 12 : Les couloirs ont été scellés. Le capitaine dit que c’est la seule façon d’empêcher la contamination de se propager. Les malades… changent. Certains ne parlent plus. D’autres restent immobiles pendant des heures. Nous ne comprenons pas ce qui leur arrive.\n\nLa porte d’accès a été reprogrammée. Le nouveau mot de passe n’a été transmis qu’au capitaine. »\n\nAucun élément nouveau ne semble avoir été ajouté. L’indice que vous aviez obtenu demeure inchangé.",
+    "choices": [
+      {
+        "text": "Retour au centre médical",
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
+      }
+    ]
+  },
   {
     "id": "minigame04",
     "title": "Acte 2 — Terminal Médical",
@@ -981,11 +1337,19 @@
     "choices": [
       {
         "text": "Retour au centre médical",
-        "next": { "type": "story", "id": "fork04", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork04",
+          "good": true
+        }
       },
       {
         "text": "Pirater le terminal",
-        "next": { "type": "game", "id": "minigame04", "good": true }
+        "next": {
+          "type": "game",
+          "id": "minigame04",
+          "good": true
+        }
       }
     ]
   },
@@ -994,130 +1358,176 @@
     "type": "game",
     "password": "NEBULA",
     "wordCount": 20,
-    "words": ["NEBULA","ORIGNE","MEDIAL","CENTRE","CLINIC","DOSAGE","SERUMS",
-"PLASMA","REACTI","ORGANE","SAUVET","NAVIRE","SYSTEM","RAYONS",
-"VIRION","STRUCT","MONITE","CAPSUL","SEIGNE","PANACE"],
+    "words": [
+      "NEBULA",
+      "ORIGNE",
+      "MEDIAL",
+      "CENTRE",
+      "CLINIC",
+      "DOSAGE",
+      "SERUMS",
+      "PLASMA",
+      "REACTI",
+      "ORGANE",
+      "SAUVET",
+      "NAVIRE",
+      "SYSTEM",
+      "RAYONS",
+      "VIRION",
+      "STRUCT",
+      "MONITE",
+      "CAPSUL",
+      "SEIGNE",
+      "PANACE"
+    ],
     "maxAttempts": 4,
     "success": "intro3",
     "fail": null
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
-  "id": "intro3",
-  "title": "Acte 3 — Secteur Prioritaire",
-  "text": "En passant la porte, vous accédez à une section de la station très différente de tout ce que vous avez traversé jusqu’ici.\n\nLes murs sont renforcés de plaques blindées et parcourus de câbles épais. L’endroit ressemble clairement à un secteur prioritaire, peut-être même à une zone réservée au commandement ou à la sécurité interne.\n\nMais un détail s’impose immédiatement : quelque chose a cessé de fonctionner longtemps avant votre arrivée.\n\nDes traces d’affrontements marquent les parois, et plusieurs silhouettes en uniforme reposent là où elles se sont effondrées. Rien n’a été déplacé depuis… comme si cette portion de la station avait été abandonnée dans la précipitation.\n\nAu bout de la salle, un long corridor sécurisé mène vers les profondeurs du complexe, mais son accès est bloqué par une porte translucide au design nettement plus avancé que les autres.\n\nUn terminal luminescent est fixé juste à sa droite, toujours alimenté.",
-  "choices": [
-    {
-      "text": "Continuer vers les fortifications",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "fork05",
-  "title": "Acte 3 — Embranchement Fortifié",
-  "text": "Vous avancez jusqu’à une barricade improvisée construite avec des meubles, des caisses militaires et des corps empilés.\n\nAu centre se trouve la grande porte blindée translucide. Bien que transparente comme du verre, elle semble aussi solide que l’acier. À travers elle, vous distinguez le corridor qui mène plus loin dans le secteur.\n\nUn terminal bleuâtre, encore actif, pulse doucement à sa droite.\n\nÀ gauche se trouve l’entrée d’un bureau dévasté.\nÀ droite, une cellule improvisée où plusieurs cages ont été montées à la hâte.",
-  "choices": [
-    {
-      "text": "Entrer dans le bureau",
-      "next": { "type": "story", "id": "clue09", "good": true }
-    },
-    {
-      "text": "Entrer dans la cellule improvisée",
-      "next": { "type": "story", "id": "clue10", "good": true }
-    },
-    {
-      "text": "Examiner la porte blindée",
-      "next": { "type": "story", "id": "minigame05", "good": true }
-    },
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "intro3", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue09",
-  "title": "Acte 3 — Bureau Dévasté",
-  "text": "Vous pénétrez dans le bureau, et l’air vous manque un instant.\n\nCette pièce est un véritable champ de bataille : les corps de soldats sont empilés près de l’entrée, leurs armes vides jonchant le sol. Les murs sont criblés d’impacts, et un bureau renversé semble avoir servi de dernière ligne de défense.\n\nDerrière ce meuble, vous apercevez la silhouette d’un soldat affaissé.\n\nVous pouvez tenter de l’atteindre en marchant autour de la barricade… ou en bondissant par-dessus.",
-  "choices": [
-    {
-      "text": "Contourner la barricade",
-      "next": { "type": "story", "id": "clue09-01", "good": false }
-    },
-    {
-      "text": "Sauter par-dessus",
-      "next": { "type": "story", "id": "clue09-02", "good": true }
-    },
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue09-01",
-  "title": "Acte 3 — Bureau — Mort",
-  "text": "Vous avancez prudemment autour de la barricade.\n\nUn déclic sec retentit sous votre chaussure.\n\nUne mine artisanale, cachée sous un manteau, explose dans un flash aveuglant.\n\nVous n’avez pas le temps de comprendre ce qui vous arrive.",
-  "choices": []
-},
-
-{
-  "id": "clue09-02",
-  "title": "Acte 3 — Soldat Abattu",
-  "text": "Vous franchissez la barricade et atteignez enfin le soldat affaissé derrière le bureau.\n\nSon corps est criblé d’impacts de balles. Une arme déchargée repose encore à ses côtés, comme s’il avait tenté de défendre la pièce jusqu’au dernier instant.\n\nEn fouillant sa veste, vous trouvez une tablette encore fonctionnelle. Un message y est affiché, visiblement adressé au soldat :\n\n« Mathieu, n’oublie pas : le mot de passe pour accéder au secteur du réacteur a été changé. Il est maintenant GLACIER. Ne le partage à personne sans autorisation. »\n\nLe message est brouillé par des interférences, mais lisible.",
-  "choices": [
-    {
-      "text": "Retour au fortin",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue09-03",
-  "title": "Acte 3 — Bureau (Déjà exploré)",
-  "text": "Vous revenez dans le bureau dévasté. Les corps et les débris jonchent toujours le sol.\n\nVous relisez mentalement le message trouvé sur la tablette du soldat abattu :\n\n« Mathieu, n’oublie pas : le mot de passe pour accéder au secteur du réacteur a été changé. Il est maintenant GLACIER. Ne le partage à personne sans autorisation. »\n\nAucun autre indice ne semble présent.",
-  "choices": [
-    {
-      "text": "Retour au fortin",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue10",
-  "title": "Acte 3 — Cellule Improvisée",
-  "text": "Vous entrez dans une pièce transformée en prison de fortune. Des cages métalliques soudées grossièrement bordent les murs.\n\nDans l’une d’elles, un corps civil repose, recouvert de la substance noire et huileuse.\n\nÀ ses côtés, une tablette encore allumée diffuse une faible lueur bleutée.\n\nVous pouvez la récupérer avec précaution.",
-  "choices": [
-    {
-      "text": "Prendre la tablette",
-      "next": { "type": "story", "id": "clue10-02", "good": true }
-    },
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
+  {
+    "id": "intro3",
+    "title": "Acte 3 — Secteur Prioritaire",
+    "text": "En passant la porte, vous accédez à une section de la station très différente de tout ce que vous avez traversé jusqu’ici.\n\nLes murs sont renforcés de plaques blindées et parcourus de câbles épais. L’endroit ressemble clairement à un secteur prioritaire, peut-être même à une zone réservée au commandement ou à la sécurité interne.\n\nMais un détail s’impose immédiatement : quelque chose a cessé de fonctionner longtemps avant votre arrivée.\n\nDes traces d’affrontements marquent les parois, et plusieurs silhouettes en uniforme reposent là où elles se sont effondrées. Rien n’a été déplacé depuis… comme si cette portion de la station avait été abandonnée dans la précipitation.\n\nAu bout de la salle, un long corridor sécurisé mène vers les profondeurs du complexe, mais son accès est bloqué par une porte translucide au design nettement plus avancé que les autres.\n\nUn terminal luminescent est fixé juste à sa droite, toujours alimenté.",
+    "choices": [
+      {
+        "text": "Continuer vers les fortifications",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "fork05",
+    "title": "Acte 3 — Embranchement Fortifié",
+    "text": "Vous avancez jusqu’à une barricade improvisée construite avec des meubles, des caisses militaires et des corps empilés.\n\nAu centre se trouve la grande porte blindée translucide. Bien que transparente comme du verre, elle semble aussi solide que l’acier. À travers elle, vous distinguez le corridor qui mène plus loin dans le secteur.\n\nUn terminal bleuâtre, encore actif, pulse doucement à sa droite.\n\nÀ gauche se trouve l’entrée d’un bureau dévasté.\nÀ droite, une cellule improvisée où plusieurs cages ont été montées à la hâte.",
+    "choices": [
+      {
+        "text": "Entrer dans le bureau",
+        "next": {
+          "type": "story",
+          "id": "clue09",
+          "good": true
+        }
+      },
+      {
+        "text": "Entrer dans la cellule improvisée",
+        "next": {
+          "type": "story",
+          "id": "clue10",
+          "good": true
+        }
+      },
+      {
+        "text": "Examiner la porte blindée",
+        "next": {
+          "type": "story",
+          "id": "minigame05",
+          "good": true
+        }
+      },
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "intro3",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue09",
+    "title": "Acte 3 — Bureau Dévasté",
+    "text": "Vous pénétrez dans le bureau, et l’air vous manque un instant.\n\nCette pièce est un véritable champ de bataille : les corps de soldats sont empilés près de l’entrée, leurs armes vides jonchant le sol. Les murs sont criblés d’impacts, et un bureau renversé semble avoir servi de dernière ligne de défense.\n\nDerrière ce meuble, vous apercevez la silhouette d’un soldat affaissé.\n\nVous pouvez tenter de l’atteindre en marchant autour de la barricade… ou en bondissant par-dessus.",
+    "choices": [
+      {
+        "text": "Contourner la barricade",
+        "next": {
+          "type": "story",
+          "id": "clue09-01",
+          "good": false
+        }
+      },
+      {
+        "text": "Sauter par-dessus",
+        "next": {
+          "type": "story",
+          "id": "clue09-02",
+          "good": true
+        }
+      },
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue09-01",
+    "title": "Acte 3 — Bureau — Mort",
+    "text": "Vous avancez prudemment autour de la barricade.\n\nUn déclic sec retentit sous votre chaussure.\n\nUne mine artisanale, cachée sous un manteau, explose dans un flash aveuglant.\n\nVous n’avez pas le temps de comprendre ce qui vous arrive.",
+    "choices": []
+  },
+  {
+    "id": "clue09-02",
+    "title": "Acte 3 — Soldat Abattu",
+    "text": "Vous franchissez la barricade et atteignez enfin le soldat affaissé derrière le bureau.\n\nSon corps est criblé d’impacts de balles. Une arme déchargée repose encore à ses côtés, comme s’il avait tenté de défendre la pièce jusqu’au dernier instant.\n\nEn fouillant sa veste, vous trouvez une tablette encore fonctionnelle. Un message y est affiché, visiblement adressé au soldat :\n\n« Mathieu, n’oublie pas : le mot de passe pour accéder au secteur du réacteur a été changé. Il est maintenant GLACIER. Ne le partage à personne sans autorisation. »\n\nLe message est brouillé par des interférences, mais lisible.",
+    "choices": [
+      {
+        "text": "Retour au fortin",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue09-03",
+    "title": "Acte 3 — Bureau (Déjà exploré)",
+    "text": "Vous revenez dans le bureau dévasté. Les corps et les débris jonchent toujours le sol.\n\nVous relisez mentalement le message trouvé sur la tablette du soldat abattu :\n\n« Mathieu, n’oublie pas : le mot de passe pour accéder au secteur du réacteur a été changé. Il est maintenant GLACIER. Ne le partage à personne sans autorisation. »\n\nAucun autre indice ne semble présent.",
+    "choices": [
+      {
+        "text": "Retour au fortin",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue10",
+    "title": "Acte 3 — Cellule Improvisée",
+    "text": "Vous entrez dans une pièce transformée en prison de fortune. Des cages métalliques soudées grossièrement bordent les murs.\n\nDans l’une d’elles, un corps civil repose, recouvert de la substance noire et huileuse.\n\nÀ ses côtés, une tablette encore allumée diffuse une faible lueur bleutée.\n\nVous pouvez la récupérer avec précaution.",
+    "choices": [
+      {
+        "text": "Prendre la tablette",
+        "next": {
+          "type": "story",
+          "id": "clue10-02",
+          "good": true
+        }
+      },
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
   {
     "id": "clue10-01",
     "title": "Act 3 — Clue10 — Mort",
@@ -1125,171 +1535,265 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork05", "good": false }
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": false
+        }
       }
     ]
   },
-
-{
-  "id": "clue10-02",
-  "title": "Acte 3 — Message du Prisonnier",
-  "text": "Vous ramassez la tablette posée près du corps recouvert de substance noire. L’écran clignote, puis un message enregistré se lance automatiquement.\n\n« Ce n’est pas une infection… C’est cette chose. Celle qu’ils ont ramenée du drone revenu d’Europe. Ils disaient que ce n’était qu’un minerai étrange… rien d’autre. Jusqu’à ce que la chose s’échappe des laboratoires.\n\nElle est entrée dans les conduits d’aération… dans l’eau potable… et maintenant elle circule parmi nous. Nous l’avons tous en nous d’une manière ou d’une autre.\n\nIls ont ordonné de confiner la station et de tuer ceux qui tombaient malades. Je les ai vus abattre des collègues qui souffraient seulement depuis quelques heures.\n\nJ’ai entendu dire qu’ils veulent ramener la station vers le QG… si cette chose atteint la Terre… »\n\nLe message s’interrompt dans un grésillement angoissant.",
-  "choices": [
-    {
-      "text": "Retour au fortin",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "clue10-03",
-  "title": "Acte 3 — Cellule (Déjà explorée)",
-  "text": "Vous revenez dans la cellule improvisée. Rien n’a changé.\n\nLa tablette du prisonnier ne diffuse plus rien, mais vous vous souvenez parfaitement du message enregistré :\n\n« Ce n’est pas une infection… C’est cette chose. Celle qu’ils ont ramenée du drone revenu d’Europe. Ils disaient que ce n’était qu’un minerai étrange… rien d’autre. Jusqu’à ce que la chose s’échappe des laboratoires.\n\nElle est entrée dans les conduits d’aération… dans l’eau potable… et maintenant elle circule parmi nous. Nous l’avons tous en nous d’une manière ou d’une autre.\n\nIls ont ordonné de confiner la station et de tuer ceux qui tombaient malades. Je les ai vus abattre des collègues qui souffraient seulement depuis quelques heures.\n\nJ’ai entendu dire qu’ils veulent ramener la station vers le QG… si cette chose atteint la Terre… »\n\nIl n’y a rien d’autre à trouver ici.",
-  "choices": [
-    {
-      "text": "Retour",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "minigame05",
-  "title": "Acte 3 — Terminal Blindé",
-  "text": "Le terminal à droite de la porte blindée projette une lumière bleue froide.\n\n« PROTOCOLE DE VERROUILLAGE : ACTIVÉ »\n« IDENTIFICATION OU MOT DE PASSE REQUIS »\n\nVous pouvez tenter d’accéder au système.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork05", "good": true }
-    },
-    {
-      "text": "Forcer le terminal",
-      "next": { "type": "game", "id": "minigame05", "good": true }
-    }
-  ]
-},
-
+  {
+    "id": "clue10-02",
+    "title": "Acte 3 — Message du Prisonnier",
+    "text": "Vous ramassez la tablette posée près du corps recouvert de substance noire. L’écran clignote, puis un message enregistré se lance automatiquement.\n\n« Ce n’est pas une infection… C’est cette chose. Celle qu’ils ont ramenée du drone revenu d’Europe. Ils disaient que ce n’était qu’un minerai étrange… rien d’autre. Jusqu’à ce que la chose s’échappe des laboratoires.\n\nElle est entrée dans les conduits d’aération… dans l’eau potable… et maintenant elle circule parmi nous. Nous l’avons tous en nous d’une manière ou d’une autre.\n\nIls ont ordonné de confiner la station et de tuer ceux qui tombaient malades. Je les ai vus abattre des collègues qui souffraient seulement depuis quelques heures.\n\nJ’ai entendu dire qu’ils veulent ramener la station vers le QG… si cette chose atteint la Terre… »\n\nLe message s’interrompt dans un grésillement angoissant.",
+    "choices": [
+      {
+        "text": "Retour au fortin",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "clue10-03",
+    "title": "Acte 3 — Cellule (Déjà explorée)",
+    "text": "Vous revenez dans la cellule improvisée. Rien n’a changé.\n\nLa tablette du prisonnier ne diffuse plus rien, mais vous vous souvenez parfaitement du message enregistré :\n\n« Ce n’est pas une infection… C’est cette chose. Celle qu’ils ont ramenée du drone revenu d’Europe. Ils disaient que ce n’était qu’un minerai étrange… rien d’autre. Jusqu’à ce que la chose s’échappe des laboratoires.\n\nElle est entrée dans les conduits d’aération… dans l’eau potable… et maintenant elle circule parmi nous. Nous l’avons tous en nous d’une manière ou d’une autre.\n\nIls ont ordonné de confiner la station et de tuer ceux qui tombaient malades. Je les ai vus abattre des collègues qui souffraient seulement depuis quelques heures.\n\nJ’ai entendu dire qu’ils veulent ramener la station vers le QG… si cette chose atteint la Terre… »\n\nIl n’y a rien d’autre à trouver ici.",
+    "choices": [
+      {
+        "text": "Retour",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "minigame05",
+    "title": "Acte 3 — Terminal Blindé",
+    "text": "Le terminal à droite de la porte blindée projette une lumière bleue froide.\n\n« PROTOCOLE DE VERROUILLAGE : ACTIVÉ »\n« IDENTIFICATION OU MOT DE PASSE REQUIS »\n\nVous pouvez tenter d’accéder au système.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork05",
+          "good": true
+        }
+      },
+      {
+        "text": "Forcer le terminal",
+        "next": {
+          "type": "game",
+          "id": "minigame05",
+          "good": true
+        }
+      }
+    ]
+  },
   {
     "id": "minigame05",
     "type": "game",
     "password": "GLACIER",
     "wordCount": 25,
     "maxAttempts": 4,
-    "words": ["GLACIER","FISSURE","CAPSULE","MODULES","SOUTIEN","SOURDRE","MOTEURS",
-"ANCIENS","VERRIERE","SYSTEME","CONSOLE","UNITEES","FROIDEUR",
-"PASSAGE","VIBRANT","SILENCE","ALARME","TUNNELS","NAVETTE","SECOURS",
-"SOLDATS","VOLETTE","PLATEAU","CIRCUIT","FRACTAL"],
+    "words": [
+      "GLACIER",
+      "FISSURE",
+      "CAPSULE",
+      "MODULES",
+      "SOUTIEN",
+      "SOURDRE",
+      "MOTEURS",
+      "ANCIENS",
+      "VERRIERE",
+      "SYSTEME",
+      "CONSOLE",
+      "UNITEES",
+      "FROIDEUR",
+      "PASSAGE",
+      "VIBRANT",
+      "SILENCE",
+      "ALARME",
+      "TUNNELS",
+      "NAVETTE",
+      "SECOURS",
+      "SOLDATS",
+      "VOLETTE",
+      "PLATEAU",
+      "CIRCUIT",
+      "FRACTAL"
+    ],
     "success": "fork06",
     "fail": null
   },
-
-
-
-
-
-
-
-
-
-
-{
-  "id": "fork06",
-  "title": "Acte 3 — Secteur Réacteur",
-  "text": "Vous progressez dans une série de couloirs étroits, noyés sous un réseau de câbles massifs qui serpentent le long des murs. Des arcs électriques éclatent parfois entre les conduits, projetant des lueurs bleutées.\n\nAprès plusieurs minutes, vous atteignez une zone sécurisée : une porte blindée immense bloque l’accès. Un panneau lumineux indique clairement :\n\n« MAIN BRIDGE ».\n\nLe terminal à côté est actif, mais un message d’alerte clignote :\n« Puissance du Pont Principal : HORS LIGNE. Source auxiliaire requise. »\n\nUn second accès, moins protégé, mène à la salle du générateur auxiliaire.",
-  "choices": [
-    {
-      "text": "Consulter le terminal du Pont Principal",
-      "next": { "type": "story", "id": "minigame06", "good": true }
-    },
-    {
-      "text": "Entrer dans la salle du générateur auxiliaire",
-      "next": { "type": "story", "id": "engine01", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "minigame06",
-  "title": "Acte 3 — Terminal du Pont Principal",
-  "text": "Le terminal du pont principal s’active dans un grésillement. Une ligne de texte apparaît :\n\n« Protocole de sécurité – Niveau 4. Mot de passe requis. »\n\nEn baissant les yeux, vous remarquez un corps affaissé juste à côté de la console. Dans sa main, un petit morceau de papier froissé.\n\nLa plupart des lettres sont effacées… mais vous parvenez à distinguer les deux dernières :\n\n« …on »\n\nImpossible d’en lire davantage. Le reste est illisible, comme brûlé.",
-  "choices": [
-    {
-      "text": "Retourner",
-      "next": { "type": "story", "id": "fork06", "good": true }
-    },
-    {
-      "text": "Hacker le terminal",
-      "next": { "type": "game", "id": "minigame06", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "minigame06",
-  "type": "game",
-  "password": "ORION",
-  "wordCount": 29,
-  "words": ["ORION","ASTRE","RADAR","LASER","SONDE","PROBE","NAVET","SUIVI","SIGMA",
-"DELTA","MODUL","ROTOR","VITES","SONAR","CAPTE","FUSEE","ALPHA","SECTE",
-"SYSTEM","NIVEA","COEUR","PLAQU","ANODE","CABLE","PANNE","PHASE","NUCLE",
-"VALET","TENDE"],
-  "maxAttempts": 4,
-  "success": "fork07",
-  "fail": null
-},
-
-{
-  "id": "engine01",
-  "title": "Acte 3 — Salle du Générateur Auxiliaire",
-  "text": "Vous pénétrez directement dans la salle du générateur auxiliaire. Une chaleur sèche émane des conduites fissurées, et plusieurs voyants rouges clignotent sans interruption.\n\nLa machine est encore opérationnelle, mais clairement instable. Une console de commande, au centre de la pièce, diffuse un message d’erreur en continu :\n\n« SYSTÈME EN VEILLE — RÉINITIALISATION REQUISE. »\n\nSi vous parvenez à rétablir ce générateur, la puissance du Pont Principal sera restaurée.",
-  "choices": [
-    {
-      "text": "Retour au Secteur Réacteur",
-      "next": { "type": "story", "id": "fork06", "good": true }
-    },
-    {
-      "text": "Tenter la réinitialisation du générateur",
-      "next": { "type": "story", "id": "engine02", "good": true }
-    }
-  ]
-},
-
-{
-  "id": "engine01-03",
-  "title": "Acte 3 — Salle du Générateur (Déjà visitée)",
-  "text": "Le générateur tourne à pleine capacité. Les voyants sont stabilisés et la salle vibre d’une énergie continue.\n\nVous avez déjà effectué toutes les manipulations nécessaires ici.",
-  "choices": [
-    {
-      "text": "Retour au Secteur Réacteur",
-      "next": { "type": "story", "id": "fork06", "good": true }
-    }
-  ]
-},
-
+  {
+    "id": "fork06",
+    "title": "Acte 3 — Secteur Réacteur",
+    "text": "Vous progressez dans une série de couloirs étroits, noyés sous un réseau de câbles massifs qui serpentent le long des murs. Des arcs électriques éclatent parfois entre les conduits, projetant des lueurs bleutées.\n\nAprès plusieurs minutes, vous atteignez une zone sécurisée : une porte blindée immense bloque l’accès. Un panneau lumineux indique clairement :\n\n« MAIN BRIDGE ».\n\nLe terminal à côté est actif, mais un message d’alerte clignote :\n« Puissance du Pont Principal : HORS LIGNE. Source auxiliaire requise. »\n\nUn second accès, moins protégé, mène à la salle du générateur auxiliaire.",
+    "choices": [
+      {
+        "text": "Consulter le terminal du Pont Principal",
+        "next": {
+          "type": "story",
+          "id": "minigame06",
+          "good": true
+        }
+      },
+      {
+        "text": "Entrer dans la salle du générateur auxiliaire",
+        "next": {
+          "type": "story",
+          "id": "engine01",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "minigame06",
+    "title": "Acte 3 — Terminal du Pont Principal",
+    "text": "Le terminal du pont principal s’active dans un grésillement. Une ligne de texte apparaît :\n\n« Protocole de sécurité – Niveau 4. Mot de passe requis. »\n\nEn baissant les yeux, vous remarquez un corps affaissé juste à côté de la console. Dans sa main, un petit morceau de papier froissé.\n\nLa plupart des lettres sont effacées… mais vous parvenez à distinguer les deux dernières :\n\n« …on »\n\nImpossible d’en lire davantage. Le reste est illisible, comme brûlé.",
+    "choices": [
+      {
+        "text": "Retourner",
+        "next": {
+          "type": "story",
+          "id": "fork06",
+          "good": true
+        }
+      },
+      {
+        "text": "Hacker le terminal",
+        "next": {
+          "type": "game",
+          "id": "minigame06",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "minigame06",
+    "type": "game",
+    "password": "ORION",
+    "wordCount": 29,
+    "words": [
+      "ORION",
+      "ASTRE",
+      "RADAR",
+      "LASER",
+      "SONDE",
+      "PROBE",
+      "NAVET",
+      "SUIVI",
+      "SIGMA",
+      "DELTA",
+      "MODUL",
+      "ROTOR",
+      "VITES",
+      "SONAR",
+      "CAPTE",
+      "FUSEE",
+      "ALPHA",
+      "SECTE",
+      "SYSTEM",
+      "NIVEA",
+      "COEUR",
+      "PLAQU",
+      "ANODE",
+      "CABLE",
+      "PANNE",
+      "PHASE",
+      "NUCLE",
+      "VALET",
+      "TENDE"
+    ],
+    "maxAttempts": 4,
+    "success": "fork07",
+    "fail": null
+  },
+  {
+    "id": "engine01",
+    "title": "Acte 3 — Salle du Générateur Auxiliaire",
+    "text": "Vous pénétrez directement dans la salle du générateur auxiliaire. Une chaleur sèche émane des conduites fissurées, et plusieurs voyants rouges clignotent sans interruption.\n\nLa machine est encore opérationnelle, mais clairement instable. Une console de commande, au centre de la pièce, diffuse un message d’erreur en continu :\n\n« SYSTÈME EN VEILLE — RÉINITIALISATION REQUISE. »\n\nSi vous parvenez à rétablir ce générateur, la puissance du Pont Principal sera restaurée.",
+    "choices": [
+      {
+        "text": "Retour au Secteur Réacteur",
+        "next": {
+          "type": "story",
+          "id": "fork06",
+          "good": true
+        }
+      },
+      {
+        "text": "Tenter la réinitialisation du générateur",
+        "next": {
+          "type": "story",
+          "id": "engine02",
+          "good": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "engine01-03",
+    "title": "Acte 3 — Salle du Générateur (Déjà visitée)",
+    "text": "Le générateur tourne à pleine capacité. Les voyants sont stabilisés et la salle vibre d’une énergie continue.\n\nVous avez déjà effectué toutes les manipulations nécessaires ici.",
+    "choices": [
+      {
+        "text": "Retour au Secteur Réacteur",
+        "next": {
+          "type": "story",
+          "id": "fork06",
+          "good": true
+        }
+      }
+    ]
+  },
   {
     "id": "engine02",
     "title": "Act 3 — Réacteur • Étape 1",
     "text": "Le panneau principal du générateur s’illumine faiblement sous une couche de poussière brûlée.\n\nDevant vous, quatre leviers rouillés sont alignés, chacun marqué d’une inscription presque effacée. Selon le manuel que vous avez vaguement aperçu, un seul de ces leviers amorcera correctement la séquence.\n\nLevier marqué : ‘B-STRT’",
-"choices": [
-  {
-    "text": "Actionner le levier 'A-PRIM'",
-    "next": { "type": "story", "id": "engine02-fail", "good": false }
-  },
-  {
-    "text": "Actionner le levier 'B-STRT'",
-    "next": { "type": "story", "id": "engine03", "good": true }
-  },
-  {
-    "text": "Actionner le levier 'C-VALV'",
-    "next": { "type": "story", "id": "engine02-fail", "good": false }
-  },
-  {
-    "text": "Actionner le levier 'D-OVRD'",
-    "next": { "type": "story", "id": "engine02-fail", "good": false }
-  }
-]
-
+    "choices": [
+      {
+        "text": "Actionner le levier 'A-PRIM'",
+        "next": {
+          "type": "story",
+          "id": "engine02-fail",
+          "good": false
+        }
+      },
+      {
+        "text": "Actionner le levier 'B-STRT'",
+        "next": {
+          "type": "story",
+          "id": "engine03",
+          "good": true
+        }
+      },
+      {
+        "text": "Actionner le levier 'C-VALV'",
+        "next": {
+          "type": "story",
+          "id": "engine02-fail",
+          "good": false
+        }
+      },
+      {
+        "text": "Actionner le levier 'D-OVRD'",
+        "next": {
+          "type": "story",
+          "id": "engine02-fail",
+          "good": false
+        }
+      }
+    ]
   },
   {
     "id": "engine02-fail",
@@ -1298,7 +1802,11 @@
     "choices": [
       {
         "text": "Retour au fork06",
-        "next": { "type": "story", "id": "fork06", "good": false }
+        "next": {
+          "type": "story",
+          "id": "fork06",
+          "good": false
+        }
       }
     ]
   },
@@ -1306,25 +1814,40 @@
     "id": "engine03",
     "title": "Act 3 — Réacteur • Étape 2",
     "text": "La première impulsion est validée. Le générateur gronde doucement, comme hésitant entre la vie et l’extinction.\n\nUn second panneau s’ouvre automatiquement, révélant quatre conduits d’alimentation, chacun associé à une étiquette presque illisible. Selon les avertissements du système, seul l’un d’eux stabilisera le flux énergétique.\n\nLe bon conduit semble être : ‘OM-LINE’",
-"choices": [
-  {
-    "text": "Basculer le conduit 'AL-PRM'",
-    "next": { "type": "story", "id": "engine03-fail", "good": false }
-  },
-  {
-    "text": "Basculer le conduit 'DT-FDR'",
-    "next": { "type": "story", "id": "engine03-fail", "good": false }
-  },
-  {
-    "text": "Basculer le conduit 'SG-RCH'",
-    "next": { "type": "story", "id": "engine03-fail", "good": false }
-  },
-  {
-    "text": "Basculer le conduit 'OM-LINE'",
-    "next": { "type": "story", "id": "engine04-success", "good": true }
-  }
-]
-
+    "choices": [
+      {
+        "text": "Basculer le conduit 'AL-PRM'",
+        "next": {
+          "type": "story",
+          "id": "engine03-fail",
+          "good": false
+        }
+      },
+      {
+        "text": "Basculer le conduit 'DT-FDR'",
+        "next": {
+          "type": "story",
+          "id": "engine03-fail",
+          "good": false
+        }
+      },
+      {
+        "text": "Basculer le conduit 'SG-RCH'",
+        "next": {
+          "type": "story",
+          "id": "engine03-fail",
+          "good": false
+        }
+      },
+      {
+        "text": "Basculer le conduit 'OM-LINE'",
+        "next": {
+          "type": "story",
+          "id": "engine04-success",
+          "good": true
+        }
+      }
+    ]
   },
   {
     "id": "engine03-fail",
@@ -1333,7 +1856,11 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork06", "good": false }
+        "next": {
+          "type": "story",
+          "id": "fork06",
+          "good": false
+        }
       }
     ]
   },
@@ -1344,26 +1871,37 @@
     "choices": [
       {
         "text": "Retourner",
-        "next": { "type": "story", "id": "fork06", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork06",
+          "good": true
+        }
       }
     ],
     "award": "engine"
   },
-
-
-
-
-
   {
     "id": "fork07",
     "title": "Acte 3 — Embranchement Final",
-     "text": "Vous arrivez enfin dans la zone du Pont Principal.\n\nJuste devant vous, une capsule de secours ouverte est prête au lancement. Il suffirait de sauter à l’intérieur pour quitter immédiatement la station.\n\nSur le côté, une porte blindée mène directement au Pont Principal. Un terminal indique que l’accès ne peut être accordé que si l’alimentation auxiliaire a été rétablie.",
+    "text": "Vous arrivez enfin dans la zone du Pont Principal.\n\nJuste devant vous, une capsule de secours ouverte est prête au lancement. Il suffirait de sauter à l’intérieur pour quitter immédiatement la station.\n\nSur le côté, une porte blindée mène directement au Pont Principal. Un terminal indique que l’accès ne peut être accordé que si l’alimentation auxiliaire a été rétablie.",
     "choices": [
       {
         "text": "Sauter dans la capsule de secours",
-        "next": { "type": "story", "id": "ending-pod", "good": true }
+        "next": {
+          "type": "story",
+          "id": "ending-pod",
+          "good": true
+        }
       },
-      { "text": "Ouvrir la porte du Pont Principal", "requiresEngine": true, "next": { "type": "story", "id": "ending-sabotage", "good": true } }
+      {
+        "text": "Ouvrir la porte du Pont Principal",
+        "requiresEngine": true,
+        "next": {
+          "type": "story",
+          "id": "ending-sabotage",
+          "good": true
+        }
+      }
     ]
   },
   {
@@ -1373,11 +1911,19 @@
     "choices": [
       {
         "text": "Retour",
-        "next": { "type": "story", "id": "fork07", "good": true }
+        "next": {
+          "type": "story",
+          "id": "fork07",
+          "good": true
+        }
       },
       {
         "text": "Lancer le mini-jeu",
-        "next": { "type": "game", "id": "minigame08", "good": true }
+        "next": {
+          "type": "game",
+          "id": "minigame08",
+          "good": true
+        }
       }
     ]
   },
@@ -1390,10 +1936,4 @@
     "success": "ending-pod",
     "fail": null
   }
-
-
-
-
-
-
 ]

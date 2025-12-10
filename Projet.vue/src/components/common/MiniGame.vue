@@ -4,11 +4,7 @@
       <!-- Close button + header -->
       <div class="header-bar">
         <div class="term-header">{{ typedHeader }}</div>
-        <button
-          class="close-x"
-          @click="handleClose"
-          @mouseover="playSound(hoverAudio)"
-        >
+        <button class="close-x" @click="handleClose" @mouseover="playSound(hoverAudio)">
           ✕
         </button>
       </div>
@@ -16,12 +12,7 @@
       <!-- Attempts line -->
       <div class="term-attempts">
         <span>{{ attemptsRemaining }} ESSAIS RESTANTS:</span>
-        <span
-          v-for="n in maxAttempts"
-          :key="n"
-          class="attempt-block"
-          :class="{ used: n > attemptsRemaining }"
-        ></span>
+        <span v-for="n in maxAttempts" :key="n" class="attempt-block" :class="{ used: n > attemptsRemaining }"></span>
       </div>
 
       <!-- GRID + LOG AREA -->
@@ -33,24 +24,12 @@
         </div>
 
         <div class="char-lines">
-          <div
-            class="char-line"
-            v-for="(row, rIndex) in visibleGridRows"
-            :key="rIndex"
-          >
-            <span
-              v-for="(cell, cIndex) in row"
-              :key="cIndex"
-              class="char-span"
-              :class="{
-                word: cell.isWord,
-                used: cell.used,
-                hovered: isHovered(cell),
-              }"
-              @click="onCellClick(cell)"
-              @mouseover="hoverWord(cell)"
-              @mouseleave="hoverWord(null)"
-            >
+          <div class="char-line" v-for="(row, rIndex) in visibleGridRows" :key="rIndex">
+            <span v-for="(cell, cIndex) in row" :key="cIndex" class="char-span" :class="{
+              word: cell.isWord,
+              used: cell.used,
+              hovered: isHovered(cell),
+            }" @click="onCellClick(cell)" @mouseover="hoverWord(cell)" @mouseleave="hoverWord(null)">
               {{ cell.text }}
             </span>
           </div>
@@ -78,11 +57,7 @@
       <div v-if="gameOver" class="end-message">
         <template v-if="success">
           <p>&gt; CONNEXION DU TERMINAL RÉUSSIE...</p>
-          <button
-            class="continue-btn"
-            @click="handleContinue"
-            @mouseover="playSound(hoverAudio)"
-          >
+          <button class="continue-btn" @click="handleContinue" @mouseover="playSound(hoverAudio)">
             Continuer
           </button>
         </template>
@@ -369,27 +344,40 @@ export default {
   background: rgba(0, 0, 0, 0.45);
   z-index: 9999;
   display: flex;
-  align-items: center; /* center vertically */
-  justify-content: center; /* center horizontally */
-} /* MAIN BOX */
+  align-items: center;
+  /* center vertically */
+  justify-content: center;
+  /* center horizontally */
+}
+
+/* MAIN BOX */
 .mini-game-content {
   width: 90%;
   height: 88%;
   max-width: 1100px;
-  max-height: calc(85vh - 80px); /* do NOT grow higher than the screen */
+  max-height: calc(85vh - 80px);
+  /* do NOT grow higher than the screen */
   background-color: rgb(17, 17, 17);
   border: 2px solid #03ab5e;
   color: #03ab5e;
   font-family: "Courier New", monospace;
-  padding: 40px; /* a bit smaller than 80px */
+  padding: 40px;
+  /* a bit smaller than 80px */
   box-sizing: border-box;
   position: relative;
-  overflow: hidden; /* stop horizontal/vertical bleed */
+  overflow: hidden;
+  /* stop horizontal/vertical bleed */
   box-shadow: 0 0 25px 5px rgba(3, 171, 94, 0.5),
-    /* halo vert */ 0 0 60px 15px rgba(0, 0, 0, 0.9),
-    /* ombre profonde */ inset 0 0 20px rgba(0, 0, 0, 0.7),
-    /* ombre interne pour effet vitre */ inset 0 0 40px rgba(3, 171, 94, 0.15); /* lueur interne légère */
-} /* inner scroll area: only this part can scroll */
+    /* halo vert */
+    0 0 60px 15px rgba(0, 0, 0, 0.9),
+    /* ombre profonde */
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    /* ombre interne pour effet vitre */
+    inset 0 0 40px rgba(3, 171, 94, 0.15);
+  /* lueur interne légère */
+}
+
+/* inner scroll area: only this part can scroll */
 
 /* SCREEN: EFFET RETRO + COUBRE */
 @keyframes crtFlicker {
@@ -407,21 +395,23 @@ export default {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0,
-    rgba(255, 255, 255, 0.03) 2px,
-    rgba(0, 0, 0, 0.06) 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.03) 0,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(0, 0, 0, 0.06) 4px);
   pointer-events: none;
 }
+
 .terminal-frame {
   width: 100%;
   max-height: calc(85vh - 80px);
-  overflow-y: auto; /* ⬇️ add this */
+  overflow-y: auto;
+  /* ⬇️ add this */
   padding-bottom: 24px;
   box-sizing: border-box;
-} /* Close button */
+}
+
+/* Close button */
 .close-btn {
   background-color: #111;
   color: #03ab5e;
@@ -434,17 +424,21 @@ export default {
   width: 250px;
   transition: 0.3s ease;
 }
+
 .close-btn:hover {
   background-color: #03ab5e;
   color: #000;
   transform: scale(1.05);
-} /* HEADER + ATTEMPTS */
+}
+
+/* HEADER + ATTEMPTS */
 .term-header {
   white-space: pre-wrap;
   font-size: 1rem;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
+
 .term-attempts {
   font-size: 0.9rem;
   margin-bottom: 12px;
@@ -452,73 +446,101 @@ export default {
   align-items: center;
   gap: 8px;
 }
+
 .attempt-block {
   width: 12px;
   height: 12px;
   background-color: #1aff80;
   margin-left: 3px;
 }
+
 .attempt-block.used {
   background-color: #044422;
-} /* GRID + LOG layout */
+}
+
+/* GRID + LOG layout */
 .term-grid-layout {
   margin-top: 10px;
-  display: grid; /* force columns to stay inside width */
+  display: grid;
+  /* force columns to stay inside width */
   grid-template-columns: 80px minmax(0, 1fr) 80px 200px;
   gap: 12px;
   align-items: flex-start;
-} /* Addresses */
+}
+
+/* Addresses */
 .addresses ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .addresses li {
   font-size: 0.87rem;
   margin: 1px 0;
-} /* === new, line-based “Fallout” layout === */
+}
+
+/* === new, line-based “Fallout” layout === */
 .char-lines {
   font-size: 0.87rem;
   line-height: 1.3;
   width: 100%;
 }
+
 .char-line {
   white-space: pre;
-} /* each slot is exactly one character wide */
+}
+
+/* each slot is exactly one character wide */
 .char-span {
   display: inline-block;
   width: 1ch;
   text-align: center;
-} /* it's part of a word (clickable) */
+}
+
+/* it's part of a word (clickable) */
 .char-span.word {
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
-} /* whole word hovered */
+}
+
+/* whole word hovered */
 .char-span.word.hovered {
   background: #1aff80;
   color: #000;
-} /* already tried word */
+}
+
+/* already tried word */
 .char-span.used {
   color: #555;
-} /* Log panel */
+}
+
+/* Log panel */
 .log-panel {
   font-size: 0.87rem;
   border-left: 1px solid #03ab5e;
   padding-left: 8px;
-  max-height: 260px; /* own scroll, does not push layout */
+  max-height: 260px;
+  /* own scroll, does not push layout */
   overflow-y: auto;
-  word-break: break-word; /* long text wraps instead of pushing width */
+  word-break: break-word;
+  /* long text wraps instead of pushing width */
 }
+
 .log-line {
   margin-bottom: 8px;
-} /* End message */
+}
+
+/* End message */
 .end-message {
   margin-top: 20px;
   font-size: 0.9rem;
 }
+
 .end-message p {
   margin: 4px 0;
 }
+
 .continue-btn {
   background-color: rgb(17, 17, 17);
   color: #03ab5e;
@@ -532,17 +554,20 @@ export default {
   transition: 0.3s ease;
   font-family: "Courier New", monospace;
 }
+
 .continue-btn:hover {
   background-color: #03ab5e;
   color: #000;
   transform: scale(1.05);
 }
+
 .header-bar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 12px;
 }
+
 .close-x {
   background: none;
   border: 2px solid #03ab5e;
@@ -555,11 +580,14 @@ export default {
   font-family: "Courier New", monospace;
   transition: 0.2s ease;
 }
+
 .close-x:hover {
   background: #03ab5e;
   color: black;
 }
+
 @media (max-width: 1080px) {
+
   /* Mise à l'échelle générale */
   .mini-game-content {
     width: 92%;
@@ -570,53 +598,74 @@ export default {
     justify-content: flex-start;
     overflow: hidden;
   }
+
   .terminal-frame {
     flex: 1;
     overflow-y: auto;
     padding-bottom: 2rem;
-  } /* En-tête plus lisible */
+  }
+
+  /* En-tête plus lisible */
   .term-header {
     font-size: 1.1rem;
   }
+
   .term-attempts {
     font-size: 1rem;
-  } /* ENLÈVE LES BARRES LATÉRALES (addresses) */
+  }
+
+  /* ENLÈVE LES BARRES LATÉRALES (addresses) */
   .addresses {
     display: none;
-  } /* SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
+  }
+
+  /* SUPPRIME LA GRID COMPLEXE — ON GARDE SEULEMENT LE CENTRE */
   .term-grid-layout {
     display: block;
     padding: 0;
-  } /* Zone centrale : caractères */
+  }
+
+  /* Zone centrale : caractères */
   .char-lines {
-    font-size: 1rem; /* plus gros */
+    font-size: 1rem;
+    /* plus gros */
     line-height: 1.3;
     white-space: pre-wrap;
     width: 100%;
   }
+
   .char-span {
     width: auto;
-  } /* Log panel en bas, simple et lisible */
+  }
+
+  /* Log panel en bas, simple et lisible */
   .log-panel {
-    border-top: none; /* supprime la ligne */
+    border-top: none;
+    /* supprime la ligne */
     padding-top: 8px;
     margin-top: 16px;
     font-size: 1rem;
     max-height: 95px;
     overflow-y: auto;
   }
+
   .log-line {
     margin-bottom: 6px;
-  } /* Bouton X */
+  }
+
+  /* Bouton X */
   .close-x {
     font-size: 15px;
-  } /* Bouton CONTINUER plus petit et ne déborde pas */
+  }
+
+  /* Bouton CONTINUER plus petit et ne déborde pas */
   .continue-btn {
     width: 80%;
     max-width: 300px;
     font-size: 1rem;
     padding: 10px;
-    align-self: center; /* centre horizontalement */
+    align-self: center;
+    /* centre horizontalement */
   }
 }
 </style>

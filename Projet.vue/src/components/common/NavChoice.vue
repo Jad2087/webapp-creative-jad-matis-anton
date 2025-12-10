@@ -52,8 +52,6 @@ export default {
       this.$emit("choose", resolved, this.choice.text);
     },
 
-
-
     resolveNext(choice) {
       const id = choice.next.id;
 
