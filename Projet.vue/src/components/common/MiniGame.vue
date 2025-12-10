@@ -577,7 +577,7 @@ export default {
     padding-top: 8px;
     margin-top: 16px;
     font-size: 1rem;
-    max-height: 200px;
+    max-height: 100px;
     overflow-y: auto;
   }
   .log-line {
