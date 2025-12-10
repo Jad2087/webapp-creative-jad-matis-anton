@@ -49,11 +49,10 @@ Le protagoniste reste volontairement neutre — un « personne » sans identité
 
 - [x] Créer une expérience narrative immersive et atmosphérique  
 - [x] Développer un système de choix influençant réellement le parcours du joueur  
-- [x] Implémenter un mini-jeu de hacking cohérent avec l’univers  
 - [ ] Implémenter un système de sauvegarde de progression  
 - [x] Démontrer la maîtrise de Vue.js, Pinia et GSAP  
 - [x] Créer une interface accessible et responsive  
-- [ ] [Autre objectif spécifique]  
+- [x] Implémenter un mini-jeu de hacking cohérent avec l’univers
 
 ---
 
