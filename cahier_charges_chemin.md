@@ -26,6 +26,7 @@ Responsable de la scénarisation complète : écriture des chapitres, création 
 **Date de livraison finale :** 10 décembre 2025  
 **Version du document :** 1.0  
 
+---
 
 ## 🎯 1. Présentation du Projet
 
@@ -54,7 +55,7 @@ Le protagoniste reste volontairement neutre — un « personne » sans identité
 - [x] Créer une interface accessible et responsive  
 - [ ] [Autre objectif spécifique]  
 
-
+---
 
 ## 📖 2. Architecture Narrative
 
