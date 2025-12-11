@@ -60,9 +60,13 @@ Le protagoniste reste volontairement neutre — un « personne » sans identité
 
 ### 2.1 Synopsis détaillé
 
-Le Interloper se réveille d’un long sommeil en cryostase. La station spaciale est vieille, ses systèmes clignotent, des couloirs sont condamnés. Il n’a aucun souvenir de qui il est ni de ce qui s’est passé. Une seule chose est claire : trouver une issue.
+Le joueur se réveille dans une cuve cryogénique, au cœur d’une station spatiale vieillissante et en décomposition. Aucun souvenir, aucun contact, aucun signe de vie. Les modules sont endommagés, les systèmes clignotent, et certaines sections sont contaminées par une substance noire d’origine inconnue. L’oxygène est limité et la station perd rapidement de l’altitude : le temps joue contre vous.
 
-Pour s’échapper avant que la station tombe dans l’atmosphère terrestre, le joueur doit traverser ces diférants modules, récupérer des indices et déverrouiller des accès pour trouver une sortie... tout en évitant un monstre qui rôde.
+L’aventure repose sur l’exploration. Le joueur navigue entre différents secteurs, collecte des **indices**, évite les zones dangereuses (ventilateurs, conduits instables, zones dépressurisées, éclairage défaillant, contamination) et tente d’ouvrir des accès critiques grâce à plusieurs **mini-jeux de hacking**. Ces énigmes, basées sur la logique des mots de passe, sont essentielles pour progresser.
+
+Le protagoniste reste volontairement anonyme — un individu sans identité claire — mais ses compétences en maintenance et en piratage suggèrent un passé de mécanicien ou de technicien de bord. L’histoire met l’accent sur la solitude, la survie et le mystère : aucun ennemi ne poursuit le joueur, mais l’environnement lui-même constitue une menace constante. Le seul objectif : trouver une issue avant que la station ne s’écrase.
+
+
 
 ### 2.2 Arbre narratif
 
