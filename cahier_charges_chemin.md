@@ -158,6 +158,9 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 | 20 | **Toilettes — Déjà explorées** (`clue04-03`) | Indice déjà vu | Rien de nouveau. | Retour | — |
 | 21 | **Terminal Cafétéria** (`minigame02`) | Choix | Terminal verrouillé. | Pirater / Retour | Lance mini-jeu |
 | 22 | **Mini-jeu 2** (`minigame02(game)`) | Mini-jeu | Mot de passe : **CINQ**. | — | Succès → `fork03` |
+
+---
+
 | 23 | **Stockages — Carrefour** (`fork03`) | Choix | 2 salles + terminal mort. | Salle gauche / Salle droite / Examiner | Accès conduits |
 | 24 | **Chambre froide** (`clue05`) | Exploration | Trouve un conduit praticable. | Entrer / Retour | Va à `vent01` |
 | 25 | **Conduit — Grand carrefour** (`vent01`) | Exploration | 3 voies + bruit inquiétant. | Lumière / Obscurité / Bruit / Retour | Variantes multiples |
