@@ -193,6 +193,41 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 | 55 | **Terminal Médical** (`minigame04`) | Choix | Accès restreint. | Pirater / Retour | Lance mini-jeu |
 | 56 | **Mini-jeu Médical** (`minigame04(game)`) | Mini-jeu | Mot : **NEBULA**. | — | Ouvre Acte 3 |
 
+---
+
+## ACTE 3 — Secteur Prioritaire, Fortifications, Réacteur, Finales
+
+| #  | Nom du chapitre | Type | Description courte | Choix proposés | Conséquences |
+|----|-----------------|------|--------------------|----------------|--------------|
+| 57 | **Acte 3 — Intro** (`intro3`) | Texte | Arrivée dans un secteur prioritaire blindé, rempli de corps et impacts. | Continuer | Va à `fork05` |
+| 58 | **Fortifications — Embranchement** (`fork05`) | Choix | Bureau dévasté, cellule improvisée, porte blindée. | Bureau / Cellule / Terminal / Retour | Accès indices + mini-jeu |
+| 59 | **Bureau — Champ de bataille** (`clue09`) | Danger / Indice | Barricades + mines + soldat abattu. | Contourner / Sauter / Retour | Indice ou Mort |
+| 60 | **Bureau — Mort (Mine)** (`clue09-01`) | Mort | Mine artisanale cachée. | — | Échec |
+| 61 | **Bureau — Indice** (`clue09-02`) | Indice | Note : mot de passe **GLACIER**. | Retour | Débloque mini-jeu |
+| 62 | **Bureau — Déjà exploré** (`clue09-03`) | Indice déjà vu | Rien de plus. | Retour | — |
+| 63 | **Cellule improvisée** (`clue10`) | Indice / Lore | Prisonnier mort + tablette audio. | Prendre / Retour | Lore sur la créature |
+| 64 | **Cellule — Mort** (`clue10-01`) | Mort | Mort immédiate. | — | Échec |
+| 65 | **Cellule — Message** (`clue10-02`) | Indice / Lore | Message : origine de la contamination. | Retour | Lore |
+| 66 | **Cellule — Déjà explorée** (`clue10-03`) | Indice déjà vu | Rien de nouveau. | Retour | — |
+| 67 | **Terminal Blindé** (`minigame05`) | Choix | Accès verrouillé par protocole. | Pirater / Retour | Lance mini-jeu |
+| 68 | **Mini-jeu Porte Blindée** (`minigame05(game)`) | Mini-jeu | Mot : **GLACIER**. | — | Succès → `fork06` |
+| 69 | **Secteur Réacteur** (`fork06`) | Choix | Accès Pont Principal (hors ligne) + générateur auxiliaire. | Terminal / Générateur | Vers mini-jeu ou puzzle |
+| 70 | **Terminal Pont Principal** (`minigame06`) | Choix | Mot de passe crypté (“…on”). | Pirater / Retour | Lance mini-jeu |
+| 71 | **Mini-jeu Pont Principal** (`minigame06(game)`) | Mini-jeu | Mot : **ORION**. | — | Succès → `fork07` |
+| 72 | **Générateur auxiliaire** (`engine01`) | Puzzle | Réinitialiser le générateur. | Réinitialiser / Retour | Lance séquence de réparations |
+| 73 | **Réacteur — Étape 1** (`engine02`) | Puzzle | 4 leviers, 1 bon : **B-STRT**. | 4 choix | Succès ou Mort |
+| 74 | **Réacteur — Fail étape 1** (`engine02-fail`) | Mort | Défaillance du système. | — | Échec |
+| 75 | **Réacteur — Étape 2** (`engine03`) | Puzzle | 4 conduits, 1 bon : **OM-LINE**. | 4 choix | Succès ou Mort |
+| 76 | **Réacteur — Fail étape 2** (`engine03-fail`) | Mort | Flux instable → surcharge. | — | Échec |
+| 77 | **Réacteur — Succès final** (`engine04-success`) | Succès | Réacteur stabilisé → **flag ENGINE** activé. | Retour | Permet accès Pont Principal dans fin |
+| 78 | **Réacteur — Déjà stabilisé** (`engine01-03`) | Succès déjà acquis | Générateur actif. | Retour | — |
+| 79 | **Embranchement Final** (`fork07`) | Choix final | Capsule prête ou porte du Pont Principal. | Capsule / PontPrincipal (si ENGINE) | Mène à fins différentes |
+| 80 | **Mini-jeu Final** (`minigame08`) | Choix | Dernier terminal. | Lancer / Retour | Lance mini-jeu |
+| 81 | **Mini-jeu Final (game)** (`minigame08(game)`) | Mini-jeu | Mot : **FINALE**. | — | Mène à `ending-pod` |
+| 82 | **Fin — Capsule de Secours** (`ending-pod`) | Fin | Fuite en capsule. | — | Fin 1 |
+| 83 | **Fin — Pont Principal** (`ending-sabotage`) | Fin | Accès au pont principal (si ENGINE). | — | Fin 2 |
+| 84 | **Fin — Sommeil Éternel** (`ending-cryo`) | Fin | Cryo-pod de l’Acte 2. | — | Fin 3 |
+| 85 | **Fin — Évasion par Navette** (`ending`) | Fin | Navette du hangar. | — | Fin 4 |
 
 
 ### 2.4 Fins possibles
