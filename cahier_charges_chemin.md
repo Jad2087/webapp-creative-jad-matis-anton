@@ -68,42 +68,49 @@ Le protagoniste reste volontairement anonyme — un individu sans identité clai
 
 
 
-### 2.2 Arbre narratif
+### 2.2 Structure générale de l’arbre narratif
 
-Dessinez ou décrivez l'arbre de décisions de votre histoire:
+L’histoire suit une structure à embranchements contrôlés (*branch-and-bottleneck*), divisée en **3 Actes** :
 
-*Structure globale:*
+#### **Acte 1 – Réveil & Initiation**
+- Réveil dans la cryo-pod (intro).
+- Premier embranchement : Clue01 / Clue02.
+- Introduction au premier mini-jeu de hacking (Minigame 01).
+- Apprentissage de la boucle narrative : **explorer → collecter indice → ouvrir terminal → avancer**.
 
-- *Acte 1:* Initiation (court). Réveil en cryostase, premiers couloirs, 1–2 choix simples pour apprendre: lire un texte d’ambiance, récupérer un indice, réussir 1 mini-jeu (hacking) pour ouvrir la première porte. Objectif: poser l’urgence et montrer la boucle “lire → chercher indice → ouvrir → avancer”. (Trois actes = cadre clair pour début/milieu/fin.
-  
-- *Acte 2:* Exploration (le plus long). Le joueur traverse plusieurs sections (Énergie, Comms, Maintenance, Hydroponie…), alterne choix de directions, mini-jeux de hacking et indices/objets qui déverrouillent d’autres portes. Des rencontres aléatoires avec la créature forcent parfois un mini-jeu “se cacher”. Les branches reconvergent à des “goulets” (bottlenecks) pour garder la portée sous contrôle.
-  
-- *Acte 3:* Échappée (final). Plusieurs terminaux doivent être ouverts en réutilisant les infos/objets acquis. Point de non-retour menant à 3 fins. Les fins reflètent les décisions-clés faites en chemin.
+#### **Acte 2 – Exploration & Dangers**
+Acte le plus long, comprenant plusieurs forks successifs :
 
-### 2.2 Arbre narratif
+- **Fork 02** → Clue03 / Clue04 → Minigame 02  
+- **Fork 03** → Trois chemins : Droite, Gauche, Chemin Bloqué  
+  - Dangers environnementaux : ventilateurs, conduits sombres, contamination, zones instables  
+  - Plusieurs branches mènent à des morts selon le choix  
+- **Fork 04** → Clue07 / Clue08 → Minigame 04  
+- Rebranchements réguliers vers l’axe principal pour garder une progression cohérente.
 
-<h3>2.2 Arbre narratif</h3>
+Cet acte établit :
+- La présence de la **substance noire**  
+- Les risques environnementaux  
+- L’importance des indices pour réussir les mini-jeux  
+- Les premiers accès vers des fins alternatives (ex. Hangar Militaire)
+
+#### **Acte 3 – Fuite & Résolution**
+- **Fork 05** → Clue09 / Clue10 → Minigame 05  
+- Dernier embranchement final : Fork 06  
+- Terminal final (Minigame 06) ouvrant les issues possibles  
+- Plusieurs fins dépendant :
+  - des chemins choisis  
+  - des indices trouvés  
+  - des succès ou échecs aux mini-jeux  
+
+
+### 2.2 Schéma narratif
+
 <p align="center">
-  <img src="./Images/narative.png" alt="Arbre narratif — schéma global" width="900">
+  <img src="./Images/narative.png" alt="Schéma narratif — global" width="900">
 </p>
 
-*Exemple de structure:*
-
-```
-Chapitre 1 (Intro) → Linéaire
-    ↓
-Chapitre 2 (Premier choix)
-    ↓                    ↓
-Branche A            Branche B
-    ↓                    ↓
-Chapitre 3A          Chapitre 3B
-    ↓                    ↓
-Choix majeur         Choix majeur
-    ↓       ↓           ↓       ↓
-Fin 1    Fin 2        Fin 3    Fin 4
-```
-
-### 2.3 Liste des chapitres/scènes
+---
 
 <small>(noms provisoires, 3 actes, modèle branch-and-bottleneck)</small>
 
