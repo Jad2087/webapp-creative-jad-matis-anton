@@ -247,15 +247,12 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 
 ### 2.5 Personnages principaux
 
-| Nom                | Rôle        | Description courte | Apparaît dans |
-|-------------------|-------------|--------------------|----------------|
-| **Interloper**    | Protagoniste | Avatar du joueur, amnésique, seul survivant retrouvé dans la station. | Tous les chapitres |
-| **La Créature**   | Antagoniste | Entité inconnue issue des laboratoires — source de la contamination. | Apparitions indirectes, morts, lore |
-| **Capitaine**     | Figure d’autorité | On apprend qu’il a verrouillé des secteurs, donne mots de passe, tente de contenir l’incident. | Journaux / tablettes |
-| **Soldats & Équipage** | Victimes / Lore | Leurs messages, journaux, corps et enregistrements décrivent ce qui s’est passé dans la station. | Indices throughout Actes 1–3 |
-| **IA / Terminaux** | Entité fonctionnelle | Systèmes de sécurité, portes blindées, diagnostics, mini-jeux. | Mini-jeux / Zones sécurisées |
+| Nom                    | Rôle        | Description courte | Apparaît dans |
+|------------------------|-------------|--------------------|----------------|
+| **Personnage principal (anonyme)** | Protagoniste | Le joueur incarne un individu amnésique, sans nom ni passé connu, tentant de comprendre ce qui est arrivé à la station. | Tous les chapitres |
+| **Personnages secondaires (indirects)** | Présences de fond | Membres d’équipage, soldats ou civils aperçus uniquement à travers des cadavres, tablettes, journaux, enregistrements audio ou indices environnementaux. Aucun n’apparaît directement. | Notes, indices et environnements |
 
-
+---
 
 ### 2.6 Système de conséquences
 
@@ -265,7 +262,7 @@ Comment les choix influencent l’histoire ?
 
 - [ ] Système de karma/moralité
 - [ ] Stats du personnage (courage, intelligence…)
-- [X] Inventaire d’informations (indices trouvés, mots de passe)
+- [ ] Inventaire d’informations (indices trouvés, mots de passe)
 - [ ] Relations avec personnages
 - [X] Flags de choix (certaines actions débloquent ou verrouillent des scènes)
 - [ ] Combinaison complexe
@@ -295,6 +292,7 @@ playerState = {
 }
 ```
 
+---
 
 ## 🎨 3. Design et Identité Visuelle
 
