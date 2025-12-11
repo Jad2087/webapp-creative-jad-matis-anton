@@ -113,9 +113,8 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
   - des succès ou échecs aux mini-jeux  
 
 
-### 2.2 Schéma narratif
-
-### 2.2 Schéma narratif
+### 2.2 Schéma narratif  
+[🔗 Voir la maquette Figma du schéma narratif](https://www.figma.com/design/3wJLs2NqQm0a8wD6kKpkXn/JEU-WEB-DESIGN?node-id=0-1&p=f&t=ZSgW8xshqN4syBen-0)
 
 <p align="center">
   <img src="./Codex Narative.png" alt="Schéma narratif — Codex" width="900">
