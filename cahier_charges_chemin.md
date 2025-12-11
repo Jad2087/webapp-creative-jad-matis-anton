@@ -122,22 +122,25 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 
 ---
 
-<small>(noms provisoires, 3 actes, modèle branch-and-bottleneck)</small>
+# Table des Chapitres — Modèle Branch-and-Bottleneck  
+*(Structure réelle dérivée du fichier JSON complet)*
 
-| #  | Nom du chapitre                | Type                 | Description courte                                                                 | Choix proposés                                   | Conséquences |
-|----|--------------------------------|----------------------|------------------------------------------------------------------------------------|--------------------------------------------------|--------------|
-| 1  | Réveil — Cryo-B                | Linéaire / Texte     | Le jeu commence : court texte d’explication, prise en main.                        | Continuer / Examiner la pièce                    | Débloque le premier carrefour |
-| 2  | Premier carrefour              | Choix                | Première page de choix : plusieurs directions possibles.                           | Route A / Route B                                | A → Scène 3 · B → Scène 4 |
-| 3  | Couloirs — A                   | Texte / Indice       | Exploration d’une zone : ambiance + petit indice sur la station.                   | Inspecter / Passer                               | Gagne **indice A** |
-| 4  | Couloirs — B                   | Texte / Indice       | Deuxième zone d’explo : ambiance + autre indice.                                   | Fouiller / Passer                                | Gagne **indice B** |
-| 5  | Premier terminal               | Mini-jeu (hack)      | Premier hacking pour ouvrir une porte.                                             | Hacker / Chercher un indice                      | Ouvre l’accès vers l’Acte 2 |
-| 6  | Carrefour — Acte 2             | Choix                | Début de l’Acte 2 : nouvelles sections à parcourir.                                | Aller vers Énergie / Maintenance / Comms         | Lance l’exploration centrale |
-| 7  | Sections supplémentaires       | À décider            | Longueur/ordre non fixés (exploration de chambres/sections, lore, indices).        | Explorer / Revenir                               | Progression variable (à préciser) |
-| 8  | Clé d’accès optionnelle        | Objet / Indice       | On peut trouver une **clé** qui débloque une **fin bonus**.                        | Prendre / Ignorer                                | Débloque une **seconde fin** (plus tard) |
-| 9  | Accès — Acte 3                 | Choix                | Entrée dans l’Acte 3 : carrefour final, 3 zones au choix.                          | Zone 1 Capsule / Zone 2 Leurre / Zone 3 Cabine   | 10 / 11 / 12 selon la zone choisie |
-| 10 | Capsule de sauvetage           | Mini-jeu (hack)      | Terminal verrouillé avant la capsule; issue possible par 2 variantes.             | Hacker / Revenir plus tard                       | **2 fins** selon flags/état (avec ou sans preuves) |
-| 11 | Générateur de leurre           | Objet / Texte        | Dispositif pour **attirer** la créature et gagner du temps pour fuir.              | Activer / Conserver                               | Réduit le risque; ouvre fenêtre d’évasion |
-| 12 | Cabine du capitaine            | Objet / Fin cachée   | Si l’objet requis est trouvé, on peut déverrouiller une **troisième fin** cachée.  | Chercher l’objet / Utiliser l’objet              | Débloque la **fin cachée** |
+## ACTE 1 — Réveil, Exploration, Premier Mini-Jeu
+
+| # | Nom du chapitre | Type | Description courte | Choix proposés | Conséquences |
+|---|-----------------|------|--------------------|----------------|--------------|
+| 1 | **Intro — Cryo-Pod** (`intro`) | Linéaire / Texte | Réveil forcé, prise en main. | Continuer | Va à `fork01` |
+| 2 | **Embranchement A1** (`fork01`) | Choix | 3 directions dangereuses. | Obscurité / Lueur verte / Ambrée | Mène à `clue01`, `minigame01`, `clue02` |
+| 3 | **Effondrement** (`clue01`) | Texte / Indice | Corps + tablette. | Fouiller / Déblayer / Retour | Indice ou Mort |
+| 4 | **Effondrement — Indice** (`clue01-01`) | Indice | Mot de passe **ECHO**. | Retour | Débloque mini-jeu |
+| 5 | **Effondrement — Mort** (`clue01-02`) | Mort | Effondrement fatal. | — | Échec |
+| 6 | **Maintenance** (`clue02`) | Danger / Indice | Liquide noir + collier. | Contourner / Traverser | Indice ou Mort |
+| 7 | **Maintenance — Indice** (`clue02-01`) | Indice | Plaque “ECHO”. | Retour | Confirme mot de passe |
+| 8 | **Maintenance — Mort** (`clue02-02`) | Mort | Contamination. | — | Échec |
+| 9 | **Terminal 1** (`minigame01`) | Choix | Terminal verrouillé. | Retour / Pirater | Lance mini-jeu |
+| 10 | **Mini-jeu 1** (`minigame01(game)`) | Mini-jeu | Mot de passe **ECHO**. | — | Succès → Acte 2 |
+
+---
 
 ### 2.4 Fins possibles
 
