@@ -115,8 +115,10 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 
 ### 2.2 Schéma narratif
 
+### 2.2 Schéma narratif
+
 <p align="center">
-  <img src="./Images/narative.png" alt="Schéma narratif — global" width="900">
+  <img src="./Codex Narative.png" alt="Schéma narratif — Codex" width="900">
 </p>
 
 ---
