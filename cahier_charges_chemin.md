@@ -142,6 +142,79 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 
 ---
 
+## ACTE 2 — Cafétéria, Cuisine, Toilettes, Stockages, Conduits, Hangar, Secteur Médical
+
+| 11 | **Acte 2 — Intro** (`intro2`) | Texte | Arrivée dans la cafétéria abandonnée. | Continuer | Va à `fork02` |
+| 12 | **Cafétéria — Embranchement** (`fork02`) | Choix | 3 chemins + un terminal. | Cuisines / Toilettes / Terminal / Retour | Mène à `clue03`, `clue04`, `minigame02` |
+
+### CUISINES
+
+| 13 | **Cuisine — Salle contaminée** (`clue03`) | Danger / Indice | Sol recouvert de liquide noir + cadavre + journal. | Avancer / Sauter / Retour | Indice ou Mort |
+| 14 | **Cuisine — Mort (Gaz)** (`clue03-01`) | Mort | Fuite + explosion. | — | Échec |
+| 15 | **Cuisine — Indice (Main à cinq doigts)** (`clue03-02`) | Indice | Journal → symbole **5 doigts** → mot de passe **CINQ**. | Retour | Débloque mini-jeu |
+| 16 | **Cuisine — Déjà explorée** (`clue03-03`) | Indice déjà obtenu | Rien de plus à découvrir. | Retour | — |
+
+### TOILETTES
+
+| 17 | **Toilettes — Zone inondée** (`clue04`) | Danger / Indice | Eau + câbles électriques. | Sauter / Marcher / Retour | Indice ou Mort |
+| 18 | **Toilettes — Mort (Électrocuté)** (`clue04-01`) | Mort | Contact eau + câble. | — | Échec |
+| 19 | **Toilettes — Indice (Message)** (`clue04-02`) | Indice | Message audio décrivant la présence de la créature. | Retour | Lore + contexte |
+| 20 | **Toilettes — Déjà explorées** (`clue04-03`) | Indice déjà obtenu | Rien de nouveau. | Retour | — |
+
+### TERMINAL 2 — CAFÉTÉRIA
+
+| 21 | **Terminal verrouillé** (`minigame02`) | Choix | Terminal nécessite un mot de passe. | Pirater / Retour | Lance mini-jeu |
+| 22 | **Mini-jeu 2** (`minigame02 (game)`) | Mini-jeu | Mot de passe **CINQ**. | — | Succès → `fork03` |
+
+### STOCKAGES & CONDUITS D’AÉRATION
+
+| 23 | **Stockages — Nouveau carrefour** (`fork03`) | Choix | Deux salles de stockage + terminal hors-service. | Salle droite / Salle gauche / Terminal | Accès aux conduits |
+| 24 | **Chambre froide** (`clue05`) | Exploration / Indice | Trouve un conduit praticable. | Entrer / Retour | Va à `vent01` |
+| 25 | **Ventilation — Grand carrefour** (`vent01`) | Exploration | Trois chemins + un bruit inquiétant. | Gauche / Droite / Centre / Retour | Variantes multiples |
+| 26 | **Conduit — Mort (Créature)** (`vent-slither`) | Mort | Attaqué dans l’obscurité. | — | Échec |
+| 27 | **Conduit — Lumière + Ventilateurs** (`vent-light` → `vent-fans`) | Puzzle | Ventilateurs à désactiver. | Appuyer / Arracher / Retour | Peut mener à mort ou succès |
+| 28 | **Ventilateurs — Mauvais choix** (`vent-fans-button-death`) | Mort | Bouton OFF → pales tuent le joueur. | — | Échec |
+| 29 | **Ventilateurs — Succès** (`vent-fans-wires-success`) | Succès | Arrache les câbles et désactive les ventilateurs. | Continuer | Mène à `fork04` |
+| 30 | **Conduit sombre** (`vent-dark`) | Exploration | Mène à une salle isolée. | Continuer / Retour | Ouvre `ventDeep01` |
+| 31 | **Conduit profond — Carrefour** (`ventDeep01`) | Exploration | 3 chemins : rouge, vert, noir. | Rouge / Vert / Noir | Lore ou morts |
+| 32 | **Mort — Rouille verte** (`ventDeep-greenDeath`) | Mort | Chute. | — | Échec |
+| 33 | **Mort — Obscurité totale** (`ventDeep-blackDeath`) | Mort | Épuisement. | — | Échec |
+| 34 | **Salle cryogénique — Fin alternative** (`ventDeep-blue`) | Fin | Cryo-pod encore actif. | Entrer / Retour | **Fin : Sommeil éternel** |
+
+### STOCKAGE DROITE → SECOND RÉSEAU DE CONDUITS
+
+| 35 | **Salle de stockage droite** (`clue06`) | Exploration | Grille d’aération ouverte. | Entrer / Retour | Mène à `ventA1` |
+| 36 | **Conduit A1** (`ventA1`) | Exploration | Lumière blanche ou obscurité + ventilateur. | Lumière / Grondement / Retour | Une mort + continuité |
+| 37 | **Mort** (`ventA1-death`) | Mort | Chute / rupture. | — | Échec |
+| 38 | **Conduit A2 — Ventilateur lent** (`ventA2`) | Exploration | Ventilateur derrière une grille. | Forcer / Retour | Mène au Hangar |
+
+### HANGAR MILITAIRE
+
+| 39 | **Hangar — Embranchement** (`fork10`) | Choix | Placard / Caserne / Terminal. | 3 options | Accès indices + mini-jeu |
+| 40 | **Placard militaire** (`clue100`) | Indice | Uniforme + note cryptée. | Fouiller / Retour | Mot de passe partiel |
+| 41 | **Note : Commandant** (`clue100-01`) | Indice | Mot de passe → **JACOB**. | Retour | Nécessaire pour mini-jeu |
+| 42 | **Caserne militaire** (`clue111`) | Danger / Indice | Liquide noir + silhouette. | Lent / Rapide / Retour | Indice ou Mort |
+| 43 | **Caserne — Mort** (`clue111-01`) | Mort | Liquide noir réagit. | — | Échec |
+| 44 | **Caserne — Indice** (`clue111-02`) | Indice | Plaque militaire “JACOB”. | Retour | Confirme mot de passe |
+| 45 | **Terminal Hangar** (`minigame10`) | Choix | Demande mot de passe. | Pirater / Retour | Lance mini-jeu |
+| 46 | **Mini-jeu Hangar** (`minigame10(game)`) | Mini-jeu | Mot : **JACOB**. | — | Ouvre `hangar-entry` |
+| 47 | **Entrée Hangar** (`hangar-entry`) | Choix | Fuite en navette ou poursuivre. | Monter / Continuer | **Fin Navette** ou Acte 3 |
+
+### SECTEUR MÉDICAL
+
+| 48 | **Centre Médical — Embranchement** (`fork04`) | Choix | Terminal / Réserve / Malades. | 3 options | Accès indices + mini-jeu |
+| 49 | **Salle des Malades** (`clue07`) | Danger / Indice | Lits renversés + substance noire. | Sauter / Grimper / Retour | Indice ou Mort |
+| 50 | **Salle des Malades — Mort** (`clue07-01`) | Mort | Substance noire. | — | Échec |
+| 51 | **Salle des Malades — Indice** (`clue07-02`) | Indice | Enregistrement : mot **NEBULA**. | Retour | Mot de passe terminal |
+| 52 | **Réserve Médicale** (`clue08`) | Danger / Indice | Corps + tablette + vue sur Terre. | Tirer / Prendre / Retour | Indice ou Mort |
+| 53 | **Réserve — Mort** (`clue08-01`) | Mort | Effondrement d’étagères. | — | Échec |
+| 54 | **Réserve — Indice** (`clue08-02`) | Indice | Journal médical sur la contamination. | Retour | Lore avancé |
+| 55 | **Terminal Médical** (`minigame04`) | Choix | Accès personnel limité. | Pirater / Retour | Lance mini-jeu |
+| 56 | **Mini-jeu Médical** (`minigame04(game)`) | Mini-jeu | Mot : **NEBULA**. | — | Ouvre Acte 3 |
+
+---
+
+
 ### 2.4 Fins possibles
 
 Listez toutes les fins de votre histoire (minimum 3, idéal 4–6):
