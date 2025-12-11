@@ -230,54 +230,68 @@ la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indi
 | 85 | **Fin — Évasion par Navette** (`ending`) | Fin | Navette du hangar. | — | Fin 4 |
 
 
+---
+
 ### 2.4 Fins possibles
 
-Listez toutes les fins de votre histoire (minimum 3, idéal 4–6):
+<small>(noms définitifs — basées sur les conditions réelles de votre jeu)</small>
 
-<small>(noms provisoires — basées sur vos conditions)</small>
+| # | Nom de la fin                         | Condition pour l’atteindre | Type |
+|---|----------------------------------------|-----------------------------|------|
+| 1 | **Évasion en Capsule** (`ending-pod`)  | Choisir la capsule à `fork07` (pas besoin du générateur) | Bonne |
+| 2 | **Évasion en Navette** (`ending`)      | Réussir le mini-jeu du hangar puis monter dans un appareil | Bonne |
+| 3 | **Sabotage du Pont Principal** (`ending-sabotage`) | Réparer le générateur → débloquer la porte du pont → entrer | Neutre / Ambiguë |
+| 4 | **Sommeil Éternel** (`ending-cryo`)    | Trouver la salle cryo dans les conduits profonds et entrer dans le pod | Neutre / Résignation |
 
-| # | Nom de la fin                | Condition pour l'atteindre                                                | Type (bonne/mauvaise/neutre) |
-|---|------------------------------|---------------------------------------------------------------------------|------------------------------|
-| 1 | **Purge orbitale**           | Déclencher la destruction de la station (vous périssez avec le monstre)  | Neutre / Sombre              |
-| 2 | **Retour sur Terre**         | Atteindre la capsule et s’échapper (preuves/états suffisants)            | Bonne                        |
-| 3 | **Rattrapé par la créature** | Lancer l’évasion, mais la créature vous rejoint et vous tue en fuite     | Mauvaise                     |
-
+---
 
 ### 2.5 Personnages principaux
-### 2.5 Personnages principaux
 
-| Nom          | Rôle        | Description courte                           | Apparaît dans          |
-|--------------|-------------|----------------------------------------------|------------------------|
-| **Interloper** | Protagoniste | Avatar du joueur, amnésique, seul à bord     | Tous les chapitres     |
-| **La Créature** | Antagoniste | Présence traquante, apparitions aléatoires    | Événements clés / fins |
+| Nom                | Rôle        | Description courte | Apparaît dans |
+|-------------------|-------------|--------------------|----------------|
+| **Interloper**    | Protagoniste | Avatar du joueur, amnésique, seul survivant retrouvé dans la station. | Tous les chapitres |
+| **La Créature**   | Antagoniste | Entité inconnue issue des laboratoires — source de la contamination. | Apparitions indirectes, morts, lore |
+| **Capitaine**     | Figure d’autorité | On apprend qu’il a verrouillé des secteurs, donne mots de passe, tente de contenir l’incident. | Journaux / tablettes |
+| **Soldats & Équipage** | Victimes / Lore | Leurs messages, journaux, corps et enregistrements décrivent ce qui s’est passé dans la station. | Indices throughout Actes 1–3 |
+| **IA / Terminaux** | Entité fonctionnelle | Systèmes de sécurité, portes blindées, diagnostics, mini-jeux. | Mini-jeux / Zones sécurisées |
+
 
 
 ### 2.6 Système de conséquences
 
-Comment les choix influencent l'histoire?
+Comment les choix influencent l’histoire ?
 
-*Mécanisme choisi:*
+*Mécanisme utilisé :*
 
-- [ ] *Système de karma/moralité* (points bons/mauvais)
-- [ ] *Stats du personnage* (courage, intelligence, empathie)
-- [X] *Inventaire d'objets* (collecte d'items)
-- [ ] *Relations avec personnages* (affinités)
-- [ ] *Flags de choix* (choix X débloque scène Y)
-- [ ] *Combinaison de plusieurs systèmes*
+- [ ] Système de karma/moralité
+- [ ] Stats du personnage (courage, intelligence…)
+- [X] Inventaire d’informations (indices trouvés, mots de passe)
+- [ ] Relations avec personnages
+- [X] Flags de choix (certaines actions débloquent ou verrouillent des scènes)
+- [ ] Combinaison complexe
 
-*Exemple de tracking:*
+#### Exemples concrets :
+
+- Trouver **indice “ECHO”** → Débloque Mini-jeu 1 (Acte 1)
+- Trouver **symbole “CINQ”** → Débloque Mini-jeu 2 (Acte 2)
+- Trouver **mot de passe GLACIER** → Débloque Mini-jeu 5 (Acte 3)
+- Activer le **générateur auxiliaire** → Active le flag `engine` → Débloque la **fin Sabotage**
+
+#### Structure logique (simplifiée) :
+
 ```javascript
-playerState: {
-  karma: 0,  // -10 à +10
-  inventory: ['clé', 'journal'],
-  relationships: {
-    marcus: 5,  // 0 à 10
-    chronos: -3
+playerState = {
+  clues: {
+    clue01: false,
+    clue02: true,       // trouvé le collier ECHO
+    clue03: false,
+    ...
   },
   flags: {
-    hasActivatedMachine: true,
-    knowsTheSecret: false
-  }
+    engine: false,      // devient true après engine04-success
+    canAccessBridge: false
+  },
+  endingsUnlocked: []
 }
 ```
 
