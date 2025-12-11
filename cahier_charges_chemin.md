@@ -79,20 +79,29 @@ L’histoire suit une structure à embranchements contrôlés (*branch-and-bottl
 - Apprentissage de la boucle narrative : **explorer → collecter indice → ouvrir terminal → avancer**.
 
 #### **Acte 2 – Exploration & Dangers**
-Acte le plus long, comprenant plusieurs forks successifs :
 
-- **Fork 02** → Clue03 / Clue04 → Minigame 02  
-- **Fork 03** → Trois chemins : Droite, Gauche, Chemin Bloqué  
-  - Dangers environnementaux : ventilateurs, conduits sombres, contamination, zones instables  
-  - Plusieurs branches mènent à des morts selon le choix  
-- **Fork 04** → Clue07 / Clue08 → Minigame 04  
-- Rebranchements réguliers vers l’axe principal pour garder une progression cohérente.
+Acte le plus long, comprenant plusieurs forks successifs et plusieurs routes alternatives permettant déjà d’accéder à certaines fins.
 
-Cet acte établit :
-- La présence de la **substance noire**  
-- Les risques environnementaux  
-- L’importance des indices pour réussir les mini-jeux  
-- Les premiers accès vers des fins alternatives (ex. Hangar Militaire)
+- **Fork 02** → *Clue03* / *Clue04* → **Minigame 02**  
+- **Fork 03** → Trois chemins :  
+  - **Chemin Droite**  
+  - **Chemin Gauche**  
+  - **Chemin Bloqué** (mène à une mort immédiate)  
+- Zones dangereuses : ventilateurs industriels, conduits sombres, contamination par la substance noire, zones structurellement instables.  
+- Plusieurs embranchements mènent à des fins prématurées ou à des morts environnementales selon les choix effectués.
+- **Fork 04** → *Clue07* / *Clue08* → **Minigame 04**
+
+Cet acte introduit également les **premières fins possibles**, accessibles avant Acte 3 :
+
+- **Fin Évasion (Hangar Militaire)** → Si le joueur parvient à atteindre le hangar, il peut tenter de s’échapper immédiatement via un appareil encore fonctionnel.  
+- **Fin — Sommeil Éternel (Cryo-Pods)** → Un chemin secondaire mène aux modules cryogéniques ; le joueur peut choisir de retourner en stase plutôt que de continuer l’exploration.
+
+De plus, certains choix dans Acte 2 permettent au joueur de :  
+- découvrir des indices critiques liés à l’état du **générateur principal**,  
+- apprendre que la station nécessite une **réparation du générateur** pour stabiliser la descente.
+
+Ces informations deviennent essentielles dans Acte 3 :  
+la **fin secrète** ne peut être débloquée que si le joueur a obtenu l’indice prouvant comment réparer ou stabiliser le générateur, et qu’il applique cette solution lors des derniers mini-jeux.
 
 #### **Acte 3 – Fuite & Résolution**
 - **Fork 05** → Clue09 / Clue10 → Minigame 05  
