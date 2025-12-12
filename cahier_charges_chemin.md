@@ -656,13 +656,13 @@ Comment stockez-vous les chapitres et choix?
 
 ### 6.2 Écrans principaux à maquetter
 
-- [ ] Menu principal (nouvelle partie, charger, options)
-- [ ] Écran de chapitre avec texte narratif
-- [ ] Panel de choix (2-4 options)
-- [ ] Inventaire/Stats (si applicable)
-- [ ] Écran de fin avec récapitulatif
-- [ ] Gestion des sauvegardes (3 slots)
-- [ ] Version mobile d'au moins 2-3 écrans
+- [x] Menu principal (nouvelle partie, charger, options)
+- [x] Écran de chapitre avec texte narratif
+- [x] Panel de choix (2-4 options)
+- [x] Inventaire/Stats (si applicable)
+- [x] Écran de fin avec récapitulatif
+- [x] Gestion des sauvegardes (3 slots)
+- [x] Version mobile d'au moins 2-3 écrans
 
 ### 6.3 Interactions clés à maquetter
 
@@ -906,7 +906,7 @@ Comment stockez-vous les chapitres et choix?
 
 ## ✅ Validation du Cahier de Charges
 
-*Date de validation:* [Date]
+*Date de validation:* [10 décembre 2026]
 
 *Signatures:*
 
