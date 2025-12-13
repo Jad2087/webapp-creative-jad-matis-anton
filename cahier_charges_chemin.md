@@ -23,7 +23,7 @@ Anton Nikulin – Développement et technique (Front-end)
 
 !!! tip "Phase de création"
     (Ce paragraphe "Conseil" devra être retiré du Cahier de charge final)
-    Pour développer votre concept général, vous devez faire une session de remue-méninges (*brainstorm*) en équipe via *Figjam* avec une carte conceptuelle (*mindmap*) ou encore par la création collaborative et spontanée via des *post-it* individuels et groupés. Il est possible d'utiliser d'autres procédés de création. Vous devrez partager votre processus de création (*brainstorm*) avec votre enseignante. Si c'est virtuel, partagez le lien. Si c'est papier ou sur tableau blanc, veuillez partager une ou des photographie(s) de votre processus.
+    Pour développer votre concept général, vous devez faire une session de remue-méninges (*brainstorm*) en équipe via *Figjam* avec une carte conceptuelle (*mindmap*) ou encore par la création collaborative et spontanée via des *post-it* individuels et groupés. Il est possible d'utiliser d'autres procédés de création. primaiVous devrez partager votre processus de création (*brainstorm*) avec votre enseignante. Si c'est virtuel, partagez le lien. Si c'est papier ou sur tableau blanc, veuillez partager une ou des photographie(s) de votre processus.
 
 Décrivez en 2-3 paragraphes le concept de votre histoire interactive:
 
@@ -191,6 +191,10 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 - *Chapitres danger:* [#E35E5E] - Rouge/orange
 
 *Couleurs système:*
+
+- Primaire (actions principales): [#03AB5E] ![#03AB5E](https://placehold.it/15/03AB5E/000000?text=+)
+- Secondaire (choix): [#FFFFFF] ![#FFFFFF](https://placehold.it/15/FFFFFF/000000?text=+)
+- Succès: [#03AB5E] ![#fcc03AB5E100](https://placehold.it/15/03AB5E/000000?text=+)
 
 - Primaire (actions principales): [#03AB5E]
 - Secondaire (choix): [#FFFFFF]
